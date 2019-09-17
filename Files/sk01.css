@@ -1,0 +1,29 @@
+.button {
+   	-fx-text-fill: white;
+   	-fx-font-family: "Arial Narrow";
+   	-fx-font-weight: bold;
+   	-fx-background-color: linear-gradient(#808080, #404040);
+	-fx-border-radius: 10;
+	-fx-background-radius: 10;
+}
+
+.button:hover {
+	-fx-text-fill: cyan;
+   	-fx-font-weight: bold;
+	-fx-background-color: linear-gradient(#404040, #808080);
+}
+
+.button:focused {
+	-fx-text-fill: cyan;
+   	-fx-font-weight: bold;
+}
+
+.button:pressed {
+   	-fx-translate-x: 1;
+   	-fx-translate-y: 1;
+}
+
+.button:release {
+   	-fx-translate-x: -1;
+   	-fx-translate-y: -1;
+}

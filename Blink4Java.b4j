@@ -1,0 +1,972 @@
+﻿AppType=JavaFX
+Build1=Default,b4j.example
+File1=main.bjl
+File10=sk01_btMin.png
+File11=sk01_btMinEnt.png
+File12=sk01_left.png
+File13=sk01_right.png
+File14=sk01_title.png
+File15=sk01_top_left.png
+File16=sk01_top_right.png
+File17=sk02.css
+File18=sk02_bottom.png
+File19=sk02_bottom_left.png
+File2=sk01.css
+File20=sk02_bottom_right.png
+File21=sk02_btClose.png
+File22=sk02_btCloseEnt.png
+File23=sk02_btMax.png
+File24=sk02_btMaxEnt.png
+File25=sk02_btMin.png
+File26=sk02_btMinEnt.png
+File27=sk02_left.png
+File28=sk02_right.png
+File29=sk02_title.png
+File3=sk01_bottom.png
+File30=sk02_top_left.png
+File31=sk02_top_right.png
+File32=sk03.css
+File33=sk03_bottom.png
+File34=sk03_bottom_left.png
+File35=sk03_bottom_right.png
+File36=sk03_btClose.png
+File37=sk03_btCloseEnt.png
+File38=sk03_btMax.png
+File39=sk03_btMaxEnt.png
+File4=sk01_bottom_left.png
+File40=sk03_btMin.png
+File41=sk03_btMinEnt.png
+File42=sk03_left.png
+File43=sk03_right.png
+File44=sk03_title.png
+File45=sk03_top_left.png
+File46=sk03_top_right.png
+File47=sk04.css
+File48=sk04_bottom.png
+File49=sk04_bottom_left.png
+File5=sk01_bottom_right.png
+File50=sk04_bottom_right.png
+File51=sk04_btClose.png
+File52=sk04_btCloseEnt.png
+File53=sk04_btMax.png
+File54=sk04_btMaxEnt.png
+File55=sk04_btMin.png
+File56=sk04_btMinEnt.png
+File57=sk04_left.png
+File58=sk04_right.png
+File59=sk04_title.png
+File6=sk01_btClose.png
+File60=sk04_top_left.png
+File61=sk04_top_right.png
+File62=sk05.css
+File63=sk05_bottom.png
+File64=sk05_bottom_left.png
+File65=sk05_bottom_right.png
+File66=sk05_btClose.png
+File67=sk05_btCloseEnt.png
+File68=sk05_btMax.png
+File69=sk05_btMaxEnt.png
+File7=sk01_btCloseEnt.png
+File70=sk05_btMin.png
+File71=sk05_btMinEnt.png
+File72=sk05_left.png
+File73=sk05_right.png
+File74=sk05_title.png
+File75=sk05_top_left.png
+File76=sk05_top_right.png
+File77=sk06.css
+File78=sk06_bottom.png
+File79=sk06_bottom_left.png
+File8=sk01_btMax.png
+File80=sk06_bottom_right.png
+File81=sk06_btClose.png
+File82=sk06_btCloseEnt.png
+File83=sk06_btMax.png
+File84=sk06_btMaxEnt.png
+File85=sk06_btMin.png
+File86=sk06_btMinEnt.png
+File87=sk06_left.png
+File88=sk06_right.png
+File89=sk06_title.png
+File9=sk01_btMaxEnt.png
+File90=sk06_top_left.png
+File91=sk06_top_right.png
+File92=vdSk01.bjl
+File93=vdSk02.bjl
+File94=vdSk03.bjl
+File95=vdSk04.bjl
+File96=vdSk05.bjl
+File97=vdSk06.bjl
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Default Group
+FileGroup15=Default Group
+FileGroup16=Default Group
+FileGroup17=Default Group
+FileGroup18=Default Group
+FileGroup19=Default Group
+FileGroup2=Default Group
+FileGroup20=Default Group
+FileGroup21=Default Group
+FileGroup22=Default Group
+FileGroup23=Default Group
+FileGroup24=Default Group
+FileGroup25=Default Group
+FileGroup26=Default Group
+FileGroup27=Default Group
+FileGroup28=Default Group
+FileGroup29=Default Group
+FileGroup3=Default Group
+FileGroup30=Default Group
+FileGroup31=Default Group
+FileGroup32=Default Group
+FileGroup33=Default Group
+FileGroup34=Default Group
+FileGroup35=Default Group
+FileGroup36=Default Group
+FileGroup37=Default Group
+FileGroup38=Default Group
+FileGroup39=Default Group
+FileGroup4=Default Group
+FileGroup40=Default Group
+FileGroup41=Default Group
+FileGroup42=Default Group
+FileGroup43=Default Group
+FileGroup44=Default Group
+FileGroup45=Default Group
+FileGroup46=Default Group
+FileGroup47=Default Group
+FileGroup48=Default Group
+FileGroup49=Default Group
+FileGroup5=Default Group
+FileGroup50=Default Group
+FileGroup51=Default Group
+FileGroup52=Default Group
+FileGroup53=Default Group
+FileGroup54=Default Group
+FileGroup55=Default Group
+FileGroup56=Default Group
+FileGroup57=Default Group
+FileGroup58=Default Group
+FileGroup59=Default Group
+FileGroup6=Default Group
+FileGroup60=Default Group
+FileGroup61=Default Group
+FileGroup62=Default Group
+FileGroup63=Default Group
+FileGroup64=Default Group
+FileGroup65=Default Group
+FileGroup66=Default Group
+FileGroup67=Default Group
+FileGroup68=Default Group
+FileGroup69=Default Group
+FileGroup7=Default Group
+FileGroup70=Default Group
+FileGroup71=Default Group
+FileGroup72=Default Group
+FileGroup73=Default Group
+FileGroup74=Default Group
+FileGroup75=Default Group
+FileGroup76=Default Group
+FileGroup77=Default Group
+FileGroup78=Default Group
+FileGroup79=Default Group
+FileGroup8=Default Group
+FileGroup80=Default Group
+FileGroup81=Default Group
+FileGroup82=Default Group
+FileGroup83=Default Group
+FileGroup84=Default Group
+FileGroup85=Default Group
+FileGroup86=Default Group
+FileGroup87=Default Group
+FileGroup88=Default Group
+FileGroup89=Default Group
+FileGroup9=Default Group
+FileGroup90=Default Group
+FileGroup91=Default Group
+FileGroup92=Default Group
+FileGroup93=Default Group
+FileGroup94=Default Group
+FileGroup95=Default Group
+FileGroup96=Default Group
+FileGroup97=Default Group
+Group=Default Group
+Library1=jcore
+Library2=jfx
+Library3=jokhttputils2
+Library4=json
+Library5=jreflection
+Library6=javaobject
+NumberOfFiles=97
+NumberOfLibraries=6
+NumberOfModules=0
+Version=7.51
+@EndOfDesignText@
+#Region Project Attributes 
+	#MainFormWidth: 900
+	#MainFormHeight: 1000 
+#End Region
+
+Sub Process_Globals
+	Private fx As JFX
+	Private MainForm As Form
+	Private emailAddress As String = "[redacted] # replace with 'examplePass' instead"
+	Private password As String = "[redacted] # replace with the empty string"
+	Private authToken As String
+	Private userRegion As String
+	Private accountID As String
+	Private networkID As String
+	Private commandID As String
+	Private commandComplete As Boolean
+	Private cameraThumbnail As String
+	Private fx As JFX
+	Private MainForm As Form
+	Private lbTitle As Label 'ignore
+	Private xMouse, yMouse As Double
+	Private isMaximized As Boolean = False
+	Private ivClose As ImageView
+	Private ivMax As ImageView
+	Private ivMin As ImageView
+	Private AtualSkin As String
+	Private imgInit As String
+	Private isMaximized As Boolean = False
+	Private f_X, f_Y, f_W, f_H As Double
+	Private btnDriveway As Button 'ignore
+	Private response As String
+	Private ivDriveway As ImageView
+	Private lblStatus As Label
+	Private ivFrontDoor As ImageView
+	Private ivSideYard As ImageView
+	Private lblDriveway As Label
+	Private lblFrontDoor As Label
+	Private lblSideYard As Label
+End Sub
+
+Sub AppStart (Form1 As Form, Args() As String)
+	Try
+		Dim skinTemp As String
+		Dim skinDefault As String
+	
+		If File.Exists(File.DirApp, "skin.ini") Then
+			skinTemp = File.ReadString(File.DirApp, "skin.ini")
+		Else
+			File.WriteString(File.DirApp, "skin.ini", "vdSk03")
+			skinTemp = "vdSk03"
+		End If
+	
+		If skinTemp = "" Then
+			skinDefault = "vdSk03"
+		Else
+			If skinTemp = "vdSk01" Or skinTemp = "vdSk02" Or skinTemp = "vdSk03" Or skinTemp = "vdSk04" Or skinTemp = "vdSk05" Or skinTemp = "vdSk06" Then
+				skinDefault = skinTemp
+			Else
+				skinDefault = "vdSk03"
+			End If
+		End If
+	
+		MainForm = Form1
+		MainForm.SetFormStyle("TRANSPARENT")
+		MainForm.RootPane.LoadLayout(skinDefault) 'Load the layout file.
+		AtualSkin = skinDefault
+		MainForm.BackColor = fx.Colors.Transparent
+		MainForm.RootPane.Style = "-fx-background-color:transparent;-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 1.0) , 15,0, 0.0, 0.0);"
+		MainForm.Resizable = True
+		'MainForm.Icon = fx.LoadImage(File.DirAssets, "home.png")
+		MainForm.Title = "Catanaoan Blink XT2 Cameras v1.0"
+		lbTitle.MouseCursor = fx.Cursors.MOVE
+		lbTitle.Text = "Catanaoan Blink XT2 Cameras v1.0"
+		Dim Obj As Reflector
+		Obj.Target = ivClose
+		Obj.AddEventHandler2("Close_Entered", "onMouseEnteredProperty")
+		Obj.AddEventHandler2("Close_Exited", "onMouseExitedProperty")
+		Dim Obj As Reflector
+		Obj.Target = ivMax
+		Obj.AddEventHandler2("Max_Entered", "onMouseEnteredProperty")
+		Obj.AddEventHandler2("Max_Exited", "onMouseExitedProperty")
+		Dim Obj As Reflector
+		Obj.Target = ivMin
+		Obj.AddEventHandler2("Min_Entered", "onMouseEnteredProperty")
+		Obj.AddEventHandler2("Min_Exited", "onMouseExitedProperty")
+		imgInit = AtualSkin.SubString(2).ToLowerCase
+		Get_css
+'		MainForm.WindowWidth = CheckMonitor.MaxX - CheckMonitor.MinX 'fx.PrimaryScreen.MaxX - fx.PrimaryScreen.MinX
+		MainForm.WindowLeft = CheckMonitor.MinX 'fx.PrimaryScreen.MinX
+'		MainForm.WindowHeight = CheckMonitor.MaxY - CheckMonitor.MinY 'fx.PrimaryScreen.MaxY - fx.PrimaryScreen.MinY
+		MainForm.WindowTop = CheckMonitor.MinY 'fx.PrimaryScreen.MinY
+	
+		lblStatus.TextColor = fx.Colors.White
+		MainForm.Show
+		RequestAuthToken
+	Catch
+		Log(LastException)
+	End Try
+	
+End Sub
+
+'Return true to allow the default exceptions handler to handle the uncaught exception.
+Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
+	Return True
+End Sub
+
+Sub btnDriveway_Click
+	RefreshCameras
+End Sub
+Sub RequestAuthToken 
+	' https://github.com/MattTW/BlinkMonitorProtocol
+	' http://www.basic4ppc.com:51042/json/index.html
+	' https://www.b4x.com/android/forum/threads/b4x-okhttputils2-with-wait-for.79345/#content
+	' https://www.b4x.com/android/forum/threads/call-api-rest.89470/#content
+	' https://www.b4x.com/android/forum/threads/server-online-json-tree-example.39048/#content
+	Try
+		lblStatus.Text = "Authenticating..."
+		Dim jobLogin As HttpJob
+		jobLogin.Initialize("", Me)
+		jobLogin.PostString("https://rest.prod.immedia-semi.com/login","email=" &  emailAddress & "&password=" & password)
+		jobLogin.GetRequest.SetContentType("application/x-www-form-urlencoded")
+		Wait For (jobLogin) JobDone(jobLogin As HttpJob)
+		If jobLogin.Success Then
+			lblStatus.Text = "Successfully logged in to the Blink server..."
+			
+			GetAuthInfo(jobLogin.GetString)
+
+			RESTGet("https://rest-" & userRegion & ".immedia-semi.com/user")
+			Sleep(1000)
+			If response.StartsWith("ERROR: ") Then
+				Log(response)
+				lblStatus.Text = response
+				Return
+			Else
+				lblStatus.Text = "AuthToken acquired..." 
+				GetUserInfo(response)
+			End If
+			
+			RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/camera/usage")
+			Sleep(1000)
+			If response.StartsWith("ERROR: ") Then
+				Log(response)
+				lblStatus.Text = response
+				Return
+			Else
+				GetAllCameras(response)
+			End If
+		Else
+			lblStatus.Text = "RequestAuthToken error: " & jobLogin.GetString
+			Log("RequestAuthToken error: " & jobLogin.GetString)
+			Return
+		End If
+		jobLogin.Release
+		lblStatus.Text = "Ready"
+		
+		RefreshCameras
+	Catch
+		lblStatus.Text = "RequestAuthToken LastException: " & LastException
+		Log("RequestAuthToken LastException: " & LastException)
+	End Try
+End Sub
+
+Sub RefreshCameras
+	' https://github.com/MattTW/BlinkMonitorProtocol
+	' http://www.basic4ppc.com:51042/json/index.html
+	' https://www.b4x.com/android/forum/threads/b4x-okhttputils2-with-wait-for.79345/#content
+	' https://www.b4x.com/android/forum/threads/call-api-rest.89470/#content
+	' https://www.b4x.com/android/forum/threads/server-online-json-tree-example.39048/#content
+	Try
+		Dim camera As String
+		Dim iv As ImageView
+		Dim links As List
+		links = Array("347574", "236967", "226821")
+		
+		For Each link As String In links
+			camera = link
+			If camera = "347574" Then
+				lblStatus.Text = "Capturing a new thumbnail for the Driveway..."
+				iv = ivDriveway
+			Else If camera = "236967" Then
+				lblStatus.Text = "Capturing a new thumbnail for the Front Door..."
+				iv = ivFrontDoor
+			Else If camera = "226821" Then
+				lblStatus.Text = "Capturing a new thumbnail for the Side Yard..."
+				iv = ivSideYard
+			End If
+			'Sleep(100)
+		
+			RESTPost("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera & "/thumbnail")
+			Sleep(1000)
+			If response.StartsWith("ERROR: ") Then
+				Log(response)
+				lblStatus.Text = response
+				Return
+			Else
+				GetCommandID(response)
+				RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+				Sleep(1000)
+				If response.StartsWith("ERROR: ") Then
+					Log(response)
+					lblStatus.Text = response
+					Return
+				Else
+					For i = 1 To 30
+						GetCommandStatus(response)
+						If commandComplete Then
+							RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
+							Sleep(1000)
+							GetCameraInfo(response)
+							DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv)
+							Exit
+						Else
+							If camera = "347574" Then
+								lblStatus.Text = "Awaiting for the Driveway thumbnail... " & i & "/30"
+							Else If camera = "236967" Then
+								lblStatus.Text = "Awaiting for the Front Door thumbnail...  " & i & "/30"
+							Else If camera = "226821" Then
+								lblStatus.Text = "Awaiting for the Side Yard thumbnail... " & i & "/30"
+							End If
+						End If
+						RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+						Sleep(1000)
+					Next
+					If commandComplete = False Then
+						If camera = "347574" Then
+							lblStatus.Text = "Failed to retrieve Driveway thumbnail..."
+							ivDriveway.SetImage(Null)
+						Else If camera = "236967" Then
+							lblStatus.Text = "Failed to retrieve Front Door thumbnail..."
+							ivFrontDoor.SetImage(Null)
+						Else If camera = "226821" Then
+							lblStatus.Text = "Failed to retrieve Side Yard thumbnail..."
+							ivSideYard.SetImage(Null)
+						End If
+					Else
+						DateTime.DateFormat = "h:mm:ss a"
+						lblStatus.Text = "Last updated: " & DateTime.Date(DateTime.Now)
+						If camera = "347574" Then
+							lblDriveway.Text = lblStatus.Text
+						Else If camera = "236967" Then
+							lblFrontDoor.Text = lblStatus.Text
+						Else If camera = "226821" Then
+							lblSideYard.Text = lblStatus.Text
+						End If
+					End If
+				End If
+			End If
+		Next
+	Catch
+		Log("RefreshCamera LastException: " & LastException)
+		lblStatus.Text = "RefreshCamera LastException: " & LastException
+	End Try
+End Sub
+
+Sub RESTGet(url As String) As ResumableSub
+	Try
+		Dim j As HttpJob
+		response = ""
+		j.Initialize("", Me) 'name is empty as it is no longer needed
+		j.Download(url)
+		j.GetRequest.SetHeader("TOKEN_AUTH", authToken)
+		Wait For (j) JobDone(j As HttpJob)
+		If j.Success Then
+			response = j.GetString
+		Else
+			response = "ERROR: " & j.GetString
+		End If
+		j.Release
+	Catch
+		response = "ERROR: " & LastException
+		Log("RESTDownload LastException: " & LastException)
+	End Try
+	Log("URL: " & url)
+	Log("Response: " & response)
+	Return(response)
+End Sub
+
+Sub RESTPost(url As String) As ResumableSub
+	Try
+		Dim j As HttpJob
+		response = ""
+		j.Initialize("", Me) 'name is empty as it is no longer needed
+		j.PostString(url,"")
+		j.GetRequest.SetContentType("application/x-www-form-urlencoded")
+		j.GetRequest.SetHeader("TOKEN_AUTH", authToken)
+		Wait For (j) JobDone(j As HttpJob)
+		If j.Success Then
+			response = j.GetString
+		Else
+			response = "ERROR: " & j.GetString
+		End If
+		j.Release
+	Catch
+		response = "ERROR: " & LastException
+		Log("RESTPost LastException: " & LastException)
+	End Try
+	Log("URL: " & url)
+	Log("Response: " & response)
+	Return(response)
+End Sub
+
+Sub DownloadImage (Link As String, iv As ImageView)
+	Try
+		Dim j As HttpJob
+		response = ""
+		j.Initialize("", Me)
+		j.Download(Link)
+		j.GetRequest.SetHeader("TOKEN_AUTH", authToken)
+		Wait For (j) JobDone(j As HttpJob)
+		If j.Success Then
+			'Dim out As OutputStream = File.OpenOutput(File.DirApp, "filename.jpg", False)
+			'File.Copy2(j.GetInputStream, out)
+			'out.Close '<------ very important
+			
+			iv.SetImage(j.GetBitmap)
+		Else
+			response = "ERROR: " & j.GetString
+		End If
+		j.Release
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+
+Sub GetAuthInfo(json As String) 
+	lblStatus.Text = "Getting authtoken..."
+	Dim parser As JSONParser
+	parser.Initialize(json)
+	Dim root As Map = parser.NextObject
+	Dim authtokenmap As Map = root.Get("authtoken")
+	authToken = authtokenmap.Get("authtoken")
+	Log("authToken: " &  authToken)
+'	Dim message As String = authtoken.Get("message")
+'	Dim client As Map = root.Get("client")
+'	Dim id As Int = client.Get("id")
+'	Dim networks As Map = root.Get("networks")
+'	Dim 94896 As Map = networks.Get("94896")
+'	Dim onboarded As String = 94896.Get("onboarded")
+'	Dim name As String = 94896.Get("name")
+	Dim region As Map = root.Get("region")
+	userRegion = region.GetKeyAt(0)
+	Log("userRegion: " &  userRegion)
+'	Dim u006 As String = region.Get("u006")
+'	Dim account As Map = root.Get("account")
+'	Dim id As Int = account.Get("id")
+End Sub
+
+Sub GetUserInfo(json As String) 
+	lblStatus.Text = "Getting user information..."
+	Dim parser As JSONParser
+	parser.Initialize(json)
+	Dim root As Map = parser.NextObject
+'	Dim owner As String = root.Get("owner")
+'	Dim temp_units As String = root.Get("temp_units")
+'	Dim verified As String = root.Get("verified")
+'	Dim pin_created_at As String = root.Get("pin_created_at")
+'	Dim created_at As String = root.Get("created_at")
+'	Dim time_zone As String = root.Get("time_zone")
+'	Dim Type As String = root.Get("type")
+'	Dim pin_failures As Int = root.Get("pin_failures")
+'	Dim account_id As Int = root.Get("account_id")
+'	Dim updated_at As String = root.Get("updated_at")
+'	Dim reset_expiration As String = root.Get("reset_expiration")
+'	Dim pin As String = root.Get("pin")
+'	Dim name As String = root.Get("name")
+'	Dim user_access As String = root.Get("user_access")
+	accountID = root.Get("id")
+	Log("accountID: " &  accountID)
+	'   Dim email As String = root.Get("email")
+End Sub
+
+Sub GetAllCameras(json As String) 
+	lblStatus.Text = "Getting all cameras information..."
+	Dim parser As JSONParser
+	parser.Initialize(json)
+	Dim root As Map = parser.NextObject
+'	Dim reference As Map = root.Get("reference")
+'	Dim usage As Int = reference.Get("usage")
+'	Dim range_days As Int = root.Get("range_days")
+	Dim networks As List = root.Get("networks")
+	For Each colnetworks As Map In networks
+'		Dim cameras As List = colnetworks.Get("cameras")
+'		For Each colcameras As Map In cameras
+'			Dim usage As Int = colcameras.Get("usage")
+'			Dim name As String = colcameras.Get("name")
+'			Dim lv_seconds As Int = colcameras.Get("lv_seconds")
+'			Dim id As Int = colcameras.Get("id")
+'			Dim clip_seconds As Int = colcameras.Get("clip_seconds")
+'		Next
+		networkID = colnetworks.Get("network_id")
+		Log("networkID: " &  networkID)
+		'Dim name As String = colnetworks.Get("name")
+	Next
+End Sub
+
+Sub GetCommandID(json As String) 
+	Dim parser As JSONParser
+	parser.Initialize(json)
+	Dim root As Map = parser.NextObject
+'	Dim server As String = root.Get("server")
+'	Dim stage_vs As String = root.Get("stage_vs")
+'	Dim firmware_id As String = root.Get("firmware_id")
+'	Dim stage_rest As String = root.Get("stage_rest")
+'	Dim created_at As String = root.Get("created_at")
+'	Dim stage_cs_db As String = root.Get("stage_cs_db")
+'	Dim sm_ack As String = root.Get("sm_ack")
+'	Dim duration As String = root.Get("duration")
+'	Dim stage_is As String = root.Get("stage_is")
+'	Dim stage_cs_sent As String = root.Get("stage_cs_sent")
+'	Dim updated_at As String = root.Get("updated_at")
+'	Dim stage_dev As String = root.Get("stage_dev")
+'	Dim execute_time As String = root.Get("execute_time")
+'	Dim by_whom As String = root.Get("by_whom")
+	commandID = root.Get("id")
+	Log("commandID: " & commandID)
+'	Dim diagnostic As String = root.Get("diagnostic")
+'	Dim player_transaction As String = root.Get("player_transaction")
+'	Dim attempts As Int = root.Get("attempts")
+'	Dim lfr_ack As String = root.Get("lfr_ack")
+'	Dim stage_sm As String = root.Get("stage_sm")
+'	Dim debug As String = root.Get("debug")
+'	Dim state_stage As String = root.Get("state_stage")
+'	Dim camera_id As Int = root.Get("camera_id")
+'	Dim target_id As Int = root.Get("target_id")
+'	Dim command As String = root.Get("command")
+'	Dim target As String = root.Get("target")
+'	Dim stage_lv As String = root.Get("stage_lv")
+'	Dim sequence As String = root.Get("sequence")
+'	Dim network_id As Int = root.Get("network_id")
+'	Dim account_id As Int = root.Get("account_id")
+'	Dim state_condition As String = root.Get("state_condition")
+'	Dim siren_id As String = root.Get("siren_id")
+'	Dim parent_command_id As String = root.Get("parent_command_id")
+'	Dim sync_module_id As Int = root.Get("sync_module_id")
+'	Dim transaction As String = root.Get("transaction")
+End Sub
+
+Sub GetCommandStatus(json As String) 
+	Dim parser As JSONParser
+	parser.Initialize(json)
+	Dim root As Map = parser.NextObject
+	commandComplete = root.Get("complete")
+	Log("commandComplete: " & commandComplete)
+End Sub
+
+Sub GetCameraInfo(json As String) 
+	Dim parser As JSONParser
+	parser.Initialize(json)
+	Dim root As Map = parser.NextObject
+	Dim camera_status As Map = root.Get("camera_status")
+	Dim total_108_wakeups As Int = camera_status.Get("total_108_wakeups")
+	Dim battery_voltage As Int = camera_status.Get("battery_voltage")
+	Dim light_sensor_data_valid As String = camera_status.Get("light_sensor_data_valid")
+	Dim lfr_tb_wakeups As Int = camera_status.Get("lfr_tb_wakeups")
+	Dim fw_git_hash As String = camera_status.Get("fw_git_hash")
+	Dim wifi_strength As Int = camera_status.Get("wifi_strength")
+	Dim lfr_strength As Int = camera_status.Get("lfr_strength")
+	Dim total_tb_wakeups As Int = camera_status.Get("total_tb_wakeups")
+	Dim created_at As String = camera_status.Get("created_at")
+	Dim light_sensor_ch0 As Int = camera_status.Get("light_sensor_ch0")
+	Dim mac As String = camera_status.Get("mac")
+	Dim unit_number As Int = camera_status.Get("unit_number")
+	Dim updated_at As String = camera_status.Get("updated_at")
+	Dim light_sensor_ch1 As Int = camera_status.Get("light_sensor_ch1")
+	Dim time_dhcp_lease As Int = camera_status.Get("time_dhcp_lease")
+	Dim temperature As Int = camera_status.Get("temperature")
+	Dim time_first_video As Int = camera_status.Get("time_first_video")
+	Dim time_dns_resolve As Int = camera_status.Get("time_dns_resolve")
+	Dim id As Int = camera_status.Get("id")
+	Dim temp_alert_status As String = camera_status.Get("temp_alert_status")
+	Dim time_108_boot As Int = camera_status.Get("time_108_boot")
+	Dim lfr_108_wakeups As Int = camera_status.Get("lfr_108_wakeups")
+	cameraThumbnail = camera_status.Get("thumbnail")
+	Log("cameraThumbnail: " & cameraThumbnail)
+	Dim lifetime_duration As Int = camera_status.Get("lifetime_duration")
+	Dim wifi_connect_failure_count As Int = camera_status.Get("wifi_connect_failure_count")
+	Dim camera_id As Int = camera_status.Get("camera_id")
+	Dim battery_alert_status As String = camera_status.Get("battery_alert_status")
+	Dim dhcp_failure_count As Int = camera_status.Get("dhcp_failure_count")
+	Dim ip_address As String = camera_status.Get("ip_address")
+	Dim ipv As String = camera_status.Get("ipv")
+	Dim light_sensor_data_new As String = camera_status.Get("light_sensor_data_new")
+	Dim network_id As Int = camera_status.Get("network_id")
+	Dim account_id As Int = camera_status.Get("account_id")
+	Dim serial As String = camera_status.Get("serial")
+	Dim dev_1 As Int = camera_status.Get("dev_1")
+	Dim time_wlan_connect As Int = camera_status.Get("time_wlan_connect")
+	Dim dev_2 As Int = camera_status.Get("dev_2")
+	Dim socket_failure_count As Int = camera_status.Get("socket_failure_count")
+	Dim dev_3 As Int = camera_status.Get("dev_3")
+	Dim pir_rejections As Int = camera_status.Get("pir_rejections")
+	Dim sync_module_id As Int = camera_status.Get("sync_module_id")
+	Dim lifetime_count As Int = camera_status.Get("lifetime_count")
+	Dim error_codes As Int = camera_status.Get("error_codes")
+	Dim fw_version As String = camera_status.Get("fw_version")
+	Dim ac_power As String = camera_status.Get("ac_power")
+End Sub
+
+Private Sub lbTitle_MouseDragged (EventData As MouseEvent)
+	Try
+		If isMaximized Then Return
+		Dim jo As JavaObject = EventData
+		MainForm.WindowLeft = jo.RunMethod("getScreenX", Null) - xMouse
+		MainForm.WindowTop = jo.RunMethod("getScreenY", Null) - yMouse
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub lbTitle_MousePressed (EventData As MouseEvent)
+	Try
+		xMouse = EventData.X + lbTitle.Left + 15
+		yMouse = EventData.Y + lbTitle.Top + 15
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub ivClose_MouseClicked (EventData As MouseEvent)
+	ExitApplication
+End Sub
+
+Private Sub Close_Entered_Event(e As Event)
+	Try
+		ivClose.SetImage(fx.LoadImage(File.DirAssets, imgInit & "_btCloseEnt.png"))
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub Close_Exited_Event(e As Event)
+	Try
+		ivClose.SetImage(fx.LoadImage(File.DirAssets, imgInit & "_btClose.png"))
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub ivMax_MouseClicked (EventData As MouseEvent)
+	Try
+		Dim scr As Screen = fx.PrimaryScreen
+		If isMaximized Then
+			MainForm.WindowLeft = f_X
+			MainForm.WindowTop = f_Y
+			MainForm.WindowWidth = f_W
+			MainForm.WindowHeight = f_H
+		Else
+			f_X = MainForm.WindowLeft
+			f_Y = MainForm.WindowTop
+			f_W = MainForm.WindowWidth
+			f_H = MainForm.WindowHeight
+			MainForm.WindowLeft = 0
+			MainForm.WindowTop = 0
+			MainForm.WindowWidth = scr.MaxX
+			MainForm.WindowHeight = scr.MaxY + 40
+		End If
+		isMaximized = Not(isMaximized)
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub Max_Entered_Event(e As Event)
+	Try
+		ivMax.SetImage(fx.LoadImage(File.DirAssets, imgInit & "_btMaxEnt.png"))
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub Max_Exited_Event(e As Event)
+	Try
+		ivMax.SetImage(fx.LoadImage(File.DirAssets, imgInit & "_btMax.png"))
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub ivMin_MouseClicked (EventData As MouseEvent)
+	Try
+		Dim jmf As JavaObject = MainForm
+		Dim stage As JavaObject = jmf.GetField("stage")
+		stage.RunMethod("setIconified", Array As Object(True))
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub Min_Entered_Event(e As Event)
+	Try
+		ivMin.SetImage(fx.LoadImage(File.DirAssets, imgInit & "_btMinEnt.png"))
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub Min_Exited_Event(e As Event)
+	Try
+		ivMin.SetImage(fx.LoadImage(File.DirAssets, imgInit & "_btMin.png"))
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Public Sub Get_css
+	Try
+		Dim jForm As JavaObject = MainForm
+		Dim scene As JavaObject = jForm.GetField("scene")
+		Dim stylesheets As List = scene.RunMethod("getStylesheets", Null)
+		stylesheets.Clear
+		stylesheets.Add(File.GetUri(File.DirAssets, imgInit & ".css"))
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Private Sub Button1_Action
+	Try
+		ivMax.Visible = Not(ivMax.Visible)
+		ivMin.Visible = Not(ivMin.Visible)
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Sub CheckMonitor() As Screen
+	Try
+		If fx.Screens.Size= 1 Then
+			Dim SList As List = fx.Screens
+			Dim S As Screen = SList.Get(0)
+			'Msgbox.Show("Minimum X: " & S.MinX,"Screen")
+			Return S
+		Else If fx.Screens.Size> 1 Then
+			Dim SList As List = fx.Screens
+			Dim S As Screen = SList.Get(2)
+			'Msgbox.Show("Minimum X: " & S.MinX,"Screen")
+			Return S
+		Else
+			Dim SList As List = fx.Screens
+			Dim S As Screen = SList.Get(0)
+			'Msgbox.Show("Minimum X: " & S.MinX,"Screen")
+			Return S
+		End If
+	Catch
+		Dim SList As List = fx.Screens
+		Dim S As Screen = SList.Get(0)
+		'Msgbox.Show("Minimum X: " & S.MinX,"Screen")
+		Return S
+	End Try
+End Sub
+
+'Backup
+'Sub RefreshCamera(camera As String)
+'	' https://github.com/MattTW/BlinkMonitorProtocol
+'	' http://www.basic4ppc.com:51042/json/index.html
+'	' https://www.b4x.com/android/forum/threads/b4x-okhttputils2-with-wait-for.79345/#content
+'	' https://www.b4x.com/android/forum/threads/call-api-rest.89470/#content
+'	' https://www.b4x.com/android/forum/threads/server-online-json-tree-example.39048/#content
+'	Try
+''		Dim jobLogin As HttpJob
+''		Dim jobNetwork As HttpJob
+''		jobLogin.Initialize("", Me)
+''		jobNetwork.Initialize("", Me)
+''	
+''		' Authentication
+''		jobLogin.PostString("https://rest.prod.immedia-semi.com/login","email=" &  emailAddress & "&password=" & password)
+''		jobLogin.GetRequest.SetContentType("application/x-www-form-urlencoded")
+''		Wait For (jobLogin) JobDone(jobLogin As HttpJob)
+''		If jobLogin.Success Then
+''		
+''			GetAuthInfo(jobLogin.GetString)
+''		
+''			' *********************** Get Network Information ***********************
+''			RESTGet("https://rest-" & userRegion & ".immedia-semi.com/user")
+''			Sleep(1000)
+''			If response.StartsWith("ERROR: ") Then
+''				Log(response)
+''				Return
+''			Else
+''				GetUserInfo(response)
+''			End If
+''			
+''			RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/camera/usage")
+''			Sleep(1000)
+''			If response.StartsWith("ERROR: ") Then
+''				Log(response)
+''				Return
+''			Else
+''				GetAllCameras(response)
+''			End If
+'			
+'			
+'		
+'			'https://rest-u006.immedia-semi.com/network/94896/camera/347574/thumbnail
+'			RESTPost("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera & "/thumbnail")
+'			Sleep(1000)
+'			If response.StartsWith("ERROR: ") Then
+'				Log(response)
+'				Return
+'			Else
+'				GetCommandID(response)
+'				RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+'				'{"complete":false,"status":0,"status_msg":"Command succeeded","status_code":908,"commands":[{"id":140857065,"created_at":"2019-09-17T15:21:45+00:00","updated_at":"2019-09-17T15:21:45+00:00","execute_time":"2019-09-17T15:21:45+00:00","command":"thumbnail","state_stage":"sm","stage_rest":"2019-09-17T15:21:45+00:00","stage_cs_db":"2019-09-17T15:21:45+00:00","stage_cs_sent":"2019-09-17T15:21:45+00:00","stage_sm":"2019-09-17T15:21:45+00:00","stage_dev":null,"stage_is":null,"stage_lv":null,"stage_vs":null,"state_condition":"running","sm_ack":1,"lfr_ack":null,"sequence":4221,"attempts":0,"transaction":"p6bbXjn7nZna0He6","player_transaction":"BSJQJNthTpckxBTn","server":null,"duration":null,"by_whom":" - ","diagnostic":false,"debug":"","target":"camera","target_id":347574,"parent_command_id":null,"camera_id":347574,"siren_id":null,"firmware_id":null,"network_id":94896,"account_id":88438,"sync_module_id":171537}],"media_id":null}
+'				Sleep(1000)
+'				If response.StartsWith("ERROR: ") Then
+'					Log(response)
+'					Return
+'				Else
+'					For i = 1 To 15
+'						GetCommandStatus(response)
+'						If commandComplete Then
+'							' {"complete":true,"status":0,"status_msg":"Command succeeded","status_code":908,"commands":[{"id":140864696,"created_at":"2019-09-17T15:30:13+00:00","updated_at":"2019-09-17T15:30:21+00:00","execute_time":"2019-09-17T15:30:13+00:00","command":"thumbnail","state_stage":"vs","stage_rest":"2019-09-17T15:30:13+00:00","stage_cs_db":"2019-09-17T15:30:13+00:00","stage_cs_sent":"2019-09-17T15:30:13+00:00","stage_sm":"2019-09-17T15:30:13+00:00","stage_dev":"2019-09-17T15:30:15+00:00","stage_is":null,"stage_lv":null,"stage_vs":"2019-09-17T15:30:20+00:00","state_condition":"done","sm_ack":1,"lfr_ack":0,"sequence":4222,"attempts":0,"transaction":"hsEzIXY8aZpjjb3d","player_transaction":"WhF0H4nYTGqhIBaP","server":"immis://34.221.217.249:443","duration":0,"by_whom":" - ","diagnostic":false,"debug":"{\"lfr_ok\":[94896,1,4222,210,124,160,181,0]}","target":"camera","target_id":347574,"parent_command_id":null,"camera_id":347574,"siren_id":null,"firmware_id":null,"network_id":94896,"accou...
+'							' https://rest-u006.immedia-semi.com/network/94896/camera/347574
+'							RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
+'							Sleep(1000)
+'							GetCameraInfo(response)
+'							'https://rest-u006.immedia-semi.com/media/u006/account/88438/network/94896/camera/347574/thumbnail/fw_7.81__WIERCC2I_2019_09_17__14_43PM.jpg
+'							DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",ivDriveway)
+'							Exit
+'						End If
+'						RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+'						Sleep(1000)
+'					Next
+'					'Log("Camera not responding to thumbnail request")
+'				End If
+'			End If
+'			' {"id":140836804,"created_at":"2019-09-17T15:00:25+00:00","updated_at":"2019-09-17T15:00:25+00:00","execute_time":"2019-09-17T15:00:25+00:00","command":"thumbnail","state_stage":"rest","stage_rest":"2019-09-17T15:00:25+00:00","stage_cs_db":null,"stage_cs_sent":null,"stage_sm":null,"stage_dev":null,"stage_is":null,"stage_lv":null,"stage_vs":null,"state_condition":"new","sm_ack":null,"lfr_ack":null,"sequence":null,"attempts":0,"transaction":"SYjW525WKuZzcvw-","player_transaction":"PNrrRwfXYzjFduHu","server":null,"duration":null,"by_whom":" - ","diagnostic":false,"debug":"","target":"camera","target_id":347574,"parent_command_id":null,"camera_id":347574,"siren_id":null,"firmware_id":null,"network_id":94896,"account_id":88438,"sync_module_id":171537}
+'			' TOKEN_AUTH: JG7waTPfYRLRD6MJndvifw
+'			' jobNetwork.Download("https://rest-u006.immedia-semi.com/user")
+'			' Sample user: {"id":88428,"created_at":"2019-05-22T14:06:27+00:00","updated_at":"2019-05-22T14:20:49+00:00","email":"[redacted] # replace with 'examplePass' instead","verified":true,"reset_expiration":null,"time_zone":"US/Eastern","owner":true,"name":"","user_access":"write","temp_units":"f","type":"regular","pin":null,"pin_created_at":null,"pin_failures":0,"account_id":88438}
+'			
+'			'jobNetwork.Download("https://rest-" & userRegion &".immedia-semi.com/api/v1/camera/usage")
+'			' Sample usage: {"range_days":7,"reference":{"usage":400},"networks":[{"network_id":94896,"name":"Home","cameras":[{"id":347574,"name":"Side Yard","usage":706,"lv_seconds":0,"clip_seconds":706},{"id":236967,"name":"Front Door","usage":925,"lv_seconds":0,"clip_seconds":925},{"id":347574,"name":"Driveway","usage":1126,"lv_seconds":0,"clip_seconds":1126}]}]}
+'			
+'			' jobNetwork.Download("https://rest-u006.immedia-semi.com/network/94896/camera/236967")
+'			' Sample camera status: '{"camera_status":{"camera_id":236967,"created_at":"2019-05-24T21:41:00+00:00","updated_at":"2019-09-16T19:31:22+00:00","wifi_strength":-52,"lfr_strength":-55,"battery_voltage":149,"temperature":91,"fw_version":"7.81","fw_git_hash":"master:31c9082","mac":"f4:b8:5e:12:64:39","ipv":"ipv4","ip_address":"192.168.0.25","error_codes":0,"battery_alert_status":false,"temp_alert_status":false,"ac_power":false,"light_sensor_ch0":0,"light_sensor_ch1":3214,"light_sensor_data_valid":true,"light_sensor_data_new":true,"time_first_video":168422,"time_108_boot":59102,"time_wlan_connect":1880216,"time_dhcp_lease":3425980,"time_dns_resolve":0,"lfr_108_wakeups":83,"total_108_wakeups":720,"lfr_tb_wakeups":149,"total_tb_wakeups":13056,"wifi_connect_failure_count":0,"dhcp_failure_count":0,"socket_failure_count":2148,"dev_1":3433669,"dev_2":4189,"dev_3":458766,"unit_number":2,"serial":"840066105","lifetime_count":0,"lifetime_duration":0,"pir_rejections":4998,"sync_module_id":171537,"network_id":94896,"account_...
+'			
+'			'https://rest-u006.immedia-semi.com/media/u006/account/88438/network/94896/camera/236967/thumbnail/fw_7.81__FumrC8zl_2019_09_16__16_51PM.jpg -- Front Door
+'			'https://rest-u006.immedia-semi.com/media/u006/account/88438/network/94896/camera/226821/thumbnail/fw_7.81__oGpxjcg__2019_09_16__19_48PM.jpg -- Side Yard
+'			'https://rest-u006.immedia-semi.com/media/u006/account/88438/network/94896/camera/347574/thumbnail/fw_7.81__4CMsBXHl_2019_09_16__19_48PM.jpg -- Driveway
+'			'jobNetwork.GetRequest.SetHeader("TOKEN_AUTH", authToken)
+'			'Wait For (jobNetwork) JobDone(jobNetwork As HttpJob)
+'			'If jobNetwork.Success Then
+'			'	Log(jobNetwork.GetString)
+'			'Else
+'			'		Log("jobNetwork error: " & jobNetwork.GetString)
+'			'End If
+'			'jobNetwork.Release
+'			' *********************** Get Network Information ***********************
+''		Else
+''			Log("jobLogin error: " & jobLogin.GetString)
+''		End If
+''		jobLogin.Release
+'		' Authentication
+'			
+'		'{"account":{"id":88438},"client":{"id":334779},"authtoken":{"authtoken":"EFQ0zohzPnV_09u5ekvErw","message":"auth"},"networks":{"94896":{"name":"Home","onboarded":true}},"region":{"u006":"United States"}}
+'		'Log(ParseJson($"{"account":{"id":88438},"client":{"id":334764},"authtoken":{"authtoken":"Lu5YjuNPqXs_2w92M7is5g","message":"auth"},"networks":{"94896":{"name":"Home","onboarded":True}},"region":{"u006":"United States"}}"$))
+'		'Log(authToken)
+'	Catch
+'		Log("btnDriveway_Click LastException: " & LastException)
+'		
+'	End Try
+'End Sub
