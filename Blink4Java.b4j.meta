@@ -1,6 +1,9 @@
 ﻿ModuleBookmarks0=
+ModuleBookmarks1=
 ModuleBreakpoints0=
+ModuleBreakpoints1=
 ModuleClosedNodes0=
-NavigationStack=Main,ivMin_MouseClicked,558,0,Main,RESTGet,237,0,Main,RequestAuthToken,124,6,Main,Button1_Action,613,0,Main,CheckMonitor,616,0,Main,btnDriveway_Click,103,6,Main,Process_Globals,38,0,Main,AppStart,68,1,Visual Designer,vdSk03.bjl,-100,6,Main,RefreshCameras,240,6
+ModuleClosedNodes1=
+NavigationStack=frmMedia,Show,26,0,frmMedia,RootPaneKeyEvent_Event,31,0,Main,ivSideYard_MouseClicked,963,0,Main,AppStart,44,0,Main,Process_Globals,37,0,Main,ivMin_MouseClicked,739,0,Main,Get_css,758,0,frmMedia,Initialize,12,3,Visual Designer,vdSk03.bjl,-100,6,Main,CheckMonitor,781,0
 SelectedBuild=0
-VisibleModules=
+VisibleModules=1
