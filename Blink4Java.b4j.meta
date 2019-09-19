@@ -1,9 +1,12 @@
 ﻿ModuleBookmarks0=
 ModuleBookmarks1=
+ModuleBookmarks2=
 ModuleBreakpoints0=
 ModuleBreakpoints1=
+ModuleBreakpoints2=120
 ModuleClosedNodes0=
 ModuleClosedNodes1=
-NavigationStack=frmMedia,Show,26,0,frmMedia,RootPaneKeyEvent_Event,31,0,Main,ivSideYard_MouseClicked,963,0,Main,AppStart,44,0,Main,Process_Globals,37,0,Main,ivMin_MouseClicked,739,0,Main,Get_css,758,0,frmMedia,Initialize,12,3,Visual Designer,vdSk03.bjl,-100,6,Main,CheckMonitor,781,0
+ModuleClosedNodes2=
+NavigationStack=frmActivity,DownloadImage,131,0,frmActivity,Show,33,6,frmActivity,Class_Globals,0,1,frmActivity,Initialize,24,0,frmActivity,lv_SelectedIndexChanged,119,4,frmActivity,GetVideos,92,6,frmActivity,CreateListItem,127,6,Visual Designer,cellitem.bjl,-100,6,frmActivity,RootPaneKeyEvent_Event,209,0,frmActivity,ShowVideo,192,0
 SelectedBuild=0
-VisibleModules=1
+VisibleModules=1,2

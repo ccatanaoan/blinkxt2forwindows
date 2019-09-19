@@ -9,6 +9,7 @@ Sub Class_Globals
 	Private frm As Form
 	Private wvMedia As WebView
 	Public url As String
+	Public isVideo As Boolean = False
 End Sub
 
 'Initializes the object. You can add parameters to this method if needed.
@@ -29,8 +30,29 @@ Public Sub Initialize (Parent As Form)
 End Sub
 
 Public Sub Show 
-	wvMedia.LoadHtml(url)
+	If isVideo Then
+'		Dim sb As StringBuilder
+'		sb.Initialize
+'		sb.Append("<video width='100%' height='100%' controls>")
+'		sb.Append("<source src='" & url & "' Type='video/mp4'/>")
+'		sb.Append("</video>")
+'		wvMedia.LoadHtml(sb.ToString)
+'		
+'		Dim mv As JavaObject
+'		m.Initialize("m",File.GetUri(File.DirApp ,"media.mp4"))
+'		mv.InitializeNewInstance("javafx.scene.media.MediaView",Array(m))
+'		pnlVideo.AddNode(mv,0,0,frm.Width,frm.height)
+'		
+'		m.CycleCount=-1
+'		m.Play
+	Else
+		wvMedia.Loadhtml(url)
+	End If
 	frm.ShowAndWait
+End Sub
+
+Sub frm_CloseRequest (EventData As Event)
+	'm.Stop
 End Sub
 
 Private Sub RootPaneKeyEvent_Event(e As Event)
@@ -42,6 +64,7 @@ Private Sub RootPaneKeyEvent_Event(e As Event)
 	sCode = KE.RunMethod("getCode")
 	sType = KE.RunMethod("getEventType")
 	If sCode="ESCAPE" Then
+		'm.Stop
 		frm.Close
 	End If
 End Sub
