@@ -8,44 +8,44 @@ public class b4xformatter_subs_0 {
 
 public static RemoteObject  _addformatdata(RemoteObject __ref,RemoteObject _data,RemoteObject _rangestart,RemoteObject _rangeend,RemoteObject _includeedges) throws Exception{
 try {
-		Debug.PushSubsStack("AddFormatData (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,61);
+		Debug.PushSubsStack("AddFormatData (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,63);
 if (RapidSub.canDelegate("addformatdata")) { return __ref.runUserSub(false, "b4xformatter","addformatdata", __ref, _data, _rangestart, _rangeend, _includeedges);}
 RemoteObject _factor = RemoteObject.createImmutable(0);
 Debug.locals.put("Data", _data);
 Debug.locals.put("RangeStart", _rangestart);
 Debug.locals.put("RangeEnd", _rangeend);
 Debug.locals.put("IncludeEdges", _includeedges);
- BA.debugLineNum = 61;BA.debugLine="Public Sub AddFormatData (Data As B4XFormatData, R";
+ BA.debugLineNum = 63;BA.debugLine="Public Sub AddFormatData (Data As B4XFormatData, R";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 62;BA.debugLine="Dim factor As Double = Power(10, -Data.MaximumFra";
+ BA.debugLineNum = 64;BA.debugLine="Dim factor As Double = Power(10, -Data.MaximumFra";
 Debug.JustUpdateDeviceLine();
 _factor = b4xformatter.__c.runMethod(true,"Power",(Object)(BA.numberCast(double.class, 10)),(Object)(BA.numberCast(double.class, -(double) (0 + _data.getField(true,"MaximumFractions" /*RemoteObject*/ ).<Integer>get().intValue()))));Debug.locals.put("factor", _factor);Debug.locals.put("factor", _factor);
- BA.debugLineNum = 63;BA.debugLine="If IncludeEdges = False Then";
+ BA.debugLineNum = 65;BA.debugLine="If IncludeEdges = False Then";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("=",_includeedges,b4xformatter.__c.getField(true,"False"))) { 
- BA.debugLineNum = 64;BA.debugLine="RangeStart = RangeStart + factor";
+ BA.debugLineNum = 66;BA.debugLine="RangeStart = RangeStart + factor";
 Debug.JustUpdateDeviceLine();
 _rangestart = RemoteObject.solve(new RemoteObject[] {_rangestart,_factor}, "+",1, 0);Debug.locals.put("RangeStart", _rangestart);
- BA.debugLineNum = 65;BA.debugLine="RangeEnd = RangeEnd - factor";
+ BA.debugLineNum = 67;BA.debugLine="RangeEnd = RangeEnd - factor";
 Debug.JustUpdateDeviceLine();
 _rangeend = RemoteObject.solve(new RemoteObject[] {_rangeend,_factor}, "-",1, 0);Debug.locals.put("RangeEnd", _rangeend);
  };
- BA.debugLineNum = 67;BA.debugLine="RangeStart = RangeStart - factor / 2";
+ BA.debugLineNum = 69;BA.debugLine="RangeStart = RangeStart - factor / 2";
 Debug.JustUpdateDeviceLine();
 _rangestart = RemoteObject.solve(new RemoteObject[] {_rangestart,_factor,RemoteObject.createImmutable(2)}, "-/",1, 0);Debug.locals.put("RangeStart", _rangestart);
- BA.debugLineNum = 68;BA.debugLine="RangeEnd = RangeEnd + factor / 2";
+ BA.debugLineNum = 70;BA.debugLine="RangeEnd = RangeEnd + factor / 2";
 Debug.JustUpdateDeviceLine();
 _rangeend = RemoteObject.solve(new RemoteObject[] {_rangeend,_factor,RemoteObject.createImmutable(2)}, "+/",1, 0);Debug.locals.put("RangeEnd", _rangeend);
- BA.debugLineNum = 69;BA.debugLine="Data.RangeStart = RangeStart";
+ BA.debugLineNum = 71;BA.debugLine="Data.RangeStart = RangeStart";
 Debug.JustUpdateDeviceLine();
 _data.setField ("RangeStart" /*RemoteObject*/ ,_rangestart);
- BA.debugLineNum = 70;BA.debugLine="Data.RangeEnd = RangeEnd";
+ BA.debugLineNum = 72;BA.debugLine="Data.RangeEnd = RangeEnd";
 Debug.JustUpdateDeviceLine();
 _data.setField ("RangeEnd" /*RemoteObject*/ ,_rangeend);
- BA.debugLineNum = 71;BA.debugLine="formats.Add(Data)";
+ BA.debugLineNum = 73;BA.debugLine="formats.Add(Data)";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_formats" /*RemoteObject*/ ).runVoidMethod ("Add",(Object)((_data)));
- BA.debugLineNum = 72;BA.debugLine="End Sub";
+ BA.debugLineNum = 74;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -89,50 +89,50 @@ _d.setField ("DecimalPoint" /*RemoteObject*/ ,_data.getField(true,"DecimalPoint"
  BA.debugLineNum = 40;BA.debugLine="If Data.FormatFont.IsInitialized Then";
 Debug.JustUpdateDeviceLine();
 if (_data.getField(false,"FormatFont" /*RemoteObject*/ ).runMethod(true,"IsInitialized").<Boolean>get().booleanValue()) { 
- BA.debugLineNum = 41;BA.debugLine="d.FormatFont = xui.CreateFont(Data.FormatFont.To";
+ BA.debugLineNum = 42;BA.debugLine="d.FormatFont = xui.CreateFont(Data.FormatFont.To";
 Debug.JustUpdateDeviceLine();
 _d.setField ("FormatFont" /*RemoteObject*/ ,__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreateFont",(Object)((_data.getField(false,"FormatFont" /*RemoteObject*/ ).runMethod(false,"ToNativeFont").getObject())),(Object)(BA.numberCast(float.class, _data.getField(false,"FormatFont" /*RemoteObject*/ ).runMethod(true,"getSize")))));
  };
- BA.debugLineNum = 43;BA.debugLine="d.GroupingCharacter = Data.GroupingCharacter";
+ BA.debugLineNum = 45;BA.debugLine="d.GroupingCharacter = Data.GroupingCharacter";
 Debug.JustUpdateDeviceLine();
 _d.setField ("GroupingCharacter" /*RemoteObject*/ ,_data.getField(true,"GroupingCharacter" /*RemoteObject*/ ));
- BA.debugLineNum = 44;BA.debugLine="d.MaximumFractions = Data.MaximumFractions";
+ BA.debugLineNum = 46;BA.debugLine="d.MaximumFractions = Data.MaximumFractions";
 Debug.JustUpdateDeviceLine();
 _d.setField ("MaximumFractions" /*RemoteObject*/ ,_data.getField(true,"MaximumFractions" /*RemoteObject*/ ));
- BA.debugLineNum = 45;BA.debugLine="d.MinimumFractions = Data.MinimumFractions";
+ BA.debugLineNum = 47;BA.debugLine="d.MinimumFractions = Data.MinimumFractions";
 Debug.JustUpdateDeviceLine();
 _d.setField ("MinimumFractions" /*RemoteObject*/ ,_data.getField(true,"MinimumFractions" /*RemoteObject*/ ));
- BA.debugLineNum = 46;BA.debugLine="d.MinimumIntegers = Data.MinimumIntegers";
+ BA.debugLineNum = 48;BA.debugLine="d.MinimumIntegers = Data.MinimumIntegers";
 Debug.JustUpdateDeviceLine();
 _d.setField ("MinimumIntegers" /*RemoteObject*/ ,_data.getField(true,"MinimumIntegers" /*RemoteObject*/ ));
- BA.debugLineNum = 47;BA.debugLine="d.Postfix = Data.Postfix";
+ BA.debugLineNum = 49;BA.debugLine="d.Postfix = Data.Postfix";
 Debug.JustUpdateDeviceLine();
 _d.setField ("Postfix" /*RemoteObject*/ ,_data.getField(true,"Postfix" /*RemoteObject*/ ));
- BA.debugLineNum = 48;BA.debugLine="d.Prefix = Data.Prefix";
+ BA.debugLineNum = 50;BA.debugLine="d.Prefix = Data.Prefix";
 Debug.JustUpdateDeviceLine();
 _d.setField ("Prefix" /*RemoteObject*/ ,_data.getField(true,"Prefix" /*RemoteObject*/ ));
- BA.debugLineNum = 49;BA.debugLine="d.RangeEnd = Data.RangeEnd";
+ BA.debugLineNum = 51;BA.debugLine="d.RangeEnd = Data.RangeEnd";
 Debug.JustUpdateDeviceLine();
 _d.setField ("RangeEnd" /*RemoteObject*/ ,_data.getField(true,"RangeEnd" /*RemoteObject*/ ));
- BA.debugLineNum = 50;BA.debugLine="d.RangeStart = Data.RangeStart";
+ BA.debugLineNum = 52;BA.debugLine="d.RangeStart = Data.RangeStart";
 Debug.JustUpdateDeviceLine();
 _d.setField ("RangeStart" /*RemoteObject*/ ,_data.getField(true,"RangeStart" /*RemoteObject*/ ));
- BA.debugLineNum = 51;BA.debugLine="d.RemoveMinusSign = Data.RemoveMinusSign";
+ BA.debugLineNum = 53;BA.debugLine="d.RemoveMinusSign = Data.RemoveMinusSign";
 Debug.JustUpdateDeviceLine();
 _d.setField ("RemoveMinusSign" /*RemoteObject*/ ,_data.getField(true,"RemoveMinusSign" /*RemoteObject*/ ));
- BA.debugLineNum = 52;BA.debugLine="d.TextColor = Data.TextColor";
+ BA.debugLineNum = 54;BA.debugLine="d.TextColor = Data.TextColor";
 Debug.JustUpdateDeviceLine();
 _d.setField ("TextColor" /*RemoteObject*/ ,_data.getField(true,"TextColor" /*RemoteObject*/ ));
- BA.debugLineNum = 53;BA.debugLine="d.FractionPaddingChar = Data.FractionPaddingChar";
+ BA.debugLineNum = 55;BA.debugLine="d.FractionPaddingChar = Data.FractionPaddingChar";
 Debug.JustUpdateDeviceLine();
 _d.setField ("FractionPaddingChar" /*RemoteObject*/ ,_data.getField(true,"FractionPaddingChar" /*RemoteObject*/ ));
- BA.debugLineNum = 54;BA.debugLine="d.IntegerPaddingChar = Data.IntegerPaddingChar";
+ BA.debugLineNum = 56;BA.debugLine="d.IntegerPaddingChar = Data.IntegerPaddingChar";
 Debug.JustUpdateDeviceLine();
 _d.setField ("IntegerPaddingChar" /*RemoteObject*/ ,_data.getField(true,"IntegerPaddingChar" /*RemoteObject*/ ));
- BA.debugLineNum = 55;BA.debugLine="Return d";
+ BA.debugLineNum = 57;BA.debugLine="Return d";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return _d;
- BA.debugLineNum = 56;BA.debugLine="End Sub";
+ BA.debugLineNum = 58;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable(null);
 }
@@ -188,7 +188,7 @@ finally {
 		}}
 public static RemoteObject  _format(RemoteObject __ref,RemoteObject _number) throws Exception{
 try {
-		Debug.PushSubsStack("Format (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,88);
+		Debug.PushSubsStack("Format (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,90);
 if (RapidSub.canDelegate("format")) { return __ref.runUserSub(false, "b4xformatter","format", __ref, _number);}
 RemoteObject _data = RemoteObject.declareNull("cloyd.blink.b4xformatter._b4xformatdata");
 RemoteObject _sb = RemoteObject.declareNull("anywheresoftware.b4a.keywords.StringBuilderWrapper");
@@ -202,159 +202,159 @@ RemoteObject _lastzerocount = RemoteObject.createImmutable(0);
 RemoteObject _multipler = RemoteObject.createImmutable(0);
 RemoteObject _w = RemoteObject.createImmutable(0);
 Debug.locals.put("Number", _number);
- BA.debugLineNum = 88;BA.debugLine="Public Sub Format (Number As Double) As String";
+ BA.debugLineNum = 90;BA.debugLine="Public Sub Format (Number As Double) As String";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 89;BA.debugLine="If Number < MIN_VALUE Or Number > MAX_VALUE Then";
+ BA.debugLineNum = 91;BA.debugLine="If Number < MIN_VALUE Or Number > MAX_VALUE Then";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("<",_number,BA.numberCast(double.class, __ref.getField(true,"_min_value" /*RemoteObject*/ ))) || RemoteObject.solveBoolean(">",_number,BA.numberCast(double.class, __ref.getField(true,"_max_value" /*RemoteObject*/ )))) { 
 Debug.CheckDeviceExceptions();if (true) return BA.ObjectToString("OVERFLOW");};
- BA.debugLineNum = 90;BA.debugLine="Dim data As B4XFormatData = GetFormatData (Number";
+ BA.debugLineNum = 92;BA.debugLine="Dim data As B4XFormatData = GetFormatData (Number";
 Debug.JustUpdateDeviceLine();
 _data = __ref.runClassMethod (cloyd.blink.b4xformatter.class, "_getformatdata" /*RemoteObject*/ ,(Object)(_number));Debug.locals.put("data", _data);Debug.locals.put("data", _data);
- BA.debugLineNum = 91;BA.debugLine="Dim sb As StringBuilder";
+ BA.debugLineNum = 93;BA.debugLine="Dim sb As StringBuilder";
 Debug.JustUpdateDeviceLine();
 _sb = RemoteObject.createNew ("anywheresoftware.b4a.keywords.StringBuilderWrapper");Debug.locals.put("sb", _sb);
- BA.debugLineNum = 92;BA.debugLine="sb.Initialize";
+ BA.debugLineNum = 94;BA.debugLine="sb.Initialize";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Initialize");
- BA.debugLineNum = 93;BA.debugLine="sb.Append(data.Prefix)";
+ BA.debugLineNum = 95;BA.debugLine="sb.Append(data.Prefix)";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Append",(Object)(_data.getField(true,"Prefix" /*RemoteObject*/ )));
- BA.debugLineNum = 94;BA.debugLine="Dim NumberStartIndex As Int = sb.Length";
+ BA.debugLineNum = 96;BA.debugLine="Dim NumberStartIndex As Int = sb.Length";
 Debug.JustUpdateDeviceLine();
 _numberstartindex = _sb.runMethod(true,"getLength");Debug.locals.put("NumberStartIndex", _numberstartindex);Debug.locals.put("NumberStartIndex", _numberstartindex);
- BA.debugLineNum = 95;BA.debugLine="Dim factor As Double = Power(10, -data.MaximumFra";
+ BA.debugLineNum = 97;BA.debugLine="Dim factor As Double = Power(10, -data.MaximumFra";
 Debug.JustUpdateDeviceLine();
 _factor = RemoteObject.solve(new RemoteObject[] {b4xformatter.__c.runMethod(true,"Power",(Object)(BA.numberCast(double.class, 10)),(Object)(BA.numberCast(double.class, -(double) (0 + _data.getField(true,"MaximumFractions" /*RemoteObject*/ ).<Integer>get().intValue())-(double) (0 + 1)))),RemoteObject.createImmutable(5)}, "*",0, 0);Debug.locals.put("factor", _factor);Debug.locals.put("factor", _factor);
- BA.debugLineNum = 96;BA.debugLine="If Number < -factor And data.RemoveMinusSign = Fa";
+ BA.debugLineNum = 98;BA.debugLine="If Number < -factor And data.RemoveMinusSign = Fa";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("<",_number,BA.numberCast(double.class, -_factor.<Double>get().doubleValue())) && RemoteObject.solveBoolean("=",_data.getField(true,"RemoveMinusSign" /*RemoteObject*/ ),b4xformatter.__c.getField(true,"False"))) { 
- BA.debugLineNum = 97;BA.debugLine="sb.Append(\"-\")";
+ BA.debugLineNum = 99;BA.debugLine="sb.Append(\"-\")";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Append",(Object)(RemoteObject.createImmutable("-")));
- BA.debugLineNum = 98;BA.debugLine="NumberStartIndex = NumberStartIndex + 1";
+ BA.debugLineNum = 100;BA.debugLine="NumberStartIndex = NumberStartIndex + 1";
 Debug.JustUpdateDeviceLine();
 _numberstartindex = RemoteObject.solve(new RemoteObject[] {_numberstartindex,RemoteObject.createImmutable(1)}, "+",1, 1);Debug.locals.put("NumberStartIndex", _numberstartindex);
  };
- BA.debugLineNum = 100;BA.debugLine="Number = Abs(Number) + factor";
+ BA.debugLineNum = 102;BA.debugLine="Number = Abs(Number) + factor";
 Debug.JustUpdateDeviceLine();
 _number = RemoteObject.solve(new RemoteObject[] {b4xformatter.__c.runMethod(true,"Abs",(Object)(_number)),_factor}, "+",1, 0);Debug.locals.put("Number", _number);
- BA.debugLineNum = 101;BA.debugLine="Dim whole As Int = Number";
+ BA.debugLineNum = 103;BA.debugLine="Dim whole As Int = Number";
 Debug.JustUpdateDeviceLine();
 _whole = BA.numberCast(int.class, _number);Debug.locals.put("whole", _whole);Debug.locals.put("whole", _whole);
- BA.debugLineNum = 102;BA.debugLine="Dim frac As Double = Number - whole";
+ BA.debugLineNum = 104;BA.debugLine="Dim frac As Double = Number - whole";
 Debug.JustUpdateDeviceLine();
 _frac = RemoteObject.solve(new RemoteObject[] {_number,_whole}, "-",1, 0);Debug.locals.put("frac", _frac);Debug.locals.put("frac", _frac);
- BA.debugLineNum = 103;BA.debugLine="Dim g As Int";
+ BA.debugLineNum = 105;BA.debugLine="Dim g As Int";
 Debug.JustUpdateDeviceLine();
 _g = RemoteObject.createImmutable(0);Debug.locals.put("g", _g);
- BA.debugLineNum = 104;BA.debugLine="Do While whole > 0";
+ BA.debugLineNum = 106;BA.debugLine="Do While whole > 0";
 Debug.JustUpdateDeviceLine();
 while (RemoteObject.solveBoolean(">",_whole,BA.numberCast(double.class, 0))) {
- BA.debugLineNum = 105;BA.debugLine="If g > 0 And g Mod 3 = 0 And data.GroupingCharac";
+ BA.debugLineNum = 107;BA.debugLine="If g > 0 And g Mod 3 = 0 And data.GroupingCharac";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean(">",_g,BA.numberCast(double.class, 0)) && RemoteObject.solveBoolean("=",RemoteObject.solve(new RemoteObject[] {_g,RemoteObject.createImmutable(3)}, "%",0, 1),BA.numberCast(double.class, 0)) && RemoteObject.solveBoolean(">",_data.getField(true,"GroupingCharacter" /*RemoteObject*/ ).runMethod(true,"length"),BA.numberCast(double.class, 0))) { 
- BA.debugLineNum = 106;BA.debugLine="sb.Insert(NumberStartIndex, data.GroupingCharac";
+ BA.debugLineNum = 108;BA.debugLine="sb.Insert(NumberStartIndex, data.GroupingCharac";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Insert",(Object)(_numberstartindex),(Object)(_data.getField(true,"GroupingCharacter" /*RemoteObject*/ )));
  };
- BA.debugLineNum = 108;BA.debugLine="g = g + 1";
+ BA.debugLineNum = 110;BA.debugLine="g = g + 1";
 Debug.JustUpdateDeviceLine();
 _g = RemoteObject.solve(new RemoteObject[] {_g,RemoteObject.createImmutable(1)}, "+",1, 1);Debug.locals.put("g", _g);
- BA.debugLineNum = 109;BA.debugLine="sb.Insert(NumberStartIndex, whole Mod 10)";
+ BA.debugLineNum = 111;BA.debugLine="sb.Insert(NumberStartIndex, whole Mod 10)";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Insert",(Object)(_numberstartindex),(Object)(BA.NumberToString(RemoteObject.solve(new RemoteObject[] {_whole,RemoteObject.createImmutable(10)}, "%",0, 1))));
- BA.debugLineNum = 110;BA.debugLine="whole = whole / 10";
+ BA.debugLineNum = 112;BA.debugLine="whole = whole / 10";
 Debug.JustUpdateDeviceLine();
 _whole = BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_whole,RemoteObject.createImmutable(10)}, "/",0, 0));Debug.locals.put("whole", _whole);
  }
 ;
- BA.debugLineNum = 112;BA.debugLine="Do While sb.Length - NumberStartIndex < data.Mini";
+ BA.debugLineNum = 114;BA.debugLine="Do While sb.Length - NumberStartIndex < data.Mini";
 Debug.JustUpdateDeviceLine();
 while (RemoteObject.solveBoolean("<",RemoteObject.solve(new RemoteObject[] {_sb.runMethod(true,"getLength"),_numberstartindex}, "-",1, 1),BA.numberCast(double.class, _data.getField(true,"MinimumIntegers" /*RemoteObject*/ )))) {
- BA.debugLineNum = 113;BA.debugLine="sb.Insert(NumberStartIndex, data.IntegerPaddingC";
+ BA.debugLineNum = 115;BA.debugLine="sb.Insert(NumberStartIndex, data.IntegerPaddingC";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Insert",(Object)(_numberstartindex),(Object)(_data.getField(true,"IntegerPaddingChar" /*RemoteObject*/ )));
  }
 ;
- BA.debugLineNum = 115;BA.debugLine="If data.MaximumFractions > 0 And (data.MinimumFra";
+ BA.debugLineNum = 117;BA.debugLine="If data.MaximumFractions > 0 And (data.MinimumFra";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean(">",_data.getField(true,"MaximumFractions" /*RemoteObject*/ ),BA.numberCast(double.class, 0)) && RemoteObject.solveBoolean(".",BA.ObjectToBoolean((RemoteObject.solveBoolean(">",_data.getField(true,"MinimumFractions" /*RemoteObject*/ ),BA.numberCast(double.class, 0)) || RemoteObject.solveBoolean(">",_frac,BA.numberCast(double.class, 0)))))) { 
- BA.debugLineNum = 116;BA.debugLine="Dim FracStartIndex As Int = sb.Length";
+ BA.debugLineNum = 118;BA.debugLine="Dim FracStartIndex As Int = sb.Length";
 Debug.JustUpdateDeviceLine();
 _fracstartindex = _sb.runMethod(true,"getLength");Debug.locals.put("FracStartIndex", _fracstartindex);Debug.locals.put("FracStartIndex", _fracstartindex);
- BA.debugLineNum = 117;BA.debugLine="Dim LastZeroCount As Int";
+ BA.debugLineNum = 119;BA.debugLine="Dim LastZeroCount As Int";
 Debug.JustUpdateDeviceLine();
 _lastzerocount = RemoteObject.createImmutable(0);Debug.locals.put("LastZeroCount", _lastzerocount);
- BA.debugLineNum = 118;BA.debugLine="Dim Multipler As Int = 10";
+ BA.debugLineNum = 120;BA.debugLine="Dim Multipler As Int = 10";
 Debug.JustUpdateDeviceLine();
 _multipler = BA.numberCast(int.class, 10);Debug.locals.put("Multipler", _multipler);Debug.locals.put("Multipler", _multipler);
- BA.debugLineNum = 119;BA.debugLine="Do While frac >= 2 * factor And sb.Length - Frac";
+ BA.debugLineNum = 121;BA.debugLine="Do While frac >= 2 * factor And sb.Length - Frac";
 Debug.JustUpdateDeviceLine();
 while (RemoteObject.solveBoolean("g",_frac,RemoteObject.solve(new RemoteObject[] {RemoteObject.createImmutable(2),_factor}, "*",0, 0)) && RemoteObject.solveBoolean("<",RemoteObject.solve(new RemoteObject[] {_sb.runMethod(true,"getLength"),_fracstartindex}, "-",1, 1),BA.numberCast(double.class, _data.getField(true,"MaximumFractions" /*RemoteObject*/ )))) {
- BA.debugLineNum = 120;BA.debugLine="Dim w As Int = (frac * Multipler)";
+ BA.debugLineNum = 122;BA.debugLine="Dim w As Int = (frac * Multipler)";
 Debug.JustUpdateDeviceLine();
 _w = BA.numberCast(int.class, (RemoteObject.solve(new RemoteObject[] {_frac,_multipler}, "*",0, 0)));Debug.locals.put("w", _w);Debug.locals.put("w", _w);
- BA.debugLineNum = 121;BA.debugLine="w = w Mod 10";
+ BA.debugLineNum = 123;BA.debugLine="w = w Mod 10";
 Debug.JustUpdateDeviceLine();
 _w = RemoteObject.solve(new RemoteObject[] {_w,RemoteObject.createImmutable(10)}, "%",0, 1);Debug.locals.put("w", _w);
- BA.debugLineNum = 122;BA.debugLine="If w = 0 Then LastZeroCount = LastZeroCount + 1";
+ BA.debugLineNum = 124;BA.debugLine="If w = 0 Then LastZeroCount = LastZeroCount + 1";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("=",_w,BA.numberCast(double.class, 0))) { 
 _lastzerocount = RemoteObject.solve(new RemoteObject[] {_lastzerocount,RemoteObject.createImmutable(1)}, "+",1, 1);Debug.locals.put("LastZeroCount", _lastzerocount);}
 else {
 _lastzerocount = BA.numberCast(int.class, 0);Debug.locals.put("LastZeroCount", _lastzerocount);};
- BA.debugLineNum = 123;BA.debugLine="sb.Append(w)";
+ BA.debugLineNum = 125;BA.debugLine="sb.Append(w)";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Append",(Object)(BA.NumberToString(_w)));
- BA.debugLineNum = 124;BA.debugLine="Multipler = Multipler * 10";
+ BA.debugLineNum = 126;BA.debugLine="Multipler = Multipler * 10";
 Debug.JustUpdateDeviceLine();
 _multipler = RemoteObject.solve(new RemoteObject[] {_multipler,RemoteObject.createImmutable(10)}, "*",0, 1);Debug.locals.put("Multipler", _multipler);
  }
 ;
- BA.debugLineNum = 126;BA.debugLine="If data.FractionPaddingChar <> \"0\" And LastZeroC";
+ BA.debugLineNum = 128;BA.debugLine="If data.FractionPaddingChar <> \"0\" And LastZeroC";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("!",_data.getField(true,"FractionPaddingChar" /*RemoteObject*/ ),BA.ObjectToString("0")) && RemoteObject.solveBoolean(">",_lastzerocount,BA.numberCast(double.class, 0))) { 
- BA.debugLineNum = 127;BA.debugLine="sb.Remove(sb.Length - LastZeroCount, sb.Length)";
+ BA.debugLineNum = 129;BA.debugLine="sb.Remove(sb.Length - LastZeroCount, sb.Length)";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Remove",(Object)(RemoteObject.solve(new RemoteObject[] {_sb.runMethod(true,"getLength"),_lastzerocount}, "-",1, 1)),(Object)(_sb.runMethod(true,"getLength")));
- BA.debugLineNum = 128;BA.debugLine="LastZeroCount = 0";
+ BA.debugLineNum = 130;BA.debugLine="LastZeroCount = 0";
 Debug.JustUpdateDeviceLine();
 _lastzerocount = BA.numberCast(int.class, 0);Debug.locals.put("LastZeroCount", _lastzerocount);
  };
- BA.debugLineNum = 130;BA.debugLine="Do While sb.Length - FracStartIndex < data.Minim";
+ BA.debugLineNum = 132;BA.debugLine="Do While sb.Length - FracStartIndex < data.Minim";
 Debug.JustUpdateDeviceLine();
 while (RemoteObject.solveBoolean("<",RemoteObject.solve(new RemoteObject[] {_sb.runMethod(true,"getLength"),_fracstartindex}, "-",1, 1),BA.numberCast(double.class, _data.getField(true,"MinimumFractions" /*RemoteObject*/ )))) {
- BA.debugLineNum = 131;BA.debugLine="sb.Append(data.FractionPaddingChar)";
+ BA.debugLineNum = 133;BA.debugLine="sb.Append(data.FractionPaddingChar)";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Append",(Object)(_data.getField(true,"FractionPaddingChar" /*RemoteObject*/ )));
- BA.debugLineNum = 132;BA.debugLine="LastZeroCount = 0";
+ BA.debugLineNum = 134;BA.debugLine="LastZeroCount = 0";
 Debug.JustUpdateDeviceLine();
 _lastzerocount = BA.numberCast(int.class, 0);Debug.locals.put("LastZeroCount", _lastzerocount);
  }
 ;
- BA.debugLineNum = 134;BA.debugLine="LastZeroCount = Min(LastZeroCount, sb.Length - F";
+ BA.debugLineNum = 136;BA.debugLine="LastZeroCount = Min(LastZeroCount, sb.Length - F";
 Debug.JustUpdateDeviceLine();
 _lastzerocount = BA.numberCast(int.class, b4xformatter.__c.runMethod(true,"Min",(Object)(BA.numberCast(double.class, _lastzerocount)),(Object)(BA.numberCast(double.class, RemoteObject.solve(new RemoteObject[] {_sb.runMethod(true,"getLength"),_fracstartindex,_data.getField(true,"MinimumFractions" /*RemoteObject*/ )}, "--",2, 1)))));Debug.locals.put("LastZeroCount", _lastzerocount);
- BA.debugLineNum = 135;BA.debugLine="If LastZeroCount > 0 Then";
+ BA.debugLineNum = 137;BA.debugLine="If LastZeroCount > 0 Then";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean(">",_lastzerocount,BA.numberCast(double.class, 0))) { 
- BA.debugLineNum = 136;BA.debugLine="sb.Remove(sb.Length - LastZeroCount, sb.Length)";
+ BA.debugLineNum = 138;BA.debugLine="sb.Remove(sb.Length - LastZeroCount, sb.Length)";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Remove",(Object)(RemoteObject.solve(new RemoteObject[] {_sb.runMethod(true,"getLength"),_lastzerocount}, "-",1, 1)),(Object)(_sb.runMethod(true,"getLength")));
  };
- BA.debugLineNum = 138;BA.debugLine="If sb.Length > FracStartIndex Then sb.Insert(Fra";
+ BA.debugLineNum = 140;BA.debugLine="If sb.Length > FracStartIndex Then sb.Insert(Fra";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean(">",_sb.runMethod(true,"getLength"),BA.numberCast(double.class, _fracstartindex))) { 
 _sb.runVoidMethod ("Insert",(Object)(_fracstartindex),(Object)(_data.getField(true,"DecimalPoint" /*RemoteObject*/ )));};
  };
- BA.debugLineNum = 140;BA.debugLine="sb.Append(data.Postfix)";
+ BA.debugLineNum = 142;BA.debugLine="sb.Append(data.Postfix)";
 Debug.JustUpdateDeviceLine();
 _sb.runVoidMethod ("Append",(Object)(_data.getField(true,"Postfix" /*RemoteObject*/ )));
- BA.debugLineNum = 141;BA.debugLine="Return sb.ToString";
+ BA.debugLineNum = 143;BA.debugLine="Return sb.ToString";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return _sb.runMethod(true,"ToString");
- BA.debugLineNum = 142;BA.debugLine="End Sub";
+ BA.debugLineNum = 144;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -366,28 +366,28 @@ finally {
 		}}
 public static RemoteObject  _formatlabel(RemoteObject __ref,RemoteObject _number,RemoteObject _label) throws Exception{
 try {
-		Debug.PushSubsStack("FormatLabel (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,145);
+		Debug.PushSubsStack("FormatLabel (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,148);
 if (RapidSub.canDelegate("formatlabel")) { return __ref.runUserSub(false, "b4xformatter","formatlabel", __ref, _number, _label);}
 RemoteObject _data = RemoteObject.declareNull("cloyd.blink.b4xformatter._b4xformatdata");
 Debug.locals.put("Number", _number);
 Debug.locals.put("Label", _label);
- BA.debugLineNum = 145;BA.debugLine="Public Sub FormatLabel (Number As String, Label As";
+ BA.debugLineNum = 148;BA.debugLine="Public Sub FormatLabel (Number As Double, Label As";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 146;BA.debugLine="Label.Text = Format(Number)";
+ BA.debugLineNum = 149;BA.debugLine="Label.Text = Format(Number)";
 Debug.JustUpdateDeviceLine();
-_label.runMethod(true,"setText",__ref.runClassMethod (cloyd.blink.b4xformatter.class, "_format" /*RemoteObject*/ ,(Object)(BA.numberCast(double.class, _number))));
- BA.debugLineNum = 147;BA.debugLine="Dim data As B4XFormatData = GetFormatData(Number)";
+_label.runMethod(true,"setText",__ref.runClassMethod (cloyd.blink.b4xformatter.class, "_format" /*RemoteObject*/ ,(Object)(_number)));
+ BA.debugLineNum = 150;BA.debugLine="Dim data As B4XFormatData = GetFormatData(Number)";
 Debug.JustUpdateDeviceLine();
-_data = __ref.runClassMethod (cloyd.blink.b4xformatter.class, "_getformatdata" /*RemoteObject*/ ,(Object)(BA.numberCast(double.class, _number)));Debug.locals.put("data", _data);Debug.locals.put("data", _data);
- BA.debugLineNum = 148;BA.debugLine="If data.TextColor <> 0 Then Label.TextColor = dat";
+_data = __ref.runClassMethod (cloyd.blink.b4xformatter.class, "_getformatdata" /*RemoteObject*/ ,(Object)(_number));Debug.locals.put("data", _data);Debug.locals.put("data", _data);
+ BA.debugLineNum = 151;BA.debugLine="If data.TextColor <> 0 Then Label.TextColor = dat";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("!",_data.getField(true,"TextColor" /*RemoteObject*/ ),BA.numberCast(double.class, 0))) { 
 _label.runMethod(true,"setTextColor",_data.getField(true,"TextColor" /*RemoteObject*/ ));};
- BA.debugLineNum = 149;BA.debugLine="If data.FormatFont.IsInitialized Then Label.Font";
+ BA.debugLineNum = 152;BA.debugLine="If data.FormatFont.IsInitialized Then Label.Font";
 Debug.JustUpdateDeviceLine();
 if (_data.getField(false,"FormatFont" /*RemoteObject*/ ).runMethod(true,"IsInitialized").<Boolean>get().booleanValue()) { 
 _label.runMethod(false,"setFont",_data.getField(false,"FormatFont" /*RemoteObject*/ ));};
- BA.debugLineNum = 150;BA.debugLine="End Sub";
+ BA.debugLineNum = 153;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -399,14 +399,14 @@ finally {
 		}}
 public static RemoteObject  _getdefaultformat(RemoteObject __ref) throws Exception{
 try {
-		Debug.PushSubsStack("GetDefaultFormat (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,74);
+		Debug.PushSubsStack("GetDefaultFormat (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,76);
 if (RapidSub.canDelegate("getdefaultformat")) { return __ref.runUserSub(false, "b4xformatter","getdefaultformat", __ref);}
- BA.debugLineNum = 74;BA.debugLine="Public Sub GetDefaultFormat As B4XFormatData";
+ BA.debugLineNum = 76;BA.debugLine="Public Sub GetDefaultFormat As B4XFormatData";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 75;BA.debugLine="Return formats.Get(0)";
+ BA.debugLineNum = 77;BA.debugLine="Return formats.Get(0)";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return (__ref.getField(false,"_formats" /*RemoteObject*/ ).runMethod(false,"Get",(Object)(BA.numberCast(int.class, 0))));
- BA.debugLineNum = 76;BA.debugLine="End Sub";
+ BA.debugLineNum = 78;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable(null);
 }
@@ -418,14 +418,14 @@ finally {
 		}}
 public static RemoteObject  _getformatdata(RemoteObject __ref,RemoteObject _number) throws Exception{
 try {
-		Debug.PushSubsStack("GetFormatData (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,79);
+		Debug.PushSubsStack("GetFormatData (b4xformatter) ","b4xformatter",22,__ref.getField(false, "ba"),__ref,81);
 if (RapidSub.canDelegate("getformatdata")) { return __ref.runUserSub(false, "b4xformatter","getformatdata", __ref, _number);}
 int _i = 0;
 RemoteObject _d = RemoteObject.declareNull("cloyd.blink.b4xformatter._b4xformatdata");
 Debug.locals.put("Number", _number);
- BA.debugLineNum = 79;BA.debugLine="Public Sub GetFormatData (Number As Double) As B4X";
+ BA.debugLineNum = 81;BA.debugLine="Public Sub GetFormatData (Number As Double) As B4X";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 80;BA.debugLine="For i = formats.Size - 1 To 1 Step - 1";
+ BA.debugLineNum = 82;BA.debugLine="For i = formats.Size - 1 To 1 Step - 1";
 Debug.JustUpdateDeviceLine();
 {
 final int step1 = -1;
@@ -433,20 +433,20 @@ final int limit1 = 1;
 _i = RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_formats" /*RemoteObject*/ ).runMethod(true,"getSize"),RemoteObject.createImmutable(1)}, "-",1, 1).<Integer>get().intValue() ;
 for (;(step1 > 0 && _i <= limit1) || (step1 < 0 && _i >= limit1) ;_i = ((int)(0 + _i + step1))  ) {
 Debug.locals.put("i", _i);
- BA.debugLineNum = 81;BA.debugLine="Dim d As B4XFormatData = formats.Get(i)";
+ BA.debugLineNum = 83;BA.debugLine="Dim d As B4XFormatData = formats.Get(i)";
 Debug.JustUpdateDeviceLine();
 _d = (__ref.getField(false,"_formats" /*RemoteObject*/ ).runMethod(false,"Get",(Object)(BA.numberCast(int.class, _i))));Debug.locals.put("d", _d);Debug.locals.put("d", _d);
- BA.debugLineNum = 82;BA.debugLine="If Number <= d.RangeEnd And Number >= d.RangeSta";
+ BA.debugLineNum = 84;BA.debugLine="If Number <= d.RangeEnd And Number >= d.RangeSta";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("k",_number,_d.getField(true,"RangeEnd" /*RemoteObject*/ )) && RemoteObject.solveBoolean("g",_number,_d.getField(true,"RangeStart" /*RemoteObject*/ ))) { 
 Debug.CheckDeviceExceptions();if (true) return _d;};
  }
 }Debug.locals.put("i", _i);
 ;
- BA.debugLineNum = 84;BA.debugLine="Return formats.Get(0)";
+ BA.debugLineNum = 86;BA.debugLine="Return formats.Get(0)";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return (__ref.getField(false,"_formats" /*RemoteObject*/ ).runMethod(false,"Get",(Object)(BA.numberCast(int.class, 0))));
- BA.debugLineNum = 85;BA.debugLine="End Sub";
+ BA.debugLineNum = 87;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable(null);
 }

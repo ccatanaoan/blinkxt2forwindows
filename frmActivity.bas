@@ -7,22 +7,23 @@ Version=7.51
 Sub Class_Globals
 	Private fx As JFX
 	Private frm As Form
-	Public clvActivity As CustomListView
 	Public jsonMain As String
-	Type CardData (Title As String, Content As String, BitmapFile As String)
 	Private xui As XUI
 	Private ivScreenshot As B4XView
 	Private lblFileInfo As B4XView
 	Private lblDeviceInfo As B4XView
-	Private screenshotBitmap As B4XBitmap
-	Private lv As ListView
+	Private clvActivity As CustomListView
+	Public authToken As String
+	Private wvMedia As WebView
+	Private lblDate As B4XView
+	Private lblTimestamp As Label
 End Sub
 
 'Initializes the object. You can add parameters to this method if needed.
 Public Sub Initialize(Parent As Form)
 	frm.Initialize("frm", 600dip, 600dip)
 	frm.SetFormStyle("UTILITY")
-	frm.RootPane.LoadLayout("main")
+	frm.RootPane.LoadLayout("activity")
 	frm.Icon = fx.LoadImage(File.DirAssets, "home.png")
 	frm.Title = "Catanaoan Blink XT2 Cameras Activity Viewer"
 	frm.SetOwner(Parent)
@@ -35,25 +36,20 @@ Public Sub Initialize(Parent As Form)
 	Obj.AddEventHandler("RootPaneKeyEvent", "javafx.scene.input.KeyEvent.ANY")
 End Sub
 
-Public Sub Show(json As String, userRegion As String, authToken As String)
+Public Sub Show(json As String, userRegion As String)
 
-	GetVideos(json, userRegion, authToken)
+	GetVideos(json, userRegion)
 	frm.ShowAndWait
-	'clvActivity.Add(CreateListItem("test", "device_id",180, 120), "teT")
-
+	
 End Sub
 
-Sub GetVideos(json As String, userRegion As String, authToken As String)
+Sub GetVideos(json As String, userRegion As String)
 	Try
 		Dim parser As JSONParser
 		parser.Initialize(json)
 		Dim root As Map = parser.NextObject
 '		Dim purge_id As Int = root.Get("purge_id")
 '		Dim limit As Int = root.Get("limit")
-		
-		
-		lv.Initialize( "lv")
-		frm.RootPane.AddNode(lv, frm.WindowWidth-frm.WindowWidth/4, 0, frm.WindowWidth/4, frm.WindowHeight)
 		
 		Dim media As List = root.Get("media")
 		For Each colmedia As Map In media
@@ -76,17 +72,6 @@ Sub GetVideos(json As String, userRegion As String, authToken As String)
 '			Dim partial As String = colmedia.Get("partial")
 
 			Dim medianame As String = colmedia.Get("media")
-			
-			'If medianame = "/api/v2/accounts/88438/media/clip/419225488.mp4" Then
-				'ShowVideo("https://rest-" & userRegion &".immedia-semi.com" & medianame,authToken)
-				'clvActivity.Add(CreateListItem(medianame, device_id,clvActivity.AsView.Width, 120), medianame)
-			'End If
-			
-
-			'For i=0 To 9
-			'lv.Items.Add(CreateListItem(medianame, device_id,frm.WindowWidth, 120dip))'( CreateListItem( "Text1 - "&i, "Text2", 300dip, 75dip, fx.LoadImage( File.DirApp, "screenshot.jpg")))
-			'Next
-			
 			Dim j As HttpJob
 			j.Initialize("", Me)
 			j.Download("https://rest-" & userRegion &".immedia-semi.com" & thumbnail & ".jpg")
@@ -102,81 +87,117 @@ Sub GetVideos(json As String, userRegion As String, authToken As String)
 				' Display in ImageView
 				'a = j.GetBitmap
 				Dim p As B4XView = CreateListItem(j.GetBitmap,created_at, device_name)
-				clvActivity.Add(p,"")
-				'lv.Items.Add(CreateListItem(j.GetBitmap,created_at, device_name,lv.Width, 90dip))'( CreateListItem( "Text1 - "&i, "Text2", 300dip, 75dip, fx.LoadImage( File.DirApp, "screenshot.jpg")))
+				clvActivity.Add(p,"https://rest-" & userRegion &".immedia-semi.com" & medianame & "|" & device_name & " " & ConvertFullDateTime(created_at))
+				If clvActivity.Size = 1 Then
+					ShowVideo("https://rest-" & userRegion &".immedia-semi.com" & medianame,device_name & " " & ConvertFullDateTime(created_at))
+				End If
 			Else
 
 			End If
 			j.Release
 		Next
-
 		'Dim refresh_count As Int = root.Get("refresh_count")
 	Catch
 		Log(LastException)
+		fx.Msgbox2(frm,LastException,"GetVideos Exception","OK","","",fx.MSGBOX_ERROR)
 	End Try
 End Sub
 
-Sub lv_SelectedIndexChanged(Index As Int)
-	If Index > -1 Then
-		'Dim lbl As Label = lv.SelectedIndex
-		'lv.Tag
-	End If
-End Sub
-
-Sub CreateListItem(screenshot As Image, fileinfo As String, devicename As String) As B4XView
+Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As String) As B4XView
 	Try
 		'https://www.b4x.com/android/forum/threads/customlistview.103498/#post-648747
 		'https://www.b4x.com/android/forum/threads/customlistview-b4a-to-b4j.85047/#post-539068
 		'https://www.b4x.com/android/forum/threads/b4x-xui-xcustomlistview.90789/#post-573958
 		Dim p As B4XView = xui.CreatePanel("")
-		
-		'p.Initialize("")
-		'p.SetSize(Width, Height)
+		p.SetLayoutAnimated(0, 0, 0, 400dip, 80dip)
 		p.LoadLayout("cellitem")
-		p.SetLayoutAnimated(0, 0, 0, 400dip, 300dip)
-		'Dim xivscreenshot As B4XView = ivScreenshot
 		ivScreenshot.SetBitmap(screenshot)
-		'Dim xlblFileInfo As B4XView = lblFileInfo
-		lblFileInfo.Text = fileinfo
-		'Dim xlblDeviceInfo As B4XView = lblDeviceInfo
-		lblDeviceInfo.Text = devicename
+		lblFileInfo.Text = "   " & ConvertDateTime(fileinfo)
+		lblDeviceInfo.Text = "   " & devicename
+		lblDate.Text = "   " & ConvertFullDateTime(fileinfo)
 		Return p
 	Catch
 		Log(LastException)
+		fx.Msgbox2(frm,LastException,"CreateListItem Exception","OK","","",fx.MSGBOX_ERROR)
 		Return Null
 	End Try
 
 End Sub
 
-Sub DownloadImage (Link As String, authToken As String)
-	Dim a As B4XBitmap
-	Try
-		Dim j As HttpJob
-		j.Initialize("", Me)
-		j.Download(Link)
-		j.GetRequest.SetHeader("TOKEN_AUTH", authToken)
-		Wait For (j) JobDone(j As HttpJob)
-		If j.Success Then
-			' Save to a JPG file
-
-			Dim out As OutputStream = File.OpenOutput(File.DirApp, "screenshot.jpg", False)
-			File.Copy2(j.GetInputStream, out)
-			out.Close '<------ very important
-			
-			' Display in ImageView
-			'a = j.GetBitmap
-		Else
-			a = Null
-		End If
-		j.Release
-	Catch
-		a = Null
-		Log(LastException)
-	End Try
-	screenshotBitmap = a
+Sub ConvertDateTime(inputTime As String) As String
+	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
+	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
+	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a z"
+	Dim lngTicks As Long = ticks
+	Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
+	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
+	Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago" 'DateTime.Date(lngTicks)
 End Sub
 
-Sub ShowVideo (Link As String, authToken As String)
+Sub ConvertFullDateTime(inputTime As String) As String
+	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
+	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
+	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a z"
+	Dim lngTicks As Long = ticks
+	'Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
+	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
+	Return DateTime.Date(lngTicks)
+End Sub
+
+
+Sub ParseUTCstring(utc As String) As Long
+	Dim df As String = DateTime.DateFormat
+	Dim res As Long
+	If utc.CharAt(10) = "T" Then
+		'convert the second format to the first one.
+		If utc.CharAt(19) = "." Then utc = utc.SubString2(0, 19) & "+0000"
+		DateTime.DateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		' 2019-09-20T13:04:05+00:00
+	Else
+		DateTime.DateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
+	End If
+	Try
+		res = DateTime.DateParse(utc)
+	Catch
+		res = 0
+	End Try
+	DateTime.DateFormat = df
+	Return res
+End Sub
+
+'Sub p_MouseClicked (EventData As MouseEvent)
+'	ClickIndex = ClickIndex + 1
+'	Dim MyIndex As Int = ClickIndex
+'	EventData.Consume
+'	Sleep(200)
+'	If MyIndex = ClickIndex Then
+'		If EventData.ClickCount = 1 Then
+'			'Log("regular click")
+'			Dim index As Int
+'			index = clvActivity.GetItemFromView(Sender)
+'			Log(index)
+'		Else if EventData.ClickCount > 1 Then
+'			Log("Double click")
+'		End If
+'	End If
+'End Sub
+
+Sub clvActivity_ItemClick (Index As Int, Value As Object)
+	Try
+		wvMedia.LoadUrl("")
+		Dim video As String
+		video = clvActivity.GetValue(Index)
+		Dim videoURL As String = Regex.Split("\|",video)(0)
+		Dim videoTimestamp As String = Regex.Split("\|",video)(1)
+		ShowVideo(videoURL,videoTimestamp)
+	Catch
+		Log(LastException)
+		fx.Msgbox2(frm,LastException,"clvActivity ItemClick Exception","OK","","",fx.MSGBOX_ERROR)
+	End Try
+
+End Sub
+
+Sub ShowVideo (Link As String, timestamp As String)
 	Try
 		Dim j As HttpJob
 		j.Initialize("", Me)
@@ -188,23 +209,30 @@ Sub ShowVideo (Link As String, authToken As String)
 			Dim out As OutputStream = File.OpenOutput(File.DirApp, "media.mp4", False)
 			File.Copy2(j.GetInputStream, out)
 			out.Close '<------ very important
-			
-'			Dim mf As frmMedia
-'			mf.Initialize(MainForm)
-'			mf.isVideo = True
-'			mf.url=File.GetUri(File.DirApp, "media.mp4")
-'			mf.Show
+		
+			lblTimestamp.Text= timestamp
+			Dim sb As StringBuilder
+			sb.Initialize
+			sb.Append("<video width='100%' height='100%' controls autoplay>")
+			sb.Append("<source src='" & File.GetUri(File.DirApp ,"media.mp4") & "' Type='video/mp4'/>")
+			sb.Append("</video>")
+			'sb.Append("<h3>" & timestamp & "</h3>")
+			wvMedia.LoadHtml(sb.ToString) 
 		Else
 
 		End If
 		j.Release
 	Catch
 		Log(LastException)
+		fx.Msgbox2(frm,LastException,"ShowVideo Exception","OK","","",fx.MSGBOX_ERROR)
 	End Try
 End Sub
 
 Sub frm_CloseRequest (EventData As Event)
-	
+	wvMedia.LoadUrl("")
+	wvMedia.RemoveNodeFromParent
+	File.Delete(File.DirApp,"screenshot.jpg")
+	File.Delete(File.DirApp,"media.mp4")
 End Sub
 
 Private Sub RootPaneKeyEvent_Event(e As Event)
@@ -216,6 +244,10 @@ Private Sub RootPaneKeyEvent_Event(e As Event)
 	sCode = KE.RunMethod("getCode")
 	sType = KE.RunMethod("getEventType")
 	If sCode="ESCAPE" Then
+		wvMedia.LoadUrl("")
+		wvMedia.RemoveNodeFromParent
+		File.Delete(File.DirApp,"screenshot.jpg")
+		File.Delete(File.DirApp,"media.mp4")
 		frm.Close
 	End If
 End Sub
@@ -247,3 +279,6 @@ Sub CheckMonitor() As Screen
 End Sub
 
 
+Sub wvMedia_PageFinished (Url As String)
+
+End Sub

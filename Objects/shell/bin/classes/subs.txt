@@ -56,154 +56,162 @@ main,application_error,0,0,111,113
 
 
 main,appstart,1,0,47,108
-,mainform,,atualskin,,fx,,lbtitle,,ivclose,,ivmax,,ivmin,,imginit,,lblstatus,,emailaddress,,password,,userregion,,response,,authtoken,,accountid,,networkid,,ivdriveway,,ivfrontdoor,,ivsideyard,,clvdriveway,,clvfrontdoor,,clvsideyard,,camerathumbnail,,commandid,,commandcomplete,,lbldriveway,,lblfrontdoor,,lblsideyard,,lblsyncmodule,,xui
+,mainform,,atualskin,,fx,,lbtitle,,ivclose,,ivmax,,ivmin,,imginit,,lblstatus,,emailaddress,,password,,userregion,,response,,authtoken,,accountid,,networkid,,ivdriveway,,ivfrontdoor,,ivsideyard,,clvdriveway,,clvfrontdoor,,clvsideyard,,camerathumbnail,,commandid,,commandcomplete,,lblsyncmodule,,xui,,lbldriveway,,lblfrontdoor,,lblsideyard
 ,mainform,,atualskin,,imginit,,authtoken,,userregion,,response,,accountid,,networkid,,camerathumbnail,,commandid,,commandcomplete
-,get_css,,checkmonitor,,requestauthtoken,httpjob,initialize,httpjob,poststring,httpjob,getrequest,,getauthinfo,httpjob,getstring,,restget,,getuserinfo,,getallcameras,httpjob,release,,refreshcameras,httpjob,postbytes,httpjob,getstring2,httpjob,download,,getsyncmoduleinfo,,bluriv,,getcamerainfo,,downloadimage,,restpost,,getcommandid,,getcommandstatus,,blur,,setavg,,checkbattlife,,checklfrlevel,httpjob,getinputstream,httpjob,getbitmap
-main,get_css,0,0,799,809
+,get_css,,checkmonitor,,requestauthtoken,httpjob,initialize,httpjob,poststring,httpjob,getrequest,,getauthinfo,httpjob,getstring,,restget,,getuserinfo,,getallcameras,httpjob,release,,refreshcameras,httpjob,postbytes,httpjob,getstring2,httpjob,download,,getsyncmoduleinfo,,bluriv,,getcamerainfo,,downloadimage,,restpost,,getcommandid,,getcommandstatus,,blur,,setavg,,checkbattlife,,checklfrlevel,,convertdatetime,,parseutcstring,httpjob,getinputstream,httpjob,getbitmap
+main,get_css,0,0,815,825
 ,mainform,,imginit
 
 
-main,checkmonitor,0,0,811,835
+main,checkmonitor,0,0,827,851
 ,fx
 
 
-main,requestauthtoken,0,0,119,170
-,lblstatus,,emailaddress,,password,,userregion,,response,,authtoken,,accountid,,networkid,,ivdriveway,,ivfrontdoor,,ivsideyard,,clvdriveway,,clvfrontdoor,,clvsideyard,,camerathumbnail,,commandid,,commandcomplete,,lbldriveway,,lblfrontdoor,,lblsideyard,,lblsyncmodule,,xui
+main,requestauthtoken,0,0,122,173
+,lblstatus,,emailaddress,,password,,userregion,,response,,authtoken,,accountid,,networkid,,ivdriveway,,ivfrontdoor,,ivsideyard,,clvdriveway,,clvfrontdoor,,clvsideyard,,camerathumbnail,,commandid,,commandcomplete,,lblsyncmodule,,xui,,lbldriveway,,lblfrontdoor,,lblsideyard
 ,authtoken,,userregion,,response,,accountid,,networkid,,camerathumbnail,,commandid,,commandcomplete
-httpjob,initialize,httpjob,poststring,httpjob,getrequest,,getauthinfo,httpjob,getstring,,restget,,getuserinfo,,getallcameras,httpjob,release,,refreshcameras,httpjob,postbytes,httpjob,getstring2,httpjob,download,,getsyncmoduleinfo,,bluriv,,getcamerainfo,,downloadimage,,restpost,,getcommandid,,getcommandstatus,,blur,,setavg,,checkbattlife,,checklfrlevel,httpjob,getinputstream,httpjob,getbitmap
-main,blur,0,0,971,1012
+httpjob,initialize,httpjob,poststring,httpjob,getrequest,,getauthinfo,httpjob,getstring,,restget,,getuserinfo,,getallcameras,httpjob,release,,refreshcameras,httpjob,postbytes,httpjob,getstring2,httpjob,download,,getsyncmoduleinfo,,bluriv,,getcamerainfo,,downloadimage,,restpost,,getcommandid,,getcommandstatus,,blur,,setavg,,checkbattlife,,checklfrlevel,,convertdatetime,,parseutcstring,httpjob,getinputstream,httpjob,getbitmap
+main,blur,0,0,990,1031
 ,lblstatus
 
 ,setavg
-main,setavg,0,0,1014,1031
+main,setavg,0,0,1033,1050
 ,lblstatus
 
 
-main,bluriv,0,0,961,969
+main,bluriv,0,0,980,988
 ,xui,,lblstatus
 
 ,blur,,setavg
-main,btnactivity_click,1,0,1034,1041
-,userregion,,mainform,,response,,authtoken,,lblstatus
+main,btnactivity_click,1,0,1053,1061
+,userregion,,mainform,,authtoken,,response,,lblstatus
 ,response
-,restget,frmactivity,initialize,frmactivity,show,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,getstring2,frmactivity,checkmonitor,frmactivity,getvideos,httpjob,getinputstream,frmactivity,createlistitem,httpjob,getbitmap
-main,restget,0,0,286,309
+,restget,frmactivity,initialize,frmactivity,show,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,getstring2,frmactivity,checkmonitor,frmactivity,getvideos,httpjob,getinputstream,frmactivity,createlistitem,httpjob,getbitmap,frmactivity,convertfulldatetime,frmactivity,showvideo,frmactivity,convertdatetime,frmactivity,parseutcstring
+main,restget,0,0,289,312
 ,response,,authtoken,,lblstatus
 ,response
 httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,getstring2
-main,btndriveway_click,0,0,115,117
-,userregion,,networkid,,response,,ivdriveway,,ivfrontdoor,,ivsideyard,,lblstatus,,clvdriveway,,clvfrontdoor,,clvsideyard,,camerathumbnail,,commandid,,commandcomplete,,lbldriveway,,lblfrontdoor,,lblsideyard,,authtoken,,lblsyncmodule,,xui
+main,btndriveway_click,0,0,115,120
+,clvdriveway,,clvfrontdoor,,clvsideyard,,userregion,,networkid,,response,,ivdriveway,,ivfrontdoor,,ivsideyard,,lblstatus,,camerathumbnail,,commandid,,commandcomplete,,authtoken,,lblsyncmodule,,xui,,lbldriveway,,lblfrontdoor,,lblsideyard
 ,response,,camerathumbnail,,commandid,,commandcomplete
-,refreshcameras,,restget,,getsyncmoduleinfo,,bluriv,,getcamerainfo,,downloadimage,,restpost,,getcommandid,,getcommandstatus,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,getstring2,,blur,,setavg,,checkbattlife,,checklfrlevel,httpjob,getinputstream,httpjob,getbitmap,httpjob,poststring,httpjob,postbytes
-main,refreshcameras,0,0,172,284
-,userregion,,networkid,,response,,ivdriveway,,ivfrontdoor,,ivsideyard,,lblstatus,,clvdriveway,,clvfrontdoor,,clvsideyard,,camerathumbnail,,commandid,,commandcomplete,,lbldriveway,,lblfrontdoor,,lblsideyard,,authtoken,,lblsyncmodule,,xui
+,refreshcameras,,restget,,getsyncmoduleinfo,,bluriv,,getcamerainfo,,downloadimage,,restpost,,getcommandid,,getcommandstatus,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,getstring2,,blur,,setavg,,checkbattlife,,checklfrlevel,,convertdatetime,,parseutcstring,httpjob,getinputstream,httpjob,getbitmap,httpjob,poststring,httpjob,postbytes
+main,refreshcameras,0,0,175,287
+,userregion,,networkid,,response,,ivdriveway,,ivfrontdoor,,ivsideyard,,lblstatus,,clvdriveway,,clvfrontdoor,,clvsideyard,,camerathumbnail,,commandid,,commandcomplete,,authtoken,,lblsyncmodule,,xui,,lbldriveway,,lblfrontdoor,,lblsideyard
 ,response,,camerathumbnail,,commandid,,commandcomplete
-,restget,,getsyncmoduleinfo,,bluriv,,getcamerainfo,,downloadimage,,restpost,,getcommandid,,getcommandstatus,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,getstring2,,blur,,setavg,,checkbattlife,,checklfrlevel,httpjob,getinputstream,httpjob,getbitmap,httpjob,poststring,httpjob,postbytes
-main,checkbattlife,0,0,670,687
+,restget,,getsyncmoduleinfo,,bluriv,,getcamerainfo,,downloadimage,,restpost,,getcommandid,,getcommandstatus,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,getstring2,,blur,,setavg,,checkbattlife,,checklfrlevel,,convertdatetime,,parseutcstring,httpjob,getinputstream,httpjob,getbitmap,httpjob,poststring,httpjob,postbytes
+main,checkbattlife,0,0,684,701
 ,lblstatus
 
 
-main,checklfrlevel,0,0,689,708
+main,checklfrlevel,0,0,703,722
 ,lblstatus
 
 
-main,close_entered_event,0,0,737,743
+main,close_entered_event,0,0,753,759
 ,ivclose,,fx,,imginit
 
 
-main,close_exited_event,0,0,745,751
+main,close_exited_event,0,0,761,767
 ,ivclose,,fx,,imginit
 
 
-main,clvdriveway_itemclick,0,0,849,853
+main,clvdriveway_itemclick,0,0,865,869
 ,clvdriveway,,clvfrontdoor,,clvsideyard
 
 
-main,clvfrontdoor_itemclick,0,0,843,847
+main,clvfrontdoor_itemclick,0,0,859,863
 ,clvdriveway,,clvfrontdoor,,clvsideyard
 
 
-main,clvsideyard_itemclick,0,0,837,841
+main,clvsideyard_itemclick,0,0,853,857
 ,clvdriveway,,clvfrontdoor,,clvsideyard
 
 
-main,downloadimage,0,0,337,368
+main,convertdatetime,0,0,1063,1071
+
+
+,parseutcstring
+main,parseutcstring,0,0,1073,1091
+
+
+
+main,downloadimage,0,0,340,371
 ,response,,authtoken,,lblstatus
 ,response
 httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getinputstream,httpjob,getbitmap,httpjob,release
-main,getallcameras,0,0,429,456
+main,getallcameras,0,0,432,459
 ,lblstatus,,networkid
 ,networkid
 
-main,getauthinfo,0,0,371,398
+main,getauthinfo,0,0,374,401
 ,lblstatus,,authtoken,,userregion
 ,authtoken,,userregion
 
-main,getcamerainfo,0,0,518,631
-,camerathumbnail,,lblstatus
+main,getcamerainfo,0,0,521,645
+,camerathumbnail,,lblstatus,,clvdriveway,,lbldriveway,,clvfrontdoor,,lblfrontdoor,,clvsideyard,,lblsideyard
 ,camerathumbnail
-,checkbattlife,,checklfrlevel
-main,getcommandid,0,0,458,503
+,checkbattlife,,checklfrlevel,,convertdatetime,,parseutcstring
+main,getcommandid,0,0,461,506
 ,commandid,,lblstatus
 ,commandid
 
-main,getcommandstatus,0,0,505,516
+main,getcommandstatus,0,0,508,519
 ,commandcomplete,,lblstatus
 ,commandcomplete
 
-main,getsyncmoduleinfo,0,0,633,668
+main,getsyncmoduleinfo,0,0,647,682
 ,lblsyncmodule,,lblstatus
 
 
-main,getuserinfo,0,0,400,427
+main,getuserinfo,0,0,403,430
 ,lblstatus,,accountid
 ,accountid
 
-main,ivclose_mouseclicked,0,0,730,735
+main,ivclose_mouseclicked,0,0,744,751
 
 
 
-main,ivdriveway_mouseclicked,1,0,855,937
-,mainform,,userregion,,response,,authtoken,,lblstatus
+main,ivdriveway_mouseclicked,1,0,871,954
+,mainform,,lbldriveway,,userregion,,response,,authtoken,,lblstatus
 ,response
 frmmedia,initialize,frmmedia,show,,restget,frmmedia,checkmonitor,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,getstring2
-main,ivfrontdoor_mouseclicked,1,0,939,948
-,mainform
+main,ivfrontdoor_mouseclicked,1,0,956,966
+,mainform,,lblfrontdoor
 
 frmmedia,initialize,frmmedia,show,frmmedia,checkmonitor
-main,ivmax_mouseclicked,0,0,753,755
+main,ivmax_mouseclicked,0,0,769,771
 
 
 
-main,ivmin_mouseclicked,0,0,773,781
+main,ivmin_mouseclicked,0,0,789,797
 ,mainform
 
 
-main,ivsideyard_mouseclicked,1,0,950,959
-,mainform
+main,ivsideyard_mouseclicked,1,0,968,978
+,mainform,,lblsideyard
 
 frmmedia,initialize,frmmedia,show,frmmedia,checkmonitor
-main,lbtitle_mousedragged,0,0,710,719
+main,lbtitle_mousedragged,0,0,724,733
 ,ismaximized,,mainform,,xmouse,,ymouse
 
 
-main,lbtitle_mousepressed,0,0,721,728
+main,lbtitle_mousepressed,0,0,735,742
 ,xmouse,,lbtitle,,ymouse
 ,xmouse,,ymouse
 
-main,max_entered_event,0,0,757,763
+main,max_entered_event,0,0,773,779
 ,ivmax,,fx,,imginit
 
 
-main,max_exited_event,0,0,765,771
+main,max_exited_event,0,0,781,787
 ,ivmax,,fx,,imginit
 
 
-main,min_entered_event,0,0,783,789
+main,min_entered_event,0,0,799,805
 ,ivmin,,fx,,imginit
 
 
-main,min_exited_event,0,0,791,797
+main,min_exited_event,0,0,807,813
 ,ivmin,,fx,,imginit
 
 
@@ -211,54 +219,66 @@ main,process_globals,0,1,6,45
 ,emailaddress,,password,,ismaximized
 ,emailaddress,,password,,ismaximized
 
-main,restpost,0,0,311,335
+main,restpost,0,0,314,338
 ,response,,authtoken,,lblstatus
 ,response
 httpjob,initialize,httpjob,poststring,httpjob,getrequest,httpjob,getstring,httpjob,release,httpjob,postbytes,httpjob,getstring2
-frmactivity,initialize,1,0,16,30
+frmactivity,initialize,1,0,17,31
 
 
 ,checkmonitor
-frmactivity,show,1,0,32,38
+frmactivity,show,1,0,33,38
 
 
-,getvideos,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getinputstream,,createlistitem,httpjob,getbitmap,httpjob,release
-frmactivity,checkmonitor,0,0,217,241
-
-
-
-frmactivity,class_globals,0,0,1,13
+,getvideos,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getinputstream,,createlistitem,httpjob,getbitmap,,convertfulldatetime,,showvideo,httpjob,release,,convertdatetime,,parseutcstring
+frmactivity,checkmonitor,0,0,249,273
 
 
 
-frmactivity,createlistitem,1,0,120,143
+frmactivity,class_globals,0,0,1,14
 
 
 
-frmactivity,downloadimage,0,0,145,171
+frmactivity,clvactivity_itemclick,1,0,179,192
 
 
-httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getinputstream,httpjob,release
-frmactivity,frm_closerequest,0,0,200,202
-
-
-
-frmactivity,getvideos,1,0,40,111
-
-
-httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getinputstream,,createlistitem,httpjob,getbitmap,httpjob,release
-frmactivity,lv_selectedindexchanged,0,0,113,118
-
-
-
-frmactivity,rootpanekeyevent_event,0,0,204,215
-
-
-
-frmactivity,showvideo,0,0,173,198
+,showvideo,httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getinputstream,httpjob,release
+frmactivity,showvideo,1,0,194,223
 
 
 httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getinputstream,httpjob,release
+frmactivity,convertdatetime,0,0,121,129
+
+
+,parseutcstring
+frmactivity,parseutcstring,0,0,142,160
+
+
+
+frmactivity,convertfulldatetime,0,0,131,139
+
+
+,parseutcstring
+frmactivity,createlistitem,1,0,100,119
+
+
+,convertdatetime,,convertfulldatetime,,parseutcstring
+frmactivity,frm_closerequest,0,0,225,230
+
+
+
+frmactivity,getvideos,1,0,40,98
+
+
+httpjob,initialize,httpjob,download,httpjob,getrequest,httpjob,getinputstream,,createlistitem,httpjob,getbitmap,,convertfulldatetime,,showvideo,httpjob,release,,convertdatetime,,parseutcstring
+frmactivity,rootpanekeyevent_event,0,0,232,247
+
+
+
+frmactivity,wvmedia_pagefinished,0,0,276,278
+
+
+
 httpjob,initialize,0,0,26,29
 
 
@@ -355,27 +375,31 @@ httpjob,putstring,0,0,42,44
 
 
 ,putbytes
-frmmedia,initialize,1,0,10,24
+frmmedia,initialize,1,0,11,26
 
 
 ,checkmonitor
-frmmedia,show,1,0,26,46
+frmmedia,show,1,0,28,38
 
 
 
-frmmedia,checkmonitor,0,0,66,90
+frmmedia,checkmonitor,0,0,61,85
 
 
 
-frmmedia,class_globals,0,0,1,7
+frmmedia,class_globals,0,0,1,8
 
 
 
-frmmedia,frm_closerequest,0,0,48,50
+frmmedia,frm_closerequest,0,0,44,46
 
 
 
-frmmedia,rootpanekeyevent_event,0,0,52,64
+frmmedia,keypressed_event,0,0,40,42
+
+
+
+frmmedia,rootpanekeyevent_event,0,0,48,59
 
 
 
@@ -407,39 +431,39 @@ httputils2service,submitjob,0,0,42,51
 ,hc,,taskcounter,,taskidtojob,,tempfolder
 ,taskcounter,,tempfolder
 ,service_create,httpjob,getrequest
-animatedcounter,base_resize,0,0,67,83
+animatedcounter,base_resize,0,0,70,86
 
 
 ,createbitmap,,topfromvalue
-animatedcounter,createbitmap,0,0,90,104
+animatedcounter,createbitmap,0,0,93,107
 
 
 
-animatedcounter,topfromvalue,0,0,85,88
+animatedcounter,topfromvalue,0,0,88,91
 
 
 
-animatedcounter,class_globals,0,0,4,18
+animatedcounter,class_globals,0,0,5,20
 
 
 
-animatedcounter,createfadebitmap,0,0,54,64
+animatedcounter,createfadebitmap,0,0,56,67
 
 
 
-animatedcounter,designercreateview,0,0,28,52
+animatedcounter,designercreateview,0,0,30,54
 
 
 ,createfadebitmap,,setvalue,,base_resize,,getvalue,,topfromvalue,,createbitmap
-animatedcounter,setvalue,0,0,106,115
+animatedcounter,setvalue,0,0,109,118
 
 
 ,topfromvalue
-animatedcounter,getvalue,0,0,117,123
+animatedcounter,getvalue,0,0,120,126
 
 
 
-animatedcounter,initialize,0,0,20,25
+animatedcounter,initialize,0,0,22,27
 
 
 
@@ -723,87 +747,87 @@ b4xdatetemplate,show,0,0,163,174
 
 
 ,drawdays,,drawbox
-b4xdialog,close,0,0,229,235
+b4xdialog,close,0,0,230,236
 
 
 ,getvisible
-b4xdialog,background_click,0,0,248,250
+b4xdialog,background_click,0,0,249,251
 
 
 
-b4xdialog,background_mouseclicked,0,0,238,240
+b4xdialog,background_mouseclicked,0,0,239,241
 
 
 
-b4xdialog,background_touch,0,0,243,245
+b4xdialog,background_touch,0,0,244,246
 
 
 
-b4xdialog,blur,0,0,277,315
+b4xdialog,blur,0,0,278,316
 
 
 ,setavg
-b4xdialog,setavg,0,0,317,329
+b4xdialog,setavg,0,0,318,330
 
 
 
-b4xdialog,button_click,0,0,224,227
+b4xdialog,button_click,0,0,225,228
 
 
 ,close,,getvisible
-b4xdialog,class_globals,0,0,1,28
+b4xdialog,class_globals,0,0,1,29
 
 
 
-b4xdialog,getvisible,0,0,181,183
+b4xdialog,getvisible,0,0,182,184
 
 
 
-b4xdialog,createbutton,0,0,185,204
+b4xdialog,createbutton,0,0,186,205
 
 
 ,internalsettextorcsbuildertolabel
-b4xdialog,internalsettextorcsbuildertolabel,0,0,346,358
+b4xdialog,internalsettextorcsbuildertolabel,0,0,347,359
 
 
 
-b4xdialog,getbutton,0,0,207,212
+b4xdialog,getbutton,0,0,208,213
 
 
 
-b4xdialog,initialize,0,0,30,48
+b4xdialog,initialize,0,0,31,49
 
 
 
-b4xdialog,internaladdstubtoclvifneeded,0,0,331,344
+b4xdialog,internaladdstubtoclvifneeded,0,0,332,345
 
 
 
-b4xdialog,resize,0,0,253,262
+b4xdialog,resize,0,0,254,263
 
 
 ,updateblur,,blur,,setavg
-b4xdialog,updateblur,0,0,264,275
+b4xdialog,updateblur,0,0,265,276
 
 
 ,blur,,setavg
-b4xdialog,setbuttonstate,0,0,215,221
+b4xdialog,setbuttonstate,0,0,216,222
 
 
 ,getbutton
-b4xdialog,show,0,0,67,88
+b4xdialog,show,0,0,68,89
 
 
 ,internalsettextorcsbuildertolabel,,showcustom,,updateblur,,createbutton,,blur,,setavg
-b4xdialog,showcustom,0,0,90,179
+b4xdialog,showcustom,0,0,91,180
 
 
 ,updateblur,,createbutton,,internalsettextorcsbuildertolabel,,blur,,setavg
-b4xdialog,showtemplate,1,0,58,65
+b4xdialog,showtemplate,1,0,59,66
 
 
 b4xcolortemplate,getpanel,b4xdatetemplate,getpanel,b4xinputtemplate,getpanel,b4xlisttemplate,getpanel,b4xlongtexttemplate,getpanel,b4xsearchtemplate,getpanel,b4xsignaturetemplate,getpanel,b4xtimedtemplate,getpanel,b4xcolortemplate,show,b4xdatetemplate,show,b4xinputtemplate,show,b4xlisttemplate,show,b4xlongtexttemplate,show,b4xsearchtemplate,show,b4xsignaturetemplate,show,b4xtimedtemplate,show,,showcustom,b4xcolortemplate,dialogclosed,b4xdatetemplate,dialogclosed,b4xinputtemplate,dialogclosed,b4xlisttemplate,dialogclosed,b4xlongtexttemplate,dialogclosed,b4xsearchtemplate,dialogclosed,b4xsignaturetemplate,dialogclosed,b4xtimedtemplate,dialogclosed,b4xcolortemplate,getselectedhsvcolor,b4xcolortemplate,updatebarcolor,b4xcolortemplate,getselectedcolor,b4xdatetemplate,drawdays,b4xdatetemplate,drawbox,b4xinputtemplate,validate,b4xinputtemplate,isvalid,,setbuttonstate,,getbutton,b4xlisttemplate,selectitem,,internaladdstubtoclvifneeded,b4xsearchtemplate,update,b4xfloattextfield,settext,b4xfloattextfield,gettextfield,b4xsearchtemplate,additemstolist,b4jtextflow,initialize,b4jtextflow,reset,b4jtextflow,append,b4jtextflow,setcolor,b4jtextflow,createtextflow,anotherprogressbar,setvaluenoanimation,anotherprogressbar,setvalue,,close,,getvisible,,updateblur,,createbutton,,internalsettextorcsbuildertolabel,,blur,,setavg,b4xcolortemplate,setselectedhsvcolor,b4xcolortemplate,huebarselectedchanged,b4xcolortemplate,alphabarselectedchange,b4xcolortemplate,update,b4xcolortemplate,drawcolors,b4xcolortemplate,handleselectedcolorchanged
-b4xdialog,stub_click,0,0,360,362
+b4xdialog,stub_click,0,0,361,363
 
 
 
@@ -1275,11 +1299,11 @@ b4xplusminus,startdownloop,1,0,228,237
 
 
 ,increment,,decrement,,getvalueimpl,b4xformatter,format,,setindex,b4xformatter,getformatdata,,internalsettextorcsbuildertolabel
-b4xformatter,getdefaultformat,0,0,74,76
+b4xformatter,getdefaultformat,0,0,76,78
 
 
 
-b4xformatter,format,0,0,88,142
+b4xformatter,format,0,0,90,144
 
 
 ,getformatdata
@@ -1287,7 +1311,7 @@ b4xformatter,initialize,0,0,11,15
 
 
 ,createdefaultformat,,addformatdata
-b4xformatter,addformatdata,0,0,61,72
+b4xformatter,addformatdata,0,0,63,74
 
 
 
@@ -1295,7 +1319,7 @@ b4xformatter,class_globals,0,0,1,9
 
 
 
-b4xformatter,copyformatdata,0,0,36,56
+b4xformatter,copyformatdata,0,0,36,58
 
 
 
@@ -1303,11 +1327,11 @@ b4xformatter,createdefaultformat,0,0,17,27
 
 
 
-b4xformatter,getformatdata,0,0,79,85
+b4xformatter,getformatdata,0,0,81,87
 
 
 
-b4xformatter,formatlabel,0,0,145,150
+b4xformatter,formatlabel,0,0,148,153
 
 
 ,format,,getformatdata

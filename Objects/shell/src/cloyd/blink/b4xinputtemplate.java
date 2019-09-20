@@ -19,9 +19,10 @@ public static RemoteObject _regexpattern = RemoteObject.createImmutable("");
 public static RemoteObject _textfield1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
 public static RemoteObject _lbltitle = RemoteObject.declareNull("anywheresoftware.b4j.objects.LabelWrapper");
 public static RemoteObject _dateutils = RemoteObject.declareNull("b4j.example.dateutils");
+public static RemoteObject _cssutils = RemoteObject.declareNull("b4j.example.cssutils");
 public static cloyd.blink.main _main = null;
 public static cloyd.blink.httputils2service _httputils2service = null;
 public static Object[] GetGlobals(RemoteObject _ref) throws Exception {
-		return new Object[] {"DateUtils",_ref.getField(false, "_dateutils"),"lblTitle",_ref.getField(false, "_lbltitle"),"mBase",_ref.getField(false, "_mbase"),"RegexPattern",_ref.getField(false, "_regexpattern"),"Text",_ref.getField(false, "_text"),"TextField1",_ref.getField(false, "_textfield1"),"xDialog",_ref.getField(false, "_xdialog"),"xui",_ref.getField(false, "_xui")};
+		return new Object[] {"CSSUtils",_ref.getField(false, "_cssutils"),"DateUtils",_ref.getField(false, "_dateutils"),"lblTitle",_ref.getField(false, "_lbltitle"),"mBase",_ref.getField(false, "_mbase"),"RegexPattern",_ref.getField(false, "_regexpattern"),"Text",_ref.getField(false, "_text"),"TextField1",_ref.getField(false, "_textfield1"),"xDialog",_ref.getField(false, "_xdialog"),"xui",_ref.getField(false, "_xui")};
 }
 }

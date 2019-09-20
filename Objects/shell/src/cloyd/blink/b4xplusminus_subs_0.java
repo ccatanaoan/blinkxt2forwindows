@@ -200,6 +200,7 @@ public static RemoteObject  _designercreateview(RemoteObject __ref,RemoteObject 
 try {
 		Debug.PushSubsStack("DesignerCreateView (b4xplusminus) ","b4xplusminus",17,__ref.getField(false, "ba"),__ref,36);
 if (RapidSub.canDelegate("designercreateview")) { return __ref.runUserSub(false, "b4xplusminus","designercreateview", __ref, _base, _lbl, _props);}
+RemoteObject _pnl = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
 Debug.locals.put("Base", _base);
 Debug.locals.put("lbl", _lbl);
 Debug.locals.put("Props", _props);
@@ -220,6 +221,10 @@ __ref.getField(false,"_mainlabel" /*RemoteObject*/ ).setObject (_lbl.getObject()
  BA.debugLineNum = 40;BA.debugLine="MainLabel.SetTextAlignment(\"CENTER\", \"CENTER\")";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_mainlabel" /*RemoteObject*/ ).runVoidMethod ("SetTextAlignment",(Object)(BA.ObjectToString("CENTER")),(Object)(RemoteObject.createImmutable("CENTER")));
+ BA.debugLineNum = 41;BA.debugLine="Dim pnl As B4XView = Props.Get(\"page\")";
+Debug.JustUpdateDeviceLine();
+_pnl = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
+_pnl.setObject(_props.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("page")))));Debug.locals.put("pnl", _pnl);
  BA.debugLineNum = 51;BA.debugLine="pnlPlus = xui.CreatePanel(\"pnlArrow\")";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_pnlplus" /*RemoteObject*/ ,__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreatePanel",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("pnlArrow"))));

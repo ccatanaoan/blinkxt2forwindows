@@ -8,11 +8,11 @@ public class b4xdialog_subs_0 {
 
 public static RemoteObject  _background_click(RemoteObject __ref) throws Exception{
 try {
-		Debug.PushSubsStack("Background_Click (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,248);
+		Debug.PushSubsStack("Background_Click (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,249);
 if (RapidSub.canDelegate("background_click")) { return __ref.runUserSub(false, "b4xdialog","background_click", __ref);}
- BA.debugLineNum = 248;BA.debugLine="Private Sub Background_Click";
+ BA.debugLineNum = 249;BA.debugLine="Private Sub Background_Click";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 250;BA.debugLine="End Sub";
+ BA.debugLineNum = 251;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -24,15 +24,15 @@ finally {
 		}}
 public static RemoteObject  _background_mouseclicked(RemoteObject __ref,RemoteObject _eventdata) throws Exception{
 try {
-		Debug.PushSubsStack("Background_MouseClicked (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,238);
+		Debug.PushSubsStack("Background_MouseClicked (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,239);
 if (RapidSub.canDelegate("background_mouseclicked")) { return __ref.runUserSub(false, "b4xdialog","background_mouseclicked", __ref, _eventdata);}
 Debug.locals.put("EventData", _eventdata);
- BA.debugLineNum = 238;BA.debugLine="Private Sub Background_MouseClicked (EventData As";
+ BA.debugLineNum = 239;BA.debugLine="Private Sub Background_MouseClicked (EventData As";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 239;BA.debugLine="EventData.Consume";
+ BA.debugLineNum = 240;BA.debugLine="EventData.Consume";
 Debug.JustUpdateDeviceLine();
 _eventdata.runVoidMethod ("Consume");
- BA.debugLineNum = 240;BA.debugLine="End Sub";
+ BA.debugLineNum = 241;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -44,14 +44,14 @@ finally {
 		}}
 public static RemoteObject  _background_touch(RemoteObject __ref,RemoteObject _action,RemoteObject _x,RemoteObject _y) throws Exception{
 try {
-		Debug.PushSubsStack("Background_Touch (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,243);
+		Debug.PushSubsStack("Background_Touch (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,244);
 if (RapidSub.canDelegate("background_touch")) { return __ref.runUserSub(false, "b4xdialog","background_touch", __ref, _action, _x, _y);}
 Debug.locals.put("Action", _action);
 Debug.locals.put("X", _x);
 Debug.locals.put("Y", _y);
- BA.debugLineNum = 243;BA.debugLine="Private Sub Background_Touch (Action As Int, X As";
+ BA.debugLineNum = 244;BA.debugLine="Private Sub Background_Touch (Action As Int, X As";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 245;BA.debugLine="End Sub";
+ BA.debugLineNum = 246;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -63,7 +63,7 @@ finally {
 		}}
 public static RemoteObject  _blur(RemoteObject __ref,RemoteObject _bmp) throws Exception{
 try {
-		Debug.PushSubsStack("Blur (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,277);
+		Debug.PushSubsStack("Blur (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,278);
 if (RapidSub.canDelegate("blur")) { return __ref.runUserSub(false, "b4xdialog","blur", __ref, _bmp);}
 RemoteObject _n = RemoteObject.createImmutable(0L);
 RemoteObject _bc = RemoteObject.declareNull("b4j.example.bitmapcreator");
@@ -76,36 +76,36 @@ int _steps = 0;
 int _y = 0;
 int _x = 0;
 Debug.locals.put("bmp", _bmp);
- BA.debugLineNum = 277;BA.debugLine="Private Sub Blur (bmp As B4XBitmap) As BitmapCreat";
+ BA.debugLineNum = 278;BA.debugLine="Private Sub Blur (bmp As B4XBitmap) As BitmapCreat";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 278;BA.debugLine="Dim n As Long = DateTime.Now";
+ BA.debugLineNum = 279;BA.debugLine="Dim n As Long = DateTime.Now";
 Debug.JustUpdateDeviceLine();
 _n = b4xdialog.__c.getField(false,"DateTime").runMethod(true,"getNow");Debug.locals.put("n", _n);Debug.locals.put("n", _n);
- BA.debugLineNum = 279;BA.debugLine="Dim bc As BitmapCreator";
+ BA.debugLineNum = 280;BA.debugLine="Dim bc As BitmapCreator";
 Debug.JustUpdateDeviceLine();
 _bc = RemoteObject.createNew ("b4j.example.bitmapcreator");Debug.locals.put("bc", _bc);
- BA.debugLineNum = 280;BA.debugLine="Dim ReduceScale As Int = BlurReduceScale";
+ BA.debugLineNum = 281;BA.debugLine="Dim ReduceScale As Int = BlurReduceScale";
 Debug.JustUpdateDeviceLine();
 _reducescale = __ref.getField(true,"_blurreducescale" /*RemoteObject*/ );Debug.locals.put("ReduceScale", _reducescale);Debug.locals.put("ReduceScale", _reducescale);
- BA.debugLineNum = 281;BA.debugLine="bc.Initialize(bmp.Width / ReduceScale / bmp.Scale";
+ BA.debugLineNum = 282;BA.debugLine="bc.Initialize(bmp.Width / ReduceScale / bmp.Scale";
 Debug.JustUpdateDeviceLine();
 _bc.runVoidMethod ("_initialize",__ref.getField(false, "ba"),(Object)(BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_bmp.runMethod(true,"getWidth"),_reducescale,_bmp.runMethod(true,"getScale")}, "//",0, 0))),(Object)(BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_bmp.runMethod(true,"getHeight"),_reducescale,_bmp.runMethod(true,"getScale")}, "//",0, 0))));
- BA.debugLineNum = 282;BA.debugLine="bc.CopyPixelsFromBitmap(bmp)";
+ BA.debugLineNum = 283;BA.debugLine="bc.CopyPixelsFromBitmap(bmp)";
 Debug.JustUpdateDeviceLine();
 _bc.runVoidMethod ("_copypixelsfrombitmap",(Object)(_bmp));
- BA.debugLineNum = 283;BA.debugLine="Dim count As Int = 2";
+ BA.debugLineNum = 284;BA.debugLine="Dim count As Int = 2";
 Debug.JustUpdateDeviceLine();
 _count = BA.numberCast(int.class, 2);Debug.locals.put("count", _count);Debug.locals.put("count", _count);
- BA.debugLineNum = 284;BA.debugLine="Dim clrs(3) As ARGBColor";
+ BA.debugLineNum = 285;BA.debugLine="Dim clrs(3) As ARGBColor";
 Debug.JustUpdateDeviceLine();
 _clrs = RemoteObject.createNewArray ("b4j.example.bitmapcreator._argbcolor", new int[] {3}, new Object[]{});Debug.locals.put("clrs", _clrs);
- BA.debugLineNum = 285;BA.debugLine="Dim temp As ARGBColor";
+ BA.debugLineNum = 286;BA.debugLine="Dim temp As ARGBColor";
 Debug.JustUpdateDeviceLine();
 _temp = RemoteObject.createNew ("b4j.example.bitmapcreator._argbcolor");Debug.locals.put("temp", _temp);
- BA.debugLineNum = 286;BA.debugLine="Dim m As Int";
+ BA.debugLineNum = 287;BA.debugLine="Dim m As Int";
 Debug.JustUpdateDeviceLine();
 _m = RemoteObject.createImmutable(0);Debug.locals.put("m", _m);
- BA.debugLineNum = 287;BA.debugLine="For steps = 1 To count";
+ BA.debugLineNum = 288;BA.debugLine="For steps = 1 To count";
 Debug.JustUpdateDeviceLine();
 {
 final int step10 = 1;
@@ -113,7 +113,7 @@ final int limit10 = _count.<Integer>get().intValue();
 _steps = 1 ;
 for (;(step10 > 0 && _steps <= limit10) || (step10 < 0 && _steps >= limit10) ;_steps = ((int)(0 + _steps + step10))  ) {
 Debug.locals.put("steps", _steps);
- BA.debugLineNum = 288;BA.debugLine="For y = 0 To bc.mHeight - 1";
+ BA.debugLineNum = 289;BA.debugLine="For y = 0 To bc.mHeight - 1";
 Debug.JustUpdateDeviceLine();
 {
 final int step11 = 1;
@@ -121,7 +121,7 @@ final int limit11 = RemoteObject.solve(new RemoteObject[] {_bc.getField(true,"_m
 _y = 0 ;
 for (;(step11 > 0 && _y <= limit11) || (step11 < 0 && _y >= limit11) ;_y = ((int)(0 + _y + step11))  ) {
 Debug.locals.put("y", _y);
- BA.debugLineNum = 289;BA.debugLine="For x = 0 To 2";
+ BA.debugLineNum = 290;BA.debugLine="For x = 0 To 2";
 Debug.JustUpdateDeviceLine();
 {
 final int step12 = 1;
@@ -129,19 +129,19 @@ final int limit12 = 2;
 _x = 0 ;
 for (;(step12 > 0 && _x <= limit12) || (step12 < 0 && _x >= limit12) ;_x = ((int)(0 + _x + step12))  ) {
 Debug.locals.put("x", _x);
- BA.debugLineNum = 290;BA.debugLine="bc.GetARGB(x, y, clrs(x))";
+ BA.debugLineNum = 291;BA.debugLine="bc.GetARGB(x, y, clrs(x))";
 Debug.JustUpdateDeviceLine();
 _bc.runVoidMethod ("_getargb",(Object)(BA.numberCast(int.class, _x)),(Object)(BA.numberCast(int.class, _y)),(Object)(_clrs.getArrayElement(false,BA.numberCast(int.class, _x))));
  }
 }Debug.locals.put("x", _x);
 ;
- BA.debugLineNum = 292;BA.debugLine="SetAvg(bc, 1, y, clrs, temp)";
+ BA.debugLineNum = 293;BA.debugLine="SetAvg(bc, 1, y, clrs, temp)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_setavg" /*RemoteObject*/ ,(Object)(_bc),(Object)(BA.numberCast(int.class, 1)),(Object)(BA.numberCast(int.class, _y)),(Object)(_clrs),(Object)(_temp));
- BA.debugLineNum = 293;BA.debugLine="m = 0";
+ BA.debugLineNum = 294;BA.debugLine="m = 0";
 Debug.JustUpdateDeviceLine();
 _m = BA.numberCast(int.class, 0);Debug.locals.put("m", _m);
- BA.debugLineNum = 294;BA.debugLine="For x = 2 To bc.mWidth - 2";
+ BA.debugLineNum = 295;BA.debugLine="For x = 2 To bc.mWidth - 2";
 Debug.JustUpdateDeviceLine();
 {
 final int step17 = 1;
@@ -149,13 +149,13 @@ final int limit17 = RemoteObject.solve(new RemoteObject[] {_bc.getField(true,"_m
 _x = 2 ;
 for (;(step17 > 0 && _x <= limit17) || (step17 < 0 && _x >= limit17) ;_x = ((int)(0 + _x + step17))  ) {
 Debug.locals.put("x", _x);
- BA.debugLineNum = 295;BA.debugLine="bc.GetARGB(x + 1, y, clrs(m))";
+ BA.debugLineNum = 296;BA.debugLine="bc.GetARGB(x + 1, y, clrs(m))";
 Debug.JustUpdateDeviceLine();
 _bc.runVoidMethod ("_getargb",(Object)(RemoteObject.solve(new RemoteObject[] {RemoteObject.createImmutable(_x),RemoteObject.createImmutable(1)}, "+",1, 1)),(Object)(BA.numberCast(int.class, _y)),(Object)(_clrs.getArrayElement(false,_m)));
- BA.debugLineNum = 296;BA.debugLine="m = (m + 1) Mod 3";
+ BA.debugLineNum = 297;BA.debugLine="m = (m + 1) Mod 3";
 Debug.JustUpdateDeviceLine();
 _m = RemoteObject.solve(new RemoteObject[] {(RemoteObject.solve(new RemoteObject[] {_m,RemoteObject.createImmutable(1)}, "+",1, 1)),RemoteObject.createImmutable(3)}, "%",0, 1);Debug.locals.put("m", _m);
- BA.debugLineNum = 297;BA.debugLine="SetAvg(bc, x, y, clrs, temp)";
+ BA.debugLineNum = 298;BA.debugLine="SetAvg(bc, x, y, clrs, temp)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_setavg" /*RemoteObject*/ ,(Object)(_bc),(Object)(BA.numberCast(int.class, _x)),(Object)(BA.numberCast(int.class, _y)),(Object)(_clrs),(Object)(_temp));
  }
@@ -164,7 +164,7 @@ __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_setavg" /*RemoteObject*/ ,(
  }
 }Debug.locals.put("y", _y);
 ;
- BA.debugLineNum = 300;BA.debugLine="For x = 0 To bc.mWidth - 1";
+ BA.debugLineNum = 301;BA.debugLine="For x = 0 To bc.mWidth - 1";
 Debug.JustUpdateDeviceLine();
 {
 final int step23 = 1;
@@ -172,7 +172,7 @@ final int limit23 = RemoteObject.solve(new RemoteObject[] {_bc.getField(true,"_m
 _x = 0 ;
 for (;(step23 > 0 && _x <= limit23) || (step23 < 0 && _x >= limit23) ;_x = ((int)(0 + _x + step23))  ) {
 Debug.locals.put("x", _x);
- BA.debugLineNum = 301;BA.debugLine="For y = 0 To 2";
+ BA.debugLineNum = 302;BA.debugLine="For y = 0 To 2";
 Debug.JustUpdateDeviceLine();
 {
 final int step24 = 1;
@@ -180,19 +180,19 @@ final int limit24 = 2;
 _y = 0 ;
 for (;(step24 > 0 && _y <= limit24) || (step24 < 0 && _y >= limit24) ;_y = ((int)(0 + _y + step24))  ) {
 Debug.locals.put("y", _y);
- BA.debugLineNum = 302;BA.debugLine="bc.GetARGB(x, y, clrs(y))";
+ BA.debugLineNum = 303;BA.debugLine="bc.GetARGB(x, y, clrs(y))";
 Debug.JustUpdateDeviceLine();
 _bc.runVoidMethod ("_getargb",(Object)(BA.numberCast(int.class, _x)),(Object)(BA.numberCast(int.class, _y)),(Object)(_clrs.getArrayElement(false,BA.numberCast(int.class, _y))));
  }
 }Debug.locals.put("y", _y);
 ;
- BA.debugLineNum = 304;BA.debugLine="SetAvg(bc, x, 1, clrs, temp)";
+ BA.debugLineNum = 305;BA.debugLine="SetAvg(bc, x, 1, clrs, temp)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_setavg" /*RemoteObject*/ ,(Object)(_bc),(Object)(BA.numberCast(int.class, _x)),(Object)(BA.numberCast(int.class, 1)),(Object)(_clrs),(Object)(_temp));
- BA.debugLineNum = 305;BA.debugLine="m = 0";
+ BA.debugLineNum = 306;BA.debugLine="m = 0";
 Debug.JustUpdateDeviceLine();
 _m = BA.numberCast(int.class, 0);Debug.locals.put("m", _m);
- BA.debugLineNum = 306;BA.debugLine="For y = 2 To bc.mHeight - 2";
+ BA.debugLineNum = 307;BA.debugLine="For y = 2 To bc.mHeight - 2";
 Debug.JustUpdateDeviceLine();
 {
 final int step29 = 1;
@@ -200,13 +200,13 @@ final int limit29 = RemoteObject.solve(new RemoteObject[] {_bc.getField(true,"_m
 _y = 2 ;
 for (;(step29 > 0 && _y <= limit29) || (step29 < 0 && _y >= limit29) ;_y = ((int)(0 + _y + step29))  ) {
 Debug.locals.put("y", _y);
- BA.debugLineNum = 307;BA.debugLine="bc.GetARGB(x, y + 1, clrs(m))";
+ BA.debugLineNum = 308;BA.debugLine="bc.GetARGB(x, y + 1, clrs(m))";
 Debug.JustUpdateDeviceLine();
 _bc.runVoidMethod ("_getargb",(Object)(BA.numberCast(int.class, _x)),(Object)(RemoteObject.solve(new RemoteObject[] {RemoteObject.createImmutable(_y),RemoteObject.createImmutable(1)}, "+",1, 1)),(Object)(_clrs.getArrayElement(false,_m)));
- BA.debugLineNum = 308;BA.debugLine="m = (m + 1) Mod 3";
+ BA.debugLineNum = 309;BA.debugLine="m = (m + 1) Mod 3";
 Debug.JustUpdateDeviceLine();
 _m = RemoteObject.solve(new RemoteObject[] {(RemoteObject.solve(new RemoteObject[] {_m,RemoteObject.createImmutable(1)}, "+",1, 1)),RemoteObject.createImmutable(3)}, "%",0, 1);Debug.locals.put("m", _m);
- BA.debugLineNum = 309;BA.debugLine="SetAvg(bc, x, y, clrs, temp)";
+ BA.debugLineNum = 310;BA.debugLine="SetAvg(bc, x, y, clrs, temp)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_setavg" /*RemoteObject*/ ,(Object)(_bc),(Object)(BA.numberCast(int.class, _x)),(Object)(BA.numberCast(int.class, _y)),(Object)(_clrs),(Object)(_temp));
  }
@@ -218,13 +218,13 @@ __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_setavg" /*RemoteObject*/ ,(
  }
 }Debug.locals.put("steps", _steps);
 ;
- BA.debugLineNum = 313;BA.debugLine="Log(\"Time: \" & (DateTime.Now - n))";
+ BA.debugLineNum = 314;BA.debugLine="Log(\"Time: \" & (DateTime.Now - n))";
 Debug.JustUpdateDeviceLine();
 b4xdialog.__c.runVoidMethod ("Log",(Object)(RemoteObject.concat(RemoteObject.createImmutable("Time: "),(RemoteObject.solve(new RemoteObject[] {b4xdialog.__c.getField(false,"DateTime").runMethod(true,"getNow"),_n}, "-",1, 2)))));
- BA.debugLineNum = 314;BA.debugLine="Return bc";
+ BA.debugLineNum = 315;BA.debugLine="Return bc";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return _bc;
- BA.debugLineNum = 315;BA.debugLine="End Sub";
+ BA.debugLineNum = 316;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable(null);
 }
@@ -236,19 +236,19 @@ finally {
 		}}
 public static RemoteObject  _button_click(RemoteObject __ref) throws Exception{
 try {
-		Debug.PushSubsStack("Button_Click (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,224);
+		Debug.PushSubsStack("Button_Click (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,225);
 if (RapidSub.canDelegate("button_click")) { return __ref.runUserSub(false, "b4xdialog","button_click", __ref);}
 RemoteObject _b = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
- BA.debugLineNum = 224;BA.debugLine="Private Sub Button_Click";
+ BA.debugLineNum = 225;BA.debugLine="Private Sub Button_Click";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 225;BA.debugLine="Dim b As B4XView = Sender";
+ BA.debugLineNum = 226;BA.debugLine="Dim b As B4XView = Sender";
 Debug.JustUpdateDeviceLine();
 _b = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 _b.setObject(b4xdialog.__c.runMethod(false,"Sender",__ref.getField(false, "ba")));Debug.locals.put("b", _b);
- BA.debugLineNum = 226;BA.debugLine="Close(b.Tag)";
+ BA.debugLineNum = 227;BA.debugLine="Close(b.Tag)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_close" /*RemoteObject*/ ,(Object)(BA.numberCast(int.class, _b.runMethod(false,"getTag"))));
- BA.debugLineNum = 227;BA.debugLine="End Sub";
+ BA.debugLineNum = 228;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -262,80 +262,82 @@ public static RemoteObject  _class_globals(RemoteObject __ref) throws Exception{
  //BA.debugLineNum = 1;BA.debugLine="Sub Class_Globals";
  //BA.debugLineNum = 2;BA.debugLine="Private xui As XUI";
 b4xdialog._xui = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper.XUI");__ref.setField("_xui",b4xdialog._xui);
- //BA.debugLineNum = 3;BA.debugLine="Private ButtonHeight As Int = 40dip";
-b4xdialog._buttonheight = b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 40)));__ref.setField("_buttonheight",b4xdialog._buttonheight);
- //BA.debugLineNum = 4;BA.debugLine="Private ButtonWidth As Int = 80dip";
+ //BA.debugLineNum = 3;BA.debugLine="Public ButtonsHeight As Int = 40dip";
+b4xdialog._buttonsheight = b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 40)));__ref.setField("_buttonsheight",b4xdialog._buttonsheight);
+ //BA.debugLineNum = 4;BA.debugLine="Public TitleBarHeight As Int = 30dip";
+b4xdialog._titlebarheight = b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 30)));__ref.setField("_titlebarheight",b4xdialog._titlebarheight);
+ //BA.debugLineNum = 5;BA.debugLine="Private ButtonWidth As Int = 80dip";
 b4xdialog._buttonwidth = b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 80)));__ref.setField("_buttonwidth",b4xdialog._buttonwidth);
- //BA.debugLineNum = 5;BA.debugLine="Public Base As B4XView";
+ //BA.debugLineNum = 6;BA.debugLine="Public Base As B4XView";
 b4xdialog._base = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");__ref.setField("_base",b4xdialog._base);
- //BA.debugLineNum = 6;BA.debugLine="Public BackgroundColor As Int = 0xFF555555 'base";
+ //BA.debugLineNum = 7;BA.debugLine="Public BackgroundColor As Int = 0xFF555555 'base";
 b4xdialog._backgroundcolor = BA.numberCast(int.class, 0xff555555);__ref.setField("_backgroundcolor",b4xdialog._backgroundcolor);
- //BA.debugLineNum = 7;BA.debugLine="Public OverlayColor As Int = 0xaa000000";
+ //BA.debugLineNum = 8;BA.debugLine="Public OverlayColor As Int = 0xaa000000";
 b4xdialog._overlaycolor = BA.numberCast(int.class, 0xaa000000);__ref.setField("_overlaycolor",b4xdialog._overlaycolor);
- //BA.debugLineNum = 8;BA.debugLine="Public BorderColor As Int = 0xff000000";
+ //BA.debugLineNum = 9;BA.debugLine="Public BorderColor As Int = 0xff000000";
 b4xdialog._bordercolor = BA.numberCast(int.class, 0xff000000);__ref.setField("_bordercolor",b4xdialog._bordercolor);
- //BA.debugLineNum = 9;BA.debugLine="Public BorderCornersRadius As Int = 2dip";
+ //BA.debugLineNum = 10;BA.debugLine="Public BorderCornersRadius As Int = 2dip";
 b4xdialog._bordercornersradius = b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2)));__ref.setField("_bordercornersradius",b4xdialog._bordercornersradius);
- //BA.debugLineNum = 10;BA.debugLine="Public BorderWidth As Int = 2dip";
+ //BA.debugLineNum = 11;BA.debugLine="Public BorderWidth As Int = 2dip";
 b4xdialog._borderwidth = b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2)));__ref.setField("_borderwidth",b4xdialog._borderwidth);
- //BA.debugLineNum = 11;BA.debugLine="Public ButtonsColor As Int = 0xFF555555";
+ //BA.debugLineNum = 12;BA.debugLine="Public ButtonsColor As Int = 0xFF555555";
 b4xdialog._buttonscolor = BA.numberCast(int.class, 0xff555555);__ref.setField("_buttonscolor",b4xdialog._buttonscolor);
- //BA.debugLineNum = 12;BA.debugLine="Public ButtonsTextColor As Int = 0xFF89D5FF";
+ //BA.debugLineNum = 13;BA.debugLine="Public ButtonsTextColor As Int = 0xFF89D5FF";
 b4xdialog._buttonstextcolor = BA.numberCast(int.class, 0xff89d5ff);__ref.setField("_buttonstextcolor",b4xdialog._buttonstextcolor);
- //BA.debugLineNum = 13;BA.debugLine="Private Background As B4XView";
+ //BA.debugLineNum = 14;BA.debugLine="Private Background As B4XView";
 b4xdialog._background = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");__ref.setField("_background",b4xdialog._background);
- //BA.debugLineNum = 14;BA.debugLine="Private BlurImageView As B4XView";
+ //BA.debugLineNum = 15;BA.debugLine="Private BlurImageView As B4XView";
 b4xdialog._blurimageview = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");__ref.setField("_blurimageview",b4xdialog._blurimageview);
- //BA.debugLineNum = 15;BA.debugLine="Public BlurBackground As Boolean";
+ //BA.debugLineNum = 16;BA.debugLine="Public BlurBackground As Boolean";
 b4xdialog._blurbackground = RemoteObject.createImmutable(false);__ref.setField("_blurbackground",b4xdialog._blurbackground);
- //BA.debugLineNum = 16;BA.debugLine="Private BlurReduceScale As Int";
+ //BA.debugLineNum = 17;BA.debugLine="Private BlurReduceScale As Int";
 b4xdialog._blurreducescale = RemoteObject.createImmutable(0);__ref.setField("_blurreducescale",b4xdialog._blurreducescale);
- //BA.debugLineNum = 17;BA.debugLine="Public mParent As B4XView";
+ //BA.debugLineNum = 18;BA.debugLine="Public mParent As B4XView";
 b4xdialog._mparent = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");__ref.setField("_mparent",b4xdialog._mparent);
- //BA.debugLineNum = 18;BA.debugLine="Public Title As Object = \"\"";
+ //BA.debugLineNum = 19;BA.debugLine="Public Title As Object = \"\"";
 b4xdialog._title = RemoteObject.createImmutable((""));__ref.setField("_title",b4xdialog._title);
- //BA.debugLineNum = 19;BA.debugLine="Public TitleBarColor As Int = 0xFF0083B8";
+ //BA.debugLineNum = 20;BA.debugLine="Public TitleBarColor As Int = 0xFF0083B8";
 b4xdialog._titlebarcolor = BA.numberCast(int.class, 0xff0083b8);__ref.setField("_titlebarcolor",b4xdialog._titlebarcolor);
- //BA.debugLineNum = 20;BA.debugLine="Public TitleBarTextColor As Int";
+ //BA.debugLineNum = 21;BA.debugLine="Public TitleBarTextColor As Int";
 b4xdialog._titlebartextcolor = RemoteObject.createImmutable(0);__ref.setField("_titlebartextcolor",b4xdialog._titlebartextcolor);
- //BA.debugLineNum = 21;BA.debugLine="Public TitleBar As B4XView";
+ //BA.debugLineNum = 22;BA.debugLine="Public TitleBar As B4XView";
 b4xdialog._titlebar = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");__ref.setField("_titlebar",b4xdialog._titlebar);
- //BA.debugLineNum = 22;BA.debugLine="Public PutAtTop As Boolean";
+ //BA.debugLineNum = 23;BA.debugLine="Public PutAtTop As Boolean";
 b4xdialog._putattop = RemoteObject.createImmutable(false);__ref.setField("_putattop",b4xdialog._putattop);
- //BA.debugLineNum = 23;BA.debugLine="Public TitleBarFont As B4XFont";
+ //BA.debugLineNum = 24;BA.debugLine="Public TitleBarFont As B4XFont";
 b4xdialog._titlebarfont = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper.B4XFont");__ref.setField("_titlebarfont",b4xdialog._titlebarfont);
- //BA.debugLineNum = 24;BA.debugLine="Public ButtonsFont As B4XFont";
+ //BA.debugLineNum = 25;BA.debugLine="Public ButtonsFont As B4XFont";
 b4xdialog._buttonsfont = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper.B4XFont");__ref.setField("_buttonsfont",b4xdialog._buttonsfont);
- //BA.debugLineNum = 25;BA.debugLine="Public ButtonsTextColorDisabled As Int = 0xFF8080";
+ //BA.debugLineNum = 26;BA.debugLine="Public ButtonsTextColorDisabled As Int = 0xFF8080";
 b4xdialog._buttonstextcolordisabled = BA.numberCast(int.class, 0xff808080);__ref.setField("_buttonstextcolordisabled",b4xdialog._buttonstextcolordisabled);
- //BA.debugLineNum = 26;BA.debugLine="Public VisibleAnimationDuration As Int = 100";
+ //BA.debugLineNum = 27;BA.debugLine="Public VisibleAnimationDuration As Int = 100";
 b4xdialog._visibleanimationduration = BA.numberCast(int.class, 100);__ref.setField("_visibleanimationduration",b4xdialog._visibleanimationduration);
- //BA.debugLineNum = 27;BA.debugLine="Public ButtonsOrder() As Int = Array As Int(xui.D";
+ //BA.debugLineNum = 28;BA.debugLine="Public ButtonsOrder() As Int = Array As Int(xui.D";
 b4xdialog._buttonsorder = RemoteObject.createNewArray("int",new int[] {3},new Object[] {__ref.getField(false,"_xui" /*RemoteObject*/ ).getField(true,"DialogResponse_Positive"),__ref.getField(false,"_xui" /*RemoteObject*/ ).getField(true,"DialogResponse_Negative"),__ref.getField(false,"_xui" /*RemoteObject*/ ).getField(true,"DialogResponse_Cancel")});__ref.setField("_buttonsorder",b4xdialog._buttonsorder);
- //BA.debugLineNum = 28;BA.debugLine="End Sub";
+ //BA.debugLineNum = 29;BA.debugLine="End Sub";
 return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _close(RemoteObject __ref,RemoteObject _result) throws Exception{
 try {
-		Debug.PushSubsStack("Close (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,229);
+		Debug.PushSubsStack("Close (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,230);
 if (RapidSub.canDelegate("close")) { return __ref.runUserSub(false, "b4xdialog","close", __ref, _result);}
 Debug.locals.put("Result", _result);
- BA.debugLineNum = 229;BA.debugLine="Public Sub Close (Result As Int) As Boolean";
+ BA.debugLineNum = 230;BA.debugLine="Public Sub Close (Result As Int) As Boolean";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 230;BA.debugLine="If getVisible Then";
+ BA.debugLineNum = 231;BA.debugLine="If getVisible Then";
 Debug.JustUpdateDeviceLine();
 if (__ref.runClassMethod (cloyd.blink.b4xdialog.class, "_getvisible" /*RemoteObject*/ ).<Boolean>get().booleanValue()) { 
- BA.debugLineNum = 231;BA.debugLine="CallSubDelayed2(Me, \"CloseMessage\", Result)";
+ BA.debugLineNum = 232;BA.debugLine="CallSubDelayed2(Me, \"CloseMessage\", Result)";
 Debug.JustUpdateDeviceLine();
 b4xdialog.__c.runVoidMethod ("CallSubDelayed2",__ref.getField(false, "ba"),(Object)(__ref),(Object)(BA.ObjectToString("CloseMessage")),(Object)((_result)));
- BA.debugLineNum = 232;BA.debugLine="Return True";
+ BA.debugLineNum = 233;BA.debugLine="Return True";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return b4xdialog.__c.getField(true,"True");
  };
- BA.debugLineNum = 234;BA.debugLine="Return False";
+ BA.debugLineNum = 235;BA.debugLine="Return False";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return b4xdialog.__c.getField(true,"False");
- BA.debugLineNum = 235;BA.debugLine="End Sub";
+ BA.debugLineNum = 236;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable(false);
 }
@@ -347,58 +349,58 @@ finally {
 		}}
 public static RemoteObject  _createbutton(RemoteObject __ref,RemoteObject _text,RemoteObject _code) throws Exception{
 try {
-		Debug.PushSubsStack("CreateButton (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,185);
+		Debug.PushSubsStack("CreateButton (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,186);
 if (RapidSub.canDelegate("createbutton")) { return __ref.runUserSub(false, "b4xdialog","createbutton", __ref, _text, _code);}
 RemoteObject _btn = RemoteObject.declareNull("anywheresoftware.b4j.objects.ButtonWrapper");
 RemoteObject _xbtn = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
 RemoteObject _numberofbuttons = RemoteObject.createImmutable(0);
 Debug.locals.put("Text", _text);
 Debug.locals.put("Code", _code);
- BA.debugLineNum = 185;BA.debugLine="Private Sub CreateButton (Text As Object, Code As";
+ BA.debugLineNum = 186;BA.debugLine="Private Sub CreateButton (Text As Object, Code As";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 186;BA.debugLine="If Text = \"\" Then Return";
+ BA.debugLineNum = 187;BA.debugLine="If Text = \"\" Then Return";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("=",_text,RemoteObject.createImmutable(("")))) { 
 Debug.CheckDeviceExceptions();if (true) return RemoteObject.createImmutable("");};
- BA.debugLineNum = 188;BA.debugLine="Dim btn As Button";
+ BA.debugLineNum = 189;BA.debugLine="Dim btn As Button";
 Debug.JustUpdateDeviceLine();
 _btn = RemoteObject.createNew ("anywheresoftware.b4j.objects.ButtonWrapper");Debug.locals.put("btn", _btn);
- BA.debugLineNum = 192;BA.debugLine="btn.Initialize(\"Button\")";
+ BA.debugLineNum = 193;BA.debugLine="btn.Initialize(\"Button\")";
 Debug.JustUpdateDeviceLine();
 _btn.runVoidMethod ("Initialize",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("Button")));
- BA.debugLineNum = 193;BA.debugLine="Dim xbtn As B4XView = btn";
+ BA.debugLineNum = 194;BA.debugLine="Dim xbtn As B4XView = btn";
 Debug.JustUpdateDeviceLine();
 _xbtn = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 _xbtn.setObject(_btn.getObject());Debug.locals.put("xbtn", _xbtn);
- BA.debugLineNum = 194;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xbtn, Text)";
+ BA.debugLineNum = 195;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xbtn, Text)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_internalsettextorcsbuildertolabel" /*RemoteObject*/ ,(Object)(_xbtn),(Object)(_text));
- BA.debugLineNum = 195;BA.debugLine="xbtn.Tag = Code";
+ BA.debugLineNum = 196;BA.debugLine="xbtn.Tag = Code";
 Debug.JustUpdateDeviceLine();
 _xbtn.runMethod(false,"setTag",(_code));
- BA.debugLineNum = 196;BA.debugLine="xbtn.SetColorAndBorder(ButtonsColor, 0dip, Border";
+ BA.debugLineNum = 197;BA.debugLine="xbtn.SetColorAndBorder(ButtonsColor, 0dip, Border";
 Debug.JustUpdateDeviceLine();
 _xbtn.runVoidMethod ("SetColorAndBorder",(Object)(__ref.getField(true,"_buttonscolor" /*RemoteObject*/ )),(Object)(BA.numberCast(double.class, b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 0))))),(Object)(__ref.getField(true,"_bordercolor" /*RemoteObject*/ )),(Object)(BA.numberCast(double.class, b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 5))))));
- BA.debugLineNum = 197;BA.debugLine="xbtn.SetTextAlignment(\"CENTER\", \"CENTER\")";
+ BA.debugLineNum = 198;BA.debugLine="xbtn.SetTextAlignment(\"CENTER\", \"CENTER\")";
 Debug.JustUpdateDeviceLine();
 _xbtn.runVoidMethod ("SetTextAlignment",(Object)(BA.ObjectToString("CENTER")),(Object)(RemoteObject.createImmutable("CENTER")));
- BA.debugLineNum = 198;BA.debugLine="xbtn.TextColor = ButtonsTextColor";
+ BA.debugLineNum = 199;BA.debugLine="xbtn.TextColor = ButtonsTextColor";
 Debug.JustUpdateDeviceLine();
 _xbtn.runMethod(true,"setTextColor",__ref.getField(true,"_buttonstextcolor" /*RemoteObject*/ ));
- BA.debugLineNum = 199;BA.debugLine="xbtn.Font = ButtonsFont";
+ BA.debugLineNum = 200;BA.debugLine="xbtn.Font = ButtonsFont";
 Debug.JustUpdateDeviceLine();
 _xbtn.runMethod(false,"setFont",__ref.getField(false,"_buttonsfont" /*RemoteObject*/ ));
- BA.debugLineNum = 200;BA.debugLine="Dim numberOfButtons As Int = Base.NumberOfViews '";
+ BA.debugLineNum = 201;BA.debugLine="Dim numberOfButtons As Int = Base.NumberOfViews '";
 Debug.JustUpdateDeviceLine();
 _numberofbuttons = __ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getNumberOfViews");Debug.locals.put("numberOfButtons", _numberofbuttons);Debug.locals.put("numberOfButtons", _numberofbuttons);
- BA.debugLineNum = 201;BA.debugLine="Base.AddView(xbtn, Base.Width - 4dip - numberOfBu";
+ BA.debugLineNum = 202;BA.debugLine="Base.AddView(xbtn, Base.Width - 4dip - numberOfBu";
 Debug.JustUpdateDeviceLine();
-__ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((_xbtn.getObject())),(Object)(RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getWidth"),b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 4))),_numberofbuttons,(RemoteObject.solve(new RemoteObject[] {__ref.getField(true,"_buttonwidth" /*RemoteObject*/ ),b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 5)))}, "+",1, 1)),__ref.getField(true,"_buttonwidth" /*RemoteObject*/ )}, "--*-",3, 0)),(Object)(RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getHeight"),__ref.getField(true,"_buttonheight" /*RemoteObject*/ ),b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 4)))}, "--",2, 0)),(Object)(BA.numberCast(double.class, __ref.getField(true,"_buttonwidth" /*RemoteObject*/ ))),(Object)(BA.numberCast(double.class, __ref.getField(true,"_buttonheight" /*RemoteObject*/ ))));
- BA.debugLineNum = 203;BA.debugLine="If Code = xui.DialogResponse_Cancel Then xbtn.Req";
+__ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((_xbtn.getObject())),(Object)(RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getWidth"),b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 4))),_numberofbuttons,(RemoteObject.solve(new RemoteObject[] {__ref.getField(true,"_buttonwidth" /*RemoteObject*/ ),b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 5)))}, "+",1, 1)),__ref.getField(true,"_buttonwidth" /*RemoteObject*/ )}, "--*-",3, 0)),(Object)(RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getHeight"),__ref.getField(true,"_buttonsheight" /*RemoteObject*/ ),b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 4)))}, "--",2, 0)),(Object)(BA.numberCast(double.class, __ref.getField(true,"_buttonwidth" /*RemoteObject*/ ))),(Object)(BA.numberCast(double.class, __ref.getField(true,"_buttonsheight" /*RemoteObject*/ ))));
+ BA.debugLineNum = 204;BA.debugLine="If Code = xui.DialogResponse_Cancel Then xbtn.Req";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("=",_code,BA.numberCast(double.class, __ref.getField(false,"_xui" /*RemoteObject*/ ).getField(true,"DialogResponse_Cancel")))) { 
 _xbtn.runVoidMethod ("RequestFocus");};
- BA.debugLineNum = 204;BA.debugLine="End Sub";
+ BA.debugLineNum = 205;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -410,13 +412,13 @@ finally {
 		}}
 public static RemoteObject  _getbutton(RemoteObject __ref,RemoteObject _resultcode) throws Exception{
 try {
-		Debug.PushSubsStack("GetButton (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,207);
+		Debug.PushSubsStack("GetButton (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,208);
 if (RapidSub.canDelegate("getbutton")) { return __ref.runUserSub(false, "b4xdialog","getbutton", __ref, _resultcode);}
 RemoteObject _b = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
 Debug.locals.put("ResultCode", _resultcode);
- BA.debugLineNum = 207;BA.debugLine="Public Sub GetButton (ResultCode As Int) As B4XVie";
+ BA.debugLineNum = 208;BA.debugLine="Public Sub GetButton (ResultCode As Int) As B4XVie";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 208;BA.debugLine="For Each b As B4XView In Base.GetAllViewsRecursiv";
+ BA.debugLineNum = 209;BA.debugLine="For Each b As B4XView In Base.GetAllViewsRecursiv";
 Debug.JustUpdateDeviceLine();
 _b = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 {
@@ -427,17 +429,17 @@ final int groupLen1 = group1.runMethod(true,"getSize").<Integer>get()
 for (; index1 < groupLen1;index1++){
 _b.setObject(group1.runMethod(false,"Get",index1));
 Debug.locals.put("b", _b);
- BA.debugLineNum = 209;BA.debugLine="If b.Tag = ResultCode Then Return b";
+ BA.debugLineNum = 210;BA.debugLine="If b.Tag = ResultCode Then Return b";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("=",_b.runMethod(false,"getTag"),(_resultcode))) { 
 Debug.CheckDeviceExceptions();if (true) return _b;};
  }
 }Debug.locals.put("b", _b);
 ;
- BA.debugLineNum = 211;BA.debugLine="Return Null";
+ BA.debugLineNum = 212;BA.debugLine="Return Null";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return RemoteObject.declareNull("anywheresoftware.b4a.AbsObjectWrapper").runMethod(false, "ConvertToWrapper", RemoteObject.createNew("anywheresoftware.b4a.objects.B4XViewWrapper"), b4xdialog.__c.getField(false,"Null"));
- BA.debugLineNum = 212;BA.debugLine="End Sub";
+ BA.debugLineNum = 213;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable(null);
 }
@@ -449,14 +451,14 @@ finally {
 		}}
 public static RemoteObject  _getvisible(RemoteObject __ref) throws Exception{
 try {
-		Debug.PushSubsStack("getVisible (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,181);
+		Debug.PushSubsStack("getVisible (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,182);
 if (RapidSub.canDelegate("getvisible")) { return __ref.runUserSub(false, "b4xdialog","getvisible", __ref);}
- BA.debugLineNum = 181;BA.debugLine="Public Sub getVisible As Boolean";
+ BA.debugLineNum = 182;BA.debugLine="Public Sub getVisible As Boolean";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 182;BA.debugLine="Return Background.IsInitialized And Background.Pa";
+ BA.debugLineNum = 183;BA.debugLine="Return Background.IsInitialized And Background.Pa";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) return BA.ObjectToBoolean(RemoteObject.solveBoolean(".",__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"IsInitialized")) && RemoteObject.solveBoolean(".",__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(false,"getParent").runMethod(true,"IsInitialized")));
- BA.debugLineNum = 183;BA.debugLine="End Sub";
+ BA.debugLineNum = 184;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable(false);
 }
@@ -468,64 +470,64 @@ finally {
 		}}
 public static RemoteObject  _initialize(RemoteObject __ref,RemoteObject _ba,RemoteObject _parent) throws Exception{
 try {
-		Debug.PushSubsStack("Initialize (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,30);
+		Debug.PushSubsStack("Initialize (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,31);
 if (RapidSub.canDelegate("initialize")) { return __ref.runUserSub(false, "b4xdialog","initialize", __ref, _ba, _parent);}
 __ref.runVoidMethodAndSync("innerInitializeHelper", _ba);
 RemoteObject _node = RemoteObject.declareNull("anywheresoftware.b4j.object.JavaObject");
 RemoteObject _stylesheets = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
 Debug.locals.put("ba", _ba);
 Debug.locals.put("Parent", _parent);
- BA.debugLineNum = 30;BA.debugLine="Public Sub Initialize (Parent As B4XView)";
+ BA.debugLineNum = 31;BA.debugLine="Public Sub Initialize (Parent As B4XView)";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 31;BA.debugLine="BlurBackground = False";
+ BA.debugLineNum = 32;BA.debugLine="BlurBackground = False";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_blurbackground" /*RemoteObject*/ ,b4xdialog.__c.getField(true,"False"));
- BA.debugLineNum = 32;BA.debugLine="If xui.IsB4i Then";
+ BA.debugLineNum = 33;BA.debugLine="If xui.IsB4i Then";
 Debug.JustUpdateDeviceLine();
 if (__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(true,"getIsB4i").<Boolean>get().booleanValue()) { 
- BA.debugLineNum = 33;BA.debugLine="BlurReduceScale = 3";
+ BA.debugLineNum = 34;BA.debugLine="BlurReduceScale = 3";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_blurreducescale" /*RemoteObject*/ ,BA.numberCast(int.class, 3));
  }else 
-{ BA.debugLineNum = 34;BA.debugLine="Else If xui.IsB4J Then";
+{ BA.debugLineNum = 35;BA.debugLine="Else If xui.IsB4J Then";
 Debug.JustUpdateDeviceLine();
 if (__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(true,"getIsB4J").<Boolean>get().booleanValue()) { 
- BA.debugLineNum = 35;BA.debugLine="BlurReduceScale = 1";
+ BA.debugLineNum = 36;BA.debugLine="BlurReduceScale = 1";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_blurreducescale" /*RemoteObject*/ ,BA.numberCast(int.class, 1));
  }else 
-{ BA.debugLineNum = 36;BA.debugLine="Else if xui.IsB4A Then";
+{ BA.debugLineNum = 37;BA.debugLine="Else if xui.IsB4A Then";
 Debug.JustUpdateDeviceLine();
 if (__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(true,"getIsB4A").<Boolean>get().booleanValue()) { 
- BA.debugLineNum = 37;BA.debugLine="BlurReduceScale = 3";
+ BA.debugLineNum = 38;BA.debugLine="BlurReduceScale = 3";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_blurreducescale" /*RemoteObject*/ ,BA.numberCast(int.class, 3));
  }}}
 ;
- BA.debugLineNum = 39;BA.debugLine="mParent = Parent";
+ BA.debugLineNum = 40;BA.debugLine="mParent = Parent";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_mparent" /*RemoteObject*/ ,_parent);
- BA.debugLineNum = 41;BA.debugLine="Dim node As JavaObject = mParent";
+ BA.debugLineNum = 42;BA.debugLine="Dim node As JavaObject = mParent";
 Debug.JustUpdateDeviceLine();
 _node = RemoteObject.createNew ("anywheresoftware.b4j.object.JavaObject");
 _node.setObject(__ref.getField(false,"_mparent" /*RemoteObject*/ ).getObject());Debug.locals.put("node", _node);
- BA.debugLineNum = 42;BA.debugLine="Dim stylesheets As List = node.RunMethodJO(\"getSc";
+ BA.debugLineNum = 43;BA.debugLine="Dim stylesheets As List = node.RunMethodJO(\"getSc";
 Debug.JustUpdateDeviceLine();
 _stylesheets = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.List");
 _stylesheets.setObject(_node.runMethod(false,"RunMethodJO",(Object)(BA.ObjectToString("getScene")),(Object)((b4xdialog.__c.getField(false,"Null")))).runMethod(false,"RunMethod",(Object)(BA.ObjectToString("getStylesheets")),(Object)((b4xdialog.__c.getField(false,"Null")))));Debug.locals.put("stylesheets", _stylesheets);
- BA.debugLineNum = 43;BA.debugLine="stylesheets.Add(File.GetUri(File.DirAssets, \"Dial";
+ BA.debugLineNum = 44;BA.debugLine="stylesheets.Add(File.GetUri(File.DirAssets, \"Dial";
 Debug.JustUpdateDeviceLine();
 _stylesheets.runVoidMethod ("Add",(Object)((b4xdialog.__c.getField(false,"File").runMethod(true,"GetUri",(Object)(b4xdialog.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(RemoteObject.createImmutable("Dialog.css"))))));
- BA.debugLineNum = 45;BA.debugLine="TitleBarFont = xui.CreateDefaultBoldFont(16)";
+ BA.debugLineNum = 46;BA.debugLine="TitleBarFont = xui.CreateDefaultBoldFont(16)";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_titlebarfont" /*RemoteObject*/ ,__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreateDefaultBoldFont",(Object)(BA.numberCast(float.class, 16))));
- BA.debugLineNum = 46;BA.debugLine="ButtonsFont = xui.CreateDefaultBoldFont(15)";
+ BA.debugLineNum = 47;BA.debugLine="ButtonsFont = xui.CreateDefaultBoldFont(15)";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_buttonsfont" /*RemoteObject*/ ,__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreateDefaultBoldFont",(Object)(BA.numberCast(float.class, 15))));
- BA.debugLineNum = 47;BA.debugLine="TitleBarTextColor = xui.Color_White";
+ BA.debugLineNum = 48;BA.debugLine="TitleBarTextColor = xui.Color_White";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_titlebartextcolor" /*RemoteObject*/ ,__ref.getField(false,"_xui" /*RemoteObject*/ ).getField(true,"Color_White"));
- BA.debugLineNum = 48;BA.debugLine="End Sub";
+ BA.debugLineNum = 49;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -537,50 +539,50 @@ finally {
 		}}
 public static RemoteObject  _internaladdstubtoclvifneeded(RemoteObject __ref,RemoteObject _customlistview1,RemoteObject _color) throws Exception{
 try {
-		Debug.PushSubsStack("InternalAddStubToCLVIfNeeded (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,331);
+		Debug.PushSubsStack("InternalAddStubToCLVIfNeeded (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,332);
 if (RapidSub.canDelegate("internaladdstubtoclvifneeded")) { return __ref.runUserSub(false, "b4xdialog","internaladdstubtoclvifneeded", __ref, _customlistview1, _color);}
 RemoteObject _lastitem = RemoteObject.declareNull("b4j.example.customlistview._clvitem");
 RemoteObject _p = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
 RemoteObject _height = RemoteObject.createImmutable(0);
 Debug.locals.put("CustomListView1", _customlistview1);
 Debug.locals.put("Color", _color);
- BA.debugLineNum = 331;BA.debugLine="Public Sub InternalAddStubToCLVIfNeeded(CustomList";
+ BA.debugLineNum = 332;BA.debugLine="Public Sub InternalAddStubToCLVIfNeeded(CustomList";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 332;BA.debugLine="If CustomListView1.Size = 0 Then Return";
+ BA.debugLineNum = 333;BA.debugLine="If CustomListView1.Size = 0 Then Return";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("=",_customlistview1.runMethod(true,"_getsize"),BA.numberCast(double.class, 0))) { 
 Debug.CheckDeviceExceptions();if (true) return RemoteObject.createImmutable("");};
- BA.debugLineNum = 333;BA.debugLine="Dim LastItem As CLVItem = CustomListView1.GetRawL";
+ BA.debugLineNum = 334;BA.debugLine="Dim LastItem As CLVItem = CustomListView1.GetRawL";
 Debug.JustUpdateDeviceLine();
 _lastitem = _customlistview1.runMethod(false,"_getrawlistitem",(Object)(RemoteObject.solve(new RemoteObject[] {_customlistview1.runMethod(true,"_getsize"),RemoteObject.createImmutable(1)}, "-",1, 1)));Debug.locals.put("LastItem", _lastitem);Debug.locals.put("LastItem", _lastitem);
- BA.debugLineNum = 334;BA.debugLine="If LastItem.Offset + LastItem.Panel.Height < Cust";
+ BA.debugLineNum = 335;BA.debugLine="If LastItem.Offset + LastItem.Panel.Height < Cust";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("<",RemoteObject.solve(new RemoteObject[] {_lastitem.getField(true,"Offset"),_lastitem.getField(false,"Panel").runMethod(true,"getHeight")}, "+",1, 0),_customlistview1.runMethod(false,"_asview").runMethod(true,"getHeight"))) { 
- BA.debugLineNum = 336;BA.debugLine="Dim p As B4XView = xui.CreatePanel(\"stub\")";
+ BA.debugLineNum = 337;BA.debugLine="Dim p As B4XView = xui.CreatePanel(\"stub\")";
 Debug.JustUpdateDeviceLine();
 _p = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 _p = __ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreatePanel",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("stub")));Debug.locals.put("p", _p);Debug.locals.put("p", _p);
- BA.debugLineNum = 337;BA.debugLine="p.Color = Color";
+ BA.debugLineNum = 338;BA.debugLine="p.Color = Color";
 Debug.JustUpdateDeviceLine();
 _p.runMethod(true,"setColor",_color);
- BA.debugLineNum = 338;BA.debugLine="Dim Height As Int = CustomListView1.AsView.Heigh";
+ BA.debugLineNum = 339;BA.debugLine="Dim Height As Int = CustomListView1.AsView.Heigh";
 Debug.JustUpdateDeviceLine();
 _height = BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_customlistview1.runMethod(false,"_asview").runMethod(true,"getHeight"),_lastitem.getField(true,"Offset"),_lastitem.getField(false,"Panel").runMethod(true,"getHeight"),b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 3)))}, "---",3, 0));Debug.locals.put("Height", _height);Debug.locals.put("Height", _height);
- BA.debugLineNum = 339;BA.debugLine="If xui.IsB4J Then Height = Height + 5";
+ BA.debugLineNum = 340;BA.debugLine="If xui.IsB4J Then Height = Height + 5";
 Debug.JustUpdateDeviceLine();
 if (__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(true,"getIsB4J").<Boolean>get().booleanValue()) { 
 _height = RemoteObject.solve(new RemoteObject[] {_height,RemoteObject.createImmutable(5)}, "+",1, 1);Debug.locals.put("Height", _height);};
- BA.debugLineNum = 340;BA.debugLine="p.SetLayoutAnimated(0, 0, 0, CustomListView1.AsV";
+ BA.debugLineNum = 341;BA.debugLine="p.SetLayoutAnimated(0, 0, 0, CustomListView1.AsV";
 Debug.JustUpdateDeviceLine();
 _p.runVoidMethod ("SetLayoutAnimated",(Object)(BA.numberCast(int.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(_customlistview1.runMethod(false,"_asview").runMethod(true,"getWidth")),(Object)(BA.numberCast(double.class, _height)));
- BA.debugLineNum = 341;BA.debugLine="CustomListView1.Add(p, \"\")";
+ BA.debugLineNum = 342;BA.debugLine="CustomListView1.Add(p, \"\")";
 Debug.JustUpdateDeviceLine();
 _customlistview1.runVoidMethod ("_add",(Object)(_p),(Object)((RemoteObject.createImmutable(""))));
- BA.debugLineNum = 342;BA.debugLine="CustomListView1.sv.ScrollViewContentHeight = Cus";
+ BA.debugLineNum = 343;BA.debugLine="CustomListView1.sv.ScrollViewContentHeight = Cus";
 Debug.JustUpdateDeviceLine();
 _customlistview1.getField(false,"_sv").runMethod(true,"setScrollViewContentHeight",RemoteObject.solve(new RemoteObject[] {_customlistview1.getField(false,"_sv").runMethod(true,"getScrollViewContentHeight"),_customlistview1.runMethod(true,"_getdividersize")}, "-",1, 0));
  };
- BA.debugLineNum = 344;BA.debugLine="End Sub";
+ BA.debugLineNum = 345;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -592,16 +594,16 @@ finally {
 		}}
 public static RemoteObject  _internalsettextorcsbuildertolabel(RemoteObject __ref,RemoteObject _xlbl,RemoteObject _text) throws Exception{
 try {
-		Debug.PushSubsStack("InternalSetTextOrCSBuilderToLabel (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,346);
+		Debug.PushSubsStack("InternalSetTextOrCSBuilderToLabel (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,347);
 if (RapidSub.canDelegate("internalsettextorcsbuildertolabel")) { return __ref.runUserSub(false, "b4xdialog","internalsettextorcsbuildertolabel", __ref, _xlbl, _text);}
 Debug.locals.put("xlbl", _xlbl);
 Debug.locals.put("Text", _text);
- BA.debugLineNum = 346;BA.debugLine="Public Sub InternalSetTextOrCSBuilderToLabel(xlbl";
+ BA.debugLineNum = 347;BA.debugLine="Public Sub InternalSetTextOrCSBuilderToLabel(xlbl";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 348;BA.debugLine="xlbl.Text = Text";
+ BA.debugLineNum = 349;BA.debugLine="xlbl.Text = Text";
 Debug.JustUpdateDeviceLine();
 _xlbl.runMethod(true,"setText",BA.ObjectToString(_text));
- BA.debugLineNum = 358;BA.debugLine="End Sub";
+ BA.debugLineNum = 359;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -613,34 +615,34 @@ finally {
 		}}
 public static RemoteObject  _resize(RemoteObject __ref,RemoteObject _width,RemoteObject _height) throws Exception{
 try {
-		Debug.PushSubsStack("Resize (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,253);
+		Debug.PushSubsStack("Resize (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,254);
 if (RapidSub.canDelegate("resize")) { return __ref.runUserSub(false, "b4xdialog","resize", __ref, _width, _height);}
 RemoteObject _top = RemoteObject.createImmutable(0);
 Debug.locals.put("Width", _width);
 Debug.locals.put("Height", _height);
- BA.debugLineNum = 253;BA.debugLine="Public Sub Resize (Width As Int, Height As Int)";
+ BA.debugLineNum = 254;BA.debugLine="Public Sub Resize (Width As Int, Height As Int)";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 255;BA.debugLine="Dim Top As Int = Round(Background.Height / 2 - Ba";
+ BA.debugLineNum = 256;BA.debugLine="Dim Top As Int = Round(Background.Height / 2 - Ba";
 Debug.JustUpdateDeviceLine();
 _top = BA.numberCast(int.class, b4xdialog.__c.runMethod(true,"Round",(Object)(RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getHeight"),RemoteObject.createImmutable(2),__ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getHeight"),RemoteObject.createImmutable(2)}, "/-/",1, 0))));Debug.locals.put("Top", _top);Debug.locals.put("Top", _top);
- BA.debugLineNum = 256;BA.debugLine="If PutAtTop Then Top = 20dip";
+ BA.debugLineNum = 257;BA.debugLine="If PutAtTop Then Top = 20dip";
 Debug.JustUpdateDeviceLine();
 if (__ref.getField(true,"_putattop" /*RemoteObject*/ ).<Boolean>get().booleanValue()) { 
 _top = b4xdialog.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 20)));Debug.locals.put("Top", _top);};
- BA.debugLineNum = 257;BA.debugLine="Background.SetLayoutAnimated(0, 0, 0, Width, Heig";
+ BA.debugLineNum = 258;BA.debugLine="Background.SetLayoutAnimated(0, 0, 0, Width, Heig";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runVoidMethod ("SetLayoutAnimated",(Object)(BA.numberCast(int.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, _width)),(Object)(BA.numberCast(double.class, _height)));
- BA.debugLineNum = 258;BA.debugLine="Base.SetLayoutAnimated(200, Round(Background.Widt";
+ BA.debugLineNum = 259;BA.debugLine="Base.SetLayoutAnimated(200, Round(Background.Widt";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("SetLayoutAnimated",(Object)(BA.numberCast(int.class, 200)),(Object)(BA.numberCast(double.class, b4xdialog.__c.runMethod(true,"Round",(Object)(RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getWidth"),RemoteObject.createImmutable(2),__ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getWidth"),RemoteObject.createImmutable(2)}, "/-/",1, 0))))),(Object)(BA.numberCast(double.class, _top)),(Object)(__ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getWidth")),(Object)(__ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"getHeight")));
- BA.debugLineNum = 259;BA.debugLine="If xui.IsB4J Then";
+ BA.debugLineNum = 260;BA.debugLine="If xui.IsB4J Then";
 Debug.JustUpdateDeviceLine();
 if (__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(true,"getIsB4J").<Boolean>get().booleanValue()) { 
- BA.debugLineNum = 260;BA.debugLine="UpdateBlur";
+ BA.debugLineNum = 261;BA.debugLine="UpdateBlur";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_updateblur" /*RemoteObject*/ );
  };
- BA.debugLineNum = 262;BA.debugLine="End Sub";
+ BA.debugLineNum = 263;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -652,7 +654,7 @@ finally {
 		}}
 public static RemoteObject  _setavg(RemoteObject __ref,RemoteObject _bc,RemoteObject _x,RemoteObject _y,RemoteObject _clrs,RemoteObject _temp) throws Exception{
 try {
-		Debug.PushSubsStack("SetAvg (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,317);
+		Debug.PushSubsStack("SetAvg (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,318);
 if (RapidSub.canDelegate("setavg")) { return __ref.runUserSub(false, "b4xdialog","setavg", __ref, _bc, _x, _y, _clrs, _temp);}
 RemoteObject _c = RemoteObject.declareNull("b4j.example.bitmapcreator._argbcolor");
 Debug.locals.put("bc", _bc);
@@ -660,12 +662,12 @@ Debug.locals.put("x", _x);
 Debug.locals.put("y", _y);
 Debug.locals.put("clrs", _clrs);
 Debug.locals.put("temp", _temp);
- BA.debugLineNum = 317;BA.debugLine="Private Sub SetAvg(bc As BitmapCreator, x As Int,";
+ BA.debugLineNum = 318;BA.debugLine="Private Sub SetAvg(bc As BitmapCreator, x As Int,";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 318;BA.debugLine="temp.Initialize";
+ BA.debugLineNum = 319;BA.debugLine="temp.Initialize";
 Debug.JustUpdateDeviceLine();
 _temp.runVoidMethod ("Initialize");
- BA.debugLineNum = 319;BA.debugLine="For Each c As ARGBColor In clrs";
+ BA.debugLineNum = 320;BA.debugLine="For Each c As ARGBColor In clrs";
 Debug.JustUpdateDeviceLine();
 {
 final RemoteObject group2 = _clrs;
@@ -675,34 +677,34 @@ final int groupLen2 = group2.getField(true,"length").<Integer>get()
 for (; index2 < groupLen2;index2++){
 _c = group2.getArrayElement(false,RemoteObject.createImmutable(index2));Debug.locals.put("c", _c);
 Debug.locals.put("c", _c);
- BA.debugLineNum = 320;BA.debugLine="temp.r = temp.r + c.r";
+ BA.debugLineNum = 321;BA.debugLine="temp.r = temp.r + c.r";
 Debug.JustUpdateDeviceLine();
 _temp.setField ("r",RemoteObject.solve(new RemoteObject[] {_temp.getField(true,"r"),_c.getField(true,"r")}, "+",1, 1));
- BA.debugLineNum = 321;BA.debugLine="temp.g = temp.g + c.g";
+ BA.debugLineNum = 322;BA.debugLine="temp.g = temp.g + c.g";
 Debug.JustUpdateDeviceLine();
 _temp.setField ("g",RemoteObject.solve(new RemoteObject[] {_temp.getField(true,"g"),_c.getField(true,"g")}, "+",1, 1));
- BA.debugLineNum = 322;BA.debugLine="temp.b = temp.b + c.b";
+ BA.debugLineNum = 323;BA.debugLine="temp.b = temp.b + c.b";
 Debug.JustUpdateDeviceLine();
 _temp.setField ("b",RemoteObject.solve(new RemoteObject[] {_temp.getField(true,"b"),_c.getField(true,"b")}, "+",1, 1));
  }
 }Debug.locals.put("c", _c);
 ;
- BA.debugLineNum = 324;BA.debugLine="temp.a = 255";
+ BA.debugLineNum = 325;BA.debugLine="temp.a = 255";
 Debug.JustUpdateDeviceLine();
 _temp.setField ("a",BA.numberCast(int.class, 255));
- BA.debugLineNum = 325;BA.debugLine="temp.r = temp.r / 3";
+ BA.debugLineNum = 326;BA.debugLine="temp.r = temp.r / 3";
 Debug.JustUpdateDeviceLine();
 _temp.setField ("r",BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_temp.getField(true,"r"),RemoteObject.createImmutable(3)}, "/",0, 0)));
- BA.debugLineNum = 326;BA.debugLine="temp.g = temp.g / 3";
+ BA.debugLineNum = 327;BA.debugLine="temp.g = temp.g / 3";
 Debug.JustUpdateDeviceLine();
 _temp.setField ("g",BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_temp.getField(true,"g"),RemoteObject.createImmutable(3)}, "/",0, 0)));
- BA.debugLineNum = 327;BA.debugLine="temp.b = temp.b / 3";
+ BA.debugLineNum = 328;BA.debugLine="temp.b = temp.b / 3";
 Debug.JustUpdateDeviceLine();
 _temp.setField ("b",BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_temp.getField(true,"b"),RemoteObject.createImmutable(3)}, "/",0, 0)));
- BA.debugLineNum = 328;BA.debugLine="bc.SetARGB(x, y, temp)";
+ BA.debugLineNum = 329;BA.debugLine="bc.SetARGB(x, y, temp)";
 Debug.JustUpdateDeviceLine();
 _bc.runVoidMethod ("_setargb",(Object)(_x),(Object)(_y),(Object)(_temp));
- BA.debugLineNum = 329;BA.debugLine="End Sub";
+ BA.debugLineNum = 330;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -714,31 +716,31 @@ finally {
 		}}
 public static RemoteObject  _setbuttonstate(RemoteObject __ref,RemoteObject _resultcode,RemoteObject _enabled) throws Exception{
 try {
-		Debug.PushSubsStack("SetButtonState (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,215);
+		Debug.PushSubsStack("SetButtonState (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,216);
 if (RapidSub.canDelegate("setbuttonstate")) { return __ref.runUserSub(false, "b4xdialog","setbuttonstate", __ref, _resultcode, _enabled);}
 RemoteObject _b = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
 Debug.locals.put("ResultCode", _resultcode);
 Debug.locals.put("Enabled", _enabled);
- BA.debugLineNum = 215;BA.debugLine="Public Sub SetButtonState (ResultCode As Int, Enab";
+ BA.debugLineNum = 216;BA.debugLine="Public Sub SetButtonState (ResultCode As Int, Enab";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 216;BA.debugLine="Dim b As B4XView = GetButton(ResultCode)";
+ BA.debugLineNum = 217;BA.debugLine="Dim b As B4XView = GetButton(ResultCode)";
 Debug.JustUpdateDeviceLine();
 _b = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 _b = __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_getbutton" /*RemoteObject*/ ,(Object)(_resultcode));Debug.locals.put("b", _b);Debug.locals.put("b", _b);
- BA.debugLineNum = 217;BA.debugLine="If b.IsInitialized Then";
+ BA.debugLineNum = 218;BA.debugLine="If b.IsInitialized Then";
 Debug.JustUpdateDeviceLine();
 if (_b.runMethod(true,"IsInitialized").<Boolean>get().booleanValue()) { 
- BA.debugLineNum = 218;BA.debugLine="b.Enabled = Enabled";
+ BA.debugLineNum = 219;BA.debugLine="b.Enabled = Enabled";
 Debug.JustUpdateDeviceLine();
 _b.runMethod(true,"setEnabled",_enabled);
- BA.debugLineNum = 219;BA.debugLine="If Enabled Then b.TextColor = ButtonsTextColor E";
+ BA.debugLineNum = 220;BA.debugLine="If Enabled Then b.TextColor = ButtonsTextColor E";
 Debug.JustUpdateDeviceLine();
 if (_enabled.<Boolean>get().booleanValue()) { 
 _b.runMethod(true,"setTextColor",__ref.getField(true,"_buttonstextcolor" /*RemoteObject*/ ));}
 else {
 _b.runMethod(true,"setTextColor",__ref.getField(true,"_buttonstextcolordisabled" /*RemoteObject*/ ));};
  };
- BA.debugLineNum = 221;BA.debugLine="End Sub";
+ BA.debugLineNum = 222;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -750,7 +752,7 @@ finally {
 		}}
 public static RemoteObject  _show(RemoteObject __ref,RemoteObject _text,RemoteObject _yes,RemoteObject _no,RemoteObject _cancel) throws Exception{
 try {
-		Debug.PushSubsStack("Show (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,67);
+		Debug.PushSubsStack("Show (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,68);
 if (RapidSub.canDelegate("show")) { return __ref.runUserSub(false, "b4xdialog","show", __ref, _text, _yes, _no, _cancel);}
 ResumableSub_Show rsub = new ResumableSub_Show(null,__ref,_text,_yes,_no,_cancel);
 rsub.remoteResumableSub = anywheresoftware.b4a.pc.PCResumableSub.createDebugResumeSubForFilter();
@@ -787,7 +789,7 @@ RemoteObject _result = RemoteObject.createImmutable(0);
 @Override
 public void resume(BA ba, RemoteObject result) throws Exception{
 try {
-		Debug.PushSubsStack("Show (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,67);
+		Debug.PushSubsStack("Show (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,68);
 Debug.locals = rsLocals;Debug.currentSubFrame.locals = rsLocals;
 
     while (true) {
@@ -803,44 +805,44 @@ Debug.locals.put("Text", _text);
 Debug.locals.put("Yes", _yes);
 Debug.locals.put("No", _no);
 Debug.locals.put("Cancel", _cancel);
- BA.debugLineNum = 68;BA.debugLine="Dim p As B4XView";
+ BA.debugLineNum = 69;BA.debugLine="Dim p As B4XView";
 Debug.JustUpdateDeviceLine();
 _p = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");Debug.locals.put("p", _p);
- BA.debugLineNum = 69;BA.debugLine="p = xui.CreatePanel(\"\")";
+ BA.debugLineNum = 70;BA.debugLine="p = xui.CreatePanel(\"\")";
 Debug.JustUpdateDeviceLine();
 _p = __ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreatePanel",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("")));Debug.locals.put("p", _p);
- BA.debugLineNum = 70;BA.debugLine="p.SetLayoutAnimated(0, 0, 0, 300dip, 100dip)";
+ BA.debugLineNum = 71;BA.debugLine="p.SetLayoutAnimated(0, 0, 0, 300dip, 100dip)";
 Debug.JustUpdateDeviceLine();
 _p.runVoidMethod ("SetLayoutAnimated",(Object)(BA.numberCast(int.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 300))))),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 100))))));
- BA.debugLineNum = 71;BA.debugLine="Dim lbl As Label";
+ BA.debugLineNum = 72;BA.debugLine="Dim lbl As Label";
 Debug.JustUpdateDeviceLine();
 _lbl = RemoteObject.createNew ("anywheresoftware.b4j.objects.LabelWrapper");Debug.locals.put("lbl", _lbl);
- BA.debugLineNum = 72;BA.debugLine="lbl.Initialize(\"\")";
+ BA.debugLineNum = 73;BA.debugLine="lbl.Initialize(\"\")";
 Debug.JustUpdateDeviceLine();
 _lbl.runVoidMethod ("Initialize",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("")));
- BA.debugLineNum = 74;BA.debugLine="lbl.WrapText = True";
+ BA.debugLineNum = 75;BA.debugLine="lbl.WrapText = True";
 Debug.JustUpdateDeviceLine();
 _lbl.runMethod(true,"setWrapText",parent.__c.getField(true,"True"));
- BA.debugLineNum = 80;BA.debugLine="Dim xlbl As B4XView = lbl";
+ BA.debugLineNum = 81;BA.debugLine="Dim xlbl As B4XView = lbl";
 Debug.JustUpdateDeviceLine();
 _xlbl = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 _xlbl.setObject(_lbl.getObject());Debug.locals.put("xlbl", _xlbl);
- BA.debugLineNum = 81;BA.debugLine="p.AddView(xlbl, 5dip, 0, p.Width - 10dip, p.Heigh";
+ BA.debugLineNum = 82;BA.debugLine="p.AddView(xlbl, 5dip, 0, p.Width - 10dip, p.Heigh";
 Debug.JustUpdateDeviceLine();
 _p.runVoidMethod ("AddView",(Object)((_xlbl.getObject())),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 5))))),(Object)(BA.numberCast(double.class, 0)),(Object)(RemoteObject.solve(new RemoteObject[] {_p.runMethod(true,"getWidth"),parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 10)))}, "-",1, 0)),(Object)(_p.runMethod(true,"getHeight")));
- BA.debugLineNum = 82;BA.debugLine="xlbl.TextColor = xui.Color_White";
+ BA.debugLineNum = 83;BA.debugLine="xlbl.TextColor = xui.Color_White";
 Debug.JustUpdateDeviceLine();
 _xlbl.runMethod(true,"setTextColor",__ref.getField(false,"_xui" /*RemoteObject*/ ).getField(true,"Color_White"));
- BA.debugLineNum = 83;BA.debugLine="xlbl.Font = TitleBarFont";
+ BA.debugLineNum = 84;BA.debugLine="xlbl.Font = TitleBarFont";
 Debug.JustUpdateDeviceLine();
 _xlbl.runMethod(false,"setFont",__ref.getField(false,"_titlebarfont" /*RemoteObject*/ ));
- BA.debugLineNum = 84;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xlbl, Text)";
+ BA.debugLineNum = 85;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xlbl, Text)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_internalsettextorcsbuildertolabel" /*RemoteObject*/ ,(Object)(_xlbl),(Object)(_text));
- BA.debugLineNum = 85;BA.debugLine="xlbl.SetTextAlignment(\"CENTER\", \"LEFT\")";
+ BA.debugLineNum = 86;BA.debugLine="xlbl.SetTextAlignment(\"CENTER\", \"LEFT\")";
 Debug.JustUpdateDeviceLine();
 _xlbl.runVoidMethod ("SetTextAlignment",(Object)(BA.ObjectToString("CENTER")),(Object)(RemoteObject.createImmutable("LEFT")));
- BA.debugLineNum = 86;BA.debugLine="Wait For (ShowCustom(p, Yes, No, Cancel)) Complet";
+ BA.debugLineNum = 87;BA.debugLine="Wait For (ShowCustom(p, Yes, No, Cancel)) Complet";
 Debug.JustUpdateDeviceLine();
 parent.__c.runVoidMethod ("WaitFor","complete", __ref.getField(false, "ba"), anywheresoftware.b4a.pc.PCResumableSub.createDebugResumeSub(this, "b4xdialog", "show"), __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_showcustom" /*RemoteObject*/ ,(Object)(_p),(Object)(_yes),(Object)(_no),(Object)(_cancel)));
 this.state = 1;
@@ -850,11 +852,11 @@ case 1:
 this.state = -1;
 _result = (RemoteObject) result.getArrayElement(true,RemoteObject.createImmutable(1));Debug.locals.put("Result", _result);
 ;
- BA.debugLineNum = 87;BA.debugLine="Return Result";
+ BA.debugLineNum = 88;BA.debugLine="Return Result";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) {
 parent.__c.runVoidMethod ("ReturnFromResumableSub",this.remoteResumableSub,(_result));return;};
- BA.debugLineNum = 88;BA.debugLine="End Sub";
+ BA.debugLineNum = 89;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -872,7 +874,7 @@ public static void  _complete(RemoteObject __ref,RemoteObject _result) throws Ex
 }
 public static RemoteObject  _showcustom(RemoteObject __ref,RemoteObject _content,RemoteObject _yes,RemoteObject _no,RemoteObject _cancel) throws Exception{
 try {
-		Debug.PushSubsStack("ShowCustom (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,90);
+		Debug.PushSubsStack("ShowCustom (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,91);
 if (RapidSub.canDelegate("showcustom")) { return __ref.runUserSub(false, "b4xdialog","showcustom", __ref, _content, _yes, _no, _cancel);}
 ResumableSub_ShowCustom rsub = new ResumableSub_ShowCustom(null,__ref,_content,_yes,_no,_cancel);
 rsub.remoteResumableSub = anywheresoftware.b4a.pc.PCResumableSub.createDebugResumeSubForFilter();
@@ -904,7 +906,7 @@ RemoteObject _cancel;
 RemoteObject _v = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
 RemoteObject _iv = RemoteObject.declareNull("anywheresoftware.b4j.objects.ImageViewWrapper");
 RemoteObject _includetitle = RemoteObject.createImmutable(false);
-RemoteObject _titlebarheight = RemoteObject.createImmutable(0);
+RemoteObject _temptitlebarheight = RemoteObject.createImmutable(0);
 RemoteObject _height = RemoteObject.createImmutable(0);
 RemoteObject _width = RemoteObject.createImmutable(0);
 RemoteObject _top = RemoteObject.createImmutable(0);
@@ -929,7 +931,7 @@ int groupLen75;
 @Override
 public void resume(BA ba, RemoteObject result) throws Exception{
 try {
-		Debug.PushSubsStack("ShowCustom (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,90);
+		Debug.PushSubsStack("ShowCustom (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,91);
 Debug.locals = rsLocals;Debug.currentSubFrame.locals = rsLocals;
 
     while (true) {
@@ -945,7 +947,7 @@ Debug.locals.put("Content", _content);
 Debug.locals.put("Yes", _yes);
 Debug.locals.put("No", _no);
 Debug.locals.put("Cancel", _cancel);
- BA.debugLineNum = 91;BA.debugLine="For Each v As B4XView In mParent.GetAllViewsRecur";
+ BA.debugLineNum = 92;BA.debugLine="For Each v As B4XView In mParent.GetAllViewsRecur";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -978,7 +980,7 @@ if (true) break;
 case 3:
 //C
 this.state = 4;
- BA.debugLineNum = 92;BA.debugLine="If v.Tag <> Null And v.Tag = \"b4xdialog_backgrou";
+ BA.debugLineNum = 93;BA.debugLine="If v.Tag <> Null And v.Tag = \"b4xdialog_backgrou";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -992,10 +994,10 @@ this.state = 6;
 case 6:
 //C
 this.state = 7;
- BA.debugLineNum = 93;BA.debugLine="v.RemoveViewFromParent";
+ BA.debugLineNum = 94;BA.debugLine="v.RemoveViewFromParent";
 Debug.JustUpdateDeviceLine();
 _v.runVoidMethod ("RemoveViewFromParent");
- BA.debugLineNum = 94;BA.debugLine="Exit";
+ BA.debugLineNum = 95;BA.debugLine="Exit";
 Debug.JustUpdateDeviceLine();
 this.state = 8;
 if (true) break;
@@ -1013,14 +1015,14 @@ case 8:
 this.state = 9;
 Debug.locals.put("v", _v);
 ;
- BA.debugLineNum = 97;BA.debugLine="Dim Background As B4XView = xui.CreatePanel(\"back";
+ BA.debugLineNum = 98;BA.debugLine="Dim Background As B4XView = xui.CreatePanel(\"back";
 Debug.JustUpdateDeviceLine();
 parent._background = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 parent._background = __ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreatePanel",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("background")));__ref.setField("_background",parent._background);
- BA.debugLineNum = 98;BA.debugLine="Background.Tag = \"b4xdialog_background\"";
+ BA.debugLineNum = 99;BA.debugLine="Background.Tag = \"b4xdialog_background\"";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(false,"setTag",RemoteObject.createImmutable(("b4xdialog_background")));
- BA.debugLineNum = 99;BA.debugLine="If BlurBackground Then";
+ BA.debugLineNum = 100;BA.debugLine="If BlurBackground Then";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1036,19 +1038,19 @@ this.state = 13;
 case 11:
 //C
 this.state = 14;
- BA.debugLineNum = 100;BA.debugLine="Dim iv As ImageView";
+ BA.debugLineNum = 101;BA.debugLine="Dim iv As ImageView";
 Debug.JustUpdateDeviceLine();
 _iv = RemoteObject.createNew ("anywheresoftware.b4j.objects.ImageViewWrapper");Debug.locals.put("iv", _iv);
- BA.debugLineNum = 101;BA.debugLine="iv.Initialize(\"\")";
+ BA.debugLineNum = 102;BA.debugLine="iv.Initialize(\"\")";
 Debug.JustUpdateDeviceLine();
 _iv.runVoidMethod ("Initialize",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("")));
- BA.debugLineNum = 102;BA.debugLine="BlurImageView = iv";
+ BA.debugLineNum = 103;BA.debugLine="BlurImageView = iv";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_blurimageview" /*RemoteObject*/ ).setObject (_iv.getObject());
- BA.debugLineNum = 103;BA.debugLine="Background.AddView(BlurImageView, 0, 0, Backgrou";
+ BA.debugLineNum = 104;BA.debugLine="Background.AddView(BlurImageView, 0, 0, Backgrou";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((__ref.getField(false,"_blurimageview" /*RemoteObject*/ ).getObject())),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getWidth")),(Object)(__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getHeight")));
- BA.debugLineNum = 104;BA.debugLine="Background.Color = xui.Color_Transparent";
+ BA.debugLineNum = 105;BA.debugLine="Background.Color = xui.Color_Transparent";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"setColor",__ref.getField(false,"_xui" /*RemoteObject*/ ).getField(true,"Color_Transparent"));
  if (true) break;
@@ -1056,7 +1058,7 @@ __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"setColor",
 case 13:
 //C
 this.state = 14;
- BA.debugLineNum = 106;BA.debugLine="Background.Color = OverlayColor";
+ BA.debugLineNum = 107;BA.debugLine="Background.Color = OverlayColor";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"setColor",__ref.getField(true,"_overlaycolor" /*RemoteObject*/ ));
  if (true) break;
@@ -1065,28 +1067,28 @@ case 14:
 //C
 this.state = 15;
 ;
- BA.debugLineNum = 112;BA.debugLine="mParent.AddView(Background, 0, 0, mParent.Width,";
+ BA.debugLineNum = 113;BA.debugLine="mParent.AddView(Background, 0, 0, mParent.Width,";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_mparent" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((__ref.getField(false,"_background" /*RemoteObject*/ ).getObject())),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(__ref.getField(false,"_mparent" /*RemoteObject*/ ).runMethod(true,"getWidth")),(Object)(__ref.getField(false,"_mparent" /*RemoteObject*/ ).runMethod(true,"getHeight")));
- BA.debugLineNum = 113;BA.debugLine="UpdateBlur";
+ BA.debugLineNum = 114;BA.debugLine="UpdateBlur";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_updateblur" /*RemoteObject*/ );
- BA.debugLineNum = 114;BA.debugLine="Base = xui.CreatePanel(\"\")";
+ BA.debugLineNum = 115;BA.debugLine="Base = xui.CreatePanel(\"\")";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_base" /*RemoteObject*/ ,__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreatePanel",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable(""))));
- BA.debugLineNum = 115;BA.debugLine="Base.SetColorAndBorder(BackgroundColor, BorderWid";
+ BA.debugLineNum = 116;BA.debugLine="Base.SetColorAndBorder(BackgroundColor, BorderWid";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("SetColorAndBorder",(Object)(__ref.getField(true,"_backgroundcolor" /*RemoteObject*/ )),(Object)(BA.numberCast(double.class, __ref.getField(true,"_borderwidth" /*RemoteObject*/ ))),(Object)(__ref.getField(true,"_bordercolor" /*RemoteObject*/ )),(Object)(BA.numberCast(double.class, __ref.getField(true,"_bordercornersradius" /*RemoteObject*/ ))));
- BA.debugLineNum = 116;BA.debugLine="Base.RequestFocus";
+ BA.debugLineNum = 117;BA.debugLine="Base.RequestFocus";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("RequestFocus");
- BA.debugLineNum = 117;BA.debugLine="Dim IncludeTitle As Boolean = Title <> \"\"";
+ BA.debugLineNum = 118;BA.debugLine="Dim IncludeTitle As Boolean = Title <> \"\"";
 Debug.JustUpdateDeviceLine();
 _includetitle = BA.ObjectToBoolean(RemoteObject.solveBoolean("!",__ref.getField(false,"_title" /*RemoteObject*/ ),RemoteObject.createImmutable((""))));Debug.locals.put("IncludeTitle", _includetitle);Debug.locals.put("IncludeTitle", _includetitle);
- BA.debugLineNum = 118;BA.debugLine="Dim TitleBarHeight As Int = 0";
+ BA.debugLineNum = 119;BA.debugLine="Dim TempTitleBarHeight As Int = 0";
 Debug.JustUpdateDeviceLine();
-_titlebarheight = BA.numberCast(int.class, 0);Debug.locals.put("TitleBarHeight", _titlebarheight);Debug.locals.put("TitleBarHeight", _titlebarheight);
- BA.debugLineNum = 119;BA.debugLine="If IncludeTitle Then";
+_temptitlebarheight = BA.numberCast(int.class, 0);Debug.locals.put("TempTitleBarHeight", _temptitlebarheight);Debug.locals.put("TempTitleBarHeight", _temptitlebarheight);
+ BA.debugLineNum = 120;BA.debugLine="If IncludeTitle Then";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1100,28 +1102,28 @@ this.state = 17;
 case 17:
 //C
 this.state = 18;
- BA.debugLineNum = 120;BA.debugLine="TitleBarHeight = 30dip";
+ BA.debugLineNum = 121;BA.debugLine="TempTitleBarHeight = TitleBarHeight";
 Debug.JustUpdateDeviceLine();
-_titlebarheight = parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 30)));Debug.locals.put("TitleBarHeight", _titlebarheight);
+_temptitlebarheight = __ref.getField(true,"_titlebarheight" /*RemoteObject*/ );Debug.locals.put("TempTitleBarHeight", _temptitlebarheight);
  if (true) break;
 
 case 18:
 //C
 this.state = 19;
 ;
- BA.debugLineNum = 122;BA.debugLine="Dim height As Int = Content.Height + ButtonHeight";
+ BA.debugLineNum = 123;BA.debugLine="Dim height As Int = Content.Height + ButtonsHeigh";
 Debug.JustUpdateDeviceLine();
-_height = BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_content.runMethod(true,"getHeight"),__ref.getField(true,"_buttonheight" /*RemoteObject*/ ),parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 3))),parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 3))),_titlebarheight}, "++++",4, 0));Debug.locals.put("height", _height);Debug.locals.put("height", _height);
- BA.debugLineNum = 123;BA.debugLine="Dim width As Int = Content.Width + 4dip";
+_height = BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_content.runMethod(true,"getHeight"),__ref.getField(true,"_buttonsheight" /*RemoteObject*/ ),parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 3))),parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 3))),_temptitlebarheight}, "++++",4, 0));Debug.locals.put("height", _height);Debug.locals.put("height", _height);
+ BA.debugLineNum = 124;BA.debugLine="Dim width As Int = Content.Width + 4dip";
 Debug.JustUpdateDeviceLine();
 _width = BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_content.runMethod(true,"getWidth"),parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 4)))}, "+",1, 0));Debug.locals.put("width", _width);Debug.locals.put("width", _width);
- BA.debugLineNum = 124;BA.debugLine="Dim Top As Int = Round(Background.Height / 2 - he";
+ BA.debugLineNum = 125;BA.debugLine="Dim Top As Int = Round(Background.Height / 2 - he";
 Debug.JustUpdateDeviceLine();
 _top = BA.numberCast(int.class, parent.__c.runMethod(true,"Round",(Object)(RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getHeight"),RemoteObject.createImmutable(2),_height,RemoteObject.createImmutable(2)}, "/-/",1, 0))));Debug.locals.put("Top", _top);Debug.locals.put("Top", _top);
- BA.debugLineNum = 125;BA.debugLine="Dim RemoveTitle As Boolean";
+ BA.debugLineNum = 126;BA.debugLine="Dim RemoveTitle As Boolean";
 Debug.JustUpdateDeviceLine();
 _removetitle = RemoteObject.createImmutable(false);Debug.locals.put("RemoveTitle", _removetitle);
- BA.debugLineNum = 126;BA.debugLine="If PutAtTop Then";
+ BA.debugLineNum = 127;BA.debugLine="If PutAtTop Then";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1135,10 +1137,10 @@ this.state = 21;
 case 21:
 //C
 this.state = 22;
- BA.debugLineNum = 127;BA.debugLine="Top = 20dip";
+ BA.debugLineNum = 128;BA.debugLine="Top = 20dip";
 Debug.JustUpdateDeviceLine();
 _top = parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 20)));Debug.locals.put("Top", _top);
- BA.debugLineNum = 128;BA.debugLine="If Background.Height - Top - height < 200dip The";
+ BA.debugLineNum = 129;BA.debugLine="If Background.Height - Top - height < 200dip The";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1161,7 +1163,7 @@ this.state = 28;
 ;
  if (true) break;
 ;
- BA.debugLineNum = 130;BA.debugLine="If RemoveTitle Or Background.Height < height Then";
+ BA.debugLineNum = 131;BA.debugLine="If RemoveTitle Or Background.Height < height Then";
 Debug.JustUpdateDeviceLine();
 
 case 28:
@@ -1174,28 +1176,28 @@ this.state = 30;
 case 30:
 //C
 this.state = 31;
- BA.debugLineNum = 131;BA.debugLine="Top = 1dip";
+ BA.debugLineNum = 132;BA.debugLine="Top = 1dip";
 Debug.JustUpdateDeviceLine();
 _top = parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 1)));Debug.locals.put("Top", _top);
- BA.debugLineNum = 132;BA.debugLine="IncludeTitle = False";
+ BA.debugLineNum = 133;BA.debugLine="IncludeTitle = False";
 Debug.JustUpdateDeviceLine();
 _includetitle = parent.__c.getField(true,"False");Debug.locals.put("IncludeTitle", _includetitle);
- BA.debugLineNum = 133;BA.debugLine="height = height - TitleBarHeight - 3dip";
+ BA.debugLineNum = 134;BA.debugLine="height = height - TempTitleBarHeight - 3dip";
 Debug.JustUpdateDeviceLine();
-_height = RemoteObject.solve(new RemoteObject[] {_height,_titlebarheight,parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 3)))}, "--",2, 1);Debug.locals.put("height", _height);
- BA.debugLineNum = 134;BA.debugLine="TitleBarHeight = 0";
+_height = RemoteObject.solve(new RemoteObject[] {_height,_temptitlebarheight,parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 3)))}, "--",2, 1);Debug.locals.put("height", _height);
+ BA.debugLineNum = 135;BA.debugLine="TempTitleBarHeight = 0";
 Debug.JustUpdateDeviceLine();
-_titlebarheight = BA.numberCast(int.class, 0);Debug.locals.put("TitleBarHeight", _titlebarheight);
+_temptitlebarheight = BA.numberCast(int.class, 0);Debug.locals.put("TempTitleBarHeight", _temptitlebarheight);
  if (true) break;
 
 case 31:
 //C
 this.state = 32;
 ;
- BA.debugLineNum = 136;BA.debugLine="Background.AddView(Base, Round(Background.Width /";
+ BA.debugLineNum = 137;BA.debugLine="Background.AddView(Base, Round(Background.Width /";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((__ref.getField(false,"_base" /*RemoteObject*/ ).getObject())),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"Round",(Object)(RemoteObject.solve(new RemoteObject[] {__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getWidth"),RemoteObject.createImmutable(2),_width,RemoteObject.createImmutable(2)}, "/-/",1, 0))))),(Object)(BA.numberCast(double.class, _top)),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"Round",(Object)(BA.numberCast(double.class, _width))))),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"Round",(Object)(BA.numberCast(double.class, _height))))));
- BA.debugLineNum = 138;BA.debugLine="For i = ButtonsOrder.Length - 1 To 0 Step - 1";
+ BA.debugLineNum = 139;BA.debugLine="For i = ButtonsOrder.Length - 1 To 0 Step - 1";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1225,10 +1227,10 @@ if (true) break;
 case 34:
 //C
 this.state = 35;
- BA.debugLineNum = 139;BA.debugLine="Dim btype As Int = ButtonsOrder(i)";
+ BA.debugLineNum = 140;BA.debugLine="Dim btype As Int = ButtonsOrder(i)";
 Debug.JustUpdateDeviceLine();
 _btype = __ref.getField(false,"_buttonsorder" /*RemoteObject*/ ).getArrayElement(true,BA.numberCast(int.class, _i));Debug.locals.put("btype", _btype);Debug.locals.put("btype", _btype);
- BA.debugLineNum = 140;BA.debugLine="Select btype";
+ BA.debugLineNum = 141;BA.debugLine="Select btype";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1254,7 +1256,7 @@ if (true) break;
 case 37:
 //C
 this.state = 42;
- BA.debugLineNum = 142;BA.debugLine="CreateButton(Cancel, btype)";
+ BA.debugLineNum = 143;BA.debugLine="CreateButton(Cancel, btype)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_createbutton" /*RemoteObject*/ ,(Object)(_cancel),(Object)(_btype));
  if (true) break;
@@ -1262,7 +1264,7 @@ __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_createbutton" /*RemoteObjec
 case 39:
 //C
 this.state = 42;
- BA.debugLineNum = 144;BA.debugLine="CreateButton(No, btype)";
+ BA.debugLineNum = 145;BA.debugLine="CreateButton(No, btype)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_createbutton" /*RemoteObject*/ ,(Object)(_no),(Object)(_btype));
  if (true) break;
@@ -1270,7 +1272,7 @@ __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_createbutton" /*RemoteObjec
 case 41:
 //C
 this.state = 42;
- BA.debugLineNum = 146;BA.debugLine="CreateButton(Yes, btype)";
+ BA.debugLineNum = 147;BA.debugLine="CreateButton(Yes, btype)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_createbutton" /*RemoteObject*/ ,(Object)(_yes),(Object)(_btype));
  if (true) break;
@@ -1287,10 +1289,10 @@ case 43:
 this.state = 44;
 Debug.locals.put("i", _i);
 ;
- BA.debugLineNum = 149;BA.debugLine="Base.Visible = False";
+ BA.debugLineNum = 150;BA.debugLine="Base.Visible = False";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_base" /*RemoteObject*/ ).runMethod(true,"setVisible",parent.__c.getField(true,"False"));
- BA.debugLineNum = 150;BA.debugLine="If IncludeTitle Then";
+ BA.debugLineNum = 151;BA.debugLine="If IncludeTitle Then";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1304,38 +1306,38 @@ this.state = 46;
 case 46:
 //C
 this.state = 47;
- BA.debugLineNum = 151;BA.debugLine="TitleBar = xui.CreatePanel(\"TitleBar\")";
+ BA.debugLineNum = 152;BA.debugLine="TitleBar = xui.CreatePanel(\"TitleBar\")";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_titlebar" /*RemoteObject*/ ,__ref.getField(false,"_xui" /*RemoteObject*/ ).runMethod(false,"CreatePanel",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("TitleBar"))));
- BA.debugLineNum = 152;BA.debugLine="TitleBar.Color = TitleBarColor";
+ BA.debugLineNum = 153;BA.debugLine="TitleBar.Color = TitleBarColor";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_titlebar" /*RemoteObject*/ ).runMethod(true,"setColor",__ref.getField(true,"_titlebarcolor" /*RemoteObject*/ ));
- BA.debugLineNum = 153;BA.debugLine="Base.AddView(TitleBar, 2dip, 2dip, Content.Width";
+ BA.debugLineNum = 154;BA.debugLine="Base.AddView(TitleBar, 2dip, 2dip, Content.Width";
 Debug.JustUpdateDeviceLine();
-__ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((__ref.getField(false,"_titlebar" /*RemoteObject*/ ).getObject())),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2))))),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2))))),(Object)(_content.runMethod(true,"getWidth")),(Object)(BA.numberCast(double.class, _titlebarheight)));
- BA.debugLineNum = 154;BA.debugLine="Dim lbl As Label";
+__ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((__ref.getField(false,"_titlebar" /*RemoteObject*/ ).getObject())),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2))))),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2))))),(Object)(_content.runMethod(true,"getWidth")),(Object)(BA.numberCast(double.class, _temptitlebarheight)));
+ BA.debugLineNum = 155;BA.debugLine="Dim lbl As Label";
 Debug.JustUpdateDeviceLine();
 _lbl = RemoteObject.createNew ("anywheresoftware.b4j.objects.LabelWrapper");Debug.locals.put("lbl", _lbl);
- BA.debugLineNum = 155;BA.debugLine="lbl.Initialize(\"\")";
+ BA.debugLineNum = 156;BA.debugLine="lbl.Initialize(\"\")";
 Debug.JustUpdateDeviceLine();
 _lbl.runVoidMethod ("Initialize",__ref.getField(false, "ba"),(Object)(RemoteObject.createImmutable("")));
- BA.debugLineNum = 156;BA.debugLine="Dim xlbl As B4XView = lbl";
+ BA.debugLineNum = 157;BA.debugLine="Dim xlbl As B4XView = lbl";
 Debug.JustUpdateDeviceLine();
 _xlbl = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 _xlbl.setObject(_lbl.getObject());Debug.locals.put("xlbl", _xlbl);
- BA.debugLineNum = 157;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xlbl, Title)";
+ BA.debugLineNum = 158;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xlbl, Title)";
 Debug.JustUpdateDeviceLine();
 __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_internalsettextorcsbuildertolabel" /*RemoteObject*/ ,(Object)(_xlbl),(Object)(__ref.getField(false,"_title" /*RemoteObject*/ )));
- BA.debugLineNum = 158;BA.debugLine="xlbl.TextColor = TitleBarTextColor";
+ BA.debugLineNum = 159;BA.debugLine="xlbl.TextColor = TitleBarTextColor";
 Debug.JustUpdateDeviceLine();
 _xlbl.runMethod(true,"setTextColor",__ref.getField(true,"_titlebartextcolor" /*RemoteObject*/ ));
- BA.debugLineNum = 159;BA.debugLine="xlbl.Font = TitleBarFont";
+ BA.debugLineNum = 160;BA.debugLine="xlbl.Font = TitleBarFont";
 Debug.JustUpdateDeviceLine();
 _xlbl.runMethod(false,"setFont",__ref.getField(false,"_titlebarfont" /*RemoteObject*/ ));
- BA.debugLineNum = 160;BA.debugLine="xlbl.SetTextAlignment(\"CENTER\", \"CENTER\")";
+ BA.debugLineNum = 161;BA.debugLine="xlbl.SetTextAlignment(\"CENTER\", \"CENTER\")";
 Debug.JustUpdateDeviceLine();
 _xlbl.runVoidMethod ("SetTextAlignment",(Object)(BA.ObjectToString("CENTER")),(Object)(RemoteObject.createImmutable("CENTER")));
- BA.debugLineNum = 161;BA.debugLine="TitleBar.AddView(xlbl, 0, 0, TitleBar.Width, Tit";
+ BA.debugLineNum = 162;BA.debugLine="TitleBar.AddView(xlbl, 0, 0, TitleBar.Width, Tit";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_titlebar" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((_xlbl.getObject())),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(__ref.getField(false,"_titlebar" /*RemoteObject*/ ).runMethod(true,"getWidth")),(Object)(__ref.getField(false,"_titlebar" /*RemoteObject*/ ).runMethod(true,"getHeight")));
  if (true) break;
@@ -1344,16 +1346,16 @@ case 47:
 //C
 this.state = 48;
 ;
- BA.debugLineNum = 163;BA.debugLine="Content.RemoveViewFromParent";
+ BA.debugLineNum = 164;BA.debugLine="Content.RemoveViewFromParent";
 Debug.JustUpdateDeviceLine();
 _content.runVoidMethod ("RemoveViewFromParent");
- BA.debugLineNum = 164;BA.debugLine="Base.AddView(Content, 2dip, 2dip + TitleBarHeight";
+ BA.debugLineNum = 165;BA.debugLine="Base.AddView(Content, 2dip, 2dip + TempTitleBarHe";
 Debug.JustUpdateDeviceLine();
-__ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((_content.getObject())),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2))))),(Object)(BA.numberCast(double.class, RemoteObject.solve(new RemoteObject[] {parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2))),_titlebarheight}, "+",1, 1))),(Object)(_content.runMethod(true,"getWidth")),(Object)(_content.runMethod(true,"getHeight")));
- BA.debugLineNum = 165;BA.debugLine="Base.SetVisibleAnimated(VisibleAnimationDuration,";
+__ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("AddView",(Object)((_content.getObject())),(Object)(BA.numberCast(double.class, parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2))))),(Object)(BA.numberCast(double.class, RemoteObject.solve(new RemoteObject[] {parent.__c.runMethod(true,"DipToCurrent",(Object)(BA.numberCast(int.class, 2))),_temptitlebarheight}, "+",1, 1))),(Object)(_content.runMethod(true,"getWidth")),(Object)(_content.runMethod(true,"getHeight")));
+ BA.debugLineNum = 166;BA.debugLine="Base.SetVisibleAnimated(VisibleAnimationDuration,";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("SetVisibleAnimated",__ref.getField(false, "ba"),(Object)(__ref.getField(true,"_visibleanimationduration" /*RemoteObject*/ )),(Object)(parent.__c.getField(true,"True")));
- BA.debugLineNum = 166;BA.debugLine="For Each v As B4XView In Background.GetAllViewsRe";
+ BA.debugLineNum = 167;BA.debugLine="For Each v As B4XView In Background.GetAllViewsRe";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1386,7 +1388,7 @@ if (true) break;
 case 50:
 //C
 this.state = 65;
- BA.debugLineNum = 167;BA.debugLine="v.Enabled = True";
+ BA.debugLineNum = 168;BA.debugLine="v.Enabled = True";
 Debug.JustUpdateDeviceLine();
 _v.runMethod(true,"setEnabled",parent.__c.getField(true,"True"));
  if (true) break;
@@ -1397,7 +1399,7 @@ case 51:
 this.state = 52;
 Debug.locals.put("v", _v);
 ;
- BA.debugLineNum = 169;BA.debugLine="Wait For CloseMessage (Result As Int)";
+ BA.debugLineNum = 170;BA.debugLine="Wait For CloseMessage (Result As Int)";
 Debug.JustUpdateDeviceLine();
 parent.__c.runVoidMethod ("WaitFor","closemessage", __ref.getField(false, "ba"), anywheresoftware.b4a.pc.PCResumableSub.createDebugResumeSub(this, "b4xdialog", "showcustom"), null);
 this.state = 66;
@@ -1407,7 +1409,7 @@ case 66:
 this.state = 52;
 _result = (RemoteObject) result.getArrayElement(true,RemoteObject.createImmutable(1));Debug.locals.put("Result", _result);
 ;
- BA.debugLineNum = 170;BA.debugLine="For Each v As B4XView In Background.GetAllViewsRe";
+ BA.debugLineNum = 171;BA.debugLine="For Each v As B4XView In Background.GetAllViewsRe";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1440,7 +1442,7 @@ if (true) break;
 case 54:
 //C
 this.state = 68;
- BA.debugLineNum = 171;BA.debugLine="v.Enabled = False";
+ BA.debugLineNum = 172;BA.debugLine="v.Enabled = False";
 Debug.JustUpdateDeviceLine();
 _v.runMethod(true,"setEnabled",parent.__c.getField(true,"False"));
  if (true) break;
@@ -1451,10 +1453,10 @@ case 55:
 this.state = 56;
 Debug.locals.put("v", _v);
 ;
- BA.debugLineNum = 173;BA.debugLine="Base.SetVisibleAnimated(VisibleAnimationDuration,";
+ BA.debugLineNum = 174;BA.debugLine="Base.SetVisibleAnimated(VisibleAnimationDuration,";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_base" /*RemoteObject*/ ).runVoidMethod ("SetVisibleAnimated",__ref.getField(false, "ba"),(Object)(__ref.getField(true,"_visibleanimationduration" /*RemoteObject*/ )),(Object)(parent.__c.getField(true,"False")));
- BA.debugLineNum = 174;BA.debugLine="If VisibleAnimationDuration > 0 Then";
+ BA.debugLineNum = 175;BA.debugLine="If VisibleAnimationDuration > 0 Then";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1468,7 +1470,7 @@ this.state = 58;
 case 58:
 //C
 this.state = 59;
- BA.debugLineNum = 175;BA.debugLine="Sleep(VisibleAnimationDuration)";
+ BA.debugLineNum = 176;BA.debugLine="Sleep(VisibleAnimationDuration)";
 Debug.JustUpdateDeviceLine();
 parent.__c.runVoidMethod ("Sleep",__ref.getField(false, "ba"),anywheresoftware.b4a.pc.PCResumableSub.createDebugResumeSub(this, "b4xdialog", "showcustom"),__ref.getField(true,"_visibleanimationduration" /*RemoteObject*/ ));
 this.state = 69;
@@ -1483,14 +1485,14 @@ case 59:
 //C
 this.state = -1;
 ;
- BA.debugLineNum = 177;BA.debugLine="Background.RemoveViewFromParent";
+ BA.debugLineNum = 178;BA.debugLine="Background.RemoveViewFromParent";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runVoidMethod ("RemoveViewFromParent");
- BA.debugLineNum = 178;BA.debugLine="Return Result";
+ BA.debugLineNum = 179;BA.debugLine="Return Result";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) {
 parent.__c.runVoidMethod ("ReturnFromResumableSub",this.remoteResumableSub,(_result));return;};
- BA.debugLineNum = 179;BA.debugLine="End Sub";
+ BA.debugLineNum = 180;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1508,7 +1510,7 @@ public static void  _closemessage(RemoteObject __ref,RemoteObject _result) throw
 }
 public static RemoteObject  _showtemplate(RemoteObject __ref,RemoteObject _dialogtemplate,RemoteObject _yes,RemoteObject _no,RemoteObject _cancel) throws Exception{
 try {
-		Debug.PushSubsStack("ShowTemplate (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,58);
+		Debug.PushSubsStack("ShowTemplate (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,59);
 if (RapidSub.canDelegate("showtemplate")) { return __ref.runUserSub(false, "b4xdialog","showtemplate", __ref, _dialogtemplate, _yes, _no, _cancel);}
 ResumableSub_ShowTemplate rsub = new ResumableSub_ShowTemplate(null,__ref,_dialogtemplate,_yes,_no,_cancel);
 rsub.remoteResumableSub = anywheresoftware.b4a.pc.PCResumableSub.createDebugResumeSubForFilter();
@@ -1543,7 +1545,7 @@ RemoteObject _result = RemoteObject.createImmutable(0);
 @Override
 public void resume(BA ba, RemoteObject result) throws Exception{
 try {
-		Debug.PushSubsStack("ShowTemplate (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,58);
+		Debug.PushSubsStack("ShowTemplate (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,59);
 Debug.locals = rsLocals;Debug.currentSubFrame.locals = rsLocals;
 
     while (true) {
@@ -1559,14 +1561,14 @@ Debug.locals.put("DialogTemplate", _dialogtemplate);
 Debug.locals.put("Yes", _yes);
 Debug.locals.put("No", _no);
 Debug.locals.put("Cancel", _cancel);
- BA.debugLineNum = 59;BA.debugLine="Dim content As B4XView = CallSub2(DialogTemplate,";
+ BA.debugLineNum = 60;BA.debugLine="Dim content As B4XView = CallSub2(DialogTemplate,";
 Debug.JustUpdateDeviceLine();
 _content = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
 _content.setObject(parent.__c.runMethodAndSync(false,"CallSubNew2",__ref.getField(false, "ba"),(Object)(_dialogtemplate),(Object)(BA.ObjectToString("GetPanel")),(Object)(__ref)));Debug.locals.put("content", _content);
- BA.debugLineNum = 60;BA.debugLine="CallSub2(DialogTemplate, \"Show\", Me)";
+ BA.debugLineNum = 61;BA.debugLine="CallSub2(DialogTemplate, \"Show\", Me)";
 Debug.JustUpdateDeviceLine();
 parent.__c.runMethodAndSync(false,"CallSubNew2",__ref.getField(false, "ba"),(Object)(_dialogtemplate),(Object)(BA.ObjectToString("Show")),(Object)(__ref));
- BA.debugLineNum = 61;BA.debugLine="Wait For (ShowCustom(content , Yes, No, Cancel))";
+ BA.debugLineNum = 62;BA.debugLine="Wait For (ShowCustom(content , Yes, No, Cancel))";
 Debug.JustUpdateDeviceLine();
 parent.__c.runVoidMethod ("WaitFor","complete", __ref.getField(false, "ba"), anywheresoftware.b4a.pc.PCResumableSub.createDebugResumeSub(this, "b4xdialog", "showtemplate"), __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_showcustom" /*RemoteObject*/ ,(Object)(_content),(Object)(_yes),(Object)(_no),(Object)(_cancel)));
 this.state = 1;
@@ -1576,17 +1578,17 @@ case 1:
 this.state = -1;
 _result = (RemoteObject) result.getArrayElement(true,RemoteObject.createImmutable(1));Debug.locals.put("Result", _result);
 ;
- BA.debugLineNum = 62;BA.debugLine="CallSub2(DialogTemplate, \"DialogClosed\", Result)";
+ BA.debugLineNum = 63;BA.debugLine="CallSub2(DialogTemplate, \"DialogClosed\", Result)";
 Debug.JustUpdateDeviceLine();
 parent.__c.runMethodAndSync(false,"CallSubNew2",__ref.getField(false, "ba"),(Object)(_dialogtemplate),(Object)(BA.ObjectToString("DialogClosed")),(Object)((_result)));
- BA.debugLineNum = 63;BA.debugLine="PutAtTop = False";
+ BA.debugLineNum = 64;BA.debugLine="PutAtTop = False";
 Debug.JustUpdateDeviceLine();
 __ref.setField ("_putattop" /*RemoteObject*/ ,parent.__c.getField(true,"False"));
- BA.debugLineNum = 64;BA.debugLine="Return Result";
+ BA.debugLineNum = 65;BA.debugLine="Return Result";
 Debug.JustUpdateDeviceLine();
 Debug.CheckDeviceExceptions();if (true) {
 parent.__c.runVoidMethod ("ReturnFromResumableSub",this.remoteResumableSub,(_result));return;};
- BA.debugLineNum = 65;BA.debugLine="End Sub";
+ BA.debugLineNum = 66;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 if (true) break;
 
@@ -1602,11 +1604,11 @@ finally {
 }
 public static RemoteObject  _stub_click(RemoteObject __ref) throws Exception{
 try {
-		Debug.PushSubsStack("Stub_Click (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,360);
+		Debug.PushSubsStack("Stub_Click (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,361);
 if (RapidSub.canDelegate("stub_click")) { return __ref.runUserSub(false, "b4xdialog","stub_click", __ref);}
- BA.debugLineNum = 360;BA.debugLine="Private Sub Stub_Click";
+ BA.debugLineNum = 361;BA.debugLine="Private Sub Stub_Click";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 362;BA.debugLine="End Sub";
+ BA.debugLineNum = 363;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }
@@ -1618,43 +1620,43 @@ finally {
 		}}
 public static RemoteObject  _updateblur(RemoteObject __ref) throws Exception{
 try {
-		Debug.PushSubsStack("UpdateBlur (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,264);
+		Debug.PushSubsStack("UpdateBlur (b4xdialog) ","b4xdialog",11,__ref.getField(false, "ba"),__ref,265);
 if (RapidSub.canDelegate("updateblur")) { return __ref.runUserSub(false, "b4xdialog","updateblur", __ref);}
 RemoteObject _source = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper.B4XBitmapWrapper");
 RemoteObject _blurred = RemoteObject.declareNull("b4j.example.bitmapcreator");
- BA.debugLineNum = 264;BA.debugLine="Private Sub UpdateBlur";
+ BA.debugLineNum = 265;BA.debugLine="Private Sub UpdateBlur";
 Debug.JustUpdateDeviceLine();
- BA.debugLineNum = 265;BA.debugLine="If BlurBackground = False Then Return";
+ BA.debugLineNum = 266;BA.debugLine="If BlurBackground = False Then Return";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("=",__ref.getField(true,"_blurbackground" /*RemoteObject*/ ),b4xdialog.__c.getField(true,"False"))) { 
 Debug.CheckDeviceExceptions();if (true) return RemoteObject.createImmutable("");};
- BA.debugLineNum = 266;BA.debugLine="Background.Visible = False";
+ BA.debugLineNum = 267;BA.debugLine="Background.Visible = False";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"setVisible",b4xdialog.__c.getField(true,"False"));
- BA.debugLineNum = 267;BA.debugLine="Dim source As B4XBitmap = Background.Parent.Snaps";
+ BA.debugLineNum = 268;BA.debugLine="Dim source As B4XBitmap = Background.Parent.Snaps";
 Debug.JustUpdateDeviceLine();
 _source = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper.B4XBitmapWrapper");
 _source = __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(false,"getParent").runMethod(false,"Snapshot");Debug.locals.put("source", _source);Debug.locals.put("source", _source);
- BA.debugLineNum = 268;BA.debugLine="If source.Width > Background.Width Or source.Heig";
+ BA.debugLineNum = 269;BA.debugLine="If source.Width > Background.Width Or source.Heig";
 Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean(">",_source.runMethod(true,"getWidth"),__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getWidth")) || RemoteObject.solveBoolean(">",_source.runMethod(true,"getHeight"),__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getHeight"))) { 
- BA.debugLineNum = 269;BA.debugLine="source = source.Crop(0, 0, Background.Width, Bac";
+ BA.debugLineNum = 270;BA.debugLine="source = source.Crop(0, 0, Background.Width, Bac";
 Debug.JustUpdateDeviceLine();
 _source = _source.runMethod(false,"Crop",(Object)(BA.numberCast(int.class, 0)),(Object)(BA.numberCast(int.class, 0)),(Object)(BA.numberCast(int.class, __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getWidth"))),(Object)(BA.numberCast(int.class, __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getHeight"))));Debug.locals.put("source", _source);
  };
- BA.debugLineNum = 271;BA.debugLine="Background.Visible = True";
+ BA.debugLineNum = 272;BA.debugLine="Background.Visible = True";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"setVisible",b4xdialog.__c.getField(true,"True"));
- BA.debugLineNum = 272;BA.debugLine="BlurImageView.SetLayoutAnimated(0, 0, 0, Backgrou";
+ BA.debugLineNum = 273;BA.debugLine="BlurImageView.SetLayoutAnimated(0, 0, 0, Backgrou";
 Debug.JustUpdateDeviceLine();
 __ref.getField(false,"_blurimageview" /*RemoteObject*/ ).runVoidMethod ("SetLayoutAnimated",(Object)(BA.numberCast(int.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(BA.numberCast(double.class, 0)),(Object)(__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getWidth")),(Object)(__ref.getField(false,"_background" /*RemoteObject*/ ).runMethod(true,"getHeight")));
- BA.debugLineNum = 273;BA.debugLine="Dim blurred As BitmapCreator = Blur(source)";
+ BA.debugLineNum = 274;BA.debugLine="Dim blurred As BitmapCreator = Blur(source)";
 Debug.JustUpdateDeviceLine();
 _blurred = __ref.runClassMethod (cloyd.blink.b4xdialog.class, "_blur" /*RemoteObject*/ ,(Object)(_source));Debug.locals.put("blurred", _blurred);Debug.locals.put("blurred", _blurred);
- BA.debugLineNum = 274;BA.debugLine="blurred.SetBitmapToImageView(blurred.Bitmap, Blur";
+ BA.debugLineNum = 275;BA.debugLine="blurred.SetBitmapToImageView(blurred.Bitmap, Blur";
 Debug.JustUpdateDeviceLine();
 _blurred.runVoidMethod ("_setbitmaptoimageview",(Object)(_blurred.runMethod(false,"_getbitmap")),(Object)(__ref.getField(false,"_blurimageview" /*RemoteObject*/ )));
- BA.debugLineNum = 275;BA.debugLine="End Sub";
+ BA.debugLineNum = 276;BA.debugLine="End Sub";
 Debug.JustUpdateDeviceLine();
 return RemoteObject.createImmutable("");
 }

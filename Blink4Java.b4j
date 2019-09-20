@@ -206,6 +206,7 @@ FileGroup98=Default Group
 FileGroup99=Default Group
 Group=Default Group
 Library1=jcore
+Library10=xui views
 Library2=jfx
 Library3=jokhttputils2
 Library4=json
@@ -213,13 +214,13 @@ Library5=jreflection
 Library6=javaobject
 Library7=xcustomlistview
 Library8=jbitmapcreator
-Library9=xui views
+Library9=jxui
 Module1=frmMedia
 Module2=frmActivity
 NumberOfFiles=102
-NumberOfLibraries=9
+NumberOfLibraries=10
 NumberOfModules=2
-Version=7.51
+Version=7.8
 @EndOfDesignText@
 #Region Project Attributes 
 	#MainFormWidth: 900
@@ -336,6 +337,9 @@ Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
 End Sub
 
 Sub btnDriveway_Click
+	clvDriveway.Clear
+	clvFrontDoor.Clear
+	clvSideYard.Clear
 	RefreshCameras(False)
 End Sub
 
@@ -484,17 +488,17 @@ Sub RefreshCameras(FirstRun As Boolean)
 								'ivSideYard.SetImage(Null)
 							End If
 						Else
-							Dim strTimestamp As String
-							DateTime.DateFormat = "h:mm:ss a"
-							strTimestamp = DateTime.Date(DateTime.Now)
-							lblStatus.Text = "Last updated: " & strTimestamp
-							If camera = "347574" Then
-								lblDriveway.Text = "Driveway " & strTimestamp
-							Else If camera = "236967" Then
-								lblFrontDoor.Text = "Front Door " & strTimestamp
-							Else If camera = "226821" Then
-								lblSideYard.Text = "Side Yard " & strTimestamp
-							End If
+'							Dim strTimestamp As String
+'							DateTime.DateFormat = "h:mm:ss a"
+'							strTimestamp = DateTime.Date(DateTime.Now)
+'							lblStatus.Text = "Last updated: " & strTimestamp
+'							If camera = "347574" Then
+'								lblDriveway.Text = "Driveway " & strTimestamp
+'							Else If camera = "236967" Then
+'								lblFrontDoor.Text = "Front Door " & strTimestamp
+'							Else If camera = "226821" Then
+'								lblSideYard.Text = "Side Yard " & strTimestamp
+'							End If
 						End If
 					End If
 				End If
@@ -800,8 +804,8 @@ Sub GetCameraInfo(json As String, clv As CustomListView)
 		clv.AddTextItem("Firmware Git Hash: " & fw_git_hash, "fw_git_hash")
 		clv.AddTextItem("Battery alert status: " & battery_alert_status, "battery_alert_status")
 		clv.AddTextItem("Temperature alert status: " & temp_alert_status, "temp_alert_status")
-		clv.AddTextItem("Updated at: " & updated_at, "updated_at")
-		clv.AddTextItem("Created at: " & created_at, "created_at")
+		clv.AddTextItem("Updated at: " & ConvertDateTime(updated_at), "updated_at")
+		clv.AddTextItem("Created at: " & ConvertDateTime(created_at), "created_at")
 		clv.AddTextItem("IP address: " & ip_address, "ip_address")
 		clv.AddTextItem("MAC address: " & mac, "mac")
 		clv.AddTextItem("Camera ID: " & camera_id, "camera_id")
@@ -838,6 +842,17 @@ Sub GetCameraInfo(json As String, clv As CustomListView)
 		clv.AddTextItem("PIR rejections: " & pir_rejections, "pir_rejections")
 		clv.AddTextItem("Lifetime count: " & lifetime_count, "lifetime_count")
 
+		Dim strTimestamp As String
+		strTimestamp = ConvertDateTime(updated_at)
+		lblStatus.Text = "Last updated: " & strTimestamp
+		If clv = clvDriveway Then
+			lblDriveway.Text = "Driveway " & strTimestamp
+		Else If clv = clvFrontDoor Then
+			lblFrontDoor.Text = "Front Door " & strTimestamp
+		Else If clv = clvSideYard Then
+			lblSideYard.Text = "Side Yard " & strTimestamp
+		End If
+		
 		For i = 0 To clv.Size-1
 			Dim item As String
 			item = clv.GetValue(i)
@@ -954,6 +969,8 @@ Private Sub ivClose_MouseClicked (EventData As MouseEvent)
 	File.Delete(File.DirApp, "Driveway.jpg")
 	File.Delete(File.DirApp, "FrontDoor.jpg")
 	File.Delete(File.DirApp, "SideYard.jpg")
+	File.Delete(File.DirApp,"screenshot.jpg")
+	File.Delete(File.DirApp,"media.mp4")
 	ExitApplication
 End Sub
 
@@ -1078,8 +1095,9 @@ End Sub
 Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 	Dim mf As frmMedia
 	mf.Initialize(MainForm)
+	mf.timestamp = lblDriveway.Text
 	mf.url=$"
-   <h1>Driveway</h1>
+   <h1>${lblDriveway.Text}</h1>
    <img src="${File.GetUri(File.DirApp, "Driveway.jpg")}"/>
    
 "$
@@ -1162,8 +1180,9 @@ End Sub
 Sub ivFrontDoor_MouseClicked (EventData As MouseEvent)
 	Dim mf As frmMedia
 	mf.Initialize(MainForm)
+	mf.timestamp = lblFrontDoor.Text
 	mf.url=$"
-   <h1>Front Door</h1>
+   <h1>${lblFrontDoor.Text}</h1>
    <img src="${File.GetUri(File.DirApp, "FrontDoor.jpg")}"/>
    
 "$
@@ -1173,8 +1192,9 @@ End Sub
 Sub ivSideYard_MouseClicked (EventData As MouseEvent)
 	Dim mf As frmMedia
 	mf.Initialize(MainForm)
+	mf.timestamp = lblSideYard.Text
 	mf.url=$"
-   <h1>Side Yard</h1>
+   <h1>${lblSideYard.Text}</h1>
    <img src="${File.GetUri(File.DirApp, "SideYard.jpg")}"/>
    
 "$
@@ -1260,6 +1280,36 @@ Sub btnActivity_Click
 	
 	Dim mf As frmActivity
 	mf.Initialize(MainForm)
-	mf.Show(response,userRegion,authToken)
+	mf.authToken = authToken
+	mf.Show(response,userRegion)
 End Sub
 
+Sub ConvertDateTime(inputTime As String) As String
+	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
+	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
+	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a z"
+	Dim lngTicks As Long = ticks
+	'Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
+	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
+	Return DateTime.Date(lngTicks)
+End Sub
+
+Sub ParseUTCstring(utc As String) As Long
+	Dim df As String = DateTime.DateFormat
+	Dim res As Long
+	If utc.CharAt(10) = "T" Then
+		'convert the second format to the first one.
+		If utc.CharAt(19) = "." Then utc = utc.SubString2(0, 19) & "+0000"
+		DateTime.DateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		' 2019-09-20T13:04:05+00:00
+	Else
+		DateTime.DateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
+	End If
+	Try
+		res = DateTime.DateParse(utc)
+	Catch
+		res = 0
+	End Try
+	DateTime.DateFormat = df
+	Return res
+End Sub

@@ -59,8 +59,9 @@ public static RemoteObject _taskidtojob = RemoteObject.declareNull("anywheresoft
 public static RemoteObject _tempfolder = RemoteObject.createImmutable("");
 public static RemoteObject _taskcounter = RemoteObject.createImmutable(0);
 public static RemoteObject _dateutils = RemoteObject.declareNull("b4j.example.dateutils");
+public static RemoteObject _cssutils = RemoteObject.declareNull("b4j.example.cssutils");
 public static cloyd.blink.main _main = null;
   public Object[] GetGlobals() {
-		return new Object[] {"DateUtils",httputils2service._dateutils,"hc",httputils2service._hc,"Main",Debug.moduleToString(cloyd.blink.main.class),"taskCounter",httputils2service._taskcounter,"TaskIdToJob",httputils2service._taskidtojob,"TempFolder",httputils2service._tempfolder};
+		return new Object[] {"CSSUtils",httputils2service._cssutils,"DateUtils",httputils2service._dateutils,"hc",httputils2service._hc,"Main",Debug.moduleToString(cloyd.blink.main.class),"taskCounter",httputils2service._taskcounter,"TaskIdToJob",httputils2service._taskidtojob,"TempFolder",httputils2service._tempfolder};
 }
 }
