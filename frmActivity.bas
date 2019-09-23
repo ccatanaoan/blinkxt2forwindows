@@ -127,17 +127,37 @@ End Sub
 Sub ConvertDateTime(inputTime As String) As String
 	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
 	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
-	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a z"
+	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a"
 	Dim lngTicks As Long = ticks
 	Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
 	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
-	Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago" 'DateTime.Date(lngTicks)
+	If p.Days = 0 Then
+		If p.Hours = 0 Then
+			If p.Minutes = 0 Then
+				Return p.Seconds & "s ago"
+			Else
+				Return p.Minutes & "m " & p.Seconds & "s ago"
+			End If
+		Else
+			Return p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
+		End If
+	else If p.Hours = 0 Then
+		If p.Minutes = 0 Then
+			Return p.Seconds & "s ago"
+		Else
+			Return p.Minutes & "m " & p.Seconds & "s ago"
+		End If
+	else If p.Minutes = 0 Then
+		Return p.Seconds & "s ago"
+	Else
+		Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
+	End If
 End Sub
 
 Sub ConvertFullDateTime(inputTime As String) As String
 	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
 	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
-	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a z"
+	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a"
 	Dim lngTicks As Long = ticks
 	'Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
 	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
@@ -216,7 +236,6 @@ Sub ShowVideo (Link As String, timestamp As String)
 			sb.Append("<video width='100%' height='100%' controls autoplay>")
 			sb.Append("<source src='" & File.GetUri(File.DirApp ,"media.mp4") & "' Type='video/mp4'/>")
 			sb.Append("</video>")
-			'sb.Append("<h3>" & timestamp & "</h3>")
 			wvMedia.LoadHtml(sb.ToString) 
 		Else
 

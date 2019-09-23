@@ -11,6 +11,7 @@ Sub Class_Globals
 	Private imgScreenshot As ImageView
 	Private lblTimestamp As Label
 	Public timestamp As String
+	Private btnHiddenExitEscapeKey As Button
 End Sub
 
 'Initializes the object. You can add parameters to this method if needed.
@@ -29,6 +30,8 @@ Public Sub Initialize (Parent As Form)
 	Obj.Target = frm.RootPane
 	'Obj.AddEventHandler("RootPaneKeyEvent", "javafx.scene.input.KeyEvent.ANY")
 	Obj.AddEventHandler("keypressed", "javafx.scene.input.KeyEvent.KEY_PRESSED")
+	Dim JO As JavaObject = btnHiddenExitEscapeKey
+	JO.RunMethod("setCancelButton",Array(True))  'If Esc pressed
 End Sub
 
 Public Sub Show
@@ -44,7 +47,6 @@ Public Sub Show
 End Sub
 
 Sub KeyPressed_Event (e As Event)
-Log("here")
 End Sub
 
 Sub frm_CloseRequest (EventData As Event)
@@ -90,4 +92,6 @@ Sub CheckMonitor() As Screen
 	End Try
 End Sub
 
-
+Sub btnHiddenExitEscapeKey_Click
+	frm.Close
+End Sub
