@@ -7,6 +7,6 @@ ModuleBreakpoints2=
 ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
-NavigationStack=Main,SetAvg,1092,0,Visual Designer,vdSk03.bjl,-100,1,Main,btnActivity_Click,1111,6,Main,RefreshCameras,211,0,Main,Application_Error,126,6,Main,Process_Globals,31,0,Main,AppStart,82,0,Main,btnDriveway_Click,136,0,Main,RequestAuthToken,158,0,frmActivity,ConvertDateTime,131,0,frmActivity,GetVideos,72,0
+NavigationStack=Main,RequestAuthToken,169,0,Main,RefreshCameras,228,6,Main,GetCameraInfo,731,1,frmActivity,CreateListItem,115,0,frmActivity,GetVideos,81,0,frmActivity,ConvertFullDateTime,165,0,Main,AppStart,81,0,Main,Process_Globals,49,6,Visual Designer,vdSk03.bjl,-100,6,Main,GetSyncModuleInfo,755,6
 SelectedBuild=0
 VisibleModules=1,2

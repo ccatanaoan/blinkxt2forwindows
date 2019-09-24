@@ -112,9 +112,9 @@ Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As St
 		p.SetLayoutAnimated(0, 0, 0, 400dip, 80dip)
 		p.LoadLayout("cellitem")
 		ivScreenshot.SetBitmap(screenshot)
+		lblDate.Text = "   " & ConvertFullDateTime(fileinfo)
 		lblFileInfo.Text = "   " & ConvertDateTime(fileinfo)
 		lblDeviceInfo.Text = "   " & devicename
-		lblDate.Text = "   " & ConvertFullDateTime(fileinfo)
 		Return p
 	Catch
 		Log(LastException)
@@ -131,27 +131,32 @@ Sub ConvertDateTime(inputTime As String) As String
 	Dim lngTicks As Long = ticks
 	Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
 	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
-	If p.Days = 0 Then
-		If p.Hours = 0 Then
+	If lblDate.Text.Contains("Yesterday") Or lblDate.Text.Contains("Today") Then
+		If p.Days = 0 Then
+			If p.Hours = 0 Then
+				If p.Minutes = 0 Then
+					Return p.Seconds & "s ago"
+				Else
+					Return p.Minutes & "m " & p.Seconds & "s ago"
+				End If
+			Else
+				Return p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
+			End If
+		else If p.Hours = 0 Then
 			If p.Minutes = 0 Then
 				Return p.Seconds & "s ago"
 			Else
 				Return p.Minutes & "m " & p.Seconds & "s ago"
 			End If
-		Else
-			Return p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
-		End If
-	else If p.Hours = 0 Then
-		If p.Minutes = 0 Then
+		else If p.Minutes = 0 Then
 			Return p.Seconds & "s ago"
 		Else
-			Return p.Minutes & "m " & p.Seconds & "s ago"
+			Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
 		End If
-	else If p.Minutes = 0 Then
-		Return p.Seconds & "s ago"
 	Else
 		Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
 	End If
+
 End Sub
 
 Sub ConvertFullDateTime(inputTime As String) As String
@@ -159,9 +164,21 @@ Sub ConvertFullDateTime(inputTime As String) As String
 	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
 	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a"
 	Dim lngTicks As Long = ticks
-	'Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
-	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
-	Return DateTime.Date(lngTicks)
+
+	Dim Yesterday As Long
+	Dim timestamp As Long
+	DateTime.DateFormat = "yyyyMMdd"
+	Yesterday = DateTime.Date(DateTime.add(DateTime.Now, 0, 0, -1))
+	timestamp = DateTime.Date(lngTicks)
+
+	DateTime.DateFormat = "h:mm:ss a"
+	If DateUtils.IsSameDay(lngTicks,DateTime.now) Then
+		Return "Today " & DateTime.Date(lngTicks)
+	Else If Yesterday = timestamp Then
+		Return "Yesterday " & DateTime.Date(lngTicks)
+	Else 
+		Return DateUtils.GetDayOfWeekName(lngTicks) & " " & DateTime.Date(lngTicks)
+	End If
 End Sub
 
 

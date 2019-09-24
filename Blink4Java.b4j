@@ -1,115 +1,129 @@
 ﻿AppType=JavaFX
 Build1=Default,cloyd.blink
 File1=activity.bjl
-File10=sk01_bottom_left.png
-File100=vdSk03.bjl
-File101=vdSk04.bjl
-File102=vdSk05.bjl
-File103=vdSk06.bjl
-File11=sk01_bottom_right.png
-File12=sk01_btClose.png
-File13=sk01_btCloseEnt.png
-File14=sk01_btMax.png
-File15=sk01_btMaxEnt.png
-File16=sk01_btMin.png
-File17=sk01_btMinEnt.png
-File18=sk01_left.png
-File19=sk01_right.png
+File10=main.bjl
+File100=sk06_top_left.png
+File101=sk06_top_right.png
+File102=systemstatusoffline.png
+File103=systemstatusonline.png
+File104=vdSk01.bjl
+File105=vdSk02.bjl
+File106=vdSk03.bjl
+File107=vdSk04.bjl
+File108=vdSk05.bjl
+File109=vdSk06.bjl
+File11=refresh.png
+File110=video-camera.png
+File12=sk01.css
+File13=sk01_bottom.png
+File14=sk01_bottom_left.png
+File15=sk01_bottom_right.png
+File16=sk01_btClose.png
+File17=sk01_btCloseEnt.png
+File18=sk01_btMax.png
+File19=sk01_btMaxEnt.png
 File2=activity.png
-File20=sk01_title.png
-File21=sk01_top_left.png
-File22=sk01_top_right.png
-File23=sk02.css
-File24=sk02_bottom.png
-File25=sk02_bottom_left.png
-File26=sk02_bottom_right.png
-File27=sk02_btClose.png
-File28=sk02_btCloseEnt.png
-File29=sk02_btMax.png
-File3=camera-icon.png
-File30=sk02_btMaxEnt.png
-File31=sk02_btMin.png
-File32=sk02_btMinEnt.png
-File33=sk02_left.png
-File34=sk02_right.png
-File35=sk02_title.png
-File36=sk02_top_left.png
-File37=sk02_top_right.png
-File38=sk03.css
-File39=sk03_bottom.png
-File4=cellitem.bjl
-File40=sk03_bottom_left.png
-File41=sk03_bottom_right.png
-File42=sk03_btClose.png
-File43=sk03_btCloseEnt.png
-File44=sk03_btMax.png
-File45=sk03_btMaxEnt.png
-File46=sk03_btMin.png
-File47=sk03_btMinEnt.png
-File48=sk03_left.png
-File49=sk03_right.png
-File5=home.png
-File50=sk03_title.png
-File51=sk03_top_left.png
-File52=sk03_top_right.png
-File53=sk04.css
-File54=sk04_bottom.png
-File55=sk04_bottom_left.png
-File56=sk04_bottom_right.png
-File57=sk04_btClose.png
-File58=sk04_btCloseEnt.png
-File59=sk04_btMax.png
-File6=main.bjl
-File60=sk04_btMaxEnt.png
-File61=sk04_btMin.png
-File62=sk04_btMinEnt.png
-File63=sk04_left.png
-File64=sk04_right.png
-File65=sk04_title.png
-File66=sk04_top_left.png
-File67=sk04_top_right.png
-File68=sk05.css
-File69=sk05_bottom.png
-File7=refresh.png
-File70=sk05_bottom_left.png
-File71=sk05_bottom_right.png
-File72=sk05_btClose.png
-File73=sk05_btCloseEnt.png
-File74=sk05_btMax.png
-File75=sk05_btMaxEnt.png
-File76=sk05_btMin.png
-File77=sk05_btMinEnt.png
-File78=sk05_left.png
-File79=sk05_right.png
-File8=sk01.css
-File80=sk05_title.png
-File81=sk05_top_left.png
-File82=sk05_top_right.png
-File83=sk06.css
-File84=sk06_bottom.png
-File85=sk06_bottom_left.png
-File86=sk06_bottom_right.png
-File87=sk06_btClose.png
-File88=sk06_btCloseEnt.png
-File89=sk06_btMax.png
-File9=sk01_bottom.png
-File90=sk06_btMaxEnt.png
-File91=sk06_btMin.png
-File92=sk06_btMinEnt.png
-File93=sk06_left.png
-File94=sk06_right.png
-File95=sk06_title.png
-File96=sk06_top_left.png
-File97=sk06_top_right.png
-File98=vdSk01.bjl
-File99=vdSk02.bjl
+File20=sk01_btMin.png
+File21=sk01_btMinEnt.png
+File22=sk01_left.png
+File23=sk01_right.png
+File24=sk01_title.png
+File25=sk01_top_left.png
+File26=sk01_top_right.png
+File27=sk02.css
+File28=sk02_bottom.png
+File29=sk02_bottom_left.png
+File3=bars2blue.png
+File30=sk02_bottom_right.png
+File31=sk02_btClose.png
+File32=sk02_btCloseEnt.png
+File33=sk02_btMax.png
+File34=sk02_btMaxEnt.png
+File35=sk02_btMin.png
+File36=sk02_btMinEnt.png
+File37=sk02_left.png
+File38=sk02_right.png
+File39=sk02_title.png
+File4=bars3blue.png
+File40=sk02_top_left.png
+File41=sk02_top_right.png
+File42=sk03.css
+File43=sk03_bottom.png
+File44=sk03_bottom_left.png
+File45=sk03_bottom_right.png
+File46=sk03_btClose.png
+File47=sk03_btCloseEnt.png
+File48=sk03_btMax.png
+File49=sk03_btMaxEnt.png
+File5=bars4blue.png
+File50=sk03_btMin.png
+File51=sk03_btMinEnt.png
+File52=sk03_left.png
+File53=sk03_right.png
+File54=sk03_title.png
+File55=sk03_top_left.png
+File56=sk03_top_right.png
+File57=sk04.css
+File58=sk04_bottom.png
+File59=sk04_bottom_left.png
+File6=bars5blue.png
+File60=sk04_bottom_right.png
+File61=sk04_btClose.png
+File62=sk04_btCloseEnt.png
+File63=sk04_btMax.png
+File64=sk04_btMaxEnt.png
+File65=sk04_btMin.png
+File66=sk04_btMinEnt.png
+File67=sk04_left.png
+File68=sk04_right.png
+File69=sk04_title.png
+File7=camera-icon.png
+File70=sk04_top_left.png
+File71=sk04_top_right.png
+File72=sk05.css
+File73=sk05_bottom.png
+File74=sk05_bottom_left.png
+File75=sk05_bottom_right.png
+File76=sk05_btClose.png
+File77=sk05_btCloseEnt.png
+File78=sk05_btMax.png
+File79=sk05_btMaxEnt.png
+File8=cellitem.bjl
+File80=sk05_btMin.png
+File81=sk05_btMinEnt.png
+File82=sk05_left.png
+File83=sk05_right.png
+File84=sk05_title.png
+File85=sk05_top_left.png
+File86=sk05_top_right.png
+File87=sk06.css
+File88=sk06_bottom.png
+File89=sk06_bottom_left.png
+File9=home.png
+File90=sk06_bottom_right.png
+File91=sk06_btClose.png
+File92=sk06_btCloseEnt.png
+File93=sk06_btMax.png
+File94=sk06_btMaxEnt.png
+File95=sk06_btMin.png
+File96=sk06_btMinEnt.png
+File97=sk06_left.png
+File98=sk06_right.png
+File99=sk06_title.png
 FileGroup1=Default Group
 FileGroup10=Default Group
 FileGroup100=Default Group
 FileGroup101=Default Group
 FileGroup102=Default Group
 FileGroup103=Default Group
+FileGroup104=Default Group
+FileGroup105=Default Group
+FileGroup106=Default Group
+FileGroup107=Default Group
+FileGroup108=Default Group
+FileGroup109=Default Group
 FileGroup11=Default Group
+FileGroup110=Default Group
 FileGroup12=Default Group
 FileGroup13=Default Group
 FileGroup14=Default Group
@@ -220,7 +234,7 @@ Library8=jbitmapcreator
 Library9=jxui
 Module1=frmMedia
 Module2=frmActivity
-NumberOfFiles=103
+NumberOfFiles=110
 NumberOfLibraries=11
 NumberOfModules=2
 Version=7.8
@@ -271,6 +285,10 @@ Sub Process_Globals
 	Private xui As XUI
 	Private btnActivity As Button 'ignore
 	Private btnRefresh As Button 'ignore
+	Private prevDrivewayUpdateTime As String
+	Private prevFrontDoorUpdateTime As String
+	Private ivSyncModule As ImageView
+	Private ivSyncModuleWiFi As ImageView
 End Sub
 
 Sub AppStart (Form1 As Form, Args() As String)
@@ -344,7 +362,7 @@ Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
 	btnDriveway.Enabled = True
 	btnRefresh.Enabled = True
 	btnActivity.Enabled = True
-	fx.Msgbox2(MainForm,Error.Message,MainForm.Title,"OK","","", fx.MSGBOX_ERROR)
+	fx.msgbox2(MainForm,Error.Message,MainForm.Title,"OK","","", fx.msgbox_ERROR)
 	Dim shl As Shell
 	Try
 		shl.Initialize("shl", "java.exe" , Array As String("-jar", "Blink4Java.jar"))
@@ -387,7 +405,10 @@ Sub RequestAuthToken
 
 			RESTGet("https://rest-" & userRegion & ".immedia-semi.com/user")
 			Sleep(1000)
-			If response.StartsWith("ERROR: ") Then
+			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
+				btnDriveway.Enabled = True
+				btnRefresh.Enabled = True
+				btnActivity.Enabled = True
 				Return
 			Else
 				lblStatus.Text = "AuthToken acquired..." 
@@ -396,7 +417,10 @@ Sub RequestAuthToken
 			
 			RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/camera/usage")
 			Sleep(1000)
-			If response.StartsWith("ERROR: ") Then
+			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
+				btnDriveway.Enabled = True
+				btnRefresh.Enabled = True
+				btnActivity.Enabled = True
 				Return
 			Else
 				GetAllCameras(response)
@@ -404,12 +428,15 @@ Sub RequestAuthToken
 		Else
 			lblStatus.Text = GetRESTError(jobLogin.ErrorMessage) ' "RequestAuthToken error: " & jobLogin.GetString
 			Log("RequestAuthToken error: " & jobLogin.ErrorMessage)
+			btnDriveway.Enabled = True
+			btnRefresh.Enabled = True
+			btnActivity.Enabled = True
 			Return
 		End If
 		jobLogin.Release
 		RefreshCameras(True)
 	Catch
-		fx.Msgbox(MainForm,"RequestAuthToken LastException: " & LastException, MainForm.Title)
+		fx.msgbox(MainForm,"RequestAuthToken LastException: " & LastException, MainForm.Title)
 		Log("RequestAuthToken LastException: " & LastException)
 	End Try
 End Sub
@@ -420,12 +447,13 @@ Sub RefreshCameras(FirstRun As Boolean)
 		Dim iv As ImageView
 		Dim clv As CustomListView
 		Dim links As List
+		Dim attempts As Int
 		links = Array("347574", "236967", "226821")
 		
 		RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/syncmodules")
 		Sleep(1000)
 		GetSyncModuleInfo(response)
-		
+	
 		If FirstRun= False Then
 			BlurIV("Driveway.jpg",ivDriveway)
 			BlurIV("FrontDoor.jpg",ivFrontDoor)
@@ -454,14 +482,17 @@ Sub RefreshCameras(FirstRun As Boolean)
 					lblStatus.Text = "Capturing a new Driveway thumbnail..."
 					iv = ivDriveway
 					clv = clvDriveway
+					attempts = 10
 				Else If camera = "236967" Then
 					lblStatus.Text = "Capturing a new Front Door thumbnail..."
 					iv = ivFrontDoor
 					clv = clvFrontDoor
+					attempts = 15
 				Else If camera = "226821" Then
 					lblStatus.Text = "Capturing a new Side Yard thumbnail..."
 					iv = ivSideYard
 					clv = clvSideYard
+					attempts = 15
 				End If
 			End If
 
@@ -473,7 +504,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 			Else
 				RESTPost("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera & "/thumbnail")
 				Sleep(1000)
-				If response.StartsWith("ERROR: ") Then
+				If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 					btnDriveway.Enabled = True
 					btnRefresh.Enabled = True
 					btnActivity.Enabled = True
@@ -482,13 +513,13 @@ Sub RefreshCameras(FirstRun As Boolean)
 					GetCommandID(response)
 					RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 					Sleep(1000)
-					If response.StartsWith("ERROR: ") Then
+					If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 						btnDriveway.Enabled = True
 						btnRefresh.Enabled = True
 						btnActivity.Enabled = True
 						Return
 					Else
-						For i = 1 To 30
+						For i = 1 To attempts
 							GetCommandStatus(response)
 							If commandComplete Then
 								RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
@@ -498,37 +529,45 @@ Sub RefreshCameras(FirstRun As Boolean)
 								Exit
 							Else
 								If camera = "347574" Then
-									lblStatus.Text = "Awaiting for the Driveway thumbnail... " & i & "/30"
+									lblStatus.Text = "Awaiting for the Driveway thumbnail... " & i & "/" & attempts
 								Else If camera = "236967" Then
-									lblStatus.Text = "Awaiting for the Front Door thumbnail...  " & i & "/30"
+									lblStatus.Text = "Awaiting for the Front Door thumbnail...  " & i & "/" & attempts
 								Else If camera = "226821" Then
-									lblStatus.Text = "Awaiting for the Side Yard thumbnail... " & i & "/30"
+									lblStatus.Text = "Awaiting for the Side Yard thumbnail... " & i & "/" & attempts
 								End If
 							End If
 							RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 							Sleep(1000)
+							If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
+								btnDriveway.Enabled = True
+								btnRefresh.Enabled = True
+								btnActivity.Enabled = True
+								Return
+							End If
 						Next
 						If commandComplete = False Then
 							If camera = "347574" Then
 								lblStatus.Text = "Failed to retrieve Driveway thumbnail..."
-								'ivDriveway.SetImage(Null)
 							Else If camera = "236967" Then
 								lblStatus.Text = "Failed to retrieve Front Door thumbnail..."
-								'ivFrontDoor.SetImage(Null)
 							Else If camera = "226821" Then
 								lblStatus.Text = "Failed to retrieve Side Yard thumbnail..."
-								'ivSideYard.SetImage(Null)
 							End If
 						Else
+
 						End If
 					End If
 				End If
 			End If
 		Next
+'		If FirstRun = False Then
+'			btnRefresh_Click
+'		End If
 		lblStatus.Text = "Ready"
 	Catch
+		response = "ERROR: " & LastException
 		Log("RefreshCamera LastException: " & LastException)
-		fx.Msgbox(MainForm,"RefreshCamera LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"RefreshCamera LastException: " & LastException,MainForm.Title)
 	End Try
 	btnDriveway.Enabled = True
 	btnRefresh.Enabled = True
@@ -549,11 +588,14 @@ Sub RESTGet(url As String) As ResumableSub
 			response = "ERROR: " & j.ErrorMessage
 			lblStatus.Text = GetRESTError(j.ErrorMessage)
 		End If
+		If response.Contains("System is busy, please wait") Then
+			lblStatus.Text = "System is busy, please wait"
+		End If
 		j.Release
 	Catch
 		response = "ERROR: " & LastException
 		Log("RESTGet LastException: " & LastException)
-		fx.Msgbox(MainForm,"RESTGet LastException: " & LastException,MainForm.title)
+		fx.msgbox(MainForm,"RESTGet LastException: " & LastException,MainForm.title)
 	End Try
 	Log("URL: " & url)
 	Log("Response: " & response)
@@ -575,11 +617,14 @@ Sub RESTPost(url As String) As ResumableSub
 			response = "ERROR: " & j.ErrorMessage
 			lblStatus.Text = GetRESTError(j.ErrorMessage)
 		End If
+		If response.Contains("System is busy, please wait") Then
+			lblStatus.Text = "System is busy, please wait"
+		End If
 		j.Release
 	Catch
 		response = "ERROR: " & LastException
 		Log("RESTPost LastException: " & LastException)
-		fx.Msgbox(MainForm,"RESTPost LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"RESTPost LastException: " & LastException,MainForm.Title)
 	End Try
 	Log("URL: " & url)
 	Log("Response: " & response)
@@ -644,7 +689,7 @@ Sub GetAuthInfo(json As String)
 '	Dim id As Int = account.Get("id")
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetAuthInfo LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetAuthInfo LastException: " & LastException,MainForm.Title)
 	End Try
 
 End Sub
@@ -674,7 +719,7 @@ Sub GetUserInfo(json As String)
 		'   Dim email As String = root.Get("email")
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetUserInfo LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetUserInfo LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -703,7 +748,7 @@ Sub GetAllCameras(json As String)
 		Next
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetAllCameras LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetAllCameras LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -750,7 +795,7 @@ Sub GetCommandID(json As String)
 '	Dim transaction As String = root.Get("transaction")
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetCommandID LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetCommandID LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -763,7 +808,7 @@ Sub GetCommandStatus(json As String)
 		Log("commandComplete: " & commandComplete)
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetCommandStatus LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetCommandStatus LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -790,7 +835,7 @@ Sub GetRESTError(json As String) As String
 		End If
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetRESTError: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetRESTError: " & LastException,MainForm.Title)
 		Return json
 	End Try
 End Sub
@@ -857,8 +902,8 @@ Sub GetCameraInfo(json As String, clv As CustomListView)
 		clv.AddTextItem("Firmware Git Hash: " & fw_git_hash, "fw_git_hash")
 		clv.AddTextItem("Battery alert status: " & battery_alert_status, "battery_alert_status")
 		clv.AddTextItem("Temperature alert status: " & temp_alert_status, "temp_alert_status")
-		clv.AddTextItem("Updated at: " & ConvertDateTime(updated_at), "updated_at")
-		clv.AddTextItem("Created at: " & ConvertDateTime(created_at), "created_at")
+		clv.AddTextItem("Updated at: " & ConvertDateTimePlain(updated_at), "updated_at")
+		clv.AddTextItem("Created at: " & ConvertDateTimePlain(created_at), "created_at")
 		clv.AddTextItem("IP address: " & ip_address, "ip_address")
 		clv.AddTextItem("MAC address: " & mac, "mac")
 		clv.AddTextItem("Camera ID: " & camera_id, "camera_id")
@@ -900,10 +945,15 @@ Sub GetCameraInfo(json As String, clv As CustomListView)
 		lblStatus.Text = "Last updated: " & strTimestamp
 		If clv = clvDriveway Then
 			lblDriveway.Text = "Driveway " & strTimestamp
+			prevDrivewayUpdateTime = updated_at
 		Else If clv = clvFrontDoor Then
 			lblFrontDoor.Text = "Front Door " & strTimestamp
+			lblDriveway.Text = "Driveway " & ConvertDateTime(prevDrivewayUpdateTime)
+			prevFrontDoorUpdateTime = updated_at
 		Else If clv = clvSideYard Then
 			lblSideYard.Text = "Side Yard " & strTimestamp
+			lblDriveway.Text = "Driveway " & ConvertDateTime(prevDrivewayUpdateTime)
+			lblFrontDoor.Text = "Front Door " & ConvertDateTime(prevFrontDoorUpdateTime)
 		End If
 		
 		For i = 0 To clv.Size-1
@@ -919,7 +969,7 @@ Sub GetCameraInfo(json As String, clv As CustomListView)
 		Next
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetCameraInfo LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetCameraInfo LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -954,9 +1004,25 @@ Sub GetSyncModuleInfo(json As String)
 '	Dim last_offline_alert As String = syncmodule.Get("last_offline_alert")
 		Dim status As String = syncmodule.Get("status")
 		lblSyncModule.Text = "Sync Module is " & status & CRLF & "Wifi Strength: " & wifi_strength & " bars" & CRLF & "Firmware version: " & fw_version & CRLF & "OS version: " & os_version
+		
+		If status = "online" Then
+			ivSyncModule.SetImage(fx.LoadImage(File.DirAssets,"systemstatusonline.png"))
+		Else
+			ivSyncModule.SetImage(fx.LoadImage(File.DirAssets,"systemstatusoffline.png"))
+		End If
+		
+		If wifi_strength = "5" Then
+			ivSyncModuleWiFi.SetImage(fx.LoadImage(File.DirAssets,"bars5blue.png"))
+		Else If wifi_strength = "4" Then
+			ivSyncModuleWiFi.SetImage(fx.LoadImage(File.DirAssets,"bars4blue.png"))
+		Else If wifi_strength = "3" Then
+			ivSyncModuleWiFi.SetImage(fx.LoadImage(File.DirAssets,"bars3blue.png"))
+		Else If wifi_strength = "2" Then
+			ivSyncModuleWiFi.SetImage(fx.LoadImage(File.DirAssets,"bars2blue.png"))
+		End If
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetSyncModuleInfo LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetSyncModuleInfo LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -974,7 +1040,7 @@ Sub CheckBattLife(battlevel As Int) As String
 		End If
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"CheckBattLife LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"CheckBattLife LastException: " & LastException,MainForm.Title)
 		Return ""
 	End Try
 End Sub
@@ -995,7 +1061,7 @@ Sub CheckLFRLevel(lfrlevel As Int) As String
 		End If
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"CheckLFRLevel LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"CheckLFRLevel LastException: " & LastException,MainForm.Title)
 		Return ""
 	End Try
 End Sub
@@ -1233,7 +1299,7 @@ Sub GetLiveView(json As String)
 		mp.Play
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"GetCommandStatus LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"GetCommandStatus LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -1267,7 +1333,7 @@ Sub BlurIV (image As String,iv As ImageView)
 		iv.SetImage(Blur(bmp))
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"BlurIV LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"BlurIV LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -1309,7 +1375,7 @@ Private Sub Blur (bmp As B4XBitmap) As B4XBitmap
 		Next
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"Blur LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"Blur LastException: " & LastException,MainForm.Title)
 	End Try
 	Return bc.Bitmap
 End Sub
@@ -1329,7 +1395,7 @@ Private Sub SetAvg(bc As BitmapCreator, x As Int, y As Int, clrs() As ARGBColor,
 		bc.SetARGB(x, y, temp)
 	Catch
 		Log(LastException)
-		fx.Msgbox(MainForm,"SetAvg LastException: " & LastException,MainForm.Title)
+		fx.msgbox(MainForm,"SetAvg LastException: " & LastException,MainForm.Title)
 	End Try
 End Sub
 
@@ -1350,10 +1416,9 @@ Sub btnActivity_Click
 	btnDriveway.Enabled = True
 	btnRefresh.Enabled = True
 	btnActivity.Enabled = True
-	'btnRefresh_Click
 End Sub
 
-Sub ConvertDateTime(inputTime As String) As String
+Sub ConvertDateTimePlain(inputTime As String) As String
 	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
 	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
 	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a"
@@ -1361,6 +1426,66 @@ Sub ConvertDateTime(inputTime As String) As String
 	'Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
 	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
 	Return DateTime.Date(lngTicks)
+End Sub
+
+Sub ConvertDateTime(inputTime As String) As String
+	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
+	Dim timestampProcessed As String
+	timestampProcessed =  ConvertFullDateTime(inputTime)
+	
+	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
+	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a"
+	Dim lngTicks As Long = ticks
+	Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now) 'DateTime.Now
+
+	If timestampProcessed.Contains("Yesterday") Or timestampProcessed.Contains("Today") Then
+		If p.Days = 0 Then
+			If p.Hours = 0 Then
+				If p.Minutes = 0 Then
+					Return timestampProcessed & " (" & p.Seconds & "s ago)"
+				Else
+					Return timestampProcessed & " (" & p.Minutes & "m " & p.Seconds & "s ago)"
+				End If
+			Else
+				Return timestampProcessed & " (" & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago)"
+			End If
+		else If p.Hours = 0 Then
+			If p.Minutes = 0 Then
+				Return timestampProcessed & " (" & p.Seconds & "s ago)"
+			Else
+				Return timestampProcessed & " (" & p.Minutes & "m " & p.Seconds & "s ago)"
+			End If
+		else If p.Minutes = 0 Then
+			Return timestampProcessed & " (" & p.Seconds & "s ago)"
+		Else
+			Return timestampProcessed & " (" & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago)"
+		End If
+	Else
+		Return timestampProcessed & " (" & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago)"
+	End If
+
+End Sub
+
+Sub ConvertFullDateTime(inputTime As String) As String
+	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
+	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
+	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a"
+	Dim lngTicks As Long = ticks
+
+	Dim Yesterday As Long
+	Dim timestamp As Long
+	DateTime.DateFormat = "yyyyMMdd"
+	Yesterday = DateTime.Date(DateTime.add(DateTime.Now, 0, 0, -1))
+	timestamp = DateTime.Date(lngTicks)
+
+	DateTime.DateFormat = "h:mm:ss a"
+	If DateUtils.IsSameDay(lngTicks,DateTime.now) Then
+		Return "Today " & DateTime.Date(lngTicks)
+	Else If Yesterday = timestamp Then
+		Return "Yesterday " & DateTime.Date(lngTicks)
+	Else
+		Return DateUtils.GetDayOfWeekName(lngTicks) & " " & DateTime.Date(lngTicks)
+	End If
 End Sub
 
 Sub ParseUTCstring(utc As String) As Long
