@@ -299,7 +299,7 @@ Sub AppStart (Form1 As Form, Args() As String)
 		If File.Exists(File.DirApp, "skin.ini") Then
 			skinTemp = File.ReadString(File.DirApp, "skin.ini")
 		Else
-			File.WriteString(File.DirApp, "skin.ini", "vdSk03")
+			'File.WriteString(File.DirApp, "skin.ini", "vdSk03")
 			skinTemp = "vdSk03"
 		End If
 	
@@ -400,11 +400,12 @@ Sub RequestAuthToken
 		Wait For (jobLogin) JobDone(jobLogin As HttpJob)
 		If jobLogin.Success Then
 			lblStatus.Text = "Successfully logged in to the Blink server..."
-			
+			'File.WriteString(File.DirApp,"response_login.txt",jobLogin.GetString)
 			GetAuthInfo(jobLogin.GetString)
 
 			RESTGet("https://rest-" & userRegion & ".immedia-semi.com/user")
 			Sleep(1000)
+			'File.WriteString(File.DirApp,"response_user.txt",response)
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 				btnDriveway.Enabled = True
 				btnRefresh.Enabled = True
@@ -417,6 +418,7 @@ Sub RequestAuthToken
 			
 			RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/camera/usage")
 			Sleep(1000)
+			'File.WriteString(File.DirApp,"response_usage.txt",response)
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 				btnDriveway.Enabled = True
 				btnRefresh.Enabled = True
@@ -452,6 +454,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 		
 		RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/syncmodules")
 		Sleep(1000)
+		'File.WriteString(File.DirApp,"response_syncmodules.txt",response)
 		GetSyncModuleInfo(response)
 	
 		If FirstRun= False Then
@@ -499,11 +502,13 @@ Sub RefreshCameras(FirstRun As Boolean)
 			If FirstRun Then
 				RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
 				Sleep(1000)
+				'File.WriteString(File.DirApp,"response_camera.txt",response)
 				GetCameraInfo(response,clv)
 				DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv, camera)
 			Else
 				RESTPost("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera & "/thumbnail")
 				Sleep(1000)
+				'File.WriteString(File.DirApp,"response_camerathumbnail.txt",response)
 				If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 					btnDriveway.Enabled = True
 					btnRefresh.Enabled = True
@@ -513,6 +518,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 					GetCommandID(response)
 					RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 					Sleep(1000)
+					'File.WriteString(File.DirApp,"response_command.txt",response)
 					If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 						btnDriveway.Enabled = True
 						btnRefresh.Enabled = True
@@ -524,8 +530,10 @@ Sub RefreshCameras(FirstRun As Boolean)
 							If commandComplete Then
 								RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
 								Sleep(1000)
+								'File.WriteString(File.DirApp,"response_camera_complete.txt",response)
 								GetCameraInfo(response,clv)
 								DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv,camera)
+								'File.WriteString(File.DirApp,"response_cameraThumbnail_jpg.txt",response)
 								Exit
 							Else
 								If camera = "347574" Then
@@ -1254,7 +1262,7 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 '				'RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/226821")
 '				Sleep(1000)
 '				'GetCameraInfo(response,clvDriveway)
-'				File.WriteString(File.DirApp,"response.txt",response)
+'				'File.WriteString(File.DirApp,"response.txt",response)
 '				Sleep(1000)
 '				btnActivity_Click
 '				Exit
@@ -1272,7 +1280,7 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 '	RESTPost("https://rest-" & userRegion &".immedia-semi.com/api/v3/networks/94896/cameras/226821/liveview")
 '	' {"id":147201291,"server":"immis://35.163.152.226:443/mUJn8-wyeaHTguSQ__IMDS_890039632?client_id=17","duration":300,"device_name":"Side Yard","camera_name":"Side Yard","network_id":94896,"continue_interval":30,"continue_warning":10,"submit_logs":true,"lv_save":true}
 '	Sleep(1000)
-'	File.WriteString(File.DirApp,"response.txt",response)
+'	'File.WriteString(File.DirApp,"response.txt",response)
 '	GetLiveView(response)
 	'***************** TO GET A LIVE VIEW BUT NO WAY TO SHOW IT AT THIS POINT '*****************
 
@@ -1408,7 +1416,7 @@ Sub btnActivity_Click
 	RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
 	'https://rest-u006.immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1
 	Sleep(1000)
-	'File.WriteString(File.DirApp,"response_page1.txt",response)
+	'File.WriteString(File.DirApp,"response_activity.txt",response)
 	Dim mf As frmActivity
 	mf.Initialize(MainForm)
 	mf.authToken = authToken

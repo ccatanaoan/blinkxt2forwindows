@@ -17,6 +17,7 @@ Sub Class_Globals
 	Private wvMedia As WebView
 	Private lblDate As B4XView
 	Private lblTimestamp As Label
+	Private previousSelectedIndex As Int
 End Sub
 
 'Initializes the object. You can add parameters to this method if needed.
@@ -79,7 +80,7 @@ Sub GetVideos(json As String, userRegion As String)
 			Wait For (j) JobDone(j As HttpJob)
 			If j.Success Then
 				' Save to a JPG file
-
+				'File.WriteString(File.DirApp,"frmActivity_GetVideos.txt",json)
 				Dim out As OutputStream = File.OpenOutput(File.DirApp, "screenshot.jpg", False)
 				File.Copy2(j.GetInputStream, out)
 				out.Close '<------ very important
@@ -90,6 +91,7 @@ Sub GetVideos(json As String, userRegion As String)
 				clvActivity.Add(p,"https://rest-" & userRegion &".immedia-semi.com" & medianame & "|" & device_name & " " & ConvertFullDateTime(created_at))
 				If clvActivity.Size = 1 Then
 					ShowVideo("https://rest-" & userRegion &".immedia-semi.com" & medianame,device_name & " " & ConvertFullDateTime(created_at))
+					UpdateItemColor(clvActivity.FirstVisibleIndex, xui.Color_Blue)
 				End If
 			Else
 
@@ -131,7 +133,7 @@ Sub ConvertDateTime(inputTime As String) As String
 	Dim lngTicks As Long = ticks
 	Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
 	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
-	If lblDate.Text.Contains("Yesterday") Or lblDate.Text.Contains("Today") Then
+	If lblDate.Text.Contains("Today") Then
 		If p.Days = 0 Then
 			If p.Hours = 0 Then
 				If p.Minutes = 0 Then
@@ -153,10 +155,23 @@ Sub ConvertDateTime(inputTime As String) As String
 		Else
 			Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
 		End If
+	else if lblDate.Text.Contains("Yesterday") Then
+		If p.Days = 0 Then
+			If p.Hours = 0 Then
+				If p.Minutes = 0 Then
+					Return p.Seconds & "s ago"
+				Else
+					Return p.Minutes & "m " & p.Seconds & "s ago"
+				End If
+			Else
+				Return p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
+			End If
+		Else
+			Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
+		End If
 	Else
 		Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
 	End If
-
 End Sub
 
 Sub ConvertFullDateTime(inputTime As String) As String
@@ -221,6 +236,7 @@ End Sub
 
 Sub clvActivity_ItemClick (Index As Int, Value As Object)
 	Try
+		UpdateItemColor(Index, xui.Color_Blue)
 		wvMedia.LoadUrl("")
 		Dim video As String
 		video = clvActivity.GetValue(Index)
@@ -317,4 +333,48 @@ End Sub
 
 Sub wvMedia_PageFinished (Url As String)
 
+End Sub
+
+Sub UpdateItemColor (Index As Int, Color As Int)
+	Try
+		
+		If previousSelectedIndex <> Index Then
+			Dim p As B4XView = clvActivity.GetPanel(previousSelectedIndex)
+			If p.NumberOfViews > 0 Then
+				'get the content label view (it is inside an additional panel)
+				Dim ContentLabel As B4XView = p.GetView(0).GetView(0)
+				ContentLabel.TextColor = xui.Color_Black
+		
+				Dim ContentLabel As B4XView = p.GetView(0).GetView(1)
+				ContentLabel.TextColor = xui.Color_Black
+		
+				Dim ContentLabel As B4XView = p.GetView(0).GetView(2)
+				ContentLabel.TextColor = xui.Color_Black
+				
+				Dim ContentLabel As B4XView = p.GetView(1) ' lblDate
+				ContentLabel.TextColor = xui.Color_Black
+			End If
+		End If
+	
+		Dim p As B4XView = clvActivity.GetPanel(Index)
+		If p.NumberOfViews > 0 Then
+			'get the content label view (it is inside an additional panel)
+			Dim ContentLabel As B4XView = p.GetView(0).GetView(0)
+			ContentLabel.TextColor = Color
+		
+			Dim ContentLabel As B4XView = p.GetView(0).GetView(1)
+			ContentLabel.TextColor = Color
+		
+			Dim ContentLabel As B4XView = p.GetView(0).GetView(2)
+			ContentLabel.TextColor = Color
+			
+			Dim ContentLabel As B4XView = p.GetView(1) ' lblDate
+			ContentLabel.TextColor = Color
+			
+		End If
+	
+		previousSelectedIndex = Index
+	Catch
+		Log(LastException)
+	End Try
 End Sub
