@@ -1234,16 +1234,16 @@ Sub clvDriveway_ItemClick (Index As Int, Value As Object)
 End Sub
 
 Sub ivDriveway_MouseClicked (EventData As MouseEvent)
-	Dim mf As frmMedia
-	mf.Initialize(MainForm)
-	mf.timestamp = lblDriveway.Text
-	mf.url=$"
-	   <h1>${lblDriveway.Text}</h1>
-	   <img src="${File.GetUri(File.DirApp, "Driveway.jpg")}"/>
-	
-	"$
-	mf.Show
-	Return
+'	Dim mf As frmMedia
+'	mf.Initialize(MainForm)
+'	mf.timestamp = lblDriveway.Text
+'	mf.url=$"
+'	   <h1>${lblDriveway.Text}</h1>
+'	   <img src="${File.GetUri(File.DirApp, "Driveway.jpg")}"/>
+'	
+'	"$
+'	mf.Show
+'	Return
 
 
 
@@ -1283,6 +1283,48 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 '	'File.WriteString(File.DirApp,"response.txt",response)
 '	GetLiveView(response)
 	'***************** TO GET A LIVE VIEW BUT NO WAY TO SHOW IT AT THIS POINT '*****************
+	
+	''	'***************** TO CHECK IF SYNC MODULE AND CAMERAS ARE ARMED '*****************
+	Try
+		RESTGet("https://rest-" & userRegion &".immedia-semi.com/homescreen")
+		' https://rest.prod.immedia-semi.com/homescreen
+		Sleep(1000)
+		File.WriteString(File.DirApp,"response_arm.txt",response)
+	Catch
+		Log(LastException)
+	End Try
+
+	''	'***************** TO CHECK IF SYNC MODULE AND CAMERAS ARE ARMED '*****************
+	
+	''	'***************** TO ARM THE SYNC MODULE (WILL NOT WORK IF ALL CAMERAS MOTION DETECTION IS DISABLED '*****************
+'	Try
+'		RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/arm")
+'		'ttps://rest.prod.immedia-semi.com/network/*network_id_from_networks_call*/arm
+'		'RESTGet("https://rest-" & userRegion &".immedia-semi.com/homescreen")
+'		' https://rest.prod.immedia-semi.com/homescreen
+'		Sleep(1000)
+'		File.WriteString(File.DirApp,"response_arm.txt",response)
+'		GetCommandID(response)
+'		RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+'		Sleep(1000)
+'		For i = 1 To 30
+'			GetCommandStatus(response)
+'			If commandComplete Then
+'				'RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/226821")
+'				Sleep(1000)
+'				'GetCameraInfo(response,clvDriveway)
+'				File.WriteString(File.DirApp,"response_arm_commandcomplete.txt",response)
+'				Sleep(1000)
+'				Exit
+'			End If
+'			RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+'			Sleep(1000)
+'		Next
+'	Catch
+'		Log(LastException)
+'	End Try
+
+	''	'***************** TO ARM THE SYNC MODULE (WILL NOT WORK IF ALL CAMERAS MOTION DETECTION IS DISABLED '*****************
 
 End Sub
 

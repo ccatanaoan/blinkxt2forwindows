@@ -7,6 +7,6 @@ ModuleBreakpoints2=
 ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
-NavigationStack=frmActivity,CreateListItem,116,0,frmActivity,wvMedia_PageFinished,328,0,frmActivity,Show,34,0,frmActivity,clvActivity_ItemClick,236,0,frmActivity,GetVideos,84,3,frmActivity,Class_Globals,12,0,Visual Designer,main.bjl,-100,1,Visual Designer,activity.bjl,-100,1,Visual Designer,cellitem.bjl,-100,2,frmActivity,UpdateItemColor,333,6
+NavigationStack=frmActivity,clvActivity_ItemClick,236,0,frmActivity,GetVideos,84,3,frmActivity,Class_Globals,12,0,Visual Designer,main.bjl,-100,1,Visual Designer,activity.bjl,-100,1,Visual Designer,cellitem.bjl,-100,2,frmActivity,UpdateItemColor,333,6,Main,RequestAuthToken,168,0,Main,Process_Globals,30,2,Main,ivDriveway_MouseClicked,1051,6
 SelectedBuild=0
 VisibleModules=1,2
