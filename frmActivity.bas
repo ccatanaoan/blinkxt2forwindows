@@ -18,6 +18,7 @@ Sub Class_Globals
 	Private lblDate As B4XView
 	Private lblTimestamp As Label
 	Private previousSelectedIndex As Int
+	Private ivWatched As B4XView
 End Sub
 
 'Initializes the object. You can add parameters to this method if needed.
@@ -64,7 +65,7 @@ Sub GetVideos(json As String, userRegion As String)
 '			Dim time_zone As String = colmedia.Get("time_zone")
 			Dim device_name As String = colmedia.Get("device_name")
 '			Dim network_id As Int = colmedia.Get("network_id")
-'			Dim watched As String = colmedia.Get("watched")
+			Dim watched As String = colmedia.Get("watched")
 '			Dim deleted As String = colmedia.Get("deleted")
 '			Dim updated_at As String = colmedia.Get("updated_at")
 '			Dim id As Int = colmedia.Get("id")
@@ -89,6 +90,11 @@ Sub GetVideos(json As String, userRegion As String)
 				'a = j.GetBitmap
 				Dim p As B4XView = CreateListItem(j.GetBitmap,created_at, device_name)
 				clvActivity.Add(p,"https://rest-" & userRegion &".immedia-semi.com" & medianame & "|" & device_name & " " & ConvertFullDateTime(created_at))
+				If watched <> "true" Then
+					ivWatched.Visible = True
+				Else
+					ivWatched.Visible = False
+				End If
 				If clvActivity.Size = 1 Then
 					ShowVideo("https://rest-" & userRegion &".immedia-semi.com" & medianame,device_name & " " & ConvertFullDateTime(created_at))
 					UpdateItemColor(clvActivity.FirstVisibleIndex, xui.Color_Blue)
@@ -101,7 +107,6 @@ Sub GetVideos(json As String, userRegion As String)
 		'Dim refresh_count As Int = root.Get("refresh_count")
 	Catch
 		Log(LastException)
-		fx.Msgbox2(frm,LastException,"GetVideos Exception","OK","","",fx.MSGBOX_ERROR)
 	End Try
 End Sub
 
@@ -117,10 +122,10 @@ Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As St
 		lblDate.Text = "   " & ConvertFullDateTime(fileinfo)
 		lblFileInfo.Text = "   " & ConvertDateTime(fileinfo)
 		lblDeviceInfo.Text = "   " & devicename
+		ivWatched.SetBitmap(fx.LoadImage(File.DirAssets,"blink_clip_roll_blue_dot_icon.png"))
 		Return p
 	Catch
 		Log(LastException)
-		fx.Msgbox2(frm,LastException,"CreateListItem Exception","OK","","",fx.MSGBOX_ERROR)
 		Return Null
 	End Try
 
@@ -196,7 +201,6 @@ Sub ConvertFullDateTime(inputTime As String) As String
 	End If
 End Sub
 
-
 Sub ParseUTCstring(utc As String) As Long
 	Dim df As String = DateTime.DateFormat
 	Dim res As Long
@@ -245,7 +249,6 @@ Sub clvActivity_ItemClick (Index As Int, Value As Object)
 		ShowVideo(videoURL,videoTimestamp)
 	Catch
 		Log(LastException)
-		fx.Msgbox2(frm,LastException,"clvActivity ItemClick Exception","OK","","",fx.MSGBOX_ERROR)
 	End Try
 
 End Sub
@@ -276,7 +279,18 @@ Sub ShowVideo (Link As String, timestamp As String)
 		j.Release
 	Catch
 		Log(LastException)
-		fx.Msgbox2(frm,LastException,"ShowVideo Exception","OK","","",fx.MSGBOX_ERROR)
+	End Try
+	
+	Try
+		Sleep(3000)
+		Dim p As B4XView = clvActivity.GetPanel(previousSelectedIndex)
+		If p.NumberOfViews > 0 Then
+			'get the content label view (it is inside an additional panel)
+			Dim ContentLabel As ImageView = p.GetView(0).GetView(0) ' imageview for unwatched videos
+			ContentLabel.Visible = False
+		End If
+	Catch
+		Log(LastException)
 	End Try
 End Sub
 
@@ -351,7 +365,7 @@ Sub UpdateItemColor (Index As Int, Color As Int)
 				Dim ContentLabel As B4XView = p.GetView(0).GetView(2)
 				ContentLabel.TextColor = xui.Color_Black
 				
-				Dim ContentLabel As B4XView = p.GetView(1) ' lblDate
+				Dim ContentLabel As B4XView = p.GetView(1) ' lblDate. Check the Views Tree and it is not under pnlExpanded.
 				ContentLabel.TextColor = xui.Color_Black
 			End If
 		End If
@@ -368,7 +382,7 @@ Sub UpdateItemColor (Index As Int, Color As Int)
 			Dim ContentLabel As B4XView = p.GetView(0).GetView(2)
 			ContentLabel.TextColor = Color
 			
-			Dim ContentLabel As B4XView = p.GetView(1) ' lblDate
+			Dim ContentLabel As B4XView = p.GetView(1) ' lblDate. Check the Views Tree and it is not under pnlExpanded.
 			ContentLabel.TextColor = Color
 			
 		End If
