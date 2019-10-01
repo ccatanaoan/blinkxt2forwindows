@@ -7,7 +7,8 @@ Version=7.51
 Sub Class_Globals
 	Private fx As JFX
 	Private frm As Form
-	Public jsonMain As String
+	Private jsonMain As String
+	Private userRegionMain As String
 	Private xui As XUI
 	Private ivScreenshot As B4XView
 	Private lblFileInfo As B4XView
@@ -19,6 +20,9 @@ Sub Class_Globals
 	Private lblTimestamp As Label
 	Private previousSelectedIndex As Int
 	Private ivWatched As B4XView
+	Private kvs As KeyValueStore
+	Type VideoInfo (ThumbnailPath As String, DateCreated As String, Watched As String, DeviceName As String, VideoID As String, ThumbnailBLOB() As Byte)
+	Private cutils As ControlsUtils
 End Sub
 
 'Initializes the object. You can add parameters to this method if needed.
@@ -40,6 +44,8 @@ End Sub
 
 Public Sub Show(json As String, userRegion As String)
 
+	jsonMain = json
+	userRegionMain = userRegion
 	GetVideos(json, userRegion)
 	frm.ShowAndWait
 	
@@ -54,6 +60,9 @@ Sub GetVideos(json As String, userRegion As String)
 '		Dim limit As Int = root.Get("limit")
 		
 		Dim media As List = root.Get("media")
+		
+		kvs.Initialize(File.DirApp, "datastore")
+		
 		For Each colmedia As Map In media
 			Dim thumbnail As String = colmedia.Get("thumbnail")
 '			Dim device_id As Int = colmedia.Get("device_id")
@@ -68,46 +77,101 @@ Sub GetVideos(json As String, userRegion As String)
 			Dim watched As String = colmedia.Get("watched")
 '			Dim deleted As String = colmedia.Get("deleted")
 '			Dim updated_at As String = colmedia.Get("updated_at")
-'			Dim id As Int = colmedia.Get("id")
+			Dim VideoID As String = colmedia.Get("id")
 '			Dim additional_devices As List = colmedia.Get("additional_devices")
 '			Dim device As String = colmedia.Get("device")
 '			Dim partial As String = colmedia.Get("partial")
 
 			Dim medianame As String = colmedia.Get("media")
-			Dim j As HttpJob
-			j.Initialize("", Me)
-			j.Download("https://rest-" & userRegion &".immedia-semi.com" & thumbnail & ".jpg")
-			j.GetRequest.SetHeader("TOKEN_AUTH", authToken)
-			Wait For (j) JobDone(j As HttpJob)
-			If j.Success Then
-				' Save to a JPG file
-				'File.WriteString(File.DirApp,"frmActivity_GetVideos.txt",json)
-				Dim out As OutputStream = File.OpenOutput(File.DirApp, "screenshot.jpg", False)
-				File.Copy2(j.GetInputStream, out)
-				out.Close '<------ very important
 
-				' Display in ImageView
-				'a = j.GetBitmap
-				Dim p As B4XView = CreateListItem(j.GetBitmap,created_at, device_name)
-				clvActivity.Add(p,"https://rest-" & userRegion &".immedia-semi.com" & medianame & "|" & device_name & " " & ConvertFullDateTime(created_at))
-				If watched <> "true" Then
-					ivWatched.Visible = True
-				Else
-					ivWatched.Visible = False
+			' Save to a JPG file
+			File.WriteString(File.DirApp,"frmActivity_GetVideos.txt",json)
+			' https://www.b4x.com/android/forum/threads/b4x-xui-image-to-jpeg-byte-array-with-resize-quality-options.91774/#content
+			' https://www.b4x.com/android/forum/threads/b4x-bytes-to-file.70111/#post-445167
+			If kvs.ContainsKey(VideoID) = False Then
+				Dim j As HttpJob
+				j.Initialize("", Me)
+				j.Download("https://rest-" & userRegion &".immedia-semi.com" & thumbnail & ".jpg")
+				j.GetRequest.SetHeader("TOKEN_AUTH", authToken)
+				Wait For (j) JobDone(j As HttpJob)
+				If j.Success Then
+					Dim image As B4XBitmap = j.GetBitmap
+					'Convert image to JPEG byte array
+					Dim out As OutputStream
+					out.InitializeToBytesArray(0)
+					image.WriteToStream(out, 100, "JPEG")
+					kvs.Put(VideoID, CreateCustomType(medianame,created_at,watched,device_name,VideoID,out.ToBytesArray))
+					out.Close
 				End If
-				If clvActivity.Size = 1 Then
-					ShowVideo("https://rest-" & userRegion &".immedia-semi.com" & medianame,device_name & " " & ConvertFullDateTime(created_at))
-					UpdateItemColor(clvActivity.FirstVisibleIndex, xui.Color_Blue)
-				End If
+				j.Release
 			Else
-
+				Dim mytypes As Object = kvs.Get(VideoID)
+				Dim videos = mytypes As VideoInfo
+				If  watched <> videos.Watched Then
+					Dim j As HttpJob
+					j.Initialize("", Me)
+					j.Download("https://rest-" & userRegion &".immedia-semi.com" & thumbnail & ".jpg")
+					j.GetRequest.SetHeader("TOKEN_AUTH", authToken)
+					Wait For (j) JobDone(j As HttpJob)
+					If j.Success Then
+						Dim image As B4XBitmap = j.GetBitmap
+						'Convert image to JPEG byte array
+						Dim out As OutputStream
+						out.InitializeToBytesArray(0)
+						image.WriteToStream(out, 100, "JPEG")
+						kvs.Put(VideoID, CreateCustomType(medianame,created_at,watched,device_name,VideoID,out.ToBytesArray))
+						out.Close
+					End If
+					j.Release
+				End If
 			End If
-			j.Release
 		Next
-		'Dim refresh_count As Int = root.Get("refresh_count")
+
+		Dim list1 As List = kvs.ListKeys
+		For i =  0 To list1.Size-1  
+			Dim mytypes As Object = kvs.Get(list1.Get(i))
+			Dim videos = mytypes As VideoInfo
+			
+			Log("kvs.ListKeys " & i & " | " & videos.VideoID & " | " & videos.Watched & " | " & GetTimestampForSorting)
+			
+			Dim In As InputStream
+			In.InitializeFromBytesArray(videos.ThumbnailBLOB, 0, videos.ThumbnailBLOB.Length)
+			Dim bmp As Image
+			bmp.Initialize2(In)
+			
+			Dim p As B4XView = CreateListItem(bmp,videos.DateCreated, videos.DeviceName)
+			clvActivity.Add(p,"https://rest-" & userRegion &".immedia-semi.com" & videos.ThumbnailPath & "|" & videos.DeviceName & " " & ConvertFullDateTime(videos.DateCreated))
+			If videos.Watched <> "true" Then
+				ivWatched.Visible = True
+			Else
+				ivWatched.Visible = False
+			End If
+
+			If i > 100 Then
+				kvs.Remove(list1.Get(i))
+			End If
+		Next
+		If list1.Size > 0 Then
+			clvActivity.JumpToItem(0)
+			Sleep(100)
+			clvActivity_ItemClick(0,"") '"https://rest-" & userRegion &".immedia-semi.com" & videos.ThumbnailPath & "|" & videos.DeviceName & " " & ConvertFullDateTime(videos.DateCreated))
+			Sleep(100)
+		End If
 	Catch
 		Log(LastException)
 	End Try
+End Sub
+
+Private Sub CreateCustomType(ThumbnailPath As String, DateCreated As String, Watched As String, DeviceName As String, VideoID As String, ThumbnailBLOB() As Byte) As VideoInfo
+	Dim ct As VideoInfo
+	ct.Initialize
+	ct.ThumbnailPath = ThumbnailPath
+	ct.DateCreated = DateCreated
+	ct.Watched = Watched
+	ct.DeviceName = DeviceName
+	ct.ThumbnailBLOB = ThumbnailBLOB
+	ct.VideoID = VideoID
+	Return ct
 End Sub
 
 Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As String) As B4XView
@@ -201,6 +265,11 @@ Sub ConvertFullDateTime(inputTime As String) As String
 	End If
 End Sub
 
+Sub GetTimestampForSorting() As String
+	DateTime.DateFormat = "yyyyMMddHHmmssSSS"
+	Return DateTime.Date(DateTime.Now)
+End Sub
+
 Sub ParseUTCstring(utc As String) As Long
 	Dim df As String = DateTime.DateFormat
 	Dim res As Long
@@ -240,13 +309,21 @@ End Sub
 
 Sub clvActivity_ItemClick (Index As Int, Value As Object)
 	Try
-		UpdateItemColor(Index, xui.Color_Blue)
+		UpdateItemColor(Index)
 		wvMedia.LoadUrl("")
 		Dim video As String
 		video = clvActivity.GetValue(Index)
 		Dim videoURL As String = Regex.Split("\|",video)(0)
 		Dim videoTimestamp As String = Regex.Split("\|",video)(1)
 		ShowVideo(videoURL,videoTimestamp)
+		Dim list1 As List = kvs.ListKeys
+		For i =  0 To list1.Size-1
+			Dim mytypes As Object = kvs.Get(list1.Get(i))
+			Dim videos = mytypes As VideoInfo
+			If videoURL.Contains(videos.VideoID) Then
+				kvs.Put(videos.VideoID,CreateCustomType(videos.ThumbnailPath,videos.DateCreated,"true",videos.DeviceName,videos.VideoID,videos.ThumbnailBLOB))
+			End If
+		Next
 	Catch
 		Log(LastException)
 	End Try
@@ -275,6 +352,21 @@ Sub ShowVideo (Link As String, timestamp As String)
 			wvMedia.LoadHtml(sb.ToString) 
 		Else
 
+		End If
+		If j.ErrorMessage.Contains("Media not found") Then
+			clvActivity.RemoveAt(previousSelectedIndex)
+			Dim list1 As List = kvs.ListKeys
+			For i =  0 To list1.Size-1
+				Dim mytypes As Object = kvs.Get(list1.Get(i))
+				Dim videos = mytypes As VideoInfo
+				If Link.Contains(videos.VideoID) Then
+					kvs.Remove(list1.Get(i))
+					clvActivity.Clear
+					cutils.ShowNotification("Catanaoan Blink XT2 Cameras v1.0","Media not found. Removed from the list.", cutils.ICON_INFORMATION)
+					GetVideos(jsonMain,userRegionMain)
+					Exit
+				End If
+			Next
 		End If
 		j.Release
 	Catch
@@ -349,42 +441,24 @@ Sub wvMedia_PageFinished (Url As String)
 
 End Sub
 
-Sub UpdateItemColor (Index As Int, Color As Int)
-	Try
-		
+Sub UpdateItemColor (Index As Int)
+	Try	
 		If previousSelectedIndex <> Index Then
 			Dim p As B4XView = clvActivity.GetPanel(previousSelectedIndex)
 			If p.NumberOfViews > 0 Then
-				'get the content label view (it is inside an additional panel)
-				Dim ContentLabel As B4XView = p.GetView(0).GetView(0)
-				ContentLabel.TextColor = xui.Color_Black
-		
-				Dim ContentLabel As B4XView = p.GetView(0).GetView(1)
-				ContentLabel.TextColor = xui.Color_Black
-		
-				Dim ContentLabel As B4XView = p.GetView(0).GetView(2)
-				ContentLabel.TextColor = xui.Color_Black
-				
-				Dim ContentLabel As B4XView = p.GetView(1) ' lblDate. Check the Views Tree and it is not under pnlExpanded.
-				ContentLabel.TextColor = xui.Color_Black
+				' https://www.b4x.com/android/forum/threads/class-css-utils.61824/#post-390334
+				Dim backPanel As Pane = p.getview(0)
+				CSSUtils.SetBackgroundColor(backPanel,fx.Colors.ARGB(255,217,215,222))
+				CSSUtils.SetBorder(backPanel,1,fx.Colors.Black,1)
 			End If
 		End If
 	
 		Dim p As B4XView = clvActivity.GetPanel(Index)
 		If p.NumberOfViews > 0 Then
-			'get the content label view (it is inside an additional panel)
-			Dim ContentLabel As B4XView = p.GetView(0).GetView(0)
-			ContentLabel.TextColor = Color
-		
-			Dim ContentLabel As B4XView = p.GetView(0).GetView(1)
-			ContentLabel.TextColor = Color
-		
-			Dim ContentLabel As B4XView = p.GetView(0).GetView(2)
-			ContentLabel.TextColor = Color
-			
-			Dim ContentLabel As B4XView = p.GetView(1) ' lblDate. Check the Views Tree and it is not under pnlExpanded.
-			ContentLabel.TextColor = Color
-			
+			' https://www.b4x.com/android/forum/threads/class-css-utils.61824/#post-390334
+			Dim backPanel As Pane = p.getview(0)
+			CSSUtils.SetBackgroundColor(backPanel, fx.Colors.white)
+			CSSUtils.SetBorder(backPanel,2,fx.Colors.Red,1)
 		End If
 	
 		previousSelectedIndex = Index
@@ -392,3 +466,47 @@ Sub UpdateItemColor (Index As Int, Color As Int)
 		Log(LastException)
 	End Try
 End Sub
+
+'Sub UpdateItemColor (Index As Int, Color As Int)
+'	Try
+'		
+'		If previousSelectedIndex <> Index Then
+'			Dim p As B4XView = clvActivity.GetPanel(previousSelectedIndex)
+'			If p.NumberOfViews > 0 Then
+'				'get the content label view (it is inside an additional panel)
+'				Dim ContentLabel As B4XView = p.GetView(0).GetView(0)
+'				ContentLabel.TextColor = xui.Color_Black
+'		
+'				Dim ContentLabel As B4XView = p.GetView(0).GetView(1)
+'				ContentLabel.TextColor = xui.Color_Black
+'		
+'				Dim ContentLabel As B4XView = p.GetView(0).GetView(2)
+'				ContentLabel.TextColor = xui.Color_Black
+'				
+'				Dim ContentLabel As B4XView = p.GetView(1) ' lblDate. Check the Views Tree and it is not under pnlExpanded.
+'				ContentLabel.TextColor = xui.Color_Black
+'			End If
+'		End If
+'	
+'		Dim p As B4XView = clvActivity.GetPanel(Index)
+'		If p.NumberOfViews > 0 Then
+'			'get the content label view (it is inside an additional panel)
+'			Dim ContentLabel As B4XView = p.GetView(0).GetView(0)
+'			ContentLabel.TextColor = Color
+'		
+'			Dim ContentLabel As B4XView = p.GetView(0).GetView(1)
+'			ContentLabel.TextColor = Color
+'		
+'			Dim ContentLabel As B4XView = p.GetView(0).GetView(2)
+'			ContentLabel.TextColor = Color
+'			
+'			Dim ContentLabel As B4XView = p.GetView(1) ' lblDate. Check the Views Tree and it is not under pnlExpanded.
+'			ContentLabel.TextColor = Color
+'			
+'		End If
+'	
+'		previousSelectedIndex = Index
+'	Catch
+'		Log(LastException)
+'	End Try
+'End Sub

@@ -232,6 +232,10 @@ Group=Default Group
 Library1=jcore
 Library10=xui views
 Library11=jshell
+Library12=jsql
+Library13=jrandomaccessfile
+Library14=jb4xencryption
+Library15=jcontrolsfx
 Library2=jfx
 Library3=jokhttputils2
 Library4=json
@@ -243,15 +247,18 @@ Library9=jxui
 Module1=frmMedia
 Module2=frmActivity
 Module3=Badger
+Module4=KeyValueStore
 NumberOfFiles=114
-NumberOfLibraries=11
-NumberOfModules=3
+NumberOfLibraries=15
+NumberOfModules=4
 Version=7.8
 @EndOfDesignText@
 #Region Project Attributes 
 	#MainFormWidth: 900
 	#MainFormHeight: 1000 
 	#VirtualMachineArgs: -Xms1024m -Xmx1024m
+	#AdditionalJar: sqlite-jdbc-3.7.2
+	#AdditionalJar: bcprov-jdk15on-154
 #End Region
 
 Sub Process_Globals
@@ -1156,12 +1163,12 @@ End Sub
 
 Sub CheckBattLife(battlevel As Int) As String
 	Try
-		' https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.batteryuniversity.com%2F_img%2Fcontent%2Fbu-106-table-4.jpg&imgrefurl=https%3A%2F%2Fbatteryuniversity.com%2Flearn%2Farticle%2Fprimary_batteries&docid=iRglhUshphFArM&tbnid=lTA22wm3cFfbCM%3A&vet=10ahUKEwjCo66R0NrkAhWVrZ4KHVq8BmcQMwi4AShFMEU..i&w=570&h=265&bih=947&biw=1680&q=AAA%20battery%20level&ved=0ahUKEwjCo66R0NrkAhWVrZ4KHVq8BmcQMwi4AShFMEU&iact=mrc&uact=8
+		' http://data.energizer.com/pdfs/l91.pdf
 		If battlevel <= 136 Then
 			Return "Replace battery now!"
 		else If battlevel >= 160 Then
 			Return "Very high"
-		else If battlevel > 136 And battlevel < 138 Then
+		else If battlevel > 136 And battlevel < 140 Then
 			Return "Very low"
 		Else
 			Return "High"
@@ -1398,10 +1405,13 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 	''	'***************** TO REQUEST FOR A NEW VIDEO THAT WILL SHOW ON SAM '*****************
 	
 	'***************** TO GET A LIVE VIEW BUT NO WAY TO SHOW IT AT THIS POINT '*****************
-'	RESTPost("https://rest-" & userRegion &".immedia-semi.com/api/v3/networks/94896/cameras/226821/liveview")
+'	' Blink RTSP stream
+'	' https://www.getscw.com/decoding/rtsp
+'	' Like most battery/cloud cameras Blink does Not support an RTSP stream As the video feed Is directly sent To Cloud servers.
+'	RESTPost("https://rest-" & userRegion &".immedia-semi.com/api/v3/networks/94896/cameras/347574/liveview")
 '	' {"id":147201291,"server":"immis://35.163.152.226:443/mUJn8-wyeaHTguSQ__IMDS_890039632?client_id=17","duration":300,"device_name":"Side Yard","camera_name":"Side Yard","network_id":94896,"continue_interval":30,"continue_warning":10,"submit_logs":true,"lv_save":true}
 '	Sleep(1000)
-'	'File.WriteString(File.DirApp,"response.txt",response)
+'	File.WriteString(File.DirApp,"response_live_view.txt",response)
 '	GetLiveView(response)
 	'***************** TO GET A LIVE VIEW BUT NO WAY TO SHOW IT AT THIS POINT '*****************
 	
@@ -1466,7 +1476,7 @@ Sub GetLiveView(json As String)
 		Dim lv_save As String = root.Get("lv_save")
 		Log("Liveview: " & server)
 		Dim mp As MediaPlayer
-		mp.Initialize("mp", server)
+		mp.Initialize("mp", server.Replace("immis://","rtsp://immis:"))
 		mp.Play
 	Catch
 		Log(LastException)
@@ -1593,7 +1603,7 @@ Sub btnActivity_Click
 	' https://www.b4x.com/android/forum/threads/b4x-resumable-subs-that-return-values-resumablesub.82670/
 	Dim rs As ResumableSub = GetUnwatchedVideos
 	wait for (rs) complete (Result As Object)
-	
+
 	btnDriveway.Enabled = True
 	btnRefresh.Enabled = True
 	btnActivity.Enabled = True
@@ -1922,18 +1932,7 @@ Sub GetUnwatchedVideos() As ResumableSub
 			End If
 		Next
 		
-		If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-			btnDriveway.Enabled = True
-			btnRefresh.Enabled = True
-			btnActivity.Enabled = True
-			btnDrivewayNewClip.Enabled = True
-			btnFrontDoorNewClip.Enabled = True
-			btnSideYardNewClip.Enabled = True
-			Return Null
-		End If
-		
 		Dim json As String = response
-		
 		Dim parser As JSONParser
 		parser.Initialize(json)
 		Dim root As Map = parser.NextObject
@@ -1950,7 +1949,6 @@ Sub GetUnwatchedVideos() As ResumableSub
 			End If
 
 		Next
-		'Dim refresh_count As Int = root.Get"refresh_count")
 	Catch
 		Log(LastException)
 	End Try
