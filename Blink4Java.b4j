@@ -1228,6 +1228,14 @@ Private Sub ivClose_MouseClicked (EventData As MouseEvent)
 	ExitApplication
 End Sub
 
+Sub MainForm_CloseRequest (EventData As Event)
+	File.Delete(File.DirApp, "Driveway.jpg")
+	File.Delete(File.DirApp, "FrontDoor.jpg")
+	File.Delete(File.DirApp, "SideYard.jpg")
+	File.Delete(File.DirApp,"screenshot.jpg")
+	File.Delete(File.DirApp,"media.mp4")
+End Sub
+
 Private Sub Close_Entered_Event(e As Event)
 	Try
 		ivClose.SetImage(fx.LoadImage(File.DirAssets, imgInit & "_btCloseEnt.png"))

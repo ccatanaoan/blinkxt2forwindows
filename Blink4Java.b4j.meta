@@ -13,6 +13,6 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
-NavigationStack=KeyValueStore,Get,25,0,KeyValueStore,GetMapAsync,46,0,frmActivity,GetTimestampForSorting,262,0,Main,ivDriveway_MouseClicked,1165,0,Main,RequestAuthToken,165,0,frmActivity,GetVideos,140,6,Main,CheckLFRLevel,930,0,frmActivity,wvMedia_PageFinished,436,0,frmActivity,UpdateItemColor,477,1,frmActivity,CheckMonitor,429,0
+NavigationStack=frmActivity,Class_Globals,19,0,frmActivity,Show,45,3,frmActivity,clvActivity_ItemClick,356,1,Main,RefreshCameras,335,0,Visual Designer,activity.bjl,-100,6,Main,AppStart,125,0,frmActivity,ShowVideo,370,0,Visual Designer,cellitem.bjl,-100,6,frmActivity,CreateListItem,188,2,frmActivity,GetVideos,143,2
 SelectedBuild=0
 VisibleModules=1,2,3,4

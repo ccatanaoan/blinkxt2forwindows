@@ -23,6 +23,7 @@ Sub Class_Globals
 	Private kvs As KeyValueStore
 	Type VideoInfo (ThumbnailPath As String, DateCreated As String, Watched As String, DeviceName As String, VideoID As String, ThumbnailBLOB() As Byte)
 	Private cutils As ControlsUtils
+	Private B4XLoadingIndicator1 As B4XLoadingIndicator
 End Sub
 
 'Initializes the object. You can add parameters to this method if needed.
@@ -46,9 +47,11 @@ Public Sub Show(json As String, userRegion As String)
 
 	jsonMain = json
 	userRegionMain = userRegion
+	B4XLoadingIndicator1.Show
 	GetVideos(json, userRegion)
+	B4XLoadingIndicator1.Hide
 	frm.ShowAndWait
-	
+
 End Sub
 
 Sub GetVideos(json As String, userRegion As String)
@@ -85,7 +88,7 @@ Sub GetVideos(json As String, userRegion As String)
 			Dim medianame As String = colmedia.Get("media")
 
 			' Save to a JPG file
-			File.WriteString(File.DirApp,"frmActivity_GetVideos.txt",json)
+			'File.WriteString(File.DirApp,"frmActivity_GetVideos.txt",json)
 			' https://www.b4x.com/android/forum/threads/b4x-xui-image-to-jpeg-byte-array-with-resize-quality-options.91774/#content
 			' https://www.b4x.com/android/forum/threads/b4x-bytes-to-file.70111/#post-445167
 			If kvs.ContainsKey(VideoID) = False Then
@@ -139,7 +142,7 @@ Sub GetVideos(json As String, userRegion As String)
 			Dim bmp As Image
 			bmp.Initialize2(In)
 			
-			Dim p As B4XView = CreateListItem(bmp,videos.DateCreated, videos.DeviceName)
+			Dim p As B4XView = CreateListItem(bmp,videos.DateCreated, videos.DeviceName, watched)
 			clvActivity.Add(p,"https://rest-" & userRegion &".immedia-semi.com" & videos.ThumbnailPath & "|" & videos.DeviceName & " " & ConvertFullDateTime(videos.DateCreated))
 			If videos.Watched <> "true" Then
 				ivWatched.Visible = True
@@ -174,7 +177,7 @@ Private Sub CreateCustomType(ThumbnailPath As String, DateCreated As String, Wat
 	Return ct
 End Sub
 
-Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As String) As B4XView
+Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As String, watched As String) As B4XView
 	Try
 		'https://www.b4x.com/android/forum/threads/customlistview.103498/#post-648747
 		'https://www.b4x.com/android/forum/threads/customlistview-b4a-to-b4j.85047/#post-539068
@@ -183,8 +186,16 @@ Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As St
 		p.SetLayoutAnimated(0, 0, 0, 400dip, 80dip)
 		p.LoadLayout("cellitem")
 		ivScreenshot.SetBitmap(screenshot)
-		lblDate.Text = "   " & ConvertFullDateTime(fileinfo)
-		lblFileInfo.Text = "   " & ConvertDateTime(fileinfo)
+		Dim dayname As String
+		dayname = ConvertDayName(fileinfo)
+		If watched<>"true" Then
+			ivWatched.Visible = True
+			lblDate.Text = "   " & dayname & " " & ConvertDateTimePeriod(fileinfo, dayname)
+		Else
+			ivWatched.Visible = False
+			lblDate.Text = "   " & dayname
+		End If
+		lblFileInfo.Text = "   " & ConvertFullDateTime(fileinfo)
 		lblDeviceInfo.Text = "   " & devicename
 		ivWatched.SetBitmap(fx.LoadImage(File.DirAssets,"blink_clip_roll_blue_dot_icon.png"))
 		Return p
@@ -195,14 +206,14 @@ Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As St
 
 End Sub
 
-Sub ConvertDateTime(inputTime As String) As String
+Sub ConvertDateTimePeriod(inputTime As String, dayname As String) As String
 	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
 	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
 	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a"
 	Dim lngTicks As Long = ticks
 	Dim p As Period = DateUtils.PeriodBetween(lngTicks,DateTime.now)
 	'Log("Time difference: " & p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s")
-	If lblDate.Text.Contains("Today") Then
+	If dayname.Contains("Today") Then
 		If p.Days = 0 Then
 			If p.Hours = 0 Then
 				If p.Minutes = 0 Then
@@ -224,7 +235,7 @@ Sub ConvertDateTime(inputTime As String) As String
 		Else
 			Return p.Days & "d " & p.Hours & "h " & p.Minutes & "m " & p.Seconds & "s ago"
 		End If
-	else if lblDate.Text.Contains("Yesterday") Then
+	else if dayname.Contains("Yesterday") Then
 		If p.Days = 0 Then
 			If p.Hours = 0 Then
 				If p.Minutes = 0 Then
@@ -243,6 +254,29 @@ Sub ConvertDateTime(inputTime As String) As String
 	End If
 End Sub
 
+Sub ConvertDayName(inputTime As String) As String
+	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
+	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
+	DateTime.DateFormat = "MMM d, yyyy h:mm:ss a"
+	Dim lngTicks As Long = ticks
+
+	Dim Yesterday As Long
+	Dim timestamp As Long
+	DateTime.DateFormat = "yyyyMMdd"
+	Yesterday = DateTime.Date(DateTime.add(DateTime.Now, 0, 0, -1))
+	timestamp = DateTime.Date(lngTicks)
+
+	DateTime.DateFormat = "h:mm:ss a"
+	If DateUtils.IsSameDay(lngTicks,DateTime.now) Then
+		Return "Today" '& DateTime.Date(lngTicks)
+	Else If Yesterday = timestamp Then
+		Return "Yesterday" '& DateTime.Date(lngTicks)
+	Else
+		Return DateUtils.GetDayOfWeekName(lngTicks) '& " " & DateTime.Date(lngTicks)
+	End If
+End Sub
+
+
 Sub ConvertFullDateTime(inputTime As String) As String
 	' https://www.b4x.com/android/forum/threads/convert-utc-to-ticks-and-vice-versa.36592/#content
 	Dim ticks As Long = ParseUTCstring(inputTime.Replace("+00:00","+0000"))
@@ -257,11 +291,11 @@ Sub ConvertFullDateTime(inputTime As String) As String
 
 	DateTime.DateFormat = "h:mm:ss a"
 	If DateUtils.IsSameDay(lngTicks,DateTime.now) Then
-		Return "Today " & DateTime.Date(lngTicks)
+		Return DateTime.Date(lngTicks)
 	Else If Yesterday = timestamp Then
-		Return "Yesterday " & DateTime.Date(lngTicks)
+		Return DateTime.Date(lngTicks)
 	Else 
-		Return DateUtils.GetDayOfWeekName(lngTicks) & " " & DateTime.Date(lngTicks)
+		Return DateTime.Date(lngTicks)
 	End If
 End Sub
 
@@ -309,6 +343,7 @@ End Sub
 
 Sub clvActivity_ItemClick (Index As Int, Value As Object)
 	Try
+		B4XLoadingIndicator1.Show
 		UpdateItemColor(Index)
 		wvMedia.LoadUrl("")
 		Dim video As String
@@ -325,6 +360,7 @@ Sub clvActivity_ItemClick (Index As Int, Value As Object)
 			End If
 		Next
 	Catch
+		B4XLoadingIndicator1.Hide
 		Log(LastException)
 	End Try
 
@@ -337,6 +373,7 @@ Sub ShowVideo (Link As String, timestamp As String)
 		j.Download(Link)
 		j.GetRequest.SetHeader("TOKEN_AUTH", authToken)
 		Wait For (j) JobDone(j As HttpJob)
+		B4XLoadingIndicator1.Hide
 		If j.Success Then
 			' Save to a JPG file
 			Dim out As OutputStream = File.OpenOutput(File.DirApp, "media.mp4", False)
@@ -374,11 +411,11 @@ Sub ShowVideo (Link As String, timestamp As String)
 	End Try
 	
 	Try
-		Sleep(3000)
+		Sleep(2000)
 		Dim p As B4XView = clvActivity.GetPanel(previousSelectedIndex)
 		If p.NumberOfViews > 0 Then
 			'get the content label view (it is inside an additional panel)
-			Dim ContentLabel As ImageView = p.GetView(0).GetView(0) ' imageview for unwatched videos
+			Dim ContentLabel As ImageView = p.GetView(0).GetView(1) ' imageview for unwatched videos
 			ContentLabel.Visible = False
 		End If
 	Catch
@@ -442,7 +479,7 @@ Sub wvMedia_PageFinished (Url As String)
 End Sub
 
 Sub UpdateItemColor (Index As Int)
-	Try	
+	Try
 		If previousSelectedIndex <> Index Then
 			Dim p As B4XView = clvActivity.GetPanel(previousSelectedIndex)
 			If p.NumberOfViews > 0 Then
