@@ -722,7 +722,7 @@ Sub RESTGet(url As String) As ResumableSub
 	End Try
 	Log("URL: " & url)
 	Log("Response: " & response)
-	Return(response)
+	Return Null
 End Sub
 
 Sub RESTPost(url As String) As ResumableSub
@@ -750,7 +750,7 @@ Sub RESTPost(url As String) As ResumableSub
 	End Try
 	Log("URL: " & url)
 	Log("Response: " & response)
-	Return(response)
+	Return Null
 End Sub
 
 Sub DownloadImage (Link As String, iv As ImageView, camera As String)
@@ -1481,6 +1481,18 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 
 	''	'***************** TO ARM THE SYNC MODULE (WILL NOT WORK IF ALL CAMERAS MOTION DETECTION IS DISABLED '*****************
 
+	''	'***************** Gets information about devices that have connected to the blink service '*****************
+'	Try
+'		RESTGet("https://rest-" & userRegion &".immedia-semi.com/account/clients")
+'		' https://rest.prod.immedia-semi.com/homescreen
+'		Sleep(1000)
+'		File.WriteString(File.DirApp,"response_clients.txt",response)
+'	Catch
+'		Log(LastException)
+'	End Try
+
+	''	'***************** Gets information about devices that have connected to the blink service '*****************
+	
 End Sub
 
 Sub GetLiveView(json As String) 
