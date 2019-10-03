@@ -137,21 +137,21 @@ Sub GetVideos(json As String, userRegion As String)
 			
 			Log("kvs.ListKeys " & i & " | " & videos.VideoID & " | " & videos.Watched & " | " & GetTimestampForSorting)
 			
-			Dim In As InputStream
-			In.InitializeFromBytesArray(videos.ThumbnailBLOB, 0, videos.ThumbnailBLOB.Length)
-			Dim bmp As Image
-			bmp.Initialize2(In)
-			
-			Dim p As B4XView = CreateListItem(bmp,videos.DateCreated, videos.DeviceName, watched)
-			clvActivity.Add(p,"https://rest-" & userRegion &".immedia-semi.com" & videos.ThumbnailPath & "|" & videos.DeviceName & " " & ConvertFullDateTime(videos.DateCreated))
-			If videos.Watched <> "true" Then
-				ivWatched.Visible = True
-			Else
-				ivWatched.Visible = False
-			End If
-
-			If i > 100 Then
+			If i > 99 Then
 				kvs.Remove(list1.Get(i))
+			Else
+				Dim In As InputStream
+				In.InitializeFromBytesArray(videos.ThumbnailBLOB, 0, videos.ThumbnailBLOB.Length)
+				Dim bmp As Image
+				bmp.Initialize2(In)
+			
+				Dim p As B4XView = CreateListItem(bmp,videos.DateCreated, videos.DeviceName, watched)
+				clvActivity.Add(p,"https://rest-" & userRegion &".immedia-semi.com" & videos.ThumbnailPath & "|" & videos.DeviceName & " " & ConvertFullDateTime(videos.DateCreated))
+				If videos.Watched <> "true" Then
+					ivWatched.Visible = True
+				Else
+					ivWatched.Visible = False
+				End If
 			End If
 		Next
 		If list1.Size > 0 Then

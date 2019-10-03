@@ -264,9 +264,9 @@ Version=7.8
 Sub Process_Globals
 	Private fx As JFX
 	Private MainForm As Form
-	Private emailAddress As String = "[redacted] # replace with 'examplePass' instead"
-	Private password As String = "[redacted] # replace with the empty string"
-	Private authToken As String
+	Private emailAddress As String
+	Private password As String
+	Private authToken As String 
 	Private userRegion As String = "u006"
 	Private accountID As String = "88438" 'ignore
 	Private networkID As String = "94896"
@@ -370,6 +370,22 @@ Sub AppStart (Form1 As Form, Args() As String)
 	
 		lblStatus.TextColor = fx.Colors.White
 		MainForm.Show
+		
+		If File.Exists(File.DirApp, "account.txt") Then
+			Dim List1 As List
+			List1 = File.ReadList(File.DirApp, "account.txt")
+			For i = 0 To List1.Size - 1
+				If i = 0 Then
+					emailAddress = List1.Get(i)
+				Else if i = 1 Then
+					password = List1.Get(i)
+				End If
+			Next
+		Else
+			fx.Msgbox2(MainForm,"Account.txt not found!", "Catanaoan Blink XT2 Cameras v1.0","OK","","",fx.MSGBOX_ERROR)
+			ExitApplication
+		End If
+		
 		btnDriveway.Enabled = False
 		btnRefresh.Enabled = False
 		btnActivity.Enabled = False

@@ -13,6 +13,6 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
-NavigationStack=frmActivity,Class_Globals,19,0,frmActivity,Show,45,3,frmActivity,clvActivity_ItemClick,356,1,Main,RefreshCameras,335,0,Visual Designer,activity.bjl,-100,6,Main,AppStart,125,0,frmActivity,ShowVideo,370,0,Visual Designer,cellitem.bjl,-100,6,frmActivity,CreateListItem,188,2,frmActivity,GetVideos,143,2
+NavigationStack=Visual Designer,cellitem.bjl,-100,6,frmActivity,GetVideos,52,3,frmActivity,CreateListItem,173,2,frmActivity,clvActivity_ItemClick,337,0,frmActivity,ShowVideo,388,0,frmActivity,Class_Globals,0,0,Main,RESTGet,449,0,Main,GetAuthInfo,537,0,Main,Process_Globals,33,6,Main,AppStart,134,6
 SelectedBuild=0
 VisibleModules=1,2,3,4

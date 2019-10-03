@@ -516,15 +516,15 @@ if (true) break;
 
 case 1:
 //try
-this.state = 44;
-this.catchState = 43;
+this.state = 47;
+this.catchState = 46;
 this.state = 3;
 if (true) break;
 
 case 3:
 //C
 this.state = 4;
-this.catchState = 43;
+this.catchState = 46;
  //BA.debugLineNum = 53;BA.debugLine="Dim parser As JSONParser";
 _parser = new anywheresoftware.b4j.objects.collections.JSONParser();
  //BA.debugLineNum = 54;BA.debugLine="parser.Initialize(json)";
@@ -547,10 +547,10 @@ _colmedia = new anywheresoftware.b4a.objects.collections.Map();
 group7 = _media;
 index7 = 0;
 groupLen7 = group7.getSize();
-this.state = 45;
+this.state = 48;
 if (true) break;
 
-case 45:
+case 48:
 //C
 this.state = 25;
 if (index7 < groupLen7) {
@@ -558,9 +558,9 @@ this.state = 6;
 _colmedia.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(group7.Get(index7)));}
 if (true) break;
 
-case 46:
+case 49:
 //C
-this.state = 45;
+this.state = 48;
 index7++;
 if (true) break;
 
@@ -604,9 +604,9 @@ _j._download /*String*/ ("https://rest-"+_userregion+".immedia-semi.com"+_thumbn
 _j._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetHeader("TOKEN_AUTH",parent._authtoken);
  //BA.debugLineNum = 93;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
 parent.__c.WaitFor("jobdone", ba, this, (Object)(_j));
-this.state = 47;
+this.state = 50;
 return;
-case 47:
+case 50:
 //C
 this.state = 10;
 _j = (cloyd.blink.httpjob) result[0];
@@ -677,9 +677,9 @@ _j._download /*String*/ ("https://rest-"+_userregion+".immedia-semi.com"+_thumbn
 _j._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetHeader("TOKEN_AUTH",parent._authtoken);
  //BA.debugLineNum = 112;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
 parent.__c.WaitFor("jobdone", ba, this, (Object)(_j));
-this.state = 48;
+this.state = 51;
 return;
-case 48:
+case 51:
 //C
 this.state = 19;
 _j = (cloyd.blink.httpjob) result[0];
@@ -728,7 +728,7 @@ this.state = 24;
 
 case 24:
 //C
-this.state = 46;
+this.state = 49;
 ;
  if (true) break;
 if (true) break;
@@ -745,22 +745,22 @@ if (true) break;
 
 case 26:
 //for
-this.state = 38;
+this.state = 41;
 step51 = 1;
 limit51 = (int) (_list1.getSize()-1);
 _i = (int) (0) ;
-this.state = 49;
+this.state = 52;
 if (true) break;
 
-case 49:
+case 52:
 //C
-this.state = 38;
+this.state = 41;
 if ((step51 > 0 && _i <= limit51) || (step51 < 0 && _i >= limit51)) this.state = 28;
 if (true) break;
 
-case 50:
+case 53:
 //C
-this.state = 49;
+this.state = 52;
 _i = ((int)(0 + _i + step51)) ;
 if (true) break;
 
@@ -773,26 +773,13 @@ _mytypes = parent._kvs._get /*Object*/ (BA.ObjectToString(_list1.Get(_i)));
 _videos = (cloyd.blink.frmactivity._videoinfo)(_mytypes);
  //BA.debugLineNum = 132;BA.debugLine="Log(\"kvs.ListKeys \" & i & \" | \" & videos.VideoI";
 parent.__c.Log("kvs.ListKeys "+BA.NumberToString(_i)+" | "+_videos.VideoID /*String*/ +" | "+_videos.Watched /*String*/ +" | "+parent._gettimestampforsorting());
- //BA.debugLineNum = 134;BA.debugLine="Dim In As InputStream";
-_in = new anywheresoftware.b4a.objects.streams.File.InputStreamWrapper();
- //BA.debugLineNum = 135;BA.debugLine="In.InitializeFromBytesArray(videos.ThumbnailBLO";
-_in.InitializeFromBytesArray(_videos.ThumbnailBLOB /*byte[]*/ ,(int) (0),_videos.ThumbnailBLOB /*byte[]*/ .length);
- //BA.debugLineNum = 136;BA.debugLine="Dim bmp As Image";
-_bmp = new anywheresoftware.b4j.objects.ImageViewWrapper.ImageWrapper();
- //BA.debugLineNum = 137;BA.debugLine="bmp.Initialize2(In)";
-_bmp.Initialize2((java.io.InputStream)(_in.getObject()));
- //BA.debugLineNum = 139;BA.debugLine="Dim p As B4XView = CreateListItem(bmp,videos.Da";
-_p = new anywheresoftware.b4a.objects.B4XViewWrapper();
-_p = parent._createlistitem((anywheresoftware.b4a.objects.B4XViewWrapper.B4XBitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper.B4XBitmapWrapper(), (javafx.scene.image.Image)(_bmp.getObject())),_videos.DateCreated /*String*/ ,_videos.DeviceName /*String*/ ,_watched);
- //BA.debugLineNum = 140;BA.debugLine="clvActivity.Add(p,\"https://rest-\" & userRegion";
-parent._clvactivity._add(_p,(Object)("https://rest-"+_userregion+".immedia-semi.com"+_videos.ThumbnailPath /*String*/ +"|"+_videos.DeviceName /*String*/ +" "+parent._convertfulldatetime(_videos.DateCreated /*String*/ )));
- //BA.debugLineNum = 141;BA.debugLine="If videos.Watched <> \"true\" Then";
+ //BA.debugLineNum = 134;BA.debugLine="If i > 99 Then";
 if (true) break;
 
 case 29:
 //if
-this.state = 34;
-if ((_videos.Watched /*String*/ ).equals("true") == false) { 
+this.state = 40;
+if (_i>99) { 
 this.state = 31;
 }else {
 this.state = 33;
@@ -800,91 +787,116 @@ this.state = 33;
 
 case 31:
 //C
-this.state = 34;
- //BA.debugLineNum = 142;BA.debugLine="ivWatched.Visible = True";
-parent._ivwatched.setVisible(parent.__c.True);
+this.state = 40;
+ //BA.debugLineNum = 135;BA.debugLine="kvs.Remove(list1.Get(i))";
+parent._kvs._remove /*String*/ (BA.ObjectToString(_list1.Get(_i)));
  if (true) break;
 
 case 33:
 //C
 this.state = 34;
- //BA.debugLineNum = 144;BA.debugLine="ivWatched.Visible = False";
-parent._ivwatched.setVisible(parent.__c.False);
- if (true) break;
-;
- //BA.debugLineNum = 147;BA.debugLine="If i > 100 Then";
+ //BA.debugLineNum = 137;BA.debugLine="Dim In As InputStream";
+_in = new anywheresoftware.b4a.objects.streams.File.InputStreamWrapper();
+ //BA.debugLineNum = 138;BA.debugLine="In.InitializeFromBytesArray(videos.ThumbnailBL";
+_in.InitializeFromBytesArray(_videos.ThumbnailBLOB /*byte[]*/ ,(int) (0),_videos.ThumbnailBLOB /*byte[]*/ .length);
+ //BA.debugLineNum = 139;BA.debugLine="Dim bmp As Image";
+_bmp = new anywheresoftware.b4j.objects.ImageViewWrapper.ImageWrapper();
+ //BA.debugLineNum = 140;BA.debugLine="bmp.Initialize2(In)";
+_bmp.Initialize2((java.io.InputStream)(_in.getObject()));
+ //BA.debugLineNum = 142;BA.debugLine="Dim p As B4XView = CreateListItem(bmp,videos.D";
+_p = new anywheresoftware.b4a.objects.B4XViewWrapper();
+_p = parent._createlistitem((anywheresoftware.b4a.objects.B4XViewWrapper.B4XBitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper.B4XBitmapWrapper(), (javafx.scene.image.Image)(_bmp.getObject())),_videos.DateCreated /*String*/ ,_videos.DeviceName /*String*/ ,_watched);
+ //BA.debugLineNum = 143;BA.debugLine="clvActivity.Add(p,\"https://rest-\" & userRegion";
+parent._clvactivity._add(_p,(Object)("https://rest-"+_userregion+".immedia-semi.com"+_videos.ThumbnailPath /*String*/ +"|"+_videos.DeviceName /*String*/ +" "+parent._convertfulldatetime(_videos.DateCreated /*String*/ )));
+ //BA.debugLineNum = 144;BA.debugLine="If videos.Watched <> \"true\" Then";
+if (true) break;
 
 case 34:
 //if
-this.state = 37;
-if (_i>100) { 
+this.state = 39;
+if ((_videos.Watched /*String*/ ).equals("true") == false) { 
 this.state = 36;
+}else {
+this.state = 38;
 }if (true) break;
 
 case 36:
 //C
-this.state = 37;
- //BA.debugLineNum = 148;BA.debugLine="kvs.Remove(list1.Get(i))";
-parent._kvs._remove /*String*/ (BA.ObjectToString(_list1.Get(_i)));
+this.state = 39;
+ //BA.debugLineNum = 145;BA.debugLine="ivWatched.Visible = True";
+parent._ivwatched.setVisible(parent.__c.True);
  if (true) break;
 
-case 37:
+case 38:
 //C
-this.state = 50;
+this.state = 39;
+ //BA.debugLineNum = 147;BA.debugLine="ivWatched.Visible = False";
+parent._ivwatched.setVisible(parent.__c.False);
+ if (true) break;
+
+case 39:
+//C
+this.state = 40;
+;
+ if (true) break;
+
+case 40:
+//C
+this.state = 53;
 ;
  if (true) break;
 if (true) break;
 ;
  //BA.debugLineNum = 151;BA.debugLine="If list1.Size > 0 Then";
 
-case 38:
+case 41:
 //if
-this.state = 41;
+this.state = 44;
 if (_list1.getSize()>0) { 
-this.state = 40;
+this.state = 43;
 }if (true) break;
 
-case 40:
+case 43:
 //C
-this.state = 41;
+this.state = 44;
  //BA.debugLineNum = 152;BA.debugLine="clvActivity.JumpToItem(0)";
 parent._clvactivity._jumptoitem((int) (0));
  //BA.debugLineNum = 153;BA.debugLine="Sleep(100)";
 parent.__c.Sleep(ba,this,(int) (100));
-this.state = 51;
+this.state = 54;
 return;
-case 51:
+case 54:
 //C
-this.state = 41;
+this.state = 44;
 ;
  //BA.debugLineNum = 154;BA.debugLine="clvActivity_ItemClick(0,\"\") '\"https://rest-\" &";
 parent._clvactivity_itemclick((int) (0),(Object)(""));
  //BA.debugLineNum = 155;BA.debugLine="Sleep(100)";
 parent.__c.Sleep(ba,this,(int) (100));
-this.state = 52;
+this.state = 55;
 return;
-case 52:
-//C
-this.state = 41;
-;
- if (true) break;
-
-case 41:
+case 55:
 //C
 this.state = 44;
 ;
  if (true) break;
 
-case 43:
+case 44:
 //C
-this.state = 44;
+this.state = 47;
+;
+ if (true) break;
+
+case 46:
+//C
+this.state = 47;
 this.catchState = 0;
  //BA.debugLineNum = 158;BA.debugLine="Log(LastException)";
 parent.__c.Log(BA.ObjectToString(parent.__c.LastException(ba)));
  if (true) break;
 if (true) break;
 
-case 44:
+case 47:
 //C
 this.state = -1;
 this.catchState = 0;
