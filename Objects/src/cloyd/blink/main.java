@@ -2884,65 +2884,6 @@ anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.
  //BA.debugLineNum = 923;BA.debugLine="End Sub";
 return "";
 }
-public static String  _getliveview(String _json) throws Exception{
-anywheresoftware.b4j.objects.collections.JSONParser _parser = null;
-anywheresoftware.b4a.objects.collections.Map _root = null;
-int _duration = 0;
-String _server = "";
-String _device_name = "";
-int _network_id = 0;
-int _continue_interval = 0;
-int _continue_warning = 0;
-int _id = 0;
-String _submit_logs = "";
-String _camera_name = "";
-String _lv_save = "";
-anywheresoftware.b4j.objects.MediaPlayerWrapper _mp = null;
- //BA.debugLineNum = 1243;BA.debugLine="Sub GetLiveView(json As String)";
- //BA.debugLineNum = 1244;BA.debugLine="Try";
-try { //BA.debugLineNum = 1245;BA.debugLine="Dim parser As JSONParser";
-_parser = new anywheresoftware.b4j.objects.collections.JSONParser();
- //BA.debugLineNum = 1246;BA.debugLine="parser.Initialize(json)";
-_parser.Initialize(_json);
- //BA.debugLineNum = 1247;BA.debugLine="Dim root As Map = parser.NextObject";
-_root = new anywheresoftware.b4a.objects.collections.Map();
-_root = _parser.NextObject();
- //BA.debugLineNum = 1248;BA.debugLine="Dim duration As Int = root.Get(\"duration\")";
-_duration = (int)(BA.ObjectToNumber(_root.Get((Object)("duration"))));
- //BA.debugLineNum = 1249;BA.debugLine="Dim server As String = root.Get(\"server\")";
-_server = BA.ObjectToString(_root.Get((Object)("server")));
- //BA.debugLineNum = 1250;BA.debugLine="Dim device_name As String = root.Get(\"device_nam";
-_device_name = BA.ObjectToString(_root.Get((Object)("device_name")));
- //BA.debugLineNum = 1251;BA.debugLine="Dim network_id As Int = root.Get(\"network_id\")";
-_network_id = (int)(BA.ObjectToNumber(_root.Get((Object)("network_id"))));
- //BA.debugLineNum = 1252;BA.debugLine="Dim continue_interval As Int = root.Get(\"continu";
-_continue_interval = (int)(BA.ObjectToNumber(_root.Get((Object)("continue_interval"))));
- //BA.debugLineNum = 1253;BA.debugLine="Dim continue_warning As Int = root.Get(\"continue";
-_continue_warning = (int)(BA.ObjectToNumber(_root.Get((Object)("continue_warning"))));
- //BA.debugLineNum = 1254;BA.debugLine="Dim id As Int = root.Get(\"id\")";
-_id = (int)(BA.ObjectToNumber(_root.Get((Object)("id"))));
- //BA.debugLineNum = 1255;BA.debugLine="Dim submit_logs As String = root.Get(\"submit_log";
-_submit_logs = BA.ObjectToString(_root.Get((Object)("submit_logs")));
- //BA.debugLineNum = 1256;BA.debugLine="Dim camera_name As String = root.Get(\"camera_nam";
-_camera_name = BA.ObjectToString(_root.Get((Object)("camera_name")));
- //BA.debugLineNum = 1257;BA.debugLine="Dim lv_save As String = root.Get(\"lv_save\")";
-_lv_save = BA.ObjectToString(_root.Get((Object)("lv_save")));
- //BA.debugLineNum = 1258;BA.debugLine="Log(\"Liveview: \" & server)";
-anywheresoftware.b4a.keywords.Common.Log("Liveview: "+_server);
- //BA.debugLineNum = 1259;BA.debugLine="Dim mp As MediaPlayer";
-_mp = new anywheresoftware.b4j.objects.MediaPlayerWrapper();
- //BA.debugLineNum = 1260;BA.debugLine="mp.Initialize(\"mp\", server.Replace(\"immis://\",\"r";
-_mp.Initialize(ba,"mp",_server.replace("immis://","rtsp://immis:"));
- //BA.debugLineNum = 1261;BA.debugLine="mp.Play";
-_mp.Play();
- } 
-       catch (Exception e20) {
-			ba.setLastException(e20); //BA.debugLineNum = 1263;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
- };
- //BA.debugLineNum = 1265;BA.debugLine="End Sub";
-return "";
-}
 public static String  _getresterror(String _json) throws Exception{
 anywheresoftware.b4j.objects.collections.JSONParser _parser = null;
 anywheresoftware.b4a.objects.collections.Map _root = null;

@@ -1495,29 +1495,29 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 	
 End Sub
 
-Sub GetLiveView(json As String) 
-	Try
-		Dim parser As JSONParser
-		parser.Initialize(json)
-		Dim root As Map = parser.NextObject
-		Dim duration As Int = root.Get("duration")
-		Dim server As String = root.Get("server")
-		Dim device_name As String = root.Get("device_name")
-		Dim network_id As Int = root.Get("network_id")
-		Dim continue_interval As Int = root.Get("continue_interval")
-		Dim continue_warning As Int = root.Get("continue_warning")
-		Dim id As Int = root.Get("id")
-		Dim submit_logs As String = root.Get("submit_logs")
-		Dim camera_name As String = root.Get("camera_name")
-		Dim lv_save As String = root.Get("lv_save")
-		Log("Liveview: " & server)
-		Dim mp As MediaPlayer
-		mp.Initialize("mp", server.Replace("immis://","rtsp://immis:"))
-		mp.Play
-	Catch
-		Log(LastException)
-	End Try
-End Sub
+'Sub GetLiveView(json As String) 
+'	Try
+'		Dim parser As JSONParser
+'		parser.Initialize(json)
+'		Dim root As Map = parser.NextObject
+'		Dim duration As Int = root.Get("duration")
+'		Dim server As String = root.Get("server")
+'		Dim device_name As String = root.Get("device_name")
+'		Dim network_id As Int = root.Get("network_id")
+'		Dim continue_interval As Int = root.Get("continue_interval")
+'		Dim continue_warning As Int = root.Get("continue_warning")
+'		Dim id As Int = root.Get("id")
+'		Dim submit_logs As String = root.Get("submit_logs")
+'		Dim camera_name As String = root.Get("camera_name")
+'		Dim lv_save As String = root.Get("lv_save")
+'		Log("Liveview: " & server)
+'		Dim mp As MediaPlayer
+'		mp.Initialize("mp", server.Replace("immis://","rtsp://immis:"))
+'		mp.Play
+'	Catch
+'		Log(LastException)
+'	End Try
+'End Sub
 
 Sub ivFrontDoor_MouseClicked (EventData As MouseEvent)
 	Dim mf As frmMedia
