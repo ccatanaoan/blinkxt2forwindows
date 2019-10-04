@@ -18,10 +18,11 @@ This tool exposes all Blink XT2 Camera's internal information, state, and metada
 I wrote this using standard REST API, JSON, and HTTPS protocols.
 
 ### Android screenshots:
+
+Samsung Galaxy Note 9 Screenshots | Samsung Galaxy Note 9 Screenshots
+--------|------
+![Image 1](Images/android2.png)  | ![Image 2](Images/android1.png) 
     
-    ![Image 1](Images/android2.png) 
-    
-    ![Image 2](Images/android1.png) 
 
 ### Windows screenshots:
 
