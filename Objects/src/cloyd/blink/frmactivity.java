@@ -70,49 +70,49 @@ ThumbnailBLOB = new byte[0];
 public anywheresoftware.b4j.objects.JFX.ScreenWrapper  _checkmonitor() throws Exception{
 anywheresoftware.b4a.objects.collections.List _slist = null;
 anywheresoftware.b4j.objects.JFX.ScreenWrapper _s = null;
- //BA.debugLineNum = 444;BA.debugLine="Sub CheckMonitor() As Screen";
- //BA.debugLineNum = 445;BA.debugLine="Try";
-try { //BA.debugLineNum = 446;BA.debugLine="If fx.Screens.Size= 1 Then";
+ //BA.debugLineNum = 445;BA.debugLine="Sub CheckMonitor() As Screen";
+ //BA.debugLineNum = 446;BA.debugLine="Try";
+try { //BA.debugLineNum = 447;BA.debugLine="If fx.Screens.Size= 1 Then";
 if (_fx.getScreens().getSize()==1) { 
- //BA.debugLineNum = 447;BA.debugLine="Dim SList As List = fx.Screens";
+ //BA.debugLineNum = 448;BA.debugLine="Dim SList As List = fx.Screens";
 _slist = new anywheresoftware.b4a.objects.collections.List();
 _slist = _fx.getScreens();
- //BA.debugLineNum = 448;BA.debugLine="Dim S As Screen = SList.Get(0)";
+ //BA.debugLineNum = 449;BA.debugLine="Dim S As Screen = SList.Get(0)";
 _s = new anywheresoftware.b4j.objects.JFX.ScreenWrapper();
 _s.setObject((javafx.stage.Screen)(_slist.Get((int) (0))));
- //BA.debugLineNum = 450;BA.debugLine="Return S";
+ //BA.debugLineNum = 451;BA.debugLine="Return S";
 if (true) return _s;
  }else if(_fx.getScreens().getSize()>1) { 
- //BA.debugLineNum = 452;BA.debugLine="Dim SList As List = fx.Screens";
+ //BA.debugLineNum = 453;BA.debugLine="Dim SList As List = fx.Screens";
 _slist = new anywheresoftware.b4a.objects.collections.List();
 _slist = _fx.getScreens();
- //BA.debugLineNum = 453;BA.debugLine="Dim S As Screen = SList.Get(2)";
+ //BA.debugLineNum = 454;BA.debugLine="Dim S As Screen = SList.Get(2)";
 _s = new anywheresoftware.b4j.objects.JFX.ScreenWrapper();
 _s.setObject((javafx.stage.Screen)(_slist.Get((int) (2))));
- //BA.debugLineNum = 455;BA.debugLine="Return S";
+ //BA.debugLineNum = 456;BA.debugLine="Return S";
 if (true) return _s;
  }else {
- //BA.debugLineNum = 457;BA.debugLine="Dim SList As List = fx.Screens";
+ //BA.debugLineNum = 458;BA.debugLine="Dim SList As List = fx.Screens";
 _slist = new anywheresoftware.b4a.objects.collections.List();
 _slist = _fx.getScreens();
- //BA.debugLineNum = 458;BA.debugLine="Dim S As Screen = SList.Get(0)";
+ //BA.debugLineNum = 459;BA.debugLine="Dim S As Screen = SList.Get(0)";
 _s = new anywheresoftware.b4j.objects.JFX.ScreenWrapper();
 _s.setObject((javafx.stage.Screen)(_slist.Get((int) (0))));
- //BA.debugLineNum = 460;BA.debugLine="Return S";
+ //BA.debugLineNum = 461;BA.debugLine="Return S";
 if (true) return _s;
  };
  } 
        catch (Exception e16) {
-			ba.setLastException(e16); //BA.debugLineNum = 463;BA.debugLine="Dim SList As List = fx.Screens";
+			ba.setLastException(e16); //BA.debugLineNum = 464;BA.debugLine="Dim SList As List = fx.Screens";
 _slist = new anywheresoftware.b4a.objects.collections.List();
 _slist = _fx.getScreens();
- //BA.debugLineNum = 464;BA.debugLine="Dim S As Screen = SList.Get(0)";
+ //BA.debugLineNum = 465;BA.debugLine="Dim S As Screen = SList.Get(0)";
 _s = new anywheresoftware.b4j.objects.JFX.ScreenWrapper();
 _s.setObject((javafx.stage.Screen)(_slist.Get((int) (0))));
- //BA.debugLineNum = 466;BA.debugLine="Return S";
+ //BA.debugLineNum = 467;BA.debugLine="Return S";
 if (true) return _s;
  };
- //BA.debugLineNum = 468;BA.debugLine="End Sub";
+ //BA.debugLineNum = 469;BA.debugLine="End Sub";
 return null;
 }
 public String  _class_globals() throws Exception{
@@ -438,16 +438,16 @@ if (true) return (anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.
 return null;
 }
 public String  _frm_closerequest(anywheresoftware.b4j.objects.NodeWrapper.ConcreteEventWrapper _eventdata) throws Exception{
- //BA.debugLineNum = 420;BA.debugLine="Sub frm_CloseRequest (EventData As Event)";
- //BA.debugLineNum = 421;BA.debugLine="wvMedia.LoadUrl(\"\")";
+ //BA.debugLineNum = 421;BA.debugLine="Sub frm_CloseRequest (EventData As Event)";
+ //BA.debugLineNum = 422;BA.debugLine="wvMedia.LoadUrl(\"\")";
 _wvmedia.LoadUrl("");
- //BA.debugLineNum = 422;BA.debugLine="wvMedia.RemoveNodeFromParent";
+ //BA.debugLineNum = 423;BA.debugLine="wvMedia.RemoveNodeFromParent";
 _wvmedia.RemoveNodeFromParent();
- //BA.debugLineNum = 423;BA.debugLine="File.Delete(File.DirApp,\"screenshot.jpg\")";
+ //BA.debugLineNum = 424;BA.debugLine="File.Delete(File.DirApp,\"screenshot.jpg\")";
 __c.File.Delete(__c.File.getDirApp(),"screenshot.jpg");
- //BA.debugLineNum = 424;BA.debugLine="File.Delete(File.DirApp,\"media.mp4\")";
+ //BA.debugLineNum = 425;BA.debugLine="File.Delete(File.DirApp,\"media.mp4\")";
 __c.File.Delete(__c.File.getDirApp(),"media.mp4");
- //BA.debugLineNum = 425;BA.debugLine="End Sub";
+ //BA.debugLineNum = 426;BA.debugLine="End Sub";
 return "";
 }
 public String  _gettimestampforsorting() throws Exception{
@@ -989,35 +989,35 @@ anywheresoftware.b4j.agraham.reflection.Reflection _ke = null;
 String _scode = "";
 String _stype = "";
 int _result = 0;
- //BA.debugLineNum = 427;BA.debugLine="Private Sub RootPaneKeyEvent_Event(e As Event)";
- //BA.debugLineNum = 428;BA.debugLine="Dim KE As Reflector";
+ //BA.debugLineNum = 428;BA.debugLine="Private Sub RootPaneKeyEvent_Event(e As Event)";
+ //BA.debugLineNum = 429;BA.debugLine="Dim KE As Reflector";
 _ke = new anywheresoftware.b4j.agraham.reflection.Reflection();
- //BA.debugLineNum = 429;BA.debugLine="Dim sCode As String";
+ //BA.debugLineNum = 430;BA.debugLine="Dim sCode As String";
 _scode = "";
- //BA.debugLineNum = 430;BA.debugLine="Dim sType As String 'ignore";
+ //BA.debugLineNum = 431;BA.debugLine="Dim sType As String 'ignore";
 _stype = "";
- //BA.debugLineNum = 431;BA.debugLine="Dim result As Int 'ignore";
+ //BA.debugLineNum = 432;BA.debugLine="Dim result As Int 'ignore";
 _result = 0;
- //BA.debugLineNum = 432;BA.debugLine="KE.Target = e	 ' e is a KeyEvent instance";
+ //BA.debugLineNum = 433;BA.debugLine="KE.Target = e	 ' e is a KeyEvent instance";
 _ke.Target = (Object)(_e.getObject());
- //BA.debugLineNum = 433;BA.debugLine="sCode = KE.RunMethod(\"getCode\")";
+ //BA.debugLineNum = 434;BA.debugLine="sCode = KE.RunMethod(\"getCode\")";
 _scode = BA.ObjectToString(_ke.RunMethod("getCode"));
- //BA.debugLineNum = 434;BA.debugLine="sType = KE.RunMethod(\"getEventType\")";
+ //BA.debugLineNum = 435;BA.debugLine="sType = KE.RunMethod(\"getEventType\")";
 _stype = BA.ObjectToString(_ke.RunMethod("getEventType"));
- //BA.debugLineNum = 435;BA.debugLine="If sCode=\"ESCAPE\" Then";
+ //BA.debugLineNum = 436;BA.debugLine="If sCode=\"ESCAPE\" Then";
 if ((_scode).equals("ESCAPE")) { 
- //BA.debugLineNum = 436;BA.debugLine="wvMedia.LoadUrl(\"\")";
+ //BA.debugLineNum = 437;BA.debugLine="wvMedia.LoadUrl(\"\")";
 _wvmedia.LoadUrl("");
- //BA.debugLineNum = 437;BA.debugLine="wvMedia.RemoveNodeFromParent";
+ //BA.debugLineNum = 438;BA.debugLine="wvMedia.RemoveNodeFromParent";
 _wvmedia.RemoveNodeFromParent();
- //BA.debugLineNum = 438;BA.debugLine="File.Delete(File.DirApp,\"screenshot.jpg\")";
+ //BA.debugLineNum = 439;BA.debugLine="File.Delete(File.DirApp,\"screenshot.jpg\")";
 __c.File.Delete(__c.File.getDirApp(),"screenshot.jpg");
- //BA.debugLineNum = 439;BA.debugLine="File.Delete(File.DirApp,\"media.mp4\")";
+ //BA.debugLineNum = 440;BA.debugLine="File.Delete(File.DirApp,\"media.mp4\")";
 __c.File.Delete(__c.File.getDirApp(),"media.mp4");
- //BA.debugLineNum = 440;BA.debugLine="frm.Close";
+ //BA.debugLineNum = 441;BA.debugLine="frm.Close";
 _frm.Close();
  };
- //BA.debugLineNum = 442;BA.debugLine="End Sub";
+ //BA.debugLineNum = 443;BA.debugLine="End Sub";
 return "";
 }
 public String  _show(String _json,String _userregion) throws Exception{
@@ -1059,8 +1059,8 @@ Object _mytypes = null;
 cloyd.blink.frmactivity._videoinfo _videos = null;
 anywheresoftware.b4a.objects.B4XViewWrapper _p = null;
 anywheresoftware.b4j.objects.ImageViewWrapper _contentlabel = null;
-int step24;
-int limit24;
+int step25;
+int limit25;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
@@ -1089,15 +1089,17 @@ case 3:
 //C
 this.state = 4;
 this.catchState = 22;
- //BA.debugLineNum = 365;BA.debugLine="Dim j As HttpJob";
+ //BA.debugLineNum = 365;BA.debugLine="Log (\"Video URL: \" & Link)";
+parent.__c.Log("Video URL: "+_link);
+ //BA.debugLineNum = 366;BA.debugLine="Dim j As HttpJob";
 _j = new cloyd.blink.httpjob();
- //BA.debugLineNum = 366;BA.debugLine="j.Initialize(\"\", Me)";
+ //BA.debugLineNum = 367;BA.debugLine="j.Initialize(\"\", Me)";
 _j._initialize /*String*/ (ba,"",parent);
- //BA.debugLineNum = 367;BA.debugLine="j.Download(Link)";
+ //BA.debugLineNum = 368;BA.debugLine="j.Download(Link)";
 _j._download /*String*/ (_link);
- //BA.debugLineNum = 368;BA.debugLine="j.GetRequest.SetHeader(\"TOKEN_AUTH\", authToken)";
+ //BA.debugLineNum = 369;BA.debugLine="j.GetRequest.SetHeader(\"TOKEN_AUTH\", authToken)";
 _j._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetHeader("TOKEN_AUTH",parent._authtoken);
- //BA.debugLineNum = 369;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
+ //BA.debugLineNum = 370;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
 parent.__c.WaitFor("jobdone", ba, this, (Object)(_j));
 this.state = 33;
 return;
@@ -1106,9 +1108,9 @@ case 33:
 this.state = 4;
 _j = (cloyd.blink.httpjob) result[0];
 ;
- //BA.debugLineNum = 370;BA.debugLine="B4XLoadingIndicator1.Hide";
+ //BA.debugLineNum = 371;BA.debugLine="B4XLoadingIndicator1.Hide";
 parent._b4xloadingindicator1._hide /*String*/ ();
- //BA.debugLineNum = 371;BA.debugLine="If j.Success Then";
+ //BA.debugLineNum = 372;BA.debugLine="If j.Success Then";
 if (true) break;
 
 case 4:
@@ -1123,26 +1125,26 @@ this.state = 8;
 case 6:
 //C
 this.state = 9;
- //BA.debugLineNum = 373;BA.debugLine="Dim out As OutputStream = File.OpenOutput(File.";
+ //BA.debugLineNum = 374;BA.debugLine="Dim out As OutputStream = File.OpenOutput(File.";
 _out = new anywheresoftware.b4a.objects.streams.File.OutputStreamWrapper();
 _out = parent.__c.File.OpenOutput(parent.__c.File.getDirApp(),"media.mp4",parent.__c.False);
- //BA.debugLineNum = 374;BA.debugLine="File.Copy2(j.GetInputStream, out)";
+ //BA.debugLineNum = 375;BA.debugLine="File.Copy2(j.GetInputStream, out)";
 parent.__c.File.Copy2((java.io.InputStream)(_j._getinputstream /*anywheresoftware.b4a.objects.streams.File.InputStreamWrapper*/ ().getObject()),(java.io.OutputStream)(_out.getObject()));
- //BA.debugLineNum = 375;BA.debugLine="out.Close '<------ very important";
+ //BA.debugLineNum = 376;BA.debugLine="out.Close '<------ very important";
 _out.Close();
- //BA.debugLineNum = 377;BA.debugLine="lblTimestamp.Text= timestamp";
+ //BA.debugLineNum = 378;BA.debugLine="lblTimestamp.Text= timestamp";
 parent._lbltimestamp.setText(_timestamp);
- //BA.debugLineNum = 378;BA.debugLine="Dim sb As StringBuilder";
+ //BA.debugLineNum = 379;BA.debugLine="Dim sb As StringBuilder";
 _sb = new anywheresoftware.b4a.keywords.StringBuilderWrapper();
- //BA.debugLineNum = 379;BA.debugLine="sb.Initialize";
+ //BA.debugLineNum = 380;BA.debugLine="sb.Initialize";
 _sb.Initialize();
- //BA.debugLineNum = 380;BA.debugLine="sb.Append(\"<video width='100%' height='100%' co";
+ //BA.debugLineNum = 381;BA.debugLine="sb.Append(\"<video width='100%' height='100%' co";
 _sb.Append("<video width='100%' height='100%' controls autoplay>");
- //BA.debugLineNum = 381;BA.debugLine="sb.Append(\"<source src='\" & File.GetUri(File.Di";
+ //BA.debugLineNum = 382;BA.debugLine="sb.Append(\"<source src='\" & File.GetUri(File.Di";
 _sb.Append("<source src='"+parent.__c.File.GetUri(parent.__c.File.getDirApp(),"media.mp4")+"' Type='video/mp4'/>");
- //BA.debugLineNum = 382;BA.debugLine="sb.Append(\"</video>\")";
+ //BA.debugLineNum = 383;BA.debugLine="sb.Append(\"</video>\")";
 _sb.Append("</video>");
- //BA.debugLineNum = 383;BA.debugLine="wvMedia.LoadHtml(sb.ToString)";
+ //BA.debugLineNum = 384;BA.debugLine="wvMedia.LoadHtml(sb.ToString)";
 parent._wvmedia.LoadHtml(_sb.ToString());
  if (true) break;
 
@@ -1151,7 +1153,7 @@ case 8:
 this.state = 9;
  if (true) break;
 ;
- //BA.debugLineNum = 387;BA.debugLine="If j.ErrorMessage.Contains(\"Media not found\") Th";
+ //BA.debugLineNum = 388;BA.debugLine="If j.ErrorMessage.Contains(\"Media not found\") Th";
 
 case 9:
 //if
@@ -1163,19 +1165,19 @@ this.state = 11;
 case 11:
 //C
 this.state = 12;
- //BA.debugLineNum = 388;BA.debugLine="clvActivity.RemoveAt(previousSelectedIndex)";
+ //BA.debugLineNum = 389;BA.debugLine="clvActivity.RemoveAt(previousSelectedIndex)";
 parent._clvactivity._removeat(parent._previousselectedindex);
- //BA.debugLineNum = 389;BA.debugLine="Dim list1 As List = kvs.ListKeys";
+ //BA.debugLineNum = 390;BA.debugLine="Dim list1 As List = kvs.ListKeys";
 _list1 = new anywheresoftware.b4a.objects.collections.List();
 _list1 = parent._kvs._listkeys /*anywheresoftware.b4a.objects.collections.List*/ ();
- //BA.debugLineNum = 390;BA.debugLine="For i =  0 To list1.Size-1";
+ //BA.debugLineNum = 391;BA.debugLine="For i =  0 To list1.Size-1";
 if (true) break;
 
 case 12:
 //for
 this.state = 19;
-step24 = 1;
-limit24 = (int) (_list1.getSize()-1);
+step25 = 1;
+limit25 = (int) (_list1.getSize()-1);
 _i = (int) (0) ;
 this.state = 34;
 if (true) break;
@@ -1183,23 +1185,23 @@ if (true) break;
 case 34:
 //C
 this.state = 19;
-if ((step24 > 0 && _i <= limit24) || (step24 < 0 && _i >= limit24)) this.state = 14;
+if ((step25 > 0 && _i <= limit25) || (step25 < 0 && _i >= limit25)) this.state = 14;
 if (true) break;
 
 case 35:
 //C
 this.state = 34;
-_i = ((int)(0 + _i + step24)) ;
+_i = ((int)(0 + _i + step25)) ;
 if (true) break;
 
 case 14:
 //C
 this.state = 15;
- //BA.debugLineNum = 391;BA.debugLine="Dim mytypes As Object = kvs.Get(list1.Get(i))";
+ //BA.debugLineNum = 392;BA.debugLine="Dim mytypes As Object = kvs.Get(list1.Get(i))";
 _mytypes = parent._kvs._get /*Object*/ (BA.ObjectToString(_list1.Get(_i)));
- //BA.debugLineNum = 392;BA.debugLine="Dim videos = mytypes As VideoInfo";
+ //BA.debugLineNum = 393;BA.debugLine="Dim videos = mytypes As VideoInfo";
 _videos = (cloyd.blink.frmactivity._videoinfo)(_mytypes);
- //BA.debugLineNum = 393;BA.debugLine="If Link.Contains(videos.VideoID) Then";
+ //BA.debugLineNum = 394;BA.debugLine="If Link.Contains(videos.VideoID) Then";
 if (true) break;
 
 case 15:
@@ -1212,15 +1214,15 @@ this.state = 17;
 case 17:
 //C
 this.state = 18;
- //BA.debugLineNum = 394;BA.debugLine="kvs.Remove(list1.Get(i))";
+ //BA.debugLineNum = 395;BA.debugLine="kvs.Remove(list1.Get(i))";
 parent._kvs._remove /*String*/ (BA.ObjectToString(_list1.Get(_i)));
- //BA.debugLineNum = 395;BA.debugLine="clvActivity.Clear";
+ //BA.debugLineNum = 396;BA.debugLine="clvActivity.Clear";
 parent._clvactivity._clear();
- //BA.debugLineNum = 396;BA.debugLine="cutils.ShowNotification(\"Catanaoan Blink XT2";
+ //BA.debugLineNum = 397;BA.debugLine="cutils.ShowNotification(\"Catanaoan Blink XT2";
 parent._cutils.ShowNotification("Catanaoan Blink XT2 Cameras v1.0","Media not found. Removed from the list.",parent._cutils.ICON_INFORMATION);
- //BA.debugLineNum = 397;BA.debugLine="GetVideos(jsonMain,userRegionMain)";
+ //BA.debugLineNum = 398;BA.debugLine="GetVideos(jsonMain,userRegionMain)";
 parent._getvideos(parent._jsonmain,parent._userregionmain);
- //BA.debugLineNum = 398;BA.debugLine="Exit";
+ //BA.debugLineNum = 399;BA.debugLine="Exit";
 this.state = 19;
 if (true) break;
  if (true) break;
@@ -1242,7 +1244,7 @@ case 20:
 //C
 this.state = 23;
 ;
- //BA.debugLineNum = 402;BA.debugLine="j.Release";
+ //BA.debugLineNum = 403;BA.debugLine="j.Release";
 _j._release /*String*/ ();
  if (true) break;
 
@@ -1250,12 +1252,12 @@ case 22:
 //C
 this.state = 23;
 this.catchState = 0;
- //BA.debugLineNum = 404;BA.debugLine="Log(LastException)";
+ //BA.debugLineNum = 405;BA.debugLine="Log(LastException)";
 parent.__c.Log(BA.ObjectToString(parent.__c.LastException(ba)));
  if (true) break;
 if (true) break;
 ;
- //BA.debugLineNum = 407;BA.debugLine="Try";
+ //BA.debugLineNum = 408;BA.debugLine="Try";
 
 case 23:
 //try
@@ -1269,7 +1271,7 @@ case 25:
 //C
 this.state = 26;
 this.catchState = 31;
- //BA.debugLineNum = 408;BA.debugLine="Sleep(2000)";
+ //BA.debugLineNum = 409;BA.debugLine="Sleep(2000)";
 parent.__c.Sleep(ba,this,(int) (2000));
 this.state = 36;
 return;
@@ -1277,10 +1279,10 @@ case 36:
 //C
 this.state = 26;
 ;
- //BA.debugLineNum = 409;BA.debugLine="Dim p As B4XView = clvActivity.GetPanel(previous";
+ //BA.debugLineNum = 410;BA.debugLine="Dim p As B4XView = clvActivity.GetPanel(previous";
 _p = new anywheresoftware.b4a.objects.B4XViewWrapper();
 _p = parent._clvactivity._getpanel(parent._previousselectedindex);
- //BA.debugLineNum = 410;BA.debugLine="If p.NumberOfViews > 0 Then";
+ //BA.debugLineNum = 411;BA.debugLine="If p.NumberOfViews > 0 Then";
 if (true) break;
 
 case 26:
@@ -1293,10 +1295,10 @@ this.state = 28;
 case 28:
 //C
 this.state = 29;
- //BA.debugLineNum = 412;BA.debugLine="Dim ContentLabel As ImageView = p.GetView(0).Ge";
+ //BA.debugLineNum = 413;BA.debugLine="Dim ContentLabel As ImageView = p.GetView(0).Ge";
 _contentlabel = new anywheresoftware.b4j.objects.ImageViewWrapper();
 _contentlabel.setObject((javafx.scene.image.ImageView)(_p.GetView((int) (0)).GetView((int) (1)).getObject()));
- //BA.debugLineNum = 413;BA.debugLine="ContentLabel.Visible = False";
+ //BA.debugLineNum = 414;BA.debugLine="ContentLabel.Visible = False";
 _contentlabel.setVisible(parent.__c.False);
  if (true) break;
 
@@ -1310,7 +1312,7 @@ case 31:
 //C
 this.state = 32;
 this.catchState = 0;
- //BA.debugLineNum = 416;BA.debugLine="Log(LastException)";
+ //BA.debugLineNum = 417;BA.debugLine="Log(LastException)";
 parent.__c.Log(BA.ObjectToString(parent.__c.LastException(ba)));
  if (true) break;
 if (true) break;
@@ -1320,7 +1322,7 @@ case 32:
 this.state = -1;
 this.catchState = 0;
 ;
- //BA.debugLineNum = 418;BA.debugLine="End Sub";
+ //BA.debugLineNum = 419;BA.debugLine="End Sub";
 if (true) break;
 }} 
        catch (Exception e0) {
@@ -1337,50 +1339,50 @@ ba.setLastException(e0);}
 public String  _updateitemcolor(int _index) throws Exception{
 anywheresoftware.b4a.objects.B4XViewWrapper _p = null;
 anywheresoftware.b4j.objects.PaneWrapper.ConcretePaneWrapper _backpanel = null;
- //BA.debugLineNum = 475;BA.debugLine="Sub UpdateItemColor (Index As Int)";
- //BA.debugLineNum = 476;BA.debugLine="Try";
-try { //BA.debugLineNum = 477;BA.debugLine="If previousSelectedIndex <> Index Then";
+ //BA.debugLineNum = 476;BA.debugLine="Sub UpdateItemColor (Index As Int)";
+ //BA.debugLineNum = 477;BA.debugLine="Try";
+try { //BA.debugLineNum = 478;BA.debugLine="If previousSelectedIndex <> Index Then";
 if (_previousselectedindex!=_index) { 
- //BA.debugLineNum = 478;BA.debugLine="Dim p As B4XView = clvActivity.GetPanel(previou";
+ //BA.debugLineNum = 479;BA.debugLine="Dim p As B4XView = clvActivity.GetPanel(previou";
 _p = new anywheresoftware.b4a.objects.B4XViewWrapper();
 _p = _clvactivity._getpanel(_previousselectedindex);
- //BA.debugLineNum = 479;BA.debugLine="If p.NumberOfViews > 0 Then";
+ //BA.debugLineNum = 480;BA.debugLine="If p.NumberOfViews > 0 Then";
 if (_p.getNumberOfViews()>0) { 
- //BA.debugLineNum = 481;BA.debugLine="Dim backPanel As Pane = p.getview(0)";
+ //BA.debugLineNum = 482;BA.debugLine="Dim backPanel As Pane = p.getview(0)";
 _backpanel = new anywheresoftware.b4j.objects.PaneWrapper.ConcretePaneWrapper();
 _backpanel.setObject((javafx.scene.layout.Pane)(_p.GetView((int) (0)).getObject()));
- //BA.debugLineNum = 482;BA.debugLine="CSSUtils.SetBackgroundColor(backPanel,fx.Color";
+ //BA.debugLineNum = 483;BA.debugLine="CSSUtils.SetBackgroundColor(backPanel,fx.Color";
 _cssutils._setbackgroundcolor((anywheresoftware.b4j.objects.NodeWrapper.ConcreteNodeWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.NodeWrapper.ConcreteNodeWrapper(), (javafx.scene.Node)(_backpanel.getObject())),(anywheresoftware.b4j.objects.JFX.PaintWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.JFX.PaintWrapper(), (javafx.scene.paint.Paint)(_fx.Colors.ARGB((int) (255),(int) (217),(int) (215),(int) (222)))));
- //BA.debugLineNum = 483;BA.debugLine="CSSUtils.SetBorder(backPanel,1,fx.Colors.Black";
+ //BA.debugLineNum = 484;BA.debugLine="CSSUtils.SetBorder(backPanel,1,fx.Colors.Black";
 _cssutils._setborder((anywheresoftware.b4j.objects.NodeWrapper.ConcreteNodeWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.NodeWrapper.ConcreteNodeWrapper(), (javafx.scene.Node)(_backpanel.getObject())),1,(anywheresoftware.b4j.objects.JFX.PaintWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.JFX.PaintWrapper(), (javafx.scene.paint.Paint)(_fx.Colors.Black)),1);
  };
  };
- //BA.debugLineNum = 487;BA.debugLine="Dim p As B4XView = clvActivity.GetPanel(Index)";
+ //BA.debugLineNum = 488;BA.debugLine="Dim p As B4XView = clvActivity.GetPanel(Index)";
 _p = new anywheresoftware.b4a.objects.B4XViewWrapper();
 _p = _clvactivity._getpanel(_index);
- //BA.debugLineNum = 488;BA.debugLine="If p.NumberOfViews > 0 Then";
+ //BA.debugLineNum = 489;BA.debugLine="If p.NumberOfViews > 0 Then";
 if (_p.getNumberOfViews()>0) { 
- //BA.debugLineNum = 490;BA.debugLine="Dim backPanel As Pane = p.getview(0)";
+ //BA.debugLineNum = 491;BA.debugLine="Dim backPanel As Pane = p.getview(0)";
 _backpanel = new anywheresoftware.b4j.objects.PaneWrapper.ConcretePaneWrapper();
 _backpanel.setObject((javafx.scene.layout.Pane)(_p.GetView((int) (0)).getObject()));
- //BA.debugLineNum = 491;BA.debugLine="CSSUtils.SetBackgroundColor(backPanel, fx.Color";
+ //BA.debugLineNum = 492;BA.debugLine="CSSUtils.SetBackgroundColor(backPanel, fx.Color";
 _cssutils._setbackgroundcolor((anywheresoftware.b4j.objects.NodeWrapper.ConcreteNodeWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.NodeWrapper.ConcreteNodeWrapper(), (javafx.scene.Node)(_backpanel.getObject())),(anywheresoftware.b4j.objects.JFX.PaintWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.JFX.PaintWrapper(), (javafx.scene.paint.Paint)(_fx.Colors.White)));
- //BA.debugLineNum = 492;BA.debugLine="CSSUtils.SetBorder(backPanel,2,fx.Colors.Red,1)";
+ //BA.debugLineNum = 493;BA.debugLine="CSSUtils.SetBorder(backPanel,2,fx.Colors.Red,1)";
 _cssutils._setborder((anywheresoftware.b4j.objects.NodeWrapper.ConcreteNodeWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.NodeWrapper.ConcreteNodeWrapper(), (javafx.scene.Node)(_backpanel.getObject())),2,(anywheresoftware.b4j.objects.JFX.PaintWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.JFX.PaintWrapper(), (javafx.scene.paint.Paint)(_fx.Colors.Red)),1);
  };
- //BA.debugLineNum = 495;BA.debugLine="previousSelectedIndex = Index";
+ //BA.debugLineNum = 496;BA.debugLine="previousSelectedIndex = Index";
 _previousselectedindex = _index;
  } 
        catch (Exception e18) {
-			ba.setLastException(e18); //BA.debugLineNum = 497;BA.debugLine="Log(LastException)";
+			ba.setLastException(e18); //BA.debugLineNum = 498;BA.debugLine="Log(LastException)";
 __c.Log(BA.ObjectToString(__c.LastException(ba)));
  };
- //BA.debugLineNum = 499;BA.debugLine="End Sub";
+ //BA.debugLineNum = 500;BA.debugLine="End Sub";
 return "";
 }
 public String  _wvmedia_pagefinished(String _url) throws Exception{
- //BA.debugLineNum = 471;BA.debugLine="Sub wvMedia_PageFinished (Url As String)";
- //BA.debugLineNum = 473;BA.debugLine="End Sub";
+ //BA.debugLineNum = 472;BA.debugLine="Sub wvMedia_PageFinished (Url As String)";
+ //BA.debugLineNum = 474;BA.debugLine="End Sub";
 return "";
 }
 public Object callSub(String sub, Object sender, Object[] args) throws Exception {

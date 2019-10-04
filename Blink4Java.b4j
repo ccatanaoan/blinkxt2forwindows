@@ -437,7 +437,6 @@ End Sub
 Sub RequestAuthToken As ResumableSub 
 	' https://www.b4x.com/android/forum/threads/b4x-resumable-subs-that-return-values-resumablesub.82670/ <-- resumable
 	' http://www.basic4ppc.com:51042/json/index.html
-	' https://github.com/MattTW/BlinkMonitorProtocol
 	' https://www.b4x.com/android/forum/threads/b4x-okhttputils2-with-wait-for.79345/#content
 	' https://www.b4x.com/android/forum/threads/call-api-rest.89470/#content
 	' https://www.b4x.com/android/forum/threads/server-online-json-tree-example.39048/#content
@@ -631,43 +630,24 @@ Sub RefreshCameras(FirstRun As Boolean)
 						Return
 					Else
 						For i = 1 To attempts
-							GetCommandStatus(response)
-							If commandComplete Then
-								RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
-								For i = 1 To 20
-									If response = "" Then
-										Sleep(50)
-									Else
-										Exit
-									End If
-								Next
-								'File.WriteString(File.DirApp,"response_camera_complete.txt",response)
-								GetCameraInfo(response,clv)
-								DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv,camera)
-								'File.WriteString(File.DirApp,"response_cameraThumbnail_jpg.txt",response)
-								Exit
-							Else
-								If camera = "347574" Then
-									lblStatus.Text = "Awaiting for the Driveway thumbnail... " & i & "/" & attempts
-								Else If camera = "236967" Then
-									lblStatus.Text = "Awaiting for the Front Door thumbnail...  " & i & "/" & attempts
-								Else If camera = "226821" Then
-									lblStatus.Text = "Awaiting for the Side Yard thumbnail... " & i & "/" & attempts
-								End If
-							End If
+						
+							' https://www.b4x.com/android/forum/threads/b4x-resumable-subs-that-return-values-resumablesub.82670/
+							Dim rs As ResumableSub = GetCommandResponse(iv,clv,camera, i, attempts)
+							wait for (rs) complete (Result As Object)
+							If Result Then Exit
 							RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
-							Sleep(1000)
-							If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-								btnDriveway.Enabled = True
-								btnRefresh.Enabled = True
-								btnActivity.Enabled = True
-								btnDrivewayNewClip.Enabled = True
-								btnFrontDoorNewClip.Enabled = True
-								btnSideYardNewClip.Enabled = True
-								Return
-							End If
+							Sleep(1000) ' 1 second
+
 						Next
-						If commandComplete = False Then
+						If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
+							btnDriveway.Enabled = True
+							btnRefresh.Enabled = True
+							btnActivity.Enabled = True
+							btnDrivewayNewClip.Enabled = True
+							btnFrontDoorNewClip.Enabled = True
+							btnSideYardNewClip.Enabled = True
+							Return
+						else If commandComplete = False Then
 							If camera = "347574" Then
 								lblStatus.Text = "Failed to retrieve Driveway thumbnail..."
 							Else If camera = "236967" Then
@@ -675,8 +655,6 @@ Sub RefreshCameras(FirstRun As Boolean)
 							Else If camera = "226821" Then
 								lblStatus.Text = "Failed to retrieve Side Yard thumbnail..."
 							End If
-						Else
-
 						End If
 					End If
 				End If
@@ -696,6 +674,34 @@ Sub RefreshCameras(FirstRun As Boolean)
 	btnDrivewayNewClip.Enabled = True
 	btnFrontDoorNewClip.Enabled = True
 	btnSideYardNewClip.Enabled = True
+End Sub
+
+Sub GetCommandResponse(iv As ImageView,clv As CustomListView,camera As String, attempts As String, attemptsAllowed As String) As ResumableSub
+	GetCommandStatus(response)
+	If commandComplete Then
+		RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
+		For i = 1 To 20
+			If response = "" Then
+				Sleep(50)
+			Else
+				Exit
+			End If
+		Next
+		'File.WriteString(File.DirApp,"response_camera_complete.txt",response)
+		GetCameraInfo(response,clv)
+		DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv,camera)
+		'File.WriteString(File.DirApp,"response_cameraThumbnail_jpg.txt",response)
+		Return True
+	Else
+		If camera = "347574" Then
+			lblStatus.Text = "Awaiting for the Driveway thumbnail... " & attempts & "/" & attemptsAllowed
+		Else If camera = "236967" Then
+			lblStatus.Text = "Awaiting for the Front Door thumbnail...  " & attempts & "/" & attemptsAllowed
+		Else If camera = "226821" Then
+			lblStatus.Text = "Awaiting for the Side Yard thumbnail... " & attempts & "/" & attemptsAllowed
+		End If
+		Return False
+	End If
 End Sub
 
 Sub RESTGet(url As String) As ResumableSub
@@ -1436,7 +1442,22 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 '	' {"id":147201291,"server":"immis://35.163.152.226:443/mUJn8-wyeaHTguSQ__IMDS_890039632?client_id=17","duration":300,"device_name":"Side Yard","camera_name":"Side Yard","network_id":94896,"continue_interval":30,"continue_warning":10,"submit_logs":true,"lv_save":true}
 '	Sleep(1000)
 '	File.WriteString(File.DirApp,"response_live_view.txt",response)
-'	GetLiveView(response)
+'	Dim commandID As String = GetLiveView(response)
+'	RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+'	Sleep(1000)
+'	For i = 1 To 30
+'		GetCommandStatus(response)
+'		If commandComplete Then
+'			'RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/226821")
+'			Sleep(1000)
+'			'GetCameraInfo(response,clvDriveway)
+'			File.WriteString(File.DirApp,"response_live_view_response.txt",response)
+'			Sleep(1000)
+'			Exit
+'		End If
+'		RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+'		Sleep(1000)
+'	Next
 	'***************** TO GET A LIVE VIEW BUT NO WAY TO SHOW IT AT THIS POINT '*****************
 	
 	''	'***************** TO CHECK IF SYNC MODULE AND CAMERAS ARE ARMED '*****************
@@ -1495,29 +1516,30 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 	
 End Sub
 
-'Sub GetLiveView(json As String) 
-'	Try
-'		Dim parser As JSONParser
-'		parser.Initialize(json)
-'		Dim root As Map = parser.NextObject
-'		Dim duration As Int = root.Get("duration")
-'		Dim server As String = root.Get("server")
-'		Dim device_name As String = root.Get("device_name")
-'		Dim network_id As Int = root.Get("network_id")
-'		Dim continue_interval As Int = root.Get("continue_interval")
-'		Dim continue_warning As Int = root.Get("continue_warning")
-'		Dim id As Int = root.Get("id")
-'		Dim submit_logs As String = root.Get("submit_logs")
-'		Dim camera_name As String = root.Get("camera_name")
-'		Dim lv_save As String = root.Get("lv_save")
-'		Log("Liveview: " & server)
+Sub GetLiveView(json As String) As String 'ignore
+	Try
+		Dim parser As JSONParser
+		parser.Initialize(json)
+		Dim root As Map = parser.NextObject
+		Dim duration As Int = root.Get("duration") 'ignore
+		Dim server As String = root.Get("server")
+		Dim device_name As String = root.Get("device_name") 'ignore
+		Dim network_id As Int = root.Get("network_id") 'ignore
+		Dim continue_interval As Int = root.Get("continue_interval") 'ignore
+		Dim continue_warning As Int = root.Get("continue_warning") 'ignore
+		Dim id As Int = root.Get("id")
+		Dim submit_logs As String = root.Get("submit_logs") 'ignore
+		Dim camera_name As String = root.Get("camera_name") 'ignore
+		Dim lv_save As String = root.Get("lv_save") 'ignore
+		Log("Liveview: " & server)
 '		Dim mp As MediaPlayer
 '		mp.Initialize("mp", server.Replace("immis://","rtsp://immis:"))
 '		mp.Play
-'	Catch
-'		Log(LastException)
-'	End Try
-'End Sub
+	Catch
+		Log(LastException)
+	End Try
+	Return id
+End Sub
 
 Sub ivFrontDoor_MouseClicked (EventData As MouseEvent)
 	Dim mf As frmMedia
@@ -1955,8 +1977,7 @@ End Sub
 
 Sub GetUnwatchedVideos() As ResumableSub
 	Try
-		' https://www.b4x.com/android/forum/threads/b4x-xui-badger-add-badges-To-views.81723/#content
-		badger1.SetBadge(btnActivity, 0)
+	'	badger1.SetBadge(btnActivity, 0)
 		
 		RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
 		'https://rest-u006.immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1
@@ -1968,26 +1989,59 @@ Sub GetUnwatchedVideos() As ResumableSub
 			End If
 		Next
 		
-		Dim json As String = response
-		Dim parser As JSONParser
-		parser.Initialize(json)
-		Dim root As Map = parser.NextObject
-		Dim media As List = root.Get("media")
-		For Each colmedia As Map In media
-
-			Dim watched As String = colmedia.Get("watched")
-
-			If watched <> "true" Then
-				badger1.SetBadge(btnActivity, badger1.GetBadge(btnActivity) + 1)
-				lblStatus.Text = "Found " & badger1.GetBadge(btnActivity) & " unwatched video clips..."
-			Else
-				lblStatus.Text = "Searching for unwatched video clips..."
-			End If
-
-		Next
+		Dim j As Int = StringCount(response,"""watched"":false",True)
+		badger1.SetBadge(btnActivity, j)
 	Catch
 		Log(LastException)
 	End Try
 	lblStatus.Text = "Ready"
 	Return Null
 End Sub
+
+Sub StringCount(StringToSearch As String,TargetStr As String,IgnoreCase As Boolean) As Int
+	If IgnoreCase Then
+		StringToSearch = StringToSearch.ToLowerCase
+		TargetStr = TargetStr.ToLowerCase
+	End If
+	Return (StringToSearch.Length - StringToSearch.Replace(TargetStr,"").Length) / TargetStr.Length
+
+End Sub
+
+'Sub GetUnwatchedVideos() As ResumableSub
+'	Try
+'		' https://www.b4x.com/android/forum/threads/b4x-xui-badger-add-badges-To-views.81723/#content
+'		badger1.SetBadge(btnActivity, 0)
+'		
+'		RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
+'		'https://rest-u006.immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1
+'		For i = 1 To 20
+'			If response = "" Then
+'				Sleep(50)
+'			Else
+'				Exit
+'			End If
+'		Next
+'		
+'		Dim json As String = response
+'		Dim parser As JSONParser
+'		parser.Initialize(json)
+'		Dim root As Map = parser.NextObject
+'		Dim media As List = root.Get("media")
+'		For Each colmedia As Map In media
+'
+'			Dim watched As String = colmedia.Get("watched")
+'
+'			If watched <> "true" Then
+'				badger1.SetBadge(btnActivity, badger1.GetBadge(btnActivity) + 1)
+'				lblStatus.Text = "Found " & badger1.GetBadge(btnActivity) & " unwatched video clips..."
+'			Else
+'				lblStatus.Text = "Searching for unwatched video clips..."
+'			End If
+'
+'		Next
+'	Catch
+'		Log(LastException)
+'	End Try
+'	lblStatus.Text = "Ready"
+'	Return Null
+'End Sub

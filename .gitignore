@@ -5,6 +5,6 @@
 *.jar
 *.mp4
 *.jpg
-Blink_com.immediasemi.android.blink\
-AutoBackups\
+/Blink_com.immediasemi.android.blink
+#/AutoBackups # set the root to / which will be relative to the location of the gitignore file
 datastore

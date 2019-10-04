@@ -368,6 +368,7 @@ End Sub
 
 Sub ShowVideo (Link As String, timestamp As String)
 	Try
+		Log ("Video URL: " & Link)
 		Dim j As HttpJob
 		j.Initialize("", Me)
 		j.Download(Link)
