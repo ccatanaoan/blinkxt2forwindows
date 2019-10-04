@@ -19,7 +19,7 @@ I wrote this using standard REST API, JSON, and HTTPS protocols.
 
 ### Android screenshots:
 
-Samsung Galaxy Note 9 Screenshots | Samsung Galaxy Note 9 Screenshots
+Main Blink Tab | Clip Roll
 --------|------
 ![Image 1](Images/android2.png)  | ![Image 2](Images/android1.png) 
     
