@@ -312,6 +312,7 @@ Sub Process_Globals
 	Private btnFrontDoorNewClip As Button 'ignore
 	Private btnSideYardNewClip As Button 'ignore
 	Private badger1 As Badger
+	Private prevCameraThumbnail As String
 End Sub
 
 Sub AppStart (Form1 As Form, Args() As String)
@@ -492,15 +493,10 @@ Sub RefreshCameras(FirstRun As Boolean)
 		Dim links As List
 		Dim attempts As Int
 		links = Array("347574", "236967", "226821")
+				
+		Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/syncmodules")
+		wait for (rs) complete (Result As Object)
 		
-		RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/syncmodules")
-		For i = 1 To 20
-			If response = "" Then
-				Sleep(50)
-			Else
-				Exit
-			End If
-		Next
 		If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 			btnDriveway.Enabled = True
 			btnRefresh.Enabled = True
@@ -512,16 +508,12 @@ Sub RefreshCameras(FirstRun As Boolean)
 		End If
 		
 		'File.WriteString(File.DirApp,"response_syncmodules.txt",response)
-		GetSyncModuleInfo(response)
+		Dim rs As ResumableSub = GetSyncModuleInfo(response)
+		wait for (rs) complete (Result As Object)
 		
-		RESTGet("https://rest-" & userRegion &".immedia-semi.com/homescreen")
-		For i = 1 To 20
-			If response = "" Then
-				Sleep(50)
-			Else
-				Exit
-			End If
-		Next
+		Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/homescreen")
+		wait for (rs) complete (Result As Object)
+		
 		If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 			btnDriveway.Enabled = True
 			btnRefresh.Enabled = True
@@ -531,7 +523,9 @@ Sub RefreshCameras(FirstRun As Boolean)
 			btnSideYardNewClip.Enabled = True
 			Return
 		End If
-		GetHomescreen(response)
+		
+		Dim rs As ResumableSub = GetHomescreen(response)
+		wait for (rs) complete (Result As Object)
 	
 		If FirstRun= False Then
 			BlurIV("Driveway.jpg",ivDriveway)
@@ -580,26 +574,29 @@ Sub RefreshCameras(FirstRun As Boolean)
 			End If
 
 			If FirstRun Then
-				RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
-				For i = 1 To 20
-					If response = "" Then
-						Sleep(50)
-					Else
-						Exit
-					End If
-				Next
+				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
+				wait for (rs) complete (Result As Object)
+				
 				'File.WriteString(File.DirApp,"response_camera.txt",response)
-				GetCameraInfo(response,clv)
-				DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv, camera)
+				Dim rs As ResumableSub = GetCameraInfo(response,clv)
+				wait for (rs) complete (Result As Object)
+				
+				Dim rs As ResumableSub = DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv, camera)
+				wait for (rs) complete (Result As Object)
+				
 			Else
-				RESTPost("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera & "/thumbnail")
-				For i = 1 To 20
-					If response = "" Then
-						Sleep(50)
-					Else
-						Exit
-					End If
-				Next
+				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
+				wait for (rs) complete (Result As Object)
+				
+				'File.WriteString(File.DirApp,"response_camera.txt",response)
+				Dim rs As ResumableSub = GetCameraInfo(response,Null)
+				wait for (rs) complete (Result As Object)
+				
+				prevCameraThumbnail = cameraThumbnail
+				
+				Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera & "/thumbnail")
+				wait for (rs) complete (Result As Object)
+
 				'File.WriteString(File.DirApp,"response_camerathumbnail.txt",response)
 				If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 					btnDriveway.Enabled = True
@@ -610,15 +607,12 @@ Sub RefreshCameras(FirstRun As Boolean)
 					btnSideYardNewClip.Enabled = True
 					Return
 				Else
-					GetCommandID(response)
-					RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
-					For i = 1 To 20
-						If response = "" Then
-							Sleep(50)
-						Else
-							Exit
-						End If
-					Next
+					Dim rs As ResumableSub = GetCommandID(response)
+					wait for (rs) complete (Result As Object)
+					
+					Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+					wait for (rs) complete (Result As Object)
+
 					'File.WriteString(File.DirApp,"response_command.txt",response)
 					If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 						btnDriveway.Enabled = True
@@ -635,7 +629,8 @@ Sub RefreshCameras(FirstRun As Boolean)
 							Dim rs As ResumableSub = GetCommandResponse(iv,clv,camera, i, attempts)
 							wait for (rs) complete (Result As Object)
 							If Result Then Exit
-							RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+							Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+							wait for (rs) complete (Result As Object)
 							Sleep(1000) ' 1 second
 
 						Next
@@ -679,18 +674,37 @@ End Sub
 Sub GetCommandResponse(iv As ImageView,clv As CustomListView,camera As String, attempts As String, attemptsAllowed As String) As ResumableSub
 	GetCommandStatus(response)
 	If commandComplete Then
-		RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
-		For i = 1 To 20
-			If response = "" Then
-				Sleep(50)
-			Else
-				Exit
-			End If
-		Next
+		
+		Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
+		wait for (rs) complete (Result As Object)
 		'File.WriteString(File.DirApp,"response_camera_complete.txt",response)
-		GetCameraInfo(response,clv)
-		DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv,camera)
-		'File.WriteString(File.DirApp,"response_cameraThumbnail_jpg.txt",response)
+		Dim rs As ResumableSub = GetCameraInfo(response,clv)
+		wait for (rs) complete (Result As Object)
+		
+		Dim rs As ResumableSub = DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv,camera)
+		wait for (rs) complete (Result As Object)
+
+		Return True
+	End If
+
+	Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
+	wait for (rs) complete (Result As Object)
+				
+	'File.WriteString(File.DirApp,"response_camera.txt",response)
+	Dim rs As ResumableSub = GetCameraInfo(response,Null)
+	wait for (rs) complete (Result As Object)
+	
+	If prevCameraThumbnail <> "" And prevCameraThumbnail <> cameraThumbnail Then
+		Log("**** ALRIGHT " & attempts & "/" & attemptsAllowed & " *****")
+		Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/" & camera)
+		wait for (rs) complete (Result As Object)
+		'File.WriteString(File.DirApp,"response_camera_complete.txt",response)
+		Dim rs As ResumableSub = GetCameraInfo(response,clv)
+		wait for (rs) complete (Result As Object)
+		
+		Dim rs As ResumableSub = DownloadImage("https://rest-" & userRegion &".immedia-semi.com/" & cameraThumbnail & ".jpg",iv,camera)
+		wait for (rs) complete (Result As Object)
+
 		Return True
 	Else
 		If camera = "347574" Then
@@ -759,7 +773,7 @@ Sub RESTPost(url As String) As ResumableSub
 	Return Null
 End Sub
 
-Sub DownloadImage (Link As String, iv As ImageView, camera As String)
+Sub DownloadImage (Link As String, iv As ImageView, camera As String) As ResumableSub
 	Try
 		Dim j As HttpJob
 		response = ""
@@ -789,6 +803,7 @@ Sub DownloadImage (Link As String, iv As ImageView, camera As String)
 	Catch
 		Log(LastException)
 	End Try
+	Return Null
 End Sub
 
 
@@ -822,7 +837,7 @@ Sub GetAuthInfo(json As String)
 
 End Sub
 
-Sub GetCommandID(json As String)
+Sub GetCommandID(json As String) As ResumableSub
 	Try
 		Dim parser As JSONParser
 		parser.Initialize(json)
@@ -866,6 +881,7 @@ Sub GetCommandID(json As String)
 	Catch
 		Log(LastException)
 	End Try
+	Return Null
 End Sub
 
 Sub GetCommandStatus(json As String) 
@@ -907,7 +923,7 @@ Sub GetRESTError(json As String) As String
 	End Try
 End Sub
 
-Sub GetCameraInfo(json As String, clv As CustomListView)
+Sub GetCameraInfo(json As String, clv As CustomListView) As ResumableSub
 	Try
 		Dim parser As JSONParser
 		parser.Initialize(json)
@@ -936,7 +952,6 @@ Sub GetCameraInfo(json As String, clv As CustomListView)
 		Dim time_108_boot As Int = camera_status.Get("time_108_boot")
 		Dim lfr_108_wakeups As Int = camera_status.Get("lfr_108_wakeups")
 		cameraThumbnail = camera_status.Get("thumbnail")
-		Log("cameraThumbnail: " & cameraThumbnail)
 		Dim lifetime_duration As Int = camera_status.Get("lifetime_duration")
 		Dim wifi_connect_failure_count As Int = camera_status.Get("wifi_connect_failure_count")
 		Dim camera_id As Int = camera_status.Get("camera_id")
@@ -959,7 +974,10 @@ Sub GetCameraInfo(json As String, clv As CustomListView)
 		Dim error_codes As Int = camera_status.Get("error_codes")
 		Dim fw_version As String = camera_status.Get("fw_version")
 		Dim ac_power As String = camera_status.Get("ac_power")
-	
+		
+		If clv = Null Then
+			Return Null
+		End If
 		clv.Clear
 		clv.AddTextItem("Battery voltage: " & NumberFormat((battery_voltage / 100),0,2) & "V - " & CheckBattLife(battery_voltage), "battery_voltage")
 		clv.AddTextItem("Camera to WiFi strength: " & wifi_strength & " dBm - " & CheckLFRLevel(wifi_strength), "wifi_strength")
@@ -1037,9 +1055,10 @@ Sub GetCameraInfo(json As String, clv As CustomListView)
 	Catch
 		Log(LastException)
 	End Try
+	Return Null
 End Sub
 
-Sub GetSyncModuleInfo(json As String)
+Sub GetSyncModuleInfo(json As String) As ResumableSub
 	Try
 		Dim parser As JSONParser
 		parser.Initialize(json)
@@ -1093,16 +1112,17 @@ Sub GetSyncModuleInfo(json As String)
 	Catch
 		Log(LastException)
 	End Try
+	Return Null
 End Sub
 
-Sub GetHomescreen(json As String)
+Sub GetHomescreen(json As String) As ResumableSub
 	Try
 		Dim parser As JSONParser
 		parser.Initialize(json)
 		Dim root As Map = parser.NextObject
 		Dim devices As List = root.Get("devices")
 		For Each coldevices As Map In devices
-'			Dim battery_state As String = coldevices.Get("battery_state")
+			Dim battery_state As String = coldevices.Get("battery_state")
 '			Dim thumbnail As String = coldevices.Get("thumbnail")
 '			'Dim temp As Int = coldevices.Get("temp")
 '			Dim error_msg As String = coldevices.Get("error_msg")
@@ -1112,8 +1132,8 @@ Sub GetHomescreen(json As String)
 			Dim active As String = coldevices.Get("active")
 '			Dim device_type As String = coldevices.Get("device_type")
 '			Dim Type As String = coldevices.Get("type")
-'			Dim battery As Int = coldevices.Get("battery")
-'			Dim enabled As String = coldevices.Get("enabled")
+			Dim battery As Int = coldevices.Get("battery")
+			Dim enabled As String = coldevices.Get("enabled")
 '			Dim updated_at As String = coldevices.Get("updated_at")
 '			Dim usage_rate As String = coldevices.Get("usage_rate")
 '			Dim armed As String = coldevices.Get("armed")
@@ -1130,6 +1150,13 @@ Sub GetHomescreen(json As String)
 '			lblDriveway.Style = ""
 		
 			If device_id = "347574" Then
+				If enabled = "true" Then
+					drivewayArmedStatus = ""
+					lblDriveway.Style = ""
+				Else
+					drivewayArmedStatus = "MOTION DETECTION IS DISABLED!"
+					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+				End If
 				If active = "armed" Then
 					drivewayArmedStatus = ""
 					lblDriveway.Style = ""
@@ -1137,7 +1164,21 @@ Sub GetHomescreen(json As String)
 					drivewayArmedStatus = "NOT ARMED!"
 					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 				End If
+				If battery > 2 And battery_state = "ok" Then
+					drivewayArmedStatus = ""
+					lblDriveway.Style = ""
+				Else
+					drivewayArmedStatus = "REPLACE BATTERY NOW!"
+					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+				End If
 			Else If device_id = "236967" Then
+				If enabled = "true" Then
+					frontdoorArmedStatus = ""
+					lblFrontDoor.Style = ""
+				Else
+					frontdoorArmedStatus = "MOTION DETECTION IS DISABLED!"
+					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+				End If
 				If active = "armed" Then
 					frontdoorArmedStatus = ""
 					lblFrontDoor.Style = ""
@@ -1145,12 +1186,33 @@ Sub GetHomescreen(json As String)
 					frontdoorArmedStatus = "NOT ARMED!"
 					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 				End If
+				If battery > 2 And battery_state = "ok" Then
+					frontdoorArmedStatus = ""
+					lblFrontDoor.Style = ""
+				Else
+					frontdoorArmedStatus = "REPLACE BATTERY NOW!"
+					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+				End If
 			Else If device_id = "226821" Then
+				If enabled = "true" Then
+					sideyardArmedStatus = ""
+					lblSideYard.Style = ""
+				Else
+					sideyardArmedStatus = "MOTION DETECTION IS DISABLED!"
+					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+				End If
 				If active = "armed" Then
 					sideyardArmedStatus = ""
 					lblSideYard.Style = ""
 				Else
 					sideyardArmedStatus = "NOT ARMED!"
+					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+				End If
+				If battery > 2 And battery_state = "ok" Then
+					sideyardArmedStatus = ""
+					lblSideYard.Style = ""
+				Else
+					sideyardArmedStatus = "REPLACE BATTERY NOW!"
 					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 				End If
 			End If
@@ -1181,6 +1243,7 @@ Sub GetHomescreen(json As String)
 	Catch
 		Log(LastException)
 	End Try
+	Return null
 End Sub
 
 Sub CheckBattLife(battlevel As Int) As String
@@ -1189,11 +1252,13 @@ Sub CheckBattLife(battlevel As Int) As String
 		If battlevel <= 136 Then
 			Return "Replace battery now!"
 		else If battlevel >= 160 Then
-			Return "Very high"
+			Return "High" 
+			' "Very high"
 		else If battlevel > 136 And battlevel < 140 Then
-			Return "Very low"
+			Return "Low"
+			'Return "Very low"
 		Else
-			Return "High"
+			Return "Good"
 		End If
 	Catch
 		Log(LastException)
@@ -1643,15 +1708,10 @@ Sub btnActivity_Click
 	btnFrontDoorNewClip.Enabled = False
 	btnSideYardNewClip.Enabled = False
 	'RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=2019-04-19T23:11:20+0000&page=1") ' <-- only returns videos recorded for less than 24 hour
-	RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
+	
 	'https://rest-u006.immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1
-	For i = 1 To 20
-		If response = "" Then
-			Sleep(50)
-		Else
-			Exit
-		End If
-	Next
+	Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
+	wait for (rs) complete (Result As Object)
 	'File.WriteString(File.DirApp,"response_activity.txt",response)
 	Dim mf As frmActivity
 	mf.Initialize(MainForm)
@@ -1787,14 +1847,10 @@ Sub btnDrivewayNewClip_Click
 			btnFrontDoorNewClip.Enabled = False
 			btnSideYardNewClip.Enabled = False
 			lblStatus.Text = "Capturing a new Driveway video clip..."
-			RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/347574/clip")
-			For i = 1 To 20
-				If response = "" Then
-					Sleep(50)
-				Else
-					Exit
-				End If
-			Next
+			
+			Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/347574/clip")
+			wait for (rs) complete (Result As Object)
+			
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 				btnDriveway.Enabled = True
 				btnRefresh.Enabled = True
@@ -1808,15 +1864,12 @@ Sub btnDrivewayNewClip_Click
 				lblStatus.Text = "Ready"
 				Return
 			End If
-			GetCommandID(response)
-			RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
-			For i = 1 To 20
-				If response = "" Then
-					Sleep(50)
-				Else
-					Exit
-				End If
-			Next
+			Dim rs As ResumableSub = GetCommandID(response)
+			wait for (rs) complete (Result As Object)
+			
+			Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+			wait for (rs) complete (Result As Object)
+			
 			For i = 1 To 70
 				GetCommandStatus(response)
 				If commandComplete Then
@@ -1829,7 +1882,8 @@ Sub btnDrivewayNewClip_Click
 				Else
 					lblStatus.Text = "Awaiting for the Driveway video clip... " & i & "/70"
 				End If
-				RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+				wait for (rs) complete (Result As Object)
 				Sleep(1000)
 			Next
 		Catch
@@ -1855,14 +1909,9 @@ Sub btnFrontDoorNewClip_Click
 			btnFrontDoorNewClip.Enabled = False
 			btnSideYardNewClip.Enabled = False
 			lblStatus.Text = "Capturing a new Front Door video clip..."
-			RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/236967/clip")
-			For i = 1 To 20
-				If response = "" Then
-					Sleep(50)
-				Else
-					Exit
-				End If
-			Next
+			
+			Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/236967/clip")
+			wait for (rs) complete (Result As Object)
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 				btnDriveway.Enabled = True
 				btnRefresh.Enabled = True
@@ -1873,15 +1922,13 @@ Sub btnFrontDoorNewClip_Click
 				lblStatus.Text = "Ready"
 				Return
 			End If
-			GetCommandID(response)
-			RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
-			For i = 1 To 20
-				If response = "" Then
-					Sleep(50)
-				Else
-					Exit
-				End If
-			Next
+			
+			Dim rs As ResumableSub = GetCommandID(response)
+			wait for (rs) complete (Result As Object)
+			
+			Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+			wait for (rs) complete (Result As Object)
+			
 			For i = 1 To 70
 				GetCommandStatus(response)
 				If commandComplete Then
@@ -1894,7 +1941,8 @@ Sub btnFrontDoorNewClip_Click
 				Else
 					lblStatus.Text = "Awaiting for the Front Door video clip... " & i & "/70"
 				End If
-				RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+				wait for (rs) complete (Result As Object)
 				Sleep(1000)
 			Next
 		Catch
@@ -1920,14 +1968,8 @@ Sub btnSideYardNewClip_Click
 			btnFrontDoorNewClip.Enabled = False
 			btnSideYardNewClip.Enabled = False
 			lblStatus.Text = "Capturing a new Side Yard video clip..."
-			RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/226821/clip")
-			For i = 1 To 20
-				If response = "" Then
-					Sleep(50)
-				Else
-					Exit
-				End If
-			Next
+			Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/236967/clip")
+			wait for (rs) complete (Result As Object)
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 				btnDriveway.Enabled = True
 				btnRefresh.Enabled = True
@@ -1938,15 +1980,13 @@ Sub btnSideYardNewClip_Click
 				lblStatus.Text = "Ready"
 				Return
 			End If
-			GetCommandID(response)
-			RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
-			For i = 1 To 20
-				If response = "" Then
-					Sleep(50)
-				Else
-					Exit
-				End If
-			Next
+			
+			Dim rs As ResumableSub = GetCommandID(response)
+			wait for (rs) complete (Result As Object)
+			
+			Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+			wait for (rs) complete (Result As Object)
+			
 			For i = 1 To 70
 				GetCommandStatus(response)
 				If commandComplete Then
@@ -1959,7 +1999,8 @@ Sub btnSideYardNewClip_Click
 				Else
 					lblStatus.Text = "Awaiting for the Side Yard video clip... " & i & "/70"
 				End If
-				RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+				wait for (rs) complete (Result As Object)
 				Sleep(1000)
 			Next
 		Catch
@@ -1977,17 +2018,8 @@ End Sub
 
 Sub GetUnwatchedVideos() As ResumableSub
 	Try
-	'	badger1.SetBadge(btnActivity, 0)
-		
-		RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
-		'https://rest-u006.immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1
-		For i = 1 To 20
-			If response = "" Then
-				Sleep(50)
-			Else
-				Exit
-			End If
-		Next
+		Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
+		wait for (rs) complete (Result As Object)
 		
 		Dim j As Int = StringCount(response,"""watched"":false",True)
 		badger1.SetBadge(btnActivity, j)

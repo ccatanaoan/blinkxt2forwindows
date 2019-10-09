@@ -13,6 +13,6 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
-NavigationStack=Main,AppStart,137,0,Main,Application_Error,161,0,frmActivity,Class_Globals,0,0,frmActivity,CreateCustomType,165,0,frmActivity,CreateListItem,187,0,Main,RESTGet,467,0,Main,GetCommandStatus,621,1,Main,GetCommandResponse,437,6,Main,RefreshCameras,389,6,Main,RequestAuthToken,184,0,Main,Process_Globals,18,0
+NavigationStack=Main,AppStart,66,0,Main,Process_Globals,59,6,Main,GetCameraInfo,722,6,Main,GetCommandResponse,436,6,Main,StringCount,1751,0,Main,btnFrontDoorNewClip_Click,1629,0,Main,btnActivity_Click,1415,0,Main,GetSyncModuleInfo,805,2,Main,RefreshCameras,271,6,Main,GetHomescreen,955,6
 SelectedBuild=0
 VisibleModules=1,2,3,4
