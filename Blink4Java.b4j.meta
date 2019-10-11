@@ -13,6 +13,6 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
-NavigationStack=Main,btnSideYardNewClip_Click,1722,1,Main,btnFrontDoorNewClip_Click,1663,0,Main,GetCameraInfo,749,6,Main,btnDrivewayNewClip_Click,1600,1,Main,GetCommandStatus,642,5,Main,RESTPost,511,6,Main,RESTGet,481,6,Main,DownloadImage,529,0,Main,GetHomescreen,979,6,Main,RefreshCameras,271,6
+NavigationStack=Main,GetCameraInfo,826,0,Main,GetSyncModuleInfo,890,0,Visual Designer,vdSk03.bjl,-100,6,frmActivity,Class_Globals,0,0,Main,CheckBattLife,1008,2,Main,btnSideYardNewClip_Click,1755,0,Main,GetHomescreen,892,6,Main,RefreshCameras,271,0,Main,StringCount,1838,0,Main,GetUnwatchedVideos,1783,1
 SelectedBuild=0
 VisibleModules=1,2,3,4

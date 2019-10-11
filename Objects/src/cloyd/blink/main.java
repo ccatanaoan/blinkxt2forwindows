@@ -2446,8 +2446,8 @@ this.state = 14;
 case 10:
 //C
 this.state = 15;
- //BA.debugLineNum = 807;BA.debugLine="lblDriveway.Text = \"Driveway \" & strTimestamp &";
-parent._lbldriveway.setText("Driveway "+_strtimestamp+" "+parent._drivewayarmedstatus);
+ //BA.debugLineNum = 807;BA.debugLine="lblDriveway.Text = strTimestamp & \" \" & drivewa";
+parent._lbldriveway.setText(_strtimestamp+" "+parent._drivewayarmedstatus);
  //BA.debugLineNum = 808;BA.debugLine="prevDrivewayUpdateTime = updated_at";
 parent._prevdrivewayupdatetime = _updated_at;
  if (true) break;
@@ -2455,10 +2455,10 @@ parent._prevdrivewayupdatetime = _updated_at;
 case 12:
 //C
 this.state = 15;
- //BA.debugLineNum = 810;BA.debugLine="lblFrontDoor.Text = \"Front Door \" & strTimestam";
-parent._lblfrontdoor.setText("Front Door "+_strtimestamp+" "+parent._frontdoorarmedstatus);
- //BA.debugLineNum = 811;BA.debugLine="lblDriveway.Text = \"Driveway \" & ConvertDateTim";
-parent._lbldriveway.setText("Driveway "+_convertdatetime(parent._prevdrivewayupdatetime)+" "+parent._drivewayarmedstatus);
+ //BA.debugLineNum = 810;BA.debugLine="lblFrontDoor.Text = strTimestamp & \" \" & frontd";
+parent._lblfrontdoor.setText(_strtimestamp+" "+parent._frontdoorarmedstatus);
+ //BA.debugLineNum = 811;BA.debugLine="lblDriveway.Text = ConvertDateTime(prevDriveway";
+parent._lbldriveway.setText(_convertdatetime(parent._prevdrivewayupdatetime)+" "+parent._drivewayarmedstatus);
  //BA.debugLineNum = 812;BA.debugLine="prevFrontDoorUpdateTime = updated_at";
 parent._prevfrontdoorupdatetime = _updated_at;
  if (true) break;
@@ -2466,12 +2466,12 @@ parent._prevfrontdoorupdatetime = _updated_at;
 case 14:
 //C
 this.state = 15;
- //BA.debugLineNum = 814;BA.debugLine="lblSideYard.Text = \"Side Yard \" & strTimestamp";
-parent._lblsideyard.setText("Side Yard "+_strtimestamp+" "+parent._sideyardarmedstatus);
- //BA.debugLineNum = 815;BA.debugLine="lblDriveway.Text = \"Driveway \" & ConvertDateTim";
-parent._lbldriveway.setText("Driveway "+_convertdatetime(parent._prevdrivewayupdatetime)+" "+parent._drivewayarmedstatus);
- //BA.debugLineNum = 816;BA.debugLine="lblFrontDoor.Text = \"Front Door \" & ConvertDate";
-parent._lblfrontdoor.setText("Front Door "+_convertdatetime(parent._prevfrontdoorupdatetime)+" "+parent._frontdoorarmedstatus);
+ //BA.debugLineNum = 814;BA.debugLine="lblSideYard.Text = strTimestamp & \" \" & sideyar";
+parent._lblsideyard.setText(_strtimestamp+" "+parent._sideyardarmedstatus);
+ //BA.debugLineNum = 815;BA.debugLine="lblDriveway.Text = ConvertDateTime(prevDriveway";
+parent._lbldriveway.setText(_convertdatetime(parent._prevdrivewayupdatetime)+" "+parent._drivewayarmedstatus);
+ //BA.debugLineNum = 816;BA.debugLine="lblFrontDoor.Text = ConvertDateTime(prevFrontDo";
+parent._lblfrontdoor.setText(_convertdatetime(parent._prevfrontdoorupdatetime)+" "+parent._frontdoorarmedstatus);
  if (true) break;
 ;
  //BA.debugLineNum = 819;BA.debugLine="For i = 0 To clv.Size-1";
@@ -3120,13 +3120,13 @@ this.state = 49;
 case 9:
 //C
 this.state = 10;
- //BA.debugLineNum = 922;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
+ //BA.debugLineNum = 922;BA.debugLine="If active = \"armed\" Then";
 if (true) break;
 
 case 10:
 //if
 this.state = 27;
-if (_battery>2 && (_battery_state).equals("ok")) { 
+if ((_active).equals("armed")) { 
 this.state = 12;
 }else {
 this.state = 26;
@@ -3135,13 +3135,13 @@ this.state = 26;
 case 12:
 //C
 this.state = 13;
- //BA.debugLineNum = 923;BA.debugLine="If active = \"armed\" Then";
+ //BA.debugLineNum = 923;BA.debugLine="If enabled = \"true\" Then";
 if (true) break;
 
 case 13:
 //if
 this.state = 24;
-if ((_active).equals("armed")) { 
+if ((_enabled).equals("true")) { 
 this.state = 15;
 }else {
 this.state = 23;
@@ -3150,13 +3150,13 @@ this.state = 23;
 case 15:
 //C
 this.state = 16;
- //BA.debugLineNum = 924;BA.debugLine="If enabled = \"true\" Then";
+ //BA.debugLineNum = 924;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
 if (true) break;
 
 case 16:
 //if
 this.state = 21;
-if ((_enabled).equals("true")) { 
+if (_battery>2 && (_battery_state).equals("ok")) { 
 this.state = 18;
 }else {
 this.state = 20;
@@ -3174,8 +3174,8 @@ parent._lbldriveway.setStyle("");
 case 20:
 //C
 this.state = 21;
- //BA.debugLineNum = 928;BA.debugLine="drivewayArmedStatus = \"MOTION DETECTION IS";
-parent._drivewayarmedstatus = "MOTION DETECTION IS DISABLED!";
+ //BA.debugLineNum = 928;BA.debugLine="drivewayArmedStatus = \"REPLACE BATTERY! [Le";
+parent._drivewayarmedstatus = "REPLACE BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 929;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow";
 parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3189,8 +3189,8 @@ this.state = 24;
 case 23:
 //C
 this.state = 24;
- //BA.debugLineNum = 932;BA.debugLine="drivewayArmedStatus = \"NOT ARMED!\"";
-parent._drivewayarmedstatus = "NOT ARMED!";
+ //BA.debugLineNum = 932;BA.debugLine="drivewayArmedStatus = \"MOTION DETECTION IS D";
+parent._drivewayarmedstatus = "MOTION DETECTION IS DISABLED!";
  //BA.debugLineNum = 933;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow(";
 parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3204,8 +3204,8 @@ this.state = 27;
 case 26:
 //C
 this.state = 27;
- //BA.debugLineNum = 936;BA.debugLine="drivewayArmedStatus = \"REPLACE BATTERY NOW! L";
-parent._drivewayarmedstatus = "REPLACE BATTERY NOW! Level: "+BA.NumberToString(_battery)+" | State: "+_battery_state;
+ //BA.debugLineNum = 936;BA.debugLine="drivewayArmedStatus = \"NOT ARMED!\"";
+parent._drivewayarmedstatus = "NOT ARMED!";
  //BA.debugLineNum = 937;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow(";
 parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3219,13 +3219,13 @@ this.state = 68;
 case 29:
 //C
 this.state = 30;
- //BA.debugLineNum = 940;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
+ //BA.debugLineNum = 940;BA.debugLine="If active = \"armed\" Then";
 if (true) break;
 
 case 30:
 //if
 this.state = 47;
-if (_battery>2 && (_battery_state).equals("ok")) { 
+if ((_active).equals("armed")) { 
 this.state = 32;
 }else {
 this.state = 46;
@@ -3234,13 +3234,13 @@ this.state = 46;
 case 32:
 //C
 this.state = 33;
- //BA.debugLineNum = 941;BA.debugLine="If active = \"armed\" Then";
+ //BA.debugLineNum = 941;BA.debugLine="If enabled = \"true\" Then";
 if (true) break;
 
 case 33:
 //if
 this.state = 44;
-if ((_active).equals("armed")) { 
+if ((_enabled).equals("true")) { 
 this.state = 35;
 }else {
 this.state = 43;
@@ -3249,13 +3249,13 @@ this.state = 43;
 case 35:
 //C
 this.state = 36;
- //BA.debugLineNum = 942;BA.debugLine="If enabled = \"true\" Then";
+ //BA.debugLineNum = 942;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
 if (true) break;
 
 case 36:
 //if
 this.state = 41;
-if ((_enabled).equals("true")) { 
+if (_battery>2 && (_battery_state).equals("ok")) { 
 this.state = 38;
 }else {
 this.state = 40;
@@ -3273,8 +3273,8 @@ parent._lblfrontdoor.setStyle("");
 case 40:
 //C
 this.state = 41;
- //BA.debugLineNum = 946;BA.debugLine="frontdoorArmedStatus = \"MOTION DETECTION IS";
-parent._frontdoorarmedstatus = "MOTION DETECTION IS DISABLED!";
+ //BA.debugLineNum = 946;BA.debugLine="frontdoorArmedStatus = \"REPLACE BATTERY! [L";
+parent._frontdoorarmedstatus = "REPLACE BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 947;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshado";
 parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3288,8 +3288,8 @@ this.state = 44;
 case 43:
 //C
 this.state = 44;
- //BA.debugLineNum = 950;BA.debugLine="frontdoorArmedStatus = \"NOT ARMED!\"";
-parent._frontdoorarmedstatus = "NOT ARMED!";
+ //BA.debugLineNum = 950;BA.debugLine="frontdoorArmedStatus = \"MOTION DETECTION IS";
+parent._frontdoorarmedstatus = "MOTION DETECTION IS DISABLED!";
  //BA.debugLineNum = 951;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshadow";
 parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3303,8 +3303,8 @@ this.state = 47;
 case 46:
 //C
 this.state = 47;
- //BA.debugLineNum = 954;BA.debugLine="frontdoorArmedStatus = \"REPLACE BATTERY NOW!";
-parent._frontdoorarmedstatus = "REPLACE BATTERY NOW! Level: "+BA.NumberToString(_battery)+" | State: "+_battery_state;
+ //BA.debugLineNum = 954;BA.debugLine="frontdoorArmedStatus = \"NOT ARMED!\"";
+parent._frontdoorarmedstatus = "NOT ARMED!";
  //BA.debugLineNum = 955;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshadow(";
 parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3318,13 +3318,13 @@ this.state = 68;
 case 49:
 //C
 this.state = 50;
- //BA.debugLineNum = 958;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
+ //BA.debugLineNum = 958;BA.debugLine="If active = \"armed\" Then";
 if (true) break;
 
 case 50:
 //if
 this.state = 67;
-if (_battery>2 && (_battery_state).equals("ok")) { 
+if ((_active).equals("armed")) { 
 this.state = 52;
 }else {
 this.state = 66;
@@ -3333,13 +3333,13 @@ this.state = 66;
 case 52:
 //C
 this.state = 53;
- //BA.debugLineNum = 959;BA.debugLine="If active = \"armed\" Then";
+ //BA.debugLineNum = 959;BA.debugLine="If enabled = \"true\" Then";
 if (true) break;
 
 case 53:
 //if
 this.state = 64;
-if ((_active).equals("armed")) { 
+if ((_enabled).equals("true")) { 
 this.state = 55;
 }else {
 this.state = 63;
@@ -3348,13 +3348,13 @@ this.state = 63;
 case 55:
 //C
 this.state = 56;
- //BA.debugLineNum = 960;BA.debugLine="If enabled = \"true\" Then";
+ //BA.debugLineNum = 960;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
 if (true) break;
 
 case 56:
 //if
 this.state = 61;
-if ((_enabled).equals("true")) { 
+if (_battery>2 && (_battery_state).equals("ok")) { 
 this.state = 58;
 }else {
 this.state = 60;
@@ -3372,8 +3372,8 @@ parent._lblsideyard.setStyle("");
 case 60:
 //C
 this.state = 61;
- //BA.debugLineNum = 964;BA.debugLine="sideyardArmedStatus = \"MOTION DETECTION IS";
-parent._sideyardarmedstatus = "MOTION DETECTION IS DISABLED!";
+ //BA.debugLineNum = 964;BA.debugLine="sideyardArmedStatus = \"REPLACE BATTERY! [Le";
+parent._sideyardarmedstatus = "REPLACE BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 965;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow";
 parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3387,8 +3387,8 @@ this.state = 64;
 case 63:
 //C
 this.state = 64;
- //BA.debugLineNum = 968;BA.debugLine="sideyardArmedStatus = \"NOT ARMED!\"";
-parent._sideyardarmedstatus = "NOT ARMED!";
+ //BA.debugLineNum = 968;BA.debugLine="sideyardArmedStatus = \"MOTION DETECTION IS D";
+parent._sideyardarmedstatus = "MOTION DETECTION IS DISABLED!";
  //BA.debugLineNum = 969;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow(";
 parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3402,8 +3402,8 @@ this.state = 67;
 case 66:
 //C
 this.state = 67;
- //BA.debugLineNum = 972;BA.debugLine="sideyardArmedStatus = \"REPLACE BATTERY NOW! L";
-parent._sideyardarmedstatus = "REPLACE BATTERY NOW! Level: "+BA.NumberToString(_battery)+" | State: "+_battery_state;
+ //BA.debugLineNum = 972;BA.debugLine="sideyardArmedStatus = \"NOT ARMED!\"";
+parent._sideyardarmedstatus = "NOT ARMED!";
  //BA.debugLineNum = 973;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow(";
 parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -3443,16 +3443,16 @@ this.state = 72;
 case 72:
 //C
 this.state = 73;
- //BA.debugLineNum = 991;BA.debugLine="drivewayArmedStatus = \"NETWORK NOT ARMED!\"";
-parent._drivewayarmedstatus = "NETWORK NOT ARMED!";
+ //BA.debugLineNum = 991;BA.debugLine="drivewayArmedStatus = \"SYSTEM NOT ARMED!\"";
+parent._drivewayarmedstatus = "SYSTEM NOT ARMED!";
  //BA.debugLineNum = 992;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow( ga";
 parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
- //BA.debugLineNum = 994;BA.debugLine="frontdoorArmedStatus = \"NETWORK NOT ARMED!\"";
-parent._frontdoorarmedstatus = "NETWORK NOT ARMED!";
+ //BA.debugLineNum = 994;BA.debugLine="frontdoorArmedStatus = \"SYSTEM NOT ARMED!\"";
+parent._frontdoorarmedstatus = "SYSTEM NOT ARMED!";
  //BA.debugLineNum = 995;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshadow( g";
 parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
- //BA.debugLineNum = 997;BA.debugLine="sideyardArmedStatus = \"NETWORK NOT ARMED!\"";
-parent._sideyardarmedstatus = "NETWORK NOT ARMED!";
+ //BA.debugLineNum = 997;BA.debugLine="sideyardArmedStatus = \"SYSTEM NOT ARMED!\"";
+parent._sideyardarmedstatus = "SYSTEM NOT ARMED!";
  //BA.debugLineNum = 998;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow( ga";
 parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );");
  if (true) break;
@@ -4256,11 +4256,11 @@ Object _result = null;
 String _link = "";
 boolean _rechecked = false;
 int _i = 0;
-anywheresoftware.b4a.BA.IterableList group41;
-int index41;
-int groupLen41;
-int step113;
-int limit113;
+anywheresoftware.b4a.BA.IterableList group42;
+int index42;
+int groupLen42;
+int step114;
+int limit114;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
@@ -4403,6 +4403,8 @@ case 11:
 //C
 this.state = 12;
 ;
+ //BA.debugLineNum = 272;BA.debugLine="File.WriteString(File.DirApp,\"GetHomescreen.txt\"";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirApp(),"GetHomescreen.txt",parent._response);
  //BA.debugLineNum = 274;BA.debugLine="Dim rs As ResumableSub = GetHomescreen(response)";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _gethomescreen(parent._response);
@@ -4458,24 +4460,24 @@ if (true) break;
 case 16:
 //for
 this.state = 91;
-group41 = _links;
-index41 = 0;
-groupLen41 = group41.getSize();
+group42 = _links;
+index42 = 0;
+groupLen42 = group42.getSize();
 this.state = 100;
 if (true) break;
 
 case 100:
 //C
 this.state = 91;
-if (index41 < groupLen41) {
+if (index42 < groupLen42) {
 this.state = 18;
-_link = BA.ObjectToString(group41.Get(index41));}
+_link = BA.ObjectToString(group42.Get(index42));}
 if (true) break;
 
 case 101:
 //C
 this.state = 100;
-index41++;
+index42++;
 if (true) break;
 
 case 18:
@@ -4806,8 +4808,8 @@ if (true) break;
 case 55:
 //for
 this.state = 74;
-step113 = 1;
-limit113 = _attempts;
+step114 = 1;
+limit114 = _attempts;
 _i = (int) (1) ;
 this.state = 110;
 if (true) break;
@@ -4815,13 +4817,13 @@ if (true) break;
 case 110:
 //C
 this.state = 74;
-if ((step113 > 0 && _i <= limit113) || (step113 < 0 && _i >= limit113)) this.state = 57;
+if ((step114 > 0 && _i <= limit114) || (step114 < 0 && _i >= limit114)) this.state = 57;
 if (true) break;
 
 case 111:
 //C
 this.state = 110;
-_i = ((int)(0 + _i + step113)) ;
+_i = ((int)(0 + _i + step114)) ;
 if (true) break;
 
 case 57:

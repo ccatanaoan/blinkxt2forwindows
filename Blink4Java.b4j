@@ -524,7 +524,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 			Return
 		End If
 		
-		'File.WriteString(File.DirApp,"GetHomescreen.txt",response)
+		File.WriteString(File.DirApp,"GetHomescreen.txt",response)
 		
 		Dim rs As ResumableSub = GetHomescreen(response)
 		wait for (rs) complete (Result As Object)
@@ -1059,16 +1059,16 @@ Sub GetCameraInfo(json As String, clv As CustomListView) As ResumableSub
 		strTimestamp = ConvertDateTime(updated_at)
 		lblStatus.Text = "Last updated: " & strTimestamp
 		If clv = clvDriveway Then
-			lblDriveway.Text = "Driveway " & strTimestamp & " " & drivewayArmedStatus
+			lblDriveway.Text = strTimestamp & " " & drivewayArmedStatus
 			prevDrivewayUpdateTime = updated_at
 		Else If clv = clvFrontDoor Then
-			lblFrontDoor.Text = "Front Door " & strTimestamp & " " & frontdoorArmedStatus
-			lblDriveway.Text = "Driveway " & ConvertDateTime(prevDrivewayUpdateTime) & " " & drivewayArmedStatus
+			lblFrontDoor.Text = strTimestamp & " " & frontdoorArmedStatus
+			lblDriveway.Text = ConvertDateTime(prevDrivewayUpdateTime) & " " & drivewayArmedStatus
 			prevFrontDoorUpdateTime = updated_at
 		Else If clv = clvSideYard Then
-			lblSideYard.Text = "Side Yard " & strTimestamp & " " & sideyardArmedStatus
-			lblDriveway.Text = "Driveway " & ConvertDateTime(prevDrivewayUpdateTime) & " " & drivewayArmedStatus
-			lblFrontDoor.Text = "Front Door " & ConvertDateTime(prevFrontDoorUpdateTime) & " " & frontdoorArmedStatus
+			lblSideYard.Text = strTimestamp & " " & sideyardArmedStatus
+			lblDriveway.Text = ConvertDateTime(prevDrivewayUpdateTime) & " " & drivewayArmedStatus
+			lblFrontDoor.Text = ConvertDateTime(prevFrontDoorUpdateTime) & " " & frontdoorArmedStatus
 		End If
 		
 		For i = 0 To clv.Size-1
@@ -1174,57 +1174,57 @@ Sub GetHomescreen(json As String) As ResumableSub
 '			Dim status As String = coldevices.Get("status")
 			
 			If device_id = "347574" Then
-				If battery > 2 And battery_state = "ok" Then
-					If active = "armed" Then
-						If enabled = "true" Then
+				If active = "armed" Then
+					If enabled = "true" Then
+						If battery > 2 And battery_state = "ok" Then
 							drivewayArmedStatus = ""
 							lblDriveway.Style = ""
 						Else
-							drivewayArmedStatus = "MOTION DETECTION IS DISABLED!"
+							drivewayArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 						End If
 					Else
-						drivewayArmedStatus = "NOT ARMED!"
+						drivewayArmedStatus = "MOTION DETECTION IS DISABLED!"
 						lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 					End If
 				Else
-					drivewayArmedStatus = "REPLACE BATTERY NOW! Level: " & battery & " | State: " & battery_state
+					drivewayArmedStatus = "NOT ARMED!"
 					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 				End If
 			Else If device_id = "236967" Then
-				If battery > 2 And battery_state = "ok" Then
-					If active = "armed" Then
-						If enabled = "true" Then
+				If active = "armed" Then
+					If enabled = "true" Then
+						If battery > 2 And battery_state = "ok" Then
 							frontdoorArmedStatus = ""
 							lblFrontDoor.Style = ""
 						Else
-							frontdoorArmedStatus = "MOTION DETECTION IS DISABLED!"
+							frontdoorArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 						End If
 					Else
-						frontdoorArmedStatus = "NOT ARMED!"
+						frontdoorArmedStatus = "MOTION DETECTION IS DISABLED!"
 						lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 					End If
 				Else
-					frontdoorArmedStatus = "REPLACE BATTERY NOW! Level: " & battery & " | State: " & battery_state
+					frontdoorArmedStatus = "NOT ARMED!"
 					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 				End If
 			Else If device_id = "226821" Then
-				If battery > 2 And battery_state = "ok" Then
-					If active = "armed" Then
-						If enabled = "true" Then
+				If active = "armed" Then
+					If enabled = "true" Then
+						If battery > 2 And battery_state = "ok" Then
 							sideyardArmedStatus = ""
 							lblSideYard.Style = ""
 						Else
-							sideyardArmedStatus = "MOTION DETECTION IS DISABLED!"
+							sideyardArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 						End If
 					Else
-						sideyardArmedStatus = "NOT ARMED!"
+						sideyardArmedStatus = "MOTION DETECTION IS DISABLED!"
 						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 					End If
 				Else
-					sideyardArmedStatus = "REPLACE BATTERY NOW! Level: " & battery & " | State: " & battery_state
+					sideyardArmedStatus = "NOT ARMED!"
 					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 				End If
 			End If
@@ -1243,13 +1243,13 @@ Sub GetHomescreen(json As String) As ResumableSub
 '		Dim status As String = network.Get("status")
 		
 		If armedNetwork <> "true" Then
-			drivewayArmedStatus = "NETWORK NOT ARMED!"
+			drivewayArmedStatus = "SYSTEM NOT ARMED!"
 			lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 			
-			frontdoorArmedStatus = "NETWORK NOT ARMED!"
+			frontdoorArmedStatus = "SYSTEM NOT ARMED!"
 			lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 			
-			sideyardArmedStatus = "NETWORK NOT ARMED!"
+			sideyardArmedStatus = "SYSTEM NOT ARMED!"
 			lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
 		End If
 	Catch
