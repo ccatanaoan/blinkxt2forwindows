@@ -66,6 +66,7 @@ Sub GetVideos(json As String, userRegion As String)
 		
 		kvs.Initialize(File.DirApp, "datastore")
 		
+		B4XLoadingIndicator1.Show
 		For Each colmedia As Map In media
 			Dim thumbnail As String = colmedia.Get("thumbnail")
 '			Dim device_id As Int = colmedia.Get("device_id")
@@ -110,7 +111,7 @@ Sub GetVideos(json As String, userRegion As String)
 			Else
 				Dim mytypes As Object = kvs.Get(VideoID)
 				Dim videos = mytypes As VideoInfo
-				If  watched <> videos.Watched Then
+				If (videos = Null) Or (watched <> videos.Watched) Or (watched = False) Then
 					Dim j As HttpJob
 					j.Initialize("", Me)
 					j.Download("https://rest-" & userRegion &".immedia-semi.com" & thumbnail & ".jpg")
@@ -133,7 +134,7 @@ Sub GetVideos(json As String, userRegion As String)
 		Dim list1 As List = kvs.ListKeys
 		For i =  0 To list1.Size-1  
 		
-			Log("kvs.ListKeys " & i & " | " & videos.VideoID & " | " & videos.Watched & " | " & GetTimestampForSorting)
+			Log("kvs.ListKeys " & i & " | " & videos.VideoID & " | " & videos.Watched & " | " & videos.DateCreated)
 			
 			If i > 99 Then
 				kvs.Remove(list1.Get(i))
@@ -154,6 +155,7 @@ Sub GetVideos(json As String, userRegion As String)
 				End If
 			End If
 		Next
+		B4XLoadingIndicator1.Hide
 		If list1.Size > 0 Then
 			clvActivity.JumpToItem(0)
 			Sleep(100)
@@ -161,7 +163,9 @@ Sub GetVideos(json As String, userRegion As String)
 			Sleep(100)
 		End If
 	Catch
+		B4XLoadingIndicator1.Hide
 		Log(LastException)
+		cutils.ShowNotification("Catanaoan Blink XT2 Cameras v1.0","GetVideos: " & LastException, cutils.ICON_ERROR)
 	End Try
 End Sub
 
@@ -201,6 +205,7 @@ Sub CreateListItem(screenshot As B4XBitmap, fileinfo As String, devicename As St
 		Return p
 	Catch
 		Log(LastException)
+		cutils.ShowNotification("Catanaoan Blink XT2 Cameras v1.0","CreateListItem: " & LastException, cutils.ICON_ERROR)
 		Return Null
 	End Try
 
@@ -299,10 +304,10 @@ Sub ConvertFullDateTime(inputTime As String) As String
 	End If
 End Sub
 
-Sub GetTimestampForSorting() As String
-	DateTime.DateFormat = "yyyyMMddHHmmssSSS"
-	Return DateTime.Date(DateTime.Now)
-End Sub
+'Sub GetTimestampForSorting() As String
+'	DateTime.DateFormat = "yyyyMMddHHmmssSSS"
+'	Return DateTime.Date(DateTime.Now)
+'End Sub
 
 Sub ParseUTCstring(utc As String) As Long
 	Dim df As String = DateTime.DateFormat
@@ -361,6 +366,7 @@ Sub clvActivity_ItemClick (Index As Int, Value As Object)
 		Next
 	Catch
 		B4XLoadingIndicator1.Hide
+		cutils.ShowNotification("Catanaoan Blink XT2 Cameras v1.0","clvActivity_ItemClick: " & LastException, cutils.ICON_ERROR)
 		Log(LastException)
 	End Try
 
@@ -409,6 +415,7 @@ Sub ShowVideo (Link As String, timestamp As String)
 		j.Release
 	Catch
 		Log(LastException)
+		cutils.ShowNotification("Catanaoan Blink XT2 Cameras v1.0","ShowVideo: " & LastException, cutils.ICON_ERROR)
 	End Try
 	
 	Try
@@ -421,6 +428,7 @@ Sub ShowVideo (Link As String, timestamp As String)
 		End If
 	Catch
 		Log(LastException)
+		cutils.ShowNotification("Catanaoan Blink XT2 Cameras v1.0","ShowVideo 2nd Try-Catch: " & LastException, cutils.ICON_ERROR)
 	End Try
 End Sub
 
@@ -502,6 +510,7 @@ Sub UpdateItemColor (Index As Int)
 		previousSelectedIndex = Index
 	Catch
 		Log(LastException)
+		cutils.ShowNotification("Catanaoan Blink XT2 Cameras v1.0","UpdateItemColor: " & LastException, cutils.ICON_ERROR)
 	End Try
 End Sub
 

@@ -13,6 +13,6 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
-NavigationStack=Main,GetCameraInfo,826,0,Main,GetSyncModuleInfo,890,0,Visual Designer,vdSk03.bjl,-100,6,frmActivity,Class_Globals,0,0,Main,CheckBattLife,1008,2,Main,btnSideYardNewClip_Click,1755,0,Main,GetHomescreen,892,6,Main,RefreshCameras,271,0,Main,StringCount,1838,0,Main,GetUnwatchedVideos,1783,1
+NavigationStack=Main,GetHomescreen,985,0,Main,RESTGet,520,0,Main,RequestAuthToken,201,0,Main,btnSideYardNewClip_Click,1778,0,Main,SetAvg,1455,0,Main,btnActivity_Click,1465,6,Main,ConvertFullDateTime,1555,0,Main,ConvertDateTime,1533,0,Main,GetUnwatchedVideos,1798,0,frmActivity,GetVideos,87,6
 SelectedBuild=0
 VisibleModules=1,2,3,4

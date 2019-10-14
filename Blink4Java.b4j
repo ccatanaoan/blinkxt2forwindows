@@ -313,6 +313,7 @@ Sub Process_Globals
 	Private btnSideYardNewClip As Button 'ignore
 	Private badger1 As Badger
 	Private prevCameraThumbnail As String
+	Private kvs As KeyValueStore
 End Sub
 
 Sub AppStart (Form1 As Form, Args() As String)
@@ -1181,15 +1182,15 @@ Sub GetHomescreen(json As String) As ResumableSub
 							lblDriveway.Style = ""
 						Else
 							drivewayArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
-							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 						End If
 					Else
 						drivewayArmedStatus = "MOTION DETECTION IS DISABLED!"
-						lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+						lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 					End If
 				Else
 					drivewayArmedStatus = "NOT ARMED!"
-					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 				End If
 			Else If device_id = "236967" Then
 				If active = "armed" Then
@@ -1199,15 +1200,15 @@ Sub GetHomescreen(json As String) As ResumableSub
 							lblFrontDoor.Style = ""
 						Else
 							frontdoorArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
-							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 						End If
 					Else
 						frontdoorArmedStatus = "MOTION DETECTION IS DISABLED!"
-						lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+						lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 					End If
 				Else
 					frontdoorArmedStatus = "NOT ARMED!"
-					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 				End If
 			Else If device_id = "226821" Then
 				If active = "armed" Then
@@ -1217,15 +1218,15 @@ Sub GetHomescreen(json As String) As ResumableSub
 							lblSideYard.Style = ""
 						Else
 							sideyardArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
-							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 						End If
 					Else
 						sideyardArmedStatus = "MOTION DETECTION IS DISABLED!"
-						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 					End If
 				Else
 					sideyardArmedStatus = "NOT ARMED!"
-					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 				End If
 			End If
 		Next
@@ -1244,13 +1245,13 @@ Sub GetHomescreen(json As String) As ResumableSub
 		
 		If armedNetwork <> "true" Then
 			drivewayArmedStatus = "SYSTEM NOT ARMED!"
-			lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+			lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 			
 			frontdoorArmedStatus = "SYSTEM NOT ARMED!"
-			lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+			lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 			
 			sideyardArmedStatus = "SYSTEM NOT ARMED!"
-			lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(250,0,0,15) , 0,0,0,1 );"
+			lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
 		End If
 	Catch
 		Log(LastException)
@@ -1724,7 +1725,12 @@ Sub btnActivity_Click
 	'https://rest-u006.immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1
 	Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
 	wait for (rs) complete (Result As Object)
-	'File.WriteString(File.DirApp,"response_activity.txt",response)
+	File.WriteString(File.DirApp,"btnActivity_Click.txt",response)
+	If response.StartsWith("{""limit"":25") = False Then
+		' https://www.b4x.com/android/forum/threads/b4x-resumable-subs-that-return-values-resumablesub.82670/
+		Dim rs As ResumableSub = GetUnwatchedVideos
+		wait for (rs) complete (Result As Object)
+	End If
 	Dim mf As frmActivity
 	mf.Initialize(MainForm)
 	mf.authToken = authToken
@@ -2036,8 +2042,24 @@ Sub GetUnwatchedVideos() As ResumableSub
 		Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1")
 		wait for (rs) complete (Result As Object)
 		
-		Dim j As Int = StringCount(response,"""watched"":false",True)
-		badger1.SetBadge(btnActivity, j)
+		Dim unwatchedVideoCount As Int = 0
+		Dim parser As JSONParser
+		parser.Initialize(response)
+		Dim root As Map = parser.NextObject
+		Dim media As List = root.Get("media")
+		kvs.Initialize(File.DirApp, "datastore")
+		Dim n As Long = DateTime.Now
+		For Each colmedia As Map In media
+			Dim watched As String = colmedia.Get("watched")
+			Dim VideoID As String = colmedia.Get("id")
+			Dim mytypes As Object = kvs.Get(VideoID)
+			Dim videos = mytypes As VideoInfo
+			If videos = Null Or watched = False Then
+				unwatchedVideoCount = unwatchedVideoCount + 1
+			End If
+		Next
+		Log("Loading unwatched videos took: " & (DateTime.Now - n) & "ms")
+		badger1.SetBadge(btnActivity, unwatchedVideoCount)
 	Catch
 		Log(LastException)
 	End Try
@@ -2045,14 +2067,14 @@ Sub GetUnwatchedVideos() As ResumableSub
 	Return Null
 End Sub
 
-Sub StringCount(StringToSearch As String,TargetStr As String,IgnoreCase As Boolean) As Int
-	If IgnoreCase Then
-		StringToSearch = StringToSearch.ToLowerCase
-		TargetStr = TargetStr.ToLowerCase
-	End If
-	Return (StringToSearch.Length - StringToSearch.Replace(TargetStr,"").Length) / TargetStr.Length
-
-End Sub
+'Sub StringCount(StringToSearch As String,TargetStr As String,IgnoreCase As Boolean) As Int
+'	If IgnoreCase Then
+'		StringToSearch = StringToSearch.ToLowerCase
+'		TargetStr = TargetStr.ToLowerCase
+'	End If
+'	Return (StringToSearch.Length - StringToSearch.Replace(TargetStr,"").Length) / TargetStr.Length
+'
+'End Sub
 
 'Sub GetUnwatchedVideos() As ResumableSub
 '	Try
