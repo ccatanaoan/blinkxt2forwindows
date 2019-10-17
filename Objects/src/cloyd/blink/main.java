@@ -1607,8 +1607,8 @@ public static String  _checkbattlife(int _battlevel) throws Exception{
  //BA.debugLineNum = 1008;BA.debugLine="Try";
 try { //BA.debugLineNum = 1010;BA.debugLine="If battlevel <= 136 Then";
 if (_battlevel<=136) { 
- //BA.debugLineNum = 1011;BA.debugLine="Return \"Replace battery now!\"";
-if (true) return "Replace battery now!";
+ //BA.debugLineNum = 1011;BA.debugLine="Return \"REPLACE\"";
+if (true) return "REPLACE";
  }else if(_battlevel>=160) { 
  //BA.debugLineNum = 1013;BA.debugLine="Return \"High\"";
 if (true) return "High";
@@ -3208,10 +3208,10 @@ parent._lbldriveway.setStyle("");
 case 20:
 //C
 this.state = 21;
- //BA.debugLineNum = 929;BA.debugLine="drivewayArmedStatus = \"REPLACE BATTERY! [Le";
-parent._drivewayarmedstatus = "REPLACE BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
+ //BA.debugLineNum = 929;BA.debugLine="drivewayArmedStatus = \"LOW BATTERY! [Level:";
+parent._drivewayarmedstatus = "LOW BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 930;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow";
-parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 21:
@@ -3226,7 +3226,7 @@ this.state = 24;
  //BA.debugLineNum = 933;BA.debugLine="drivewayArmedStatus = \"MOTION DETECTION IS D";
 parent._drivewayarmedstatus = "MOTION DETECTION IS DISABLED!";
  //BA.debugLineNum = 934;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow(";
-parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 24:
@@ -3241,7 +3241,7 @@ this.state = 27;
  //BA.debugLineNum = 937;BA.debugLine="drivewayArmedStatus = \"NOT ARMED!\"";
 parent._drivewayarmedstatus = "NOT ARMED!";
  //BA.debugLineNum = 938;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow(";
-parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 27:
@@ -3307,10 +3307,10 @@ parent._lblfrontdoor.setStyle("");
 case 40:
 //C
 this.state = 41;
- //BA.debugLineNum = 947;BA.debugLine="frontdoorArmedStatus = \"REPLACE BATTERY! [L";
-parent._frontdoorarmedstatus = "REPLACE BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
+ //BA.debugLineNum = 947;BA.debugLine="frontdoorArmedStatus = \"LOW BATTERY! [Level";
+parent._frontdoorarmedstatus = "LOW BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 948;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshado";
-parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 41:
@@ -3325,7 +3325,7 @@ this.state = 44;
  //BA.debugLineNum = 951;BA.debugLine="frontdoorArmedStatus = \"MOTION DETECTION IS";
 parent._frontdoorarmedstatus = "MOTION DETECTION IS DISABLED!";
  //BA.debugLineNum = 952;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshadow";
-parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 44:
@@ -3340,7 +3340,7 @@ this.state = 47;
  //BA.debugLineNum = 955;BA.debugLine="frontdoorArmedStatus = \"NOT ARMED!\"";
 parent._frontdoorarmedstatus = "NOT ARMED!";
  //BA.debugLineNum = 956;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshadow(";
-parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 47:
@@ -3406,10 +3406,10 @@ parent._lblsideyard.setStyle("");
 case 60:
 //C
 this.state = 61;
- //BA.debugLineNum = 965;BA.debugLine="sideyardArmedStatus = \"REPLACE BATTERY! [Le";
-parent._sideyardarmedstatus = "REPLACE BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
+ //BA.debugLineNum = 965;BA.debugLine="sideyardArmedStatus = \"LOW BATTERY! [Level:";
+parent._sideyardarmedstatus = "LOW BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 966;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow";
-parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 61:
@@ -3424,7 +3424,7 @@ this.state = 64;
  //BA.debugLineNum = 969;BA.debugLine="sideyardArmedStatus = \"MOTION DETECTION IS D";
 parent._sideyardarmedstatus = "MOTION DETECTION IS DISABLED!";
  //BA.debugLineNum = 970;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow(";
-parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 64:
@@ -3439,7 +3439,7 @@ this.state = 67;
  //BA.debugLineNum = 973;BA.debugLine="sideyardArmedStatus = \"NOT ARMED!\"";
 parent._sideyardarmedstatus = "NOT ARMED!";
  //BA.debugLineNum = 974;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow(";
-parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 67:
@@ -3480,15 +3480,15 @@ this.state = 73;
  //BA.debugLineNum = 992;BA.debugLine="drivewayArmedStatus = \"SYSTEM NOT ARMED!\"";
 parent._drivewayarmedstatus = "SYSTEM NOT ARMED!";
  //BA.debugLineNum = 993;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow( ga";
-parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  //BA.debugLineNum = 995;BA.debugLine="frontdoorArmedStatus = \"SYSTEM NOT ARMED!\"";
 parent._frontdoorarmedstatus = "SYSTEM NOT ARMED!";
  //BA.debugLineNum = 996;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshadow( g";
-parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  //BA.debugLineNum = 998;BA.debugLine="sideyardArmedStatus = \"SYSTEM NOT ARMED!\"";
 parent._sideyardarmedstatus = "SYSTEM NOT ARMED!";
  //BA.debugLineNum = 999;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow( ga";
-parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );");
+parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
 case 73:

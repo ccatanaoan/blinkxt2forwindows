@@ -244,8 +244,8 @@ Library6=javaobject
 Library7=xcustomlistview
 Library8=jbitmapcreator
 Library9=jxui
-Module1=frmMedia
-Module2=frmActivity
+Module1=frmActivity
+Module2=frmMedia
 Module3=Badger
 Module4=KeyValueStore
 NumberOfFiles=114
@@ -1181,16 +1181,16 @@ Sub GetHomescreen(json As String) As ResumableSub
 							drivewayArmedStatus = ""
 							lblDriveway.Style = ""
 						Else
-							drivewayArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
-							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+							drivewayArmedStatus = "LOW BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
+							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
 						drivewayArmedStatus = "MOTION DETECTION IS DISABLED!"
-						lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+						lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
 					drivewayArmedStatus = "NOT ARMED!"
-					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 				End If
 			Else If device_id = "236967" Then
 				If active = "armed" Then
@@ -1199,16 +1199,16 @@ Sub GetHomescreen(json As String) As ResumableSub
 							frontdoorArmedStatus = ""
 							lblFrontDoor.Style = ""
 						Else
-							frontdoorArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
-							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+							frontdoorArmedStatus = "LOW BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
+							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
 						frontdoorArmedStatus = "MOTION DETECTION IS DISABLED!"
-						lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+						lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
 					frontdoorArmedStatus = "NOT ARMED!"
-					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 				End If
 			Else If device_id = "226821" Then
 				If active = "armed" Then
@@ -1217,16 +1217,16 @@ Sub GetHomescreen(json As String) As ResumableSub
 							sideyardArmedStatus = ""
 							lblSideYard.Style = ""
 						Else
-							sideyardArmedStatus = "REPLACE BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
-							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+							sideyardArmedStatus = "LOW BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
+							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
 						sideyardArmedStatus = "MOTION DETECTION IS DISABLED!"
-						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
 					sideyardArmedStatus = "NOT ARMED!"
-					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 				End If
 			End If
 		Next
@@ -1245,13 +1245,13 @@ Sub GetHomescreen(json As String) As ResumableSub
 		
 		If armedNetwork <> "true" Then
 			drivewayArmedStatus = "SYSTEM NOT ARMED!"
-			lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+			lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 			
 			frontdoorArmedStatus = "SYSTEM NOT ARMED!"
-			lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+			lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 			
 			sideyardArmedStatus = "SYSTEM NOT ARMED!"
-			lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,15) , 0,0,0,1 );"
+			lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 		End If
 	Catch
 		Log(LastException)
@@ -1263,7 +1263,7 @@ Sub CheckBattLife(battlevel As Int) As String
 	Try
 		' http://data.energizer.com/pdfs/l91.pdf
 		If battlevel <= 136 Then
-			Return "Replace battery now!"
+			Return "REPLACE"
 		else If battlevel >= 160 Then
 			Return "High" 
 			' "Very high"
