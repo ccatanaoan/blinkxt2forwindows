@@ -13,6 +13,6 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
-NavigationStack=frmActivity,Show,49,0,Main,MainForm_CloseRequest,1075,0,Main,Process_Globals,22,0,frmActivity,Class_Globals,0,0,frmActivity,GetVideos,97,6,Main,lbTitle_MouseDragged,1050,0,Main,AppStart,121,0,Main,CheckLFRLevel,1026,0,Main,CheckBattLife,1009,1,Main,GetHomescreen,929,1
+NavigationStack=Main,lbTitle_MouseDragged,1050,0,Main,AppStart,121,0,Main,CheckLFRLevel,1026,0,frmActivity,Class_Globals,16,0,frmActivity,GetVideos,120,6,Main,GetCommandResponse,471,0,Main,RefreshCameras,328,0,Main,GetCameraInfo,796,3,Main,CheckBattLife,1007,2,Main,GetHomescreen,949,6
 SelectedBuild=0
 VisibleModules=1,2,3,4

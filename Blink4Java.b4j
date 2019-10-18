@@ -1010,7 +1010,7 @@ Sub GetCameraInfo(json As String, clv As CustomListView) As ResumableSub
 			Return Null
 		End If
 		clv.Clear
-		clv.AddTextItem("Battery voltage: " & NumberFormat((battery_voltage / 100),0,2) & "V - " & CheckBattLife(battery_voltage), "battery_voltage")
+		clv.AddTextItem("Battery voltage: " & NumberFormat((battery_voltage / 100),0,2) & "V", "battery_voltage") '& "V - " & CheckBattLife(battery_voltage), "battery_voltage")
 		clv.AddTextItem("Camera to WiFi strength: " & wifi_strength & " dBm - " & CheckLFRLevel(wifi_strength), "wifi_strength")
 		clv.AddTextItem("Camera to Sync Module strength (LFR): " & lfr_strength & " dBm - " & CheckLFRLevel(lfr_strength), "lfr_strength")
 		clv.AddTextItem("Temperature: " & temperature & "ºF", "temperature")
@@ -1177,11 +1177,11 @@ Sub GetHomescreen(json As String) As ResumableSub
 			If device_id = "347574" Then
 				If active = "armed" Then
 					If enabled = "true" Then
-						If battery > 2 And battery_state = "ok" Then
-							drivewayArmedStatus = ""
+						If battery > 1 And battery_state = "ok" Then
+							drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblDriveway.Style = ""
 						Else
-							drivewayArmedStatus = "LOW BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
+							drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
@@ -1195,11 +1195,11 @@ Sub GetHomescreen(json As String) As ResumableSub
 			Else If device_id = "236967" Then
 				If active = "armed" Then
 					If enabled = "true" Then
-						If battery > 2 And battery_state = "ok" Then
-							frontdoorArmedStatus = ""
+						If battery > 1 And battery_state = "ok" Then
+							frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblFrontDoor.Style = ""
 						Else
-							frontdoorArmedStatus = "LOW BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
+							frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
@@ -1213,11 +1213,11 @@ Sub GetHomescreen(json As String) As ResumableSub
 			Else If device_id = "226821" Then
 				If active = "armed" Then
 					If enabled = "true" Then
-						If battery > 2 And battery_state = "ok" Then
-							sideyardArmedStatus = ""
+						If battery > 1 And battery_state = "ok" Then
+							sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblSideYard.Style = ""
 						Else
-							sideyardArmedStatus = "LOW BATTERY! [Level: " & battery & " - " & battery_state.ToUpperCase & "]"
+							sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else

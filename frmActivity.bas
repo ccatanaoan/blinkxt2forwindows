@@ -133,14 +133,14 @@ Sub GetVideos(json As String, userRegion As String)
 
 		Dim list1 As List = kvs.ListKeys
 		For i =  0 To list1.Size-1
-		
-			Log("kvs.ListKeys " & i & " | " & videos.VideoID & " | " & videos.Watched & " | " & videos.DateCreated)
-			
 			If i > 99 Then
 				kvs.Remove(list1.Get(i))
 			Else
 				Dim mytypes As Object = kvs.Get(list1.Get(i))
 				Dim videos = mytypes As VideoInfo
+				
+				Log("kvs.ListKeys " & i & " | " & videos.VideoID & " | " & videos.Watched & " | " & videos.DateCreated)
+				
 				Dim In As InputStream
 				In.InitializeFromBytesArray(videos.ThumbnailBLOB, 0, videos.ThumbnailBLOB.Length)
 				Dim bmp As Image

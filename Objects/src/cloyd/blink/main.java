@@ -2368,7 +2368,7 @@ this.state = 8;
  //BA.debugLineNum = 757;BA.debugLine="clv.Clear";
 _clv._clear();
  //BA.debugLineNum = 758;BA.debugLine="clv.AddTextItem(\"Battery voltage: \" & NumberForm";
-_clv._addtextitem((Object)("Battery voltage: "+anywheresoftware.b4a.keywords.Common.NumberFormat((_battery_voltage/(double)100),(int) (0),(int) (2))+"V - "+_checkbattlife(_battery_voltage)),(Object)("battery_voltage"));
+_clv._addtextitem((Object)("Battery voltage: "+anywheresoftware.b4a.keywords.Common.NumberFormat((_battery_voltage/(double)100),(int) (0),(int) (2))+"V"),(Object)("battery_voltage"));
  //BA.debugLineNum = 759;BA.debugLine="clv.AddTextItem(\"Camera to WiFi strength: \" & wi";
 _clv._addtextitem((Object)("Camera to WiFi strength: "+BA.NumberToString(_wifi_strength)+" dBm - "+_checklfrlevel(_wifi_strength)),(Object)("wifi_strength"));
  //BA.debugLineNum = 760;BA.debugLine="clv.AddTextItem(\"Camera to Sync Module strength";
@@ -3184,13 +3184,13 @@ this.state = 23;
 case 15:
 //C
 this.state = 16;
- //BA.debugLineNum = 925;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
+ //BA.debugLineNum = 925;BA.debugLine="If battery > 1 And battery_state = \"ok\" Then";
 if (true) break;
 
 case 16:
 //if
 this.state = 21;
-if (_battery>2 && (_battery_state).equals("ok")) { 
+if (_battery>1 && (_battery_state).equals("ok")) { 
 this.state = 18;
 }else {
 this.state = 20;
@@ -3199,8 +3199,8 @@ this.state = 20;
 case 18:
 //C
 this.state = 21;
- //BA.debugLineNum = 926;BA.debugLine="drivewayArmedStatus = \"\"";
-parent._drivewayarmedstatus = "";
+ //BA.debugLineNum = 926;BA.debugLine="drivewayArmedStatus = \"[Level \" & battery &";
+parent._drivewayarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 927;BA.debugLine="lblDriveway.Style = \"\"";
 parent._lbldriveway.setStyle("");
  if (true) break;
@@ -3208,8 +3208,8 @@ parent._lbldriveway.setStyle("");
 case 20:
 //C
 this.state = 21;
- //BA.debugLineNum = 929;BA.debugLine="drivewayArmedStatus = \"LOW BATTERY! [Level:";
-parent._drivewayarmedstatus = "LOW BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
+ //BA.debugLineNum = 929;BA.debugLine="drivewayArmedStatus = \"[Level \" & battery &";
+parent._drivewayarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 930;BA.debugLine="lblDriveway.Style = \"-fx-effect: dropshadow";
 parent._lbldriveway.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
@@ -3283,13 +3283,13 @@ this.state = 43;
 case 35:
 //C
 this.state = 36;
- //BA.debugLineNum = 943;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
+ //BA.debugLineNum = 943;BA.debugLine="If battery > 1 And battery_state = \"ok\" Then";
 if (true) break;
 
 case 36:
 //if
 this.state = 41;
-if (_battery>2 && (_battery_state).equals("ok")) { 
+if (_battery>1 && (_battery_state).equals("ok")) { 
 this.state = 38;
 }else {
 this.state = 40;
@@ -3298,8 +3298,8 @@ this.state = 40;
 case 38:
 //C
 this.state = 41;
- //BA.debugLineNum = 944;BA.debugLine="frontdoorArmedStatus = \"\"";
-parent._frontdoorarmedstatus = "";
+ //BA.debugLineNum = 944;BA.debugLine="frontdoorArmedStatus = \"[Level \" & battery";
+parent._frontdoorarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 945;BA.debugLine="lblFrontDoor.Style = \"\"";
 parent._lblfrontdoor.setStyle("");
  if (true) break;
@@ -3307,8 +3307,8 @@ parent._lblfrontdoor.setStyle("");
 case 40:
 //C
 this.state = 41;
- //BA.debugLineNum = 947;BA.debugLine="frontdoorArmedStatus = \"LOW BATTERY! [Level";
-parent._frontdoorarmedstatus = "LOW BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
+ //BA.debugLineNum = 947;BA.debugLine="frontdoorArmedStatus = \"[Level \" & battery";
+parent._frontdoorarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 948;BA.debugLine="lblFrontDoor.Style = \"-fx-effect: dropshado";
 parent._lblfrontdoor.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
@@ -3382,13 +3382,13 @@ this.state = 63;
 case 55:
 //C
 this.state = 56;
- //BA.debugLineNum = 961;BA.debugLine="If battery > 2 And battery_state = \"ok\" Then";
+ //BA.debugLineNum = 961;BA.debugLine="If battery > 1 And battery_state = \"ok\" Then";
 if (true) break;
 
 case 56:
 //if
 this.state = 61;
-if (_battery>2 && (_battery_state).equals("ok")) { 
+if (_battery>1 && (_battery_state).equals("ok")) { 
 this.state = 58;
 }else {
 this.state = 60;
@@ -3397,8 +3397,8 @@ this.state = 60;
 case 58:
 //C
 this.state = 61;
- //BA.debugLineNum = 962;BA.debugLine="sideyardArmedStatus = \"\"";
-parent._sideyardarmedstatus = "";
+ //BA.debugLineNum = 962;BA.debugLine="sideyardArmedStatus = \"[Level \" & battery &";
+parent._sideyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 963;BA.debugLine="lblSideYard.Style = \"\"";
 parent._lblsideyard.setStyle("");
  if (true) break;
@@ -3406,8 +3406,8 @@ parent._lblsideyard.setStyle("");
 case 60:
 //C
 this.state = 61;
- //BA.debugLineNum = 965;BA.debugLine="sideyardArmedStatus = \"LOW BATTERY! [Level:";
-parent._sideyardarmedstatus = "LOW BATTERY! [Level: "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
+ //BA.debugLineNum = 965;BA.debugLine="sideyardArmedStatus = \"[Level \" & battery &";
+parent._sideyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 966;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow";
 parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;

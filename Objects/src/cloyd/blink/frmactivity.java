@@ -764,9 +764,7 @@ if (true) break;
 case 28:
 //C
 this.state = 29;
- //BA.debugLineNum = 131;BA.debugLine="Log(\"kvs.ListKeys \" & i & \" | \" & videos.VideoI";
-parent.__c.Log("kvs.ListKeys "+BA.NumberToString(_i)+" | "+_videos.VideoID /*String*/ +" | "+_videos.Watched /*String*/ +" | "+_videos.DateCreated /*String*/ );
- //BA.debugLineNum = 133;BA.debugLine="If i > 99 Then";
+ //BA.debugLineNum = 130;BA.debugLine="If i > 99 Then";
 if (true) break;
 
 case 29:
@@ -781,17 +779,19 @@ this.state = 33;
 case 31:
 //C
 this.state = 40;
- //BA.debugLineNum = 134;BA.debugLine="kvs.Remove(list1.Get(i))";
+ //BA.debugLineNum = 131;BA.debugLine="kvs.Remove(list1.Get(i))";
 parent._kvs._remove /*String*/ (BA.ObjectToString(_list1.Get(_i)));
  if (true) break;
 
 case 33:
 //C
 this.state = 34;
- //BA.debugLineNum = 136;BA.debugLine="Dim mytypes As Object = kvs.Get(list1.Get(i))";
+ //BA.debugLineNum = 133;BA.debugLine="Dim mytypes As Object = kvs.Get(list1.Get(i))";
 _mytypes = parent._kvs._get /*Object*/ (BA.ObjectToString(_list1.Get(_i)));
- //BA.debugLineNum = 137;BA.debugLine="Dim videos = mytypes As VideoInfo";
+ //BA.debugLineNum = 134;BA.debugLine="Dim videos = mytypes As VideoInfo";
 _videos = (cloyd.blink.frmactivity._videoinfo)(_mytypes);
+ //BA.debugLineNum = 136;BA.debugLine="Log(\"kvs.ListKeys \" & i & \" | \" & videos.Video";
+parent.__c.Log("kvs.ListKeys "+BA.NumberToString(_i)+" | "+_videos.VideoID /*String*/ +" | "+_videos.Watched /*String*/ +" | "+_videos.DateCreated /*String*/ );
  //BA.debugLineNum = 138;BA.debugLine="Dim In As InputStream";
 _in = new anywheresoftware.b4a.objects.streams.File.InputStreamWrapper();
  //BA.debugLineNum = 139;BA.debugLine="In.InitializeFromBytesArray(videos.ThumbnailBL";
