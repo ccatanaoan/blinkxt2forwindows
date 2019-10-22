@@ -8,16 +8,17 @@ File102=sk06_right.png
 File103=sk06_title.png
 File104=sk06_top_left.png
 File105=sk06_top_right.png
-File106=systemstatusoffline.png
-File107=systemstatusonline.png
-File108=vdSk01.bjl
-File109=vdSk02.bjl
+File106=snapshotbutton.png
+File107=systemstatusoffline.png
+File108=systemstatusonline.png
+File109=vdSk01.bjl
 File11=cellitem.bjl
-File110=vdSk03.bjl
-File111=vdSk04.bjl
-File112=vdSk05.bjl
-File113=vdSk06.bjl
-File114=video-camera.png
+File110=vdSk02.bjl
+File111=vdSk03.bjl
+File112=vdSk04.bjl
+File113=vdSk05.bjl
+File114=vdSk06.bjl
+File115=video-camera.png
 File12=home.png
 File13=liveviewbuttontranparent.png
 File14=main.bjl
@@ -132,6 +133,7 @@ FileGroup111=Default Group
 FileGroup112=Default Group
 FileGroup113=Default Group
 FileGroup114=Default Group
+FileGroup115=Default Group
 FileGroup12=Default Group
 FileGroup13=Default Group
 FileGroup14=Default Group
@@ -248,7 +250,7 @@ Module1=frmActivity
 Module2=frmMedia
 Module3=Badger
 Module4=KeyValueStore
-NumberOfFiles=114
+NumberOfFiles=115
 NumberOfLibraries=15
 NumberOfModules=4
 Version=7.8
@@ -314,6 +316,9 @@ Sub Process_Globals
 	Private badger1 As Badger
 	Private prevCameraThumbnail As String
 	Private kvs As KeyValueStore
+	Private btnDrivewayRefresh As Button 'ignore
+	Private btnFrontDoorRefresh As Button 'ignore
+	Private btnSideYardRefresh As Button 'ignore
 End Sub
 
 Sub AppStart (Form1 As Form, Args() As String)
@@ -433,15 +438,12 @@ Sub btnDriveway_Click
 	btnDrivewayNewClip.Enabled = False
 	btnFrontDoorNewClip.Enabled = False
 	btnSideYardNewClip.Enabled = False
-	RefreshCameras(False)
+	
+	Dim rs As ResumableSub = RefreshCameras(False, "All")
+	wait for (rs) complete (Result As Object)
 End Sub
 
 Sub RequestAuthToken As ResumableSub 
-	' https://www.b4x.com/android/forum/threads/b4x-resumable-subs-that-return-values-resumablesub.82670/ <-- resumable
-	' http://www.basic4ppc.com:51042/json/index.html
-	' https://www.b4x.com/android/forum/threads/b4x-okhttputils2-with-wait-for.79345/#content
-	' https://www.b4x.com/android/forum/threads/call-api-rest.89470/#content
-	' https://www.b4x.com/android/forum/threads/server-online-json-tree-example.39048/#content
 	Try
 		lblStatus.Text = "Authenticating..."
 		Dim jobLogin As HttpJob
@@ -479,14 +481,15 @@ Sub RequestAuthToken As ResumableSub
 			Return Null
 		End If
 		jobLogin.Release
-		RefreshCameras(True)
+		Dim rs As ResumableSub = RefreshCameras(True, "All")
+		wait for (rs) complete (Result As Object)
 	Catch
 		Log("RequestAuthToken LastException: " & LastException)
 	End Try
 	Return Null
 End Sub
 
-Sub RefreshCameras(FirstRun As Boolean)
+Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 	Try
 		Dim camera As String
 		Dim iv As ImageView
@@ -505,7 +508,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 			btnDrivewayNewClip.Enabled = True
 			btnFrontDoorNewClip.Enabled = True
 			btnSideYardNewClip.Enabled = True
-			Return
+			Return Null
 		End If
 		
 		'File.WriteString(File.DirApp,"response_syncmodules.txt",response)
@@ -522,7 +525,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 			btnDrivewayNewClip.Enabled = True
 			btnFrontDoorNewClip.Enabled = True
 			btnSideYardNewClip.Enabled = True
-			Return
+			Return Null
 		End If
 		
 		File.WriteString(File.DirApp,"GetHomescreen.txt",response)
@@ -530,7 +533,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 		Dim rs As ResumableSub = GetHomescreen(response)
 		wait for (rs) complete (Result As Object)
 		
-		If FirstRun= False Then
+		If FirstRun= False And whatCamera = "All"  Then
 			BlurIV("Driveway.jpg",ivDriveway)
 			BlurIV("FrontDoor.jpg",ivFrontDoor)
 			BlurIV("SideYard.jpg",ivSideYard)
@@ -542,6 +545,9 @@ Sub RefreshCameras(FirstRun As Boolean)
 		
 		For Each link As String In links
 			camera = link
+			If camera <> whatCamera And whatCamera <> "All" Then
+				Continue
+			End If
 			
 			If FirstRun Then
 				If camera = "347574" Then
@@ -608,7 +614,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 					btnDrivewayNewClip.Enabled = True
 					btnFrontDoorNewClip.Enabled = True
 					btnSideYardNewClip.Enabled = True
-					Return
+					Return Null
 				Else
 					Dim rs As ResumableSub = GetCommandID(response)
 					wait for (rs) complete (Result As Object)
@@ -624,7 +630,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 						btnDrivewayNewClip.Enabled = True
 						btnFrontDoorNewClip.Enabled = True
 						btnSideYardNewClip.Enabled = True
-						Return
+						Return Null
 					Else
 						Dim reChecked As Boolean
 						For i = 1 To attempts
@@ -650,7 +656,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 									btnDrivewayNewClip.Enabled = True
 									btnFrontDoorNewClip.Enabled = True
 									btnSideYardNewClip.Enabled = True
-									Return
+									Return Null
 								Else
 									i = 1
 								End If
@@ -670,7 +676,7 @@ Sub RefreshCameras(FirstRun As Boolean)
 							btnDrivewayNewClip.Enabled = True
 							btnFrontDoorNewClip.Enabled = True
 							btnSideYardNewClip.Enabled = True
-							Return
+							Return Null
 						else If commandComplete = False Then
 							If camera = "347574" Then
 								lblStatus.Text = "Failed to retrieve Driveway thumbnail..."
@@ -698,6 +704,17 @@ Sub RefreshCameras(FirstRun As Boolean)
 	btnDrivewayNewClip.Enabled = True
 	btnFrontDoorNewClip.Enabled = True
 	btnSideYardNewClip.Enabled = True
+	If lblSideYard.Text.Contains("OFFLINE") Then
+		lblSideYard.Text = sideyardArmedStatus
+		BlurIV("SideYard.jpg",ivSideYard)
+	Else if lblDriveway.Text.Contains("OFFLINE") Then
+		lblDriveway.Text = drivewayArmedStatus
+		BlurIV("Driveway.jpg",ivDriveway)
+	Else if lblFrontDoor.Text.Contains("OFFLINE") Then
+		lblFrontDoor.Text = frontdoorArmedStatus
+		BlurIV("FrontDoor.jpg",ivFrontDoor)
+	End If
+	Return Null
 End Sub
 
 Sub GetCommandResponse(iv As ImageView,clv As CustomListView,camera As String, attempts As String, attemptsAllowed As String) As ResumableSub
@@ -1172,61 +1189,76 @@ Sub GetHomescreen(json As String) As ResumableSub
 '			Dim warning As Int = coldevices.Get("warning")
 '			Dim notifications As Int = coldevices.Get("notifications")
 '			Dim errors As Int = coldevices.Get("errors")
-'			Dim status As String = coldevices.Get("status")
+			Dim status As String = coldevices.Get("status")
 			
 			If device_id = "347574" Then
-				If active = "armed" Then
-					If enabled = "true" Then
-						If battery > 1 And battery_state = "ok" Then
+				If battery > 1 And battery_state = "ok" Then
+					If active = "armed" Then
+						If enabled = "true" Then
 							drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblDriveway.Style = ""
 						Else
-							drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+							drivewayArmedStatus = "MOTION DETECTION IS DISABLED!"
 							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
-						drivewayArmedStatus = "MOTION DETECTION IS DISABLED!"
+						drivewayArmedStatus = "NOT ARMED!"
 						lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
-					drivewayArmedStatus = "NOT ARMED!"
+					drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 				End If
+				If status = "offline" Then
+					drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
+					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+					BlurIV("Driveway.jpg",ivDriveway)
+				End If
 			Else If device_id = "236967" Then
-				If active = "armed" Then
-					If enabled = "true" Then
-						If battery > 1 And battery_state = "ok" Then
+				If battery > 1 And battery_state = "ok" Then
+					If active = "armed" Then
+						If enabled = "true" Then
 							frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblFrontDoor.Style = ""
 						Else
-							frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+							frontdoorArmedStatus = "MOTION DETECTION IS DISABLED!"
 							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
-						frontdoorArmedStatus = "MOTION DETECTION IS DISABLED!"
+						frontdoorArmedStatus = "NOT ARMED!"
 						lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
-					frontdoorArmedStatus = "NOT ARMED!"
+					frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 				End If
+				If status = "offline" Then
+					frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
+					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+					BlurIV("FrontDoor.jpg",ivFrontDoor)
+				End If
 			Else If device_id = "226821" Then
-				If active = "armed" Then
-					If enabled = "true" Then
-						If battery > 1 And battery_state = "ok" Then
+				If battery > 1 And battery_state = "ok" Then
+					If active = "armed" Then
+						If enabled = "true" Then
 							sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblSideYard.Style = ""
 						Else
-							sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+							sideyardArmedStatus = "MOTION DETECTION IS DISABLED!"
 							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
-						sideyardArmedStatus = "MOTION DETECTION IS DISABLED!"
+						sideyardArmedStatus = "NOT ARMED!"
 						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
-					sideyardArmedStatus = "NOT ARMED!"
+					sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+				End If
+				If status = "offline" Then
+					sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
+					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+					BlurIV("SideYard.jpg",ivSideYard)
 				End If
 			End If
 		Next
@@ -1257,26 +1289,6 @@ Sub GetHomescreen(json As String) As ResumableSub
 		Log(LastException)
 	End Try
 	Return Null
-End Sub
-
-Sub CheckBattLife(battlevel As Int) As String
-	Try
-		' http://data.energizer.com/pdfs/l91.pdf
-		If battlevel <= 136 Then
-			Return "REPLACE"
-		else If battlevel >= 160 Then
-			Return "High" 
-			' "Very high"
-		else If battlevel > 136 And battlevel < 140 Then
-			Return "Low"
-			'Return "Very low"
-		Else
-			Return "Good"
-		End If
-	Catch
-		Log(LastException)
-		Return ""
-	End Try
 End Sub
 
 Sub CheckLFRLevel(lfrlevel As Int) As String
@@ -1849,10 +1861,8 @@ Sub btnRefresh_Click
 	BlurIV("FrontDoor.jpg",ivFrontDoor)
 	BlurIV("SideYard.jpg",ivSideYard)
 	
-'	' https://www.b4x.com/android/forum/threads/b4x-resumable-subs-that-return-values-resumablesub.82670/
-'	Dim rs As ResumableSub = GetUnwatchedVideos
-'	wait for (rs) complete (Result As Object)
-	RefreshCameras(True)
+	Dim rs As ResumableSub = RefreshCameras(True, "All")
+	wait for (rs) complete (Result As Object)
 End Sub
 
 Sub btnDrivewayNewClip_Click
@@ -2114,3 +2124,18 @@ End Sub
 '	lblStatus.Text = "Ready"
 '	Return Null
 'End Sub
+
+Sub btnSideYardRefresh_Click
+	Dim rs As ResumableSub = RefreshCameras(False, "226821")
+	wait for (rs) complete (Result As Object)
+End Sub
+
+Sub btnFrontDoorRefresh_Click
+	Dim rs As ResumableSub = RefreshCameras(False, "236967")
+	wait for (rs) complete (Result As Object)
+End Sub
+
+Sub btnDrivewayRefresh_Click
+	Dim rs As ResumableSub = RefreshCameras(False, "347574")
+	wait for (rs) complete (Result As Object)
+End Sub
