@@ -657,7 +657,7 @@ if (true) break;
 case 16:
 //if
 this.state = 23;
-if ((_videos== null) || ((_watched).equals(_videos.Watched /*String*/ ) == false) || ((_watched).equals(BA.ObjectToString(parent.__c.False)))) { 
+if ((_videos== null) || ((_watched).equals(_videos.Watched /*String*/ ) == false)) { 
 this.state = 18;
 }if (true) break;
 

@@ -111,7 +111,7 @@ Sub GetVideos(json As String, userRegion As String)
 			Else
 				Dim mytypes As Object = kvs.Get(VideoID)
 				Dim videos = mytypes As VideoInfo
-				If (videos = Null) Or (watched <> videos.Watched) Or (watched = False) Then
+				If (videos = Null) Or (watched <> videos.Watched) Then
 					Dim j As HttpJob
 					j.Initialize("", Me)
 					j.Download("https://rest-" & userRegion &".immedia-semi.com" & thumbnail & ".jpg")
