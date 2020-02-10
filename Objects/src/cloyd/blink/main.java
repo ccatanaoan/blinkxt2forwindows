@@ -4166,9 +4166,6 @@ anywheresoftware.b4a.objects.collections.List _media = null;
 long _n = 0L;
 anywheresoftware.b4a.objects.collections.Map _colmedia = null;
 String _watched = "";
-String _videoid = "";
-Object _mytypes = null;
-cloyd.blink.frmactivity._videoinfo _videos = null;
 anywheresoftware.b4a.BA.IterableList group11;
 int index11;
 int groupLen11;
@@ -4260,19 +4257,13 @@ case 6:
 this.state = 7;
  //BA.debugLineNum = 1829;BA.debugLine="Dim watched As String = colmedia.Get(\"watched\")";
 _watched = BA.ObjectToString(_colmedia.Get((Object)("watched")));
- //BA.debugLineNum = 1830;BA.debugLine="Dim VideoID As String = colmedia.Get(\"id\")";
-_videoid = BA.ObjectToString(_colmedia.Get((Object)("id")));
- //BA.debugLineNum = 1831;BA.debugLine="Dim mytypes As Object = kvs.Get(VideoID)";
-_mytypes = parent._kvs._get /*Object*/ (_videoid);
- //BA.debugLineNum = 1832;BA.debugLine="Dim videos = mytypes As VideoInfo";
-_videos = (cloyd.blink.frmactivity._videoinfo)(_mytypes);
- //BA.debugLineNum = 1833;BA.debugLine="If videos = Null Or watched = False Then";
+ //BA.debugLineNum = 1833;BA.debugLine="If watched = False Then";
 if (true) break;
 
 case 7:
 //if
 this.state = 10;
-if (_videos== null || (_watched).equals(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.False))) { 
+if ((_watched).equals(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.False))) { 
 this.state = 9;
 }if (true) break;
 

@@ -258,7 +258,7 @@ Version=8
 #Region Project Attributes 
 	#MainFormWidth: 900
 	#MainFormHeight: 1000 
-	#VirtualMachineArgs: -Xms1024m -Xmx1024m
+	'#VirtualMachineArgs: -Xms1024m -Xmx1024m
 	#AdditionalJar: sqlite-jdbc-3.7.2
 	#AdditionalJar: bcprov-jdk15on-154
 #End Region
@@ -2084,10 +2084,10 @@ Sub GetUnwatchedVideos() As ResumableSub
 		Dim n As Long = DateTime.Now
 		For Each colmedia As Map In media
 			Dim watched As String = colmedia.Get("watched")
-			Dim VideoID As String = colmedia.Get("id")
-			Dim mytypes As Object = kvs.Get(VideoID)
-			Dim videos = mytypes As VideoInfo
-			If videos = Null Or watched = False Then
+			'Dim VideoID As String = colmedia.Get("id")
+			'Dim mytypes As Object = kvs.Get(VideoID)
+			'Dim videos = mytypes As VideoInfo
+			If watched = False Then
 				unwatchedVideoCount = unwatchedVideoCount + 1
 			End If
 		Next
