@@ -253,7 +253,7 @@ Module4=KeyValueStore
 NumberOfFiles=115
 NumberOfLibraries=15
 NumberOfModules=4
-Version=8
+Version=8.1
 @EndOfDesignText@
 #Region Project Attributes 
 	#MainFormWidth: 900
@@ -319,6 +319,7 @@ Sub Process_Globals
 	Private btnDrivewayRefresh As Button 'ignore
 	Private btnFrontDoorRefresh As Button 'ignore
 	Private btnSideYardRefresh As Button 'ignore
+	Private swArmed As B4XSwitch 'ignore
 End Sub
 
 Sub AppStart (Form1 As Form, Args() As String)
@@ -1192,7 +1193,12 @@ Sub GetHomescreen(json As String) As ResumableSub
 '			Dim wifi_strength As Int = coldevices.Get("wifi_strength")
 '			Dim lfr_strength As Int = coldevices.Get("lfr_strength")
 			Dim active As String = coldevices.Get("active")
-'			Dim device_type As String = coldevices.Get("device_type")
+			
+			Dim device_type As String = coldevices.Get("device_type")
+			If device_type <> "camera" Then 
+				Continue
+			End If
+			
 '			Dim Type As String = coldevices.Get("type")
 			Dim battery As Int = coldevices.Get("battery")
 			Dim enabled As String = coldevices.Get("enabled")
@@ -1203,6 +1209,8 @@ Sub GetHomescreen(json As String) As ResumableSub
 '			Dim warning As Int = coldevices.Get("warning")
 '			Dim notifications As Int = coldevices.Get("notifications")
 '			Dim errors As Int = coldevices.Get("errors")
+			
+			
 			Dim status As String = coldevices.Get("status")
 			
 			If device_id = "347574" Then
@@ -1216,7 +1224,7 @@ Sub GetHomescreen(json As String) As ResumableSub
 							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
-						drivewayArmedStatus = "NOT ARMED!"
+						drivewayArmedStatus = "CAMERA NOT ARMED!"
 						lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
@@ -1242,7 +1250,7 @@ Sub GetHomescreen(json As String) As ResumableSub
 							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
-						frontdoorArmedStatus = "NOT ARMED!"
+						frontdoorArmedStatus = "CAMERA NOT ARMED!"
 						lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
@@ -1268,7 +1276,7 @@ Sub GetHomescreen(json As String) As ResumableSub
 							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
-						sideyardArmedStatus = "NOT ARMED!"
+						sideyardArmedStatus = "CAMERA NOT ARMED!"
 						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
@@ -1297,6 +1305,8 @@ Sub GetHomescreen(json As String) As ResumableSub
 '		Dim warning As Int = network.Get("warning")
 '		Dim notifications As Int = network.Get("notifications")
 '		Dim status As String = network.Get("status")
+		
+		swArmed.Value = armedNetwork
 		
 		If armedNetwork <> "true" Then
 			drivewayArmedStatus = "SYSTEM NOT ARMED!"
@@ -2161,4 +2171,73 @@ End Sub
 Sub btnDrivewayRefresh_Click
 	Dim rs As ResumableSub = RefreshCameras(False, "347574")
 	wait for (rs) complete (Result As Object)
+End Sub
+
+Sub swArmed_ValueChanged (Value As Boolean)
+		Try
+			btnDriveway.Enabled = False
+			btnRefresh.Enabled = False
+			btnActivity.Enabled = False
+			btnDrivewayNewClip.Enabled = False
+			btnFrontDoorNewClip.Enabled = False
+			btnSideYardNewClip.Enabled = False
+			If Value Then
+				lblStatus.Text = "Arming the system..."
+				Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/arm")
+			Else
+				lblStatus.Text = "Disarming the system..."
+				Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/disarm")
+			End If
+			
+			wait for (rs) complete (Result As Object)
+			
+			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
+				btnDriveway.Enabled = True
+				btnRefresh.Enabled = True
+				btnActivity.Enabled = True
+				btnDrivewayNewClip.Enabled = True
+				btnFrontDoorNewClip.Enabled = True
+				btnSideYardNewClip.Enabled = True
+				btnDrivewayNewClip.Enabled = True
+				btnFrontDoorNewClip.Enabled = True
+				btnSideYardNewClip.Enabled = True
+				lblStatus.Text = response
+				Return
+			End If
+			Dim rs As ResumableSub = GetCommandID(response)
+			wait for (rs) complete (Result As Object)
+			
+			Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+			wait for (rs) complete (Result As Object)
+			
+			For i = 1 To 30
+				Dim rs As ResumableSub = GetCommandStatus(response)
+				wait for (rs) complete (Result As Object)
+				If commandComplete Then
+					btnRefresh_Click
+					Exit
+				Else
+					If Value Then
+						lblStatus.Text = "Arming the system... " & i & "/30"
+					Else
+						lblStatus.Text = "Disarming the system... " & i & "/30"
+					End If
+				End If
+				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
+				wait for (rs) complete (Result As Object)
+				Sleep(1000)
+			Next
+			
+			btnDriveway.Enabled = True
+			btnRefresh.Enabled = True
+			btnActivity.Enabled = True
+			btnDrivewayNewClip.Enabled = True
+			btnFrontDoorNewClip.Enabled = True
+			btnSideYardNewClip.Enabled = True
+			lblStatus.Text = "Ready"
+			
+		Catch
+			Log(LastException)
+		End Try
+	
 End Sub

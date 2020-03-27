@@ -30,18 +30,18 @@ public static b4j.example.cssutils _cssutils = null;
 public static cloyd.blink.main _main = null;
 public static String  _completejob(int _taskid,boolean _success,String _errormessage) throws Exception{
 cloyd.blink.httpjob _job = null;
- //BA.debugLineNum = 107;BA.debugLine="Sub CompleteJob(TaskId As Int, success As Boolean,";
- //BA.debugLineNum = 111;BA.debugLine="Dim job As HttpJob = TaskIdToJob.Get(TaskId)";
+ //BA.debugLineNum = 109;BA.debugLine="Sub CompleteJob(TaskId As Int, success As Boolean,";
+ //BA.debugLineNum = 113;BA.debugLine="Dim job As HttpJob = TaskIdToJob.Get(TaskId)";
 _job = (cloyd.blink.httpjob)(_taskidtojob.Get((Object)(_taskid)));
- //BA.debugLineNum = 112;BA.debugLine="TaskIdToJob.Remove(TaskId)";
+ //BA.debugLineNum = 114;BA.debugLine="TaskIdToJob.Remove(TaskId)";
 _taskidtojob.Remove((Object)(_taskid));
- //BA.debugLineNum = 113;BA.debugLine="job.success = success";
+ //BA.debugLineNum = 115;BA.debugLine="job.success = success";
 _job._success /*boolean*/  = _success;
- //BA.debugLineNum = 114;BA.debugLine="job.errorMessage = errorMessage";
+ //BA.debugLineNum = 116;BA.debugLine="job.errorMessage = errorMessage";
 _job._errormessage /*String*/  = _errormessage;
- //BA.debugLineNum = 116;BA.debugLine="job.Complete(TaskId)";
+ //BA.debugLineNum = 118;BA.debugLine="job.Complete(TaskId)";
 _job._complete /*String*/ (_taskid);
- //BA.debugLineNum = 120;BA.debugLine="End Sub";
+ //BA.debugLineNum = 122;BA.debugLine="End Sub";
 return "";
 }
 public static String  _hc_responseerror(anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpResponse _response,String _reason,int _statuscode,int _taskid) throws Exception{
