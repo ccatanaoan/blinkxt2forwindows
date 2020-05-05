@@ -263,6 +263,8 @@ Version=8.1
 	#AdditionalJar: bcprov-jdk15on-154
 #End Region
 
+'http://basic4ppc.com:51042/json/index.html
+
 Sub Process_Globals
 	Private fx As JFX
 	Private MainForm As Form
@@ -272,6 +274,8 @@ Sub Process_Globals
 	Private userRegion As String = "u006"
 	Private accountID As String = "88438" 'ignore
 	Private networkID As String = "94896"
+	Private TwoClientFAVerificationRequired As String
+	Private TwoFAClientID As String
 	Private commandID As String
 	Private commandComplete As Boolean
 	Private cameraThumbnail As String
@@ -320,6 +324,7 @@ Sub Process_Globals
 	Private btnFrontDoorRefresh As Button 'ignore
 	Private btnSideYardRefresh As Button 'ignore
 	Private swArmed As B4XSwitch 'ignore
+	Private dialog As B4XDialog
 End Sub
 
 Sub AppStart (Form1 As Form, Args() As String)
@@ -378,6 +383,9 @@ Sub AppStart (Form1 As Form, Args() As String)
 	
 		lblStatus.TextColor = fx.Colors.White
 		MainForm.Show
+		
+		dialog.Initialize(MainForm.RootPane)
+		dialog.Title = "Smart Home Monitor"
 		
 		If File.Exists(File.DirApp, "account.txt") Then
 			Dim List1 As List
@@ -458,19 +466,48 @@ Sub btnDriveway_Click
 
 End Sub
 
-Sub RequestAuthToken As ResumableSub 
+Sub RequestAuthToken As ResumableSub
 	Try
 		lblStatus.Text = "Authenticating..."
 		Dim jobLogin As HttpJob
 		jobLogin.Initialize("", Me)
-		jobLogin.PostString("https://rest.prod.immedia-semi.com/login","email=" &  emailAddress & "&password=" & password)
+		'jobLogin.PostString("https://rest.prod.immedia-semi.com/login","email=" &  emailAddress & "&password=" & password)
+		jobLogin.PostString("https://rest.prod.immedia-semi.com/api/v4/account/login","email=" &  emailAddress & "&password=" & password)
 		jobLogin.GetRequest.SetContentType("application/x-www-form-urlencoded")
 		Wait For (jobLogin) JobDone(jobLogin As HttpJob)
 		If jobLogin.Success Then
 			lblStatus.Text = "Successfully logged in to the Blink server..."
-			'File.WriteString(File.DirApp,"response_login.txt",jobLogin.GetString)
+			File.WriteString(File.DirApp,"response_login.txt",jobLogin.GetString)
 			GetAuthInfo(jobLogin.GetString)
-
+				
+			If TwoClientFAVerificationRequired Then
+				Dim input As B4XInputTemplate
+				Dim diagResult As Int
+				input.Initialize
+				input.lblTitle.Text = "Enter verification code:"
+				input.ConfigureForNumbers(False, False) 'AllowDecimals, AllowNegative
+				Wait For (dialog.ShowTemplate(input, "OK", "", "CANCEL")) Complete (diagResult As Int)
+				If diagResult = xui.DialogResponse_Positive Then
+					Dim res As Int = input.Text 'no need to check with IsNumber
+					Log(res)
+					jobLogin.PostString("https://rest-u006.immedia-semi.com/api/v4/account/88438/client/" & TwoFAClientID & "/pin/verify/","pin=" & res)
+					jobLogin.GetRequest.SetContentType("application/x-www-form-urlencoded")
+					Wait For (jobLogin) JobDone(jobLogin As HttpJob)
+					If jobLogin.Success = False Then
+						lblStatus.Text = GetRESTError(jobLogin.ErrorMessage) ' "RequestAuthToken error: " & jobLogin.GetString
+						Log("2FA error: " & jobLogin.ErrorMessage)
+						btnDriveway.Enabled = True
+						btnRefresh.Enabled = True
+						btnActivity.Enabled = True
+						btnDrivewayNewClip.Enabled = True
+						btnFrontDoorNewClip.Enabled = True
+						btnSideYardNewClip.Enabled = True
+						jobLogin.Release
+						Return Null
+					End If
+				End If
+			End If
+			
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 				btnDriveway.Enabled = True
 				btnRefresh.Enabled = True
@@ -481,7 +518,7 @@ Sub RequestAuthToken As ResumableSub
 				jobLogin.Release
 				Return Null
 			Else
-				lblStatus.Text = "AuthToken acquired..." 
+				lblStatus.Text = "AuthToken acquired..."
 			End If
 		Else
 			lblStatus.Text = GetRESTError(jobLogin.ErrorMessage) ' "RequestAuthToken error: " & jobLogin.GetString
@@ -872,27 +909,40 @@ End Sub
 Sub GetAuthInfo(json As String)
 	Try
 		lblStatus.Text = "Getting authtoken..."
+'		Dim parser As JSONParser
+'		parser.Initialize(json)
+'		Dim root As Map = parser.NextObject
+'		Dim authtokenmap As Map = root.Get("authtoken")
+'		authToken = authtokenmap.Get("authtoken")
+'		Log("authToken: " &  authToken)
+'
+'		Dim networks As Map = root.Get("networks")
+'		Log("networkID: " & networks.GetKeyAt(0))
+'		networkID = networks.GetKeyAt(0)
+'
+'		Dim region As Map = root.Get("region")
+'		userRegion = region.GetKeyAt(0)
+'		Log("userRegion: " &  userRegion)
+		
 		Dim parser As JSONParser
 		parser.Initialize(json)
 		Dim root As Map = parser.NextObject
+		Dim force_password_reset As String = root.Get("force_password_reset") 'ignore
+		Dim lockout_time_remaining As Int = root.Get("lockout_time_remaining") 'ignore
 		Dim authtokenmap As Map = root.Get("authtoken")
 		authToken = authtokenmap.Get("authtoken")
-		Log("authToken: " &  authToken)
-'	Dim message As String = authtoken.Get("message")
-'	Dim client As Map = root.Get("client")
-'	Dim id As Int = client.Get("id")
-		Dim networks As Map = root.Get("networks")
-		Log("networkID: " & networks.GetKeyAt(0))
-		networkID = networks.GetKeyAt(0)
-'	Dim 94896 As Map = networks.Get("94896")
-'	Dim onboarded As String = 94896.Get("onboarded")
-'	Dim name As String = 94896.Get("name")
+		Dim message As String = authtokenmap.Get("message") 'ignore
+		Dim client As Map = root.Get("client")
+		TwoClientFAVerificationRequired = client.Get("verification_required")
+		TwoFAClientID = client.Get("id")
+		Dim allow_pin_resend_seconds As Int = root.Get("allow_pin_resend_seconds") 'ignore
 		Dim region As Map = root.Get("region")
-		userRegion = region.GetKeyAt(0)
-		Log("userRegion: " &  userRegion)
-'	Dim u006 As String = region.Get("u006")
-'	Dim account As Map = root.Get("account")
-'	Dim id As Int = account.Get("id")
+		Dim code As String = region.Get("code") 'ignore
+		userRegion = region.Get("tier") 
+		Dim description As String = region.Get("description") 'ignore
+		Dim account As Map = root.Get("account")
+		Dim verification_required As String = account.Get("verification_required") 'ignore
+		Dim id As Int = account.Get("id") 'ignore
 	Catch
 		Log(LastException)
 	End Try
