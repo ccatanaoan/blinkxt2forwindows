@@ -253,7 +253,7 @@ Module4=KeyValueStore
 NumberOfFiles=115
 NumberOfLibraries=15
 NumberOfModules=4
-Version=8.1
+Version=8.31
 @EndOfDesignText@
 #Region Project Attributes 
 	#MainFormWidth: 900
@@ -471,9 +471,10 @@ Sub RequestAuthToken As ResumableSub
 		lblStatus.Text = "Authenticating..."
 		Dim jobLogin As HttpJob
 		jobLogin.Initialize("", Me)
-		'jobLogin.PostString("https://rest.prod.immedia-semi.com/login","email=" &  emailAddress & "&password=" & password)
-		jobLogin.PostString("https://rest.prod.immedia-semi.com/api/v4/account/login","email=" &  emailAddress & "&password=" & password)
+		jobLogin.PostString("https://rest-prod.immedia-semi.com/api/v4/account/login","email=" &  emailAddress & "&password=" & password)
 		jobLogin.GetRequest.SetContentType("application/x-www-form-urlencoded")
+		jobLogin.GetRequest.SetHeader("User-Agent",RandomString(12)) '"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0")
+		
 		Wait For (jobLogin) JobDone(jobLogin As HttpJob)
 		If jobLogin.Success Then
 			lblStatus.Text = "Successfully logged in to the Blink server..."
@@ -539,6 +540,15 @@ Sub RequestAuthToken As ResumableSub
 		Log("RequestAuthToken LastException: " & LastException)
 	End Try
 	Return Null
+End Sub
+
+Sub RandomString(length As Int) As String
+	Dim abc As String = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+	Dim randomstr As String = ""
+	For i = 0 To length - 1
+		randomstr = randomstr & (abc.CharAt(Rnd(0,abc.Length)))
+	Next
+	Return randomstr
 End Sub
 
 Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
