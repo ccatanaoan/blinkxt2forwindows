@@ -1,6 +1,5 @@
 package cloyd.blink;
 
-import anywheresoftware.b4a.debug.*;
 
 import anywheresoftware.b4a.BA;
 import anywheresoftware.b4a.B4AClass;
@@ -9,7 +8,7 @@ public class keyvaluestore extends B4AClass.ImplB4AClass implements BA.SubDelega
     public static java.util.HashMap<String, java.lang.reflect.Method> htSubs;
     private void innerInitialize(BA _ba) throws Exception {
         if (ba == null) {
-            ba = new  anywheresoftware.b4a.shell.ShellBA("cloyd.blink", "cloyd.blink.keyvaluestore", this);
+            ba = new  anywheresoftware.b4j.objects.FxBA("cloyd.blink", "cloyd.blink.keyvaluestore", this);
             if (htSubs == null) {
                 ba.loadHtSubs(this.getClass());
                 htSubs = ba.htSubs;
@@ -23,278 +22,112 @@ public class keyvaluestore extends B4AClass.ImplB4AClass implements BA.SubDelega
             ba.raiseEvent2(null, true, "class_globals", false);
     }
 
- 
-    public void  innerInitializeHelper(anywheresoftware.b4a.BA _ba) throws Exception{
-        innerInitialize(_ba);
-    }
-    public Object callSub(String sub, Object sender, Object[] args) throws Exception {
-        return BA.SubDelegator.SubNotFound;
-    }
-public anywheresoftware.b4a.keywords.Common __c = null;
+ public anywheresoftware.b4a.keywords.Common __c = null;
 public anywheresoftware.b4j.objects.SQL _sql1 = null;
 public anywheresoftware.b4a.randomaccessfile.B4XSerializator _ser = null;
 public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
-public String  _initialize(cloyd.blink.keyvaluestore __ref,anywheresoftware.b4a.BA _ba,String _dir,String _filename) throws Exception{
-__ref = this;
-innerInitialize(_ba);
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "initialize", false))
-	 {return ((String) Debug.delegate(ba, "initialize", new Object[] {_ba,_dir,_filename}));}
-RDebugUtils.currentLine=6029312;
- //BA.debugLineNum = 6029312;BA.debugLine="Public Sub Initialize (Dir As String, FileName As";
-RDebugUtils.currentLine=6029313;
- //BA.debugLineNum = 6029313;BA.debugLine="If sql1.IsInitialized Then sql1.Close";
-if (__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .IsInitialized()) { 
-__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .Close();};
-RDebugUtils.currentLine=6029315;
- //BA.debugLineNum = 6029315;BA.debugLine="sql1.InitializeSQLite(Dir, FileName, True)";
-__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .InitializeSQLite(_dir,_filename,__c.True);
-RDebugUtils.currentLine=6029319;
- //BA.debugLineNum = 6029319;BA.debugLine="CreateTable";
-__ref._createtable /*String*/ (null);
-RDebugUtils.currentLine=6029320;
- //BA.debugLineNum = 6029320;BA.debugLine="End Sub";
+public String  _class_globals() throws Exception{
+ //BA.debugLineNum = 2;BA.debugLine="Sub Class_Globals";
+ //BA.debugLineNum = 3;BA.debugLine="Private sql1 As SQL";
+_sql1 = new anywheresoftware.b4j.objects.SQL();
+ //BA.debugLineNum = 4;BA.debugLine="Private ser As B4XSerializator";
+_ser = new anywheresoftware.b4a.randomaccessfile.B4XSerializator();
+ //BA.debugLineNum = 5;BA.debugLine="End Sub";
 return "";
 }
-public anywheresoftware.b4a.objects.collections.List  _listkeys(cloyd.blink.keyvaluestore __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "listkeys", false))
-	 {return ((anywheresoftware.b4a.objects.collections.List) Debug.delegate(ba, "listkeys", null));}
-anywheresoftware.b4j.objects.SQL.ResultSetWrapper _c = null;
-anywheresoftware.b4a.objects.collections.List _res = null;
-RDebugUtils.currentLine=6619136;
- //BA.debugLineNum = 6619136;BA.debugLine="Public Sub ListKeys As List";
-RDebugUtils.currentLine=6619137;
- //BA.debugLineNum = 6619137;BA.debugLine="Dim c As ResultSet = sql1.ExecQuery(\"SELECT key F";
-_c = new anywheresoftware.b4j.objects.SQL.ResultSetWrapper();
-_c = __ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecQuery("SELECT key FROM main order by key desc");
-RDebugUtils.currentLine=6619138;
- //BA.debugLineNum = 6619138;BA.debugLine="Dim res As List";
-_res = new anywheresoftware.b4a.objects.collections.List();
-RDebugUtils.currentLine=6619139;
- //BA.debugLineNum = 6619139;BA.debugLine="res.Initialize";
-_res.Initialize();
-RDebugUtils.currentLine=6619140;
- //BA.debugLineNum = 6619140;BA.debugLine="Do While c.NextRow";
-while (_c.NextRow()) {
-RDebugUtils.currentLine=6619141;
- //BA.debugLineNum = 6619141;BA.debugLine="res.Add(c.GetString2(0))";
-_res.Add((Object)(_c.GetString2((int) (0))));
- }
-;
-RDebugUtils.currentLine=6619143;
- //BA.debugLineNum = 6619143;BA.debugLine="c.Close";
-_c.Close();
-RDebugUtils.currentLine=6619144;
- //BA.debugLineNum = 6619144;BA.debugLine="Return res";
-if (true) return _res;
-RDebugUtils.currentLine=6619145;
- //BA.debugLineNum = 6619145;BA.debugLine="End Sub";
-return null;
-}
-public Object  _get(cloyd.blink.keyvaluestore __ref,String _key) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "get", false))
-	 {return ((Object) Debug.delegate(ba, "get", new Object[] {_key}));}
-anywheresoftware.b4j.objects.SQL.ResultSetWrapper _rs = null;
-Object _result = null;
-RDebugUtils.currentLine=6160384;
- //BA.debugLineNum = 6160384;BA.debugLine="Public Sub Get(Key As String) As Object";
-RDebugUtils.currentLine=6160385;
- //BA.debugLineNum = 6160385;BA.debugLine="Dim rs As ResultSet = sql1.ExecQuery2(\"SELECT val";
-_rs = new anywheresoftware.b4j.objects.SQL.ResultSetWrapper();
-_rs = __ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecQuery2("SELECT value FROM main WHERE key = ?",anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{_key}));
-RDebugUtils.currentLine=6160386;
- //BA.debugLineNum = 6160386;BA.debugLine="Dim result As Object = Null";
-_result = __c.Null;
-RDebugUtils.currentLine=6160387;
- //BA.debugLineNum = 6160387;BA.debugLine="If rs.NextRow Then";
-if (_rs.NextRow()) { 
-RDebugUtils.currentLine=6160388;
- //BA.debugLineNum = 6160388;BA.debugLine="result = ser.ConvertBytesToObject(rs.GetBlob2(0)";
-_result = __ref._ser /*anywheresoftware.b4a.randomaccessfile.B4XSerializator*/ .ConvertBytesToObject(_rs.GetBlob2((int) (0)));
- };
-RDebugUtils.currentLine=6160390;
- //BA.debugLineNum = 6160390;BA.debugLine="rs.Close";
-_rs.Close();
-RDebugUtils.currentLine=6160391;
- //BA.debugLineNum = 6160391;BA.debugLine="Return result";
-if (true) return _result;
-RDebugUtils.currentLine=6160392;
- //BA.debugLineNum = 6160392;BA.debugLine="End Sub";
-return null;
-}
-public String  _put(cloyd.blink.keyvaluestore __ref,String _key,Object _value) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "put", false))
-	 {return ((String) Debug.delegate(ba, "put", new Object[] {_key,_value}));}
-RDebugUtils.currentLine=6094848;
- //BA.debugLineNum = 6094848;BA.debugLine="Public Sub Put(Key As String, Value As Object)";
-RDebugUtils.currentLine=6094849;
- //BA.debugLineNum = 6094849;BA.debugLine="sql1.ExecNonQuery2(\"INSERT OR REPLACE INTO main V";
-__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecNonQuery2("INSERT OR REPLACE INTO main VALUES(?, ?)",anywheresoftware.b4a.keywords.Common.ArrayToList(new Object[]{(Object)(_key),(Object)(__ref._ser /*anywheresoftware.b4a.randomaccessfile.B4XSerializator*/ .ConvertObjectToBytes(_value))}));
-RDebugUtils.currentLine=6094850;
- //BA.debugLineNum = 6094850;BA.debugLine="End Sub";
+public String  _close() throws Exception{
+ //BA.debugLineNum = 163;BA.debugLine="Public Sub Close";
+ //BA.debugLineNum = 164;BA.debugLine="sql1.Close";
+_sql1.Close();
+ //BA.debugLineNum = 165;BA.debugLine="End Sub";
 return "";
 }
-public boolean  _containskey(cloyd.blink.keyvaluestore __ref,String _key) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "containskey", false))
-	 {return ((Boolean) Debug.delegate(ba, "containskey", new Object[] {_key}));}
-RDebugUtils.currentLine=6684672;
- //BA.debugLineNum = 6684672;BA.debugLine="Public Sub ContainsKey(Key As String) As Boolean";
-RDebugUtils.currentLine=6684673;
- //BA.debugLineNum = 6684673;BA.debugLine="Return sql1.ExecQuerySingleResult2(\"SELECT count(";
-if (true) return (double)(Double.parseDouble(__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecQuerySingleResult2("SELECT count(key) FROM main WHERE key = ?",anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{_key}))))>0;
-RDebugUtils.currentLine=6684675;
- //BA.debugLineNum = 6684675;BA.debugLine="End Sub";
+public boolean  _containskey(String _key) throws Exception{
+ //BA.debugLineNum = 150;BA.debugLine="Public Sub ContainsKey(Key As String) As Boolean";
+ //BA.debugLineNum = 151;BA.debugLine="Return sql1.ExecQuerySingleResult2(\"SELECT count(";
+if (true) return (double)(Double.parseDouble(_sql1.ExecQuerySingleResult2("SELECT count(key) FROM main WHERE key = ?",anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{_key}))))>0;
+ //BA.debugLineNum = 153;BA.debugLine="End Sub";
 return false;
 }
-public String  _remove(cloyd.blink.keyvaluestore __ref,String _key) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "remove", false))
-	 {return ((String) Debug.delegate(ba, "remove", new Object[] {_key}));}
-RDebugUtils.currentLine=6553600;
- //BA.debugLineNum = 6553600;BA.debugLine="Public Sub Remove(Key As String)";
-RDebugUtils.currentLine=6553601;
- //BA.debugLineNum = 6553601;BA.debugLine="sql1.ExecNonQuery2(\"DELETE FROM main WHERE key =";
-__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecNonQuery2("DELETE FROM main WHERE key = ?",anywheresoftware.b4a.keywords.Common.ArrayToList(new Object[]{(Object)(_key)}));
-RDebugUtils.currentLine=6553602;
- //BA.debugLineNum = 6553602;BA.debugLine="End Sub";
+public String  _createtable() throws Exception{
+ //BA.debugLineNum = 169;BA.debugLine="Private Sub CreateTable";
+ //BA.debugLineNum = 170;BA.debugLine="sql1.ExecNonQuery(\"CREATE TABLE IF NOT EXISTS mai";
+_sql1.ExecNonQuery("CREATE TABLE IF NOT EXISTS main(key TEXT PRIMARY KEY, value NONE)");
+ //BA.debugLineNum = 171;BA.debugLine="End Sub";
 return "";
 }
-public String  _class_globals(cloyd.blink.keyvaluestore __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-RDebugUtils.currentLine=5963776;
- //BA.debugLineNum = 5963776;BA.debugLine="Sub Class_Globals";
-RDebugUtils.currentLine=5963777;
- //BA.debugLineNum = 5963777;BA.debugLine="Private sql1 As SQL";
-_sql1 = new anywheresoftware.b4j.objects.SQL();
-RDebugUtils.currentLine=5963778;
- //BA.debugLineNum = 5963778;BA.debugLine="Private ser As B4XSerializator";
-_ser = new anywheresoftware.b4a.randomaccessfile.B4XSerializator();
-RDebugUtils.currentLine=5963779;
- //BA.debugLineNum = 5963779;BA.debugLine="End Sub";
+public String  _deleteall() throws Exception{
+ //BA.debugLineNum = 156;BA.debugLine="Public Sub DeleteAll";
+ //BA.debugLineNum = 157;BA.debugLine="sql1.ExecNonQuery(\"DROP TABLE main\")";
+_sql1.ExecNonQuery("DROP TABLE main");
+ //BA.debugLineNum = 158;BA.debugLine="CreateTable";
+_createtable();
+ //BA.debugLineNum = 159;BA.debugLine="End Sub";
 return "";
 }
-public String  _close(cloyd.blink.keyvaluestore __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "close", false))
-	 {return ((String) Debug.delegate(ba, "close", null));}
-RDebugUtils.currentLine=6815744;
- //BA.debugLineNum = 6815744;BA.debugLine="Public Sub Close";
-RDebugUtils.currentLine=6815745;
- //BA.debugLineNum = 6815745;BA.debugLine="sql1.Close";
-__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .Close();
-RDebugUtils.currentLine=6815746;
- //BA.debugLineNum = 6815746;BA.debugLine="End Sub";
-return "";
+public Object  _get(String _key) throws Exception{
+anywheresoftware.b4j.objects.SQL.ResultSetWrapper _rs = null;
+Object _result = null;
+ //BA.debugLineNum = 22;BA.debugLine="Public Sub Get(Key As String) As Object";
+ //BA.debugLineNum = 23;BA.debugLine="Dim rs As ResultSet = sql1.ExecQuery2(\"SELECT val";
+_rs = new anywheresoftware.b4j.objects.SQL.ResultSetWrapper();
+_rs = _sql1.ExecQuery2("SELECT value FROM main WHERE key = ?",anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{_key}));
+ //BA.debugLineNum = 24;BA.debugLine="Dim result As Object = Null";
+_result = __c.Null;
+ //BA.debugLineNum = 25;BA.debugLine="If rs.NextRow Then";
+if (_rs.NextRow()) { 
+ //BA.debugLineNum = 26;BA.debugLine="result = ser.ConvertBytesToObject(rs.GetBlob2(0)";
+_result = _ser.ConvertBytesToObject(_rs.GetBlob2((int) (0)));
+ };
+ //BA.debugLineNum = 28;BA.debugLine="rs.Close";
+_rs.Close();
+ //BA.debugLineNum = 29;BA.debugLine="Return result";
+if (true) return _result;
+ //BA.debugLineNum = 30;BA.debugLine="End Sub";
+return null;
 }
-public String  _createtable(cloyd.blink.keyvaluestore __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "createtable", false))
-	 {return ((String) Debug.delegate(ba, "createtable", null));}
-RDebugUtils.currentLine=6881280;
- //BA.debugLineNum = 6881280;BA.debugLine="Private Sub CreateTable";
-RDebugUtils.currentLine=6881281;
- //BA.debugLineNum = 6881281;BA.debugLine="sql1.ExecNonQuery(\"CREATE TABLE IF NOT EXISTS mai";
-__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecNonQuery("CREATE TABLE IF NOT EXISTS main(key TEXT PRIMARY KEY, value NONE)");
-RDebugUtils.currentLine=6881282;
- //BA.debugLineNum = 6881282;BA.debugLine="End Sub";
-return "";
-}
-public String  _deleteall(cloyd.blink.keyvaluestore __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "deleteall", false))
-	 {return ((String) Debug.delegate(ba, "deleteall", null));}
-RDebugUtils.currentLine=6750208;
- //BA.debugLineNum = 6750208;BA.debugLine="Public Sub DeleteAll";
-RDebugUtils.currentLine=6750209;
- //BA.debugLineNum = 6750209;BA.debugLine="sql1.ExecNonQuery(\"DROP TABLE main\")";
-__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecNonQuery("DROP TABLE main");
-RDebugUtils.currentLine=6750210;
- //BA.debugLineNum = 6750210;BA.debugLine="CreateTable";
-__ref._createtable /*String*/ (null);
-RDebugUtils.currentLine=6750211;
- //BA.debugLineNum = 6750211;BA.debugLine="End Sub";
-return "";
-}
-public Object  _getdefault(cloyd.blink.keyvaluestore __ref,String _key,Object _defaultvalue) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "getdefault", false))
-	 {return ((Object) Debug.delegate(ba, "getdefault", new Object[] {_key,_defaultvalue}));}
+public Object  _getdefault(String _key,Object _defaultvalue) throws Exception{
 Object _res = null;
-RDebugUtils.currentLine=6356992;
- //BA.debugLineNum = 6356992;BA.debugLine="Public Sub GetDefault(Key As String, DefaultValue";
-RDebugUtils.currentLine=6356993;
- //BA.debugLineNum = 6356993;BA.debugLine="Dim res As Object = Get(Key)";
-_res = __ref._get /*Object*/ (null,_key);
-RDebugUtils.currentLine=6356994;
- //BA.debugLineNum = 6356994;BA.debugLine="If res = Null Then Return DefaultValue";
+ //BA.debugLineNum = 84;BA.debugLine="Public Sub GetDefault(Key As String, DefaultValue";
+ //BA.debugLineNum = 85;BA.debugLine="Dim res As Object = Get(Key)";
+_res = _get(_key);
+ //BA.debugLineNum = 86;BA.debugLine="If res = Null Then Return DefaultValue";
 if (_res== null) { 
 if (true) return _defaultvalue;};
-RDebugUtils.currentLine=6356995;
- //BA.debugLineNum = 6356995;BA.debugLine="Return res";
+ //BA.debugLineNum = 87;BA.debugLine="Return res";
 if (true) return _res;
-RDebugUtils.currentLine=6356996;
- //BA.debugLineNum = 6356996;BA.debugLine="End Sub";
+ //BA.debugLineNum = 88;BA.debugLine="End Sub";
 return null;
 }
-public Object  _getencrypted(cloyd.blink.keyvaluestore __ref,String _key,String _password) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "getencrypted", false))
-	 {return ((Object) Debug.delegate(ba, "getencrypted", new Object[] {_key,_password}));}
+public Object  _getencrypted(String _key,String _password) throws Exception{
 anywheresoftware.b4x.object.B4XEncryption _cipher = null;
 byte[] _b = null;
-RDebugUtils.currentLine=6488064;
- //BA.debugLineNum = 6488064;BA.debugLine="Public Sub GetEncrypted (Key As String, Password A";
-RDebugUtils.currentLine=6488068;
- //BA.debugLineNum = 6488068;BA.debugLine="Dim cipher As B4XCipher";
+ //BA.debugLineNum = 100;BA.debugLine="Public Sub GetEncrypted (Key As String, Password A";
+ //BA.debugLineNum = 104;BA.debugLine="Dim cipher As B4XCipher";
 _cipher = new anywheresoftware.b4x.object.B4XEncryption();
-RDebugUtils.currentLine=6488070;
- //BA.debugLineNum = 6488070;BA.debugLine="Dim b() As Byte = Get(Key)";
-_b = (byte[])(__ref._get /*Object*/ (null,_key));
-RDebugUtils.currentLine=6488071;
- //BA.debugLineNum = 6488071;BA.debugLine="If b = Null Then Return Null";
+ //BA.debugLineNum = 106;BA.debugLine="Dim b() As Byte = Get(Key)";
+_b = (byte[])(_get(_key));
+ //BA.debugLineNum = 107;BA.debugLine="If b = Null Then Return Null";
 if (_b== null) { 
 if (true) return __c.Null;};
-RDebugUtils.currentLine=6488072;
- //BA.debugLineNum = 6488072;BA.debugLine="Return ser.ConvertBytesToObject(cipher.Decrypt(b,";
-if (true) return __ref._ser /*anywheresoftware.b4a.randomaccessfile.B4XSerializator*/ .ConvertBytesToObject(_cipher.Decrypt(_b,_password));
-RDebugUtils.currentLine=6488073;
- //BA.debugLineNum = 6488073;BA.debugLine="End Sub";
+ //BA.debugLineNum = 108;BA.debugLine="Return ser.ConvertBytesToObject(cipher.Decrypt(b,";
+if (true) return _ser.ConvertBytesToObject(_cipher.Decrypt(_b,_password));
+ //BA.debugLineNum = 109;BA.debugLine="End Sub";
 return null;
 }
-public anywheresoftware.b4a.keywords.Common.ResumableSubWrapper  _getmapasync(cloyd.blink.keyvaluestore __ref,anywheresoftware.b4a.objects.collections.List _keys) throws Exception{
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "getmapasync", false))
-	 {return ((anywheresoftware.b4a.keywords.Common.ResumableSubWrapper) Debug.delegate(ba, "getmapasync", new Object[] {_keys}));}
-ResumableSub_GetMapAsync rsub = new ResumableSub_GetMapAsync(this,__ref,_keys);
+public anywheresoftware.b4a.keywords.Common.ResumableSubWrapper  _getmapasync(anywheresoftware.b4a.objects.collections.List _keys) throws Exception{
+ResumableSub_GetMapAsync rsub = new ResumableSub_GetMapAsync(this,_keys);
 rsub.resume(ba, null);
 return (anywheresoftware.b4a.keywords.Common.ResumableSubWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper(), rsub);
 }
 public static class ResumableSub_GetMapAsync extends BA.ResumableSub {
-public ResumableSub_GetMapAsync(cloyd.blink.keyvaluestore parent,cloyd.blink.keyvaluestore __ref,anywheresoftware.b4a.objects.collections.List _keys) {
+public ResumableSub_GetMapAsync(cloyd.blink.keyvaluestore parent,anywheresoftware.b4a.objects.collections.List _keys) {
 this.parent = parent;
-this.__ref = __ref;
 this._keys = _keys;
-this.__ref = parent;
 }
-cloyd.blink.keyvaluestore __ref;
 cloyd.blink.keyvaluestore parent;
 anywheresoftware.b4a.objects.collections.List _keys;
 anywheresoftware.b4a.keywords.StringBuilderWrapper _sb = null;
@@ -310,7 +143,6 @@ int limit4;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
-RDebugUtils.currentModule="keyvaluestore";
 
     while (true) {
         switch (state) {
@@ -320,17 +152,13 @@ parent.__c.ReturnFromResumableSub(this,null);return;}
 case 0:
 //C
 this.state = 1;
-RDebugUtils.currentLine=6225921;
- //BA.debugLineNum = 6225921;BA.debugLine="Dim sb As StringBuilder";
+ //BA.debugLineNum = 38;BA.debugLine="Dim sb As StringBuilder";
 _sb = new anywheresoftware.b4a.keywords.StringBuilderWrapper();
-RDebugUtils.currentLine=6225922;
- //BA.debugLineNum = 6225922;BA.debugLine="sb.Initialize";
+ //BA.debugLineNum = 39;BA.debugLine="sb.Initialize";
 _sb.Initialize();
-RDebugUtils.currentLine=6225923;
- //BA.debugLineNum = 6225923;BA.debugLine="sb.Append(\"SELECT key, value FROM main WHERE \")";
+ //BA.debugLineNum = 40;BA.debugLine="sb.Append(\"SELECT key, value FROM main WHERE \")";
 _sb.Append("SELECT key, value FROM main WHERE ");
-RDebugUtils.currentLine=6225924;
- //BA.debugLineNum = 6225924;BA.debugLine="For i = 0 To Keys.Size - 1";
+ //BA.debugLineNum = 41;BA.debugLine="For i = 0 To Keys.Size - 1";
 if (true) break;
 
 case 1:
@@ -357,8 +185,7 @@ if (true) break;
 case 3:
 //C
 this.state = 4;
-RDebugUtils.currentLine=6225925;
- //BA.debugLineNum = 6225925;BA.debugLine="If i > 0 Then sb.Append(\" OR \")";
+ //BA.debugLineNum = 42;BA.debugLine="If i > 0 Then sb.Append(\" OR \")";
 if (true) break;
 
 case 4:
@@ -378,8 +205,7 @@ case 9:
 //C
 this.state = 26;
 ;
-RDebugUtils.currentLine=6225926;
- //BA.debugLineNum = 6225926;BA.debugLine="sb.Append(\" key = ? \")";
+ //BA.debugLineNum = 43;BA.debugLine="sb.Append(\" key = ? \")";
 _sb.Append(" key = ? ");
  if (true) break;
 if (true) break;
@@ -388,28 +214,23 @@ case 10:
 //C
 this.state = 11;
 ;
-RDebugUtils.currentLine=6225928;
- //BA.debugLineNum = 6225928;BA.debugLine="Dim SenderFilter As Object = sql1.ExecQueryAsync(";
-_senderfilter = __ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecQueryAsync(ba,"SQL",_sb.ToString(),_keys);
-RDebugUtils.currentLine=6225929;
- //BA.debugLineNum = 6225929;BA.debugLine="Wait For (SenderFilter) SQL_QueryComplete (Succes";
-parent.__c.WaitFor("sql_querycomplete", ba, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "keyvaluestore", "getmapasync"), _senderfilter);
+ //BA.debugLineNum = 45;BA.debugLine="Dim SenderFilter As Object = sql1.ExecQueryAsync(";
+_senderfilter = parent._sql1.ExecQueryAsync(ba,"SQL",_sb.ToString(),_keys);
+ //BA.debugLineNum = 46;BA.debugLine="Wait For (SenderFilter) SQL_QueryComplete (Succes";
+parent.__c.WaitFor("sql_querycomplete", ba, this, _senderfilter);
 this.state = 27;
 return;
 case 27:
 //C
 this.state = 11;
-_success = (boolean) result[1];
-_rs = (anywheresoftware.b4j.objects.SQL.ResultSetWrapper) result[2];
+_success = (boolean) result[0];
+_rs = (anywheresoftware.b4j.objects.SQL.ResultSetWrapper) result[1];
 ;
-RDebugUtils.currentLine=6225930;
- //BA.debugLineNum = 6225930;BA.debugLine="Dim m As Map";
+ //BA.debugLineNum = 47;BA.debugLine="Dim m As Map";
 _m = new anywheresoftware.b4a.objects.collections.Map();
-RDebugUtils.currentLine=6225931;
- //BA.debugLineNum = 6225931;BA.debugLine="m.Initialize";
+ //BA.debugLineNum = 48;BA.debugLine="m.Initialize";
 _m.Initialize();
-RDebugUtils.currentLine=6225932;
- //BA.debugLineNum = 6225932;BA.debugLine="If Success Then";
+ //BA.debugLineNum = 49;BA.debugLine="If Success Then";
 if (true) break;
 
 case 11:
@@ -424,8 +245,7 @@ this.state = 23;
 case 13:
 //C
 this.state = 14;
-RDebugUtils.currentLine=6225933;
- //BA.debugLineNum = 6225933;BA.debugLine="Do While rs.NextRow";
+ //BA.debugLineNum = 50;BA.debugLine="Do While rs.NextRow";
 if (true) break;
 
 case 14:
@@ -440,25 +260,21 @@ if (true) break;
 case 16:
 //C
 this.state = 17;
-RDebugUtils.currentLine=6225934;
- //BA.debugLineNum = 6225934;BA.debugLine="Dim myser As B4XSerializator";
+ //BA.debugLineNum = 51;BA.debugLine="Dim myser As B4XSerializator";
 _myser = new anywheresoftware.b4a.randomaccessfile.B4XSerializator();
-RDebugUtils.currentLine=6225935;
- //BA.debugLineNum = 6225935;BA.debugLine="myser.ConvertBytesToObjectAsync(rs.GetBlob2(1),";
+ //BA.debugLineNum = 52;BA.debugLine="myser.ConvertBytesToObjectAsync(rs.GetBlob2(1),";
 _myser.ConvertBytesToObjectAsync(ba,_rs.GetBlob2((int) (1)),"myser");
-RDebugUtils.currentLine=6225936;
- //BA.debugLineNum = 6225936;BA.debugLine="Wait For (myser) myser_BytesToObject (Success A";
-parent.__c.WaitFor("myser_bytestoobject", ba, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "keyvaluestore", "getmapasync"), (Object)(_myser));
+ //BA.debugLineNum = 53;BA.debugLine="Wait For (myser) myser_BytesToObject (Success A";
+parent.__c.WaitFor("myser_bytestoobject", ba, this, (Object)(_myser));
 this.state = 28;
 return;
 case 28:
 //C
 this.state = 17;
-_success = (boolean) result[1];
-_newobject = (Object) result[2];
+_success = (boolean) result[0];
+_newobject = (Object) result[1];
 ;
-RDebugUtils.currentLine=6225937;
- //BA.debugLineNum = 6225937;BA.debugLine="If Success Then";
+ //BA.debugLineNum = 54;BA.debugLine="If Success Then";
 if (true) break;
 
 case 17:
@@ -471,8 +287,7 @@ this.state = 19;
 case 19:
 //C
 this.state = 20;
-RDebugUtils.currentLine=6225938;
- //BA.debugLineNum = 6225938;BA.debugLine="m.Put(rs.GetString2(0), NewObject)";
+ //BA.debugLineNum = 55;BA.debugLine="m.Put(rs.GetString2(0), NewObject)";
 _m.Put((Object)(_rs.GetString2((int) (0))),_newobject);
  if (true) break;
 
@@ -486,16 +301,14 @@ case 21:
 //C
 this.state = 24;
 ;
-RDebugUtils.currentLine=6225941;
- //BA.debugLineNum = 6225941;BA.debugLine="rs.Close";
+ //BA.debugLineNum = 58;BA.debugLine="rs.Close";
 _rs.Close();
  if (true) break;
 
 case 23:
 //C
 this.state = 24;
-RDebugUtils.currentLine=6225943;
- //BA.debugLineNum = 6225943;BA.debugLine="Log(LastException)";
+ //BA.debugLineNum = 60;BA.debugLine="Log(LastException)";
 parent.__c.Log(BA.ObjectToString(parent.__c.LastException(ba)));
  if (true) break;
 
@@ -503,52 +316,84 @@ case 24:
 //C
 this.state = -1;
 ;
-RDebugUtils.currentLine=6225945;
- //BA.debugLineNum = 6225945;BA.debugLine="Return m";
+ //BA.debugLineNum = 62;BA.debugLine="Return m";
 if (true) {
 parent.__c.ReturnFromResumableSub(this,(Object)(_m));return;};
-RDebugUtils.currentLine=6225946;
- //BA.debugLineNum = 6225946;BA.debugLine="End Sub";
+ //BA.debugLineNum = 63;BA.debugLine="End Sub";
 if (true) break;
 
             }
         }
     }
 }
-public String  _putencrypted(cloyd.blink.keyvaluestore __ref,String _key,Object _value,String _password) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "putencrypted", false))
-	 {return ((String) Debug.delegate(ba, "putencrypted", new Object[] {_key,_value,_password}));}
-anywheresoftware.b4x.object.B4XEncryption _cipher = null;
-RDebugUtils.currentLine=6422528;
- //BA.debugLineNum = 6422528;BA.debugLine="Public Sub PutEncrypted (Key As String, Value As O";
-RDebugUtils.currentLine=6422532;
- //BA.debugLineNum = 6422532;BA.debugLine="Dim cipher As B4XCipher";
-_cipher = new anywheresoftware.b4x.object.B4XEncryption();
-RDebugUtils.currentLine=6422534;
- //BA.debugLineNum = 6422534;BA.debugLine="Put(Key, cipher.Encrypt(ser.ConvertObjectToBytes(";
-__ref._put /*String*/ (null,_key,(Object)(_cipher.Encrypt(__ref._ser /*anywheresoftware.b4a.randomaccessfile.B4XSerializator*/ .ConvertObjectToBytes(_value),_password)));
-RDebugUtils.currentLine=6422535;
- //BA.debugLineNum = 6422535;BA.debugLine="End Sub";
+public void  _sql_querycomplete(boolean _success,anywheresoftware.b4j.objects.SQL.ResultSetWrapper _rs) throws Exception{
+}
+public void  _myser_bytestoobject(boolean _success,Object _newobject) throws Exception{
+}
+public String  _initialize(anywheresoftware.b4a.BA _ba,String _dir,String _filename) throws Exception{
+innerInitialize(_ba);
+ //BA.debugLineNum = 8;BA.debugLine="Public Sub Initialize (Dir As String, FileName As";
+ //BA.debugLineNum = 9;BA.debugLine="If sql1.IsInitialized Then sql1.Close";
+if (_sql1.IsInitialized()) { 
+_sql1.Close();};
+ //BA.debugLineNum = 11;BA.debugLine="sql1.InitializeSQLite(Dir, FileName, True)";
+_sql1.InitializeSQLite(_dir,_filename,__c.True);
+ //BA.debugLineNum = 15;BA.debugLine="CreateTable";
+_createtable();
+ //BA.debugLineNum = 16;BA.debugLine="End Sub";
 return "";
 }
-public anywheresoftware.b4a.keywords.Common.ResumableSubWrapper  _putmapasync(cloyd.blink.keyvaluestore __ref,anywheresoftware.b4a.objects.collections.Map _map) throws Exception{
-RDebugUtils.currentModule="keyvaluestore";
-if (Debug.shouldDelegate(ba, "putmapasync", false))
-	 {return ((anywheresoftware.b4a.keywords.Common.ResumableSubWrapper) Debug.delegate(ba, "putmapasync", new Object[] {_map}));}
-ResumableSub_PutMapAsync rsub = new ResumableSub_PutMapAsync(this,__ref,_map);
+public anywheresoftware.b4a.objects.collections.List  _listkeys() throws Exception{
+anywheresoftware.b4j.objects.SQL.ResultSetWrapper _c = null;
+anywheresoftware.b4a.objects.collections.List _res = null;
+ //BA.debugLineNum = 138;BA.debugLine="Public Sub ListKeys As List";
+ //BA.debugLineNum = 139;BA.debugLine="Dim c As ResultSet = sql1.ExecQuery(\"SELECT key F";
+_c = new anywheresoftware.b4j.objects.SQL.ResultSetWrapper();
+_c = _sql1.ExecQuery("SELECT key FROM main order by key desc");
+ //BA.debugLineNum = 140;BA.debugLine="Dim res As List";
+_res = new anywheresoftware.b4a.objects.collections.List();
+ //BA.debugLineNum = 141;BA.debugLine="res.Initialize";
+_res.Initialize();
+ //BA.debugLineNum = 142;BA.debugLine="Do While c.NextRow";
+while (_c.NextRow()) {
+ //BA.debugLineNum = 143;BA.debugLine="res.Add(c.GetString2(0))";
+_res.Add((Object)(_c.GetString2((int) (0))));
+ }
+;
+ //BA.debugLineNum = 145;BA.debugLine="c.Close";
+_c.Close();
+ //BA.debugLineNum = 146;BA.debugLine="Return res";
+if (true) return _res;
+ //BA.debugLineNum = 147;BA.debugLine="End Sub";
+return null;
+}
+public String  _put(String _key,Object _value) throws Exception{
+ //BA.debugLineNum = 18;BA.debugLine="Public Sub Put(Key As String, Value As Object)";
+ //BA.debugLineNum = 19;BA.debugLine="sql1.ExecNonQuery2(\"INSERT OR REPLACE INTO main V";
+_sql1.ExecNonQuery2("INSERT OR REPLACE INTO main VALUES(?, ?)",anywheresoftware.b4a.keywords.Common.ArrayToList(new Object[]{(Object)(_key),(Object)(_ser.ConvertObjectToBytes(_value))}));
+ //BA.debugLineNum = 20;BA.debugLine="End Sub";
+return "";
+}
+public String  _putencrypted(String _key,Object _value,String _password) throws Exception{
+anywheresoftware.b4x.object.B4XEncryption _cipher = null;
+ //BA.debugLineNum = 90;BA.debugLine="Public Sub PutEncrypted (Key As String, Value As O";
+ //BA.debugLineNum = 94;BA.debugLine="Dim cipher As B4XCipher";
+_cipher = new anywheresoftware.b4x.object.B4XEncryption();
+ //BA.debugLineNum = 96;BA.debugLine="Put(Key, cipher.Encrypt(ser.ConvertObjectToBytes(";
+_put(_key,(Object)(_cipher.Encrypt(_ser.ConvertObjectToBytes(_value),_password)));
+ //BA.debugLineNum = 97;BA.debugLine="End Sub";
+return "";
+}
+public anywheresoftware.b4a.keywords.Common.ResumableSubWrapper  _putmapasync(anywheresoftware.b4a.objects.collections.Map _map) throws Exception{
+ResumableSub_PutMapAsync rsub = new ResumableSub_PutMapAsync(this,_map);
 rsub.resume(ba, null);
 return (anywheresoftware.b4a.keywords.Common.ResumableSubWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper(), rsub);
 }
 public static class ResumableSub_PutMapAsync extends BA.ResumableSub {
-public ResumableSub_PutMapAsync(cloyd.blink.keyvaluestore parent,cloyd.blink.keyvaluestore __ref,anywheresoftware.b4a.objects.collections.Map _map) {
+public ResumableSub_PutMapAsync(cloyd.blink.keyvaluestore parent,anywheresoftware.b4a.objects.collections.Map _map) {
 this.parent = parent;
-this.__ref = __ref;
 this._map = _map;
-this.__ref = parent;
 }
-cloyd.blink.keyvaluestore __ref;
 cloyd.blink.keyvaluestore parent;
 anywheresoftware.b4a.objects.collections.Map _map;
 String _key = "";
@@ -562,7 +407,6 @@ int groupLen1;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
-RDebugUtils.currentModule="keyvaluestore";
 
     while (true) {
         switch (state) {
@@ -572,8 +416,7 @@ parent.__c.ReturnFromResumableSub(this,null);return;}
 case 0:
 //C
 this.state = 1;
-RDebugUtils.currentLine=6291457;
- //BA.debugLineNum = 6291457;BA.debugLine="For Each key As String In Map.Keys";
+ //BA.debugLineNum = 69;BA.debugLine="For Each key As String In Map.Keys";
 if (true) break;
 
 case 1:
@@ -602,25 +445,21 @@ if (true) break;
 case 3:
 //C
 this.state = 4;
-RDebugUtils.currentLine=6291458;
- //BA.debugLineNum = 6291458;BA.debugLine="Dim myser As B4XSerializator";
+ //BA.debugLineNum = 70;BA.debugLine="Dim myser As B4XSerializator";
 _myser = new anywheresoftware.b4a.randomaccessfile.B4XSerializator();
-RDebugUtils.currentLine=6291459;
- //BA.debugLineNum = 6291459;BA.debugLine="myser.ConvertObjectToBytesAsync(Map.Get(key), \"m";
+ //BA.debugLineNum = 71;BA.debugLine="myser.ConvertObjectToBytesAsync(Map.Get(key), \"m";
 _myser.ConvertObjectToBytesAsync(ba,_map.Get((Object)(_key)),"myser");
-RDebugUtils.currentLine=6291460;
- //BA.debugLineNum = 6291460;BA.debugLine="Wait For (myser) myser_ObjectToBytes (Success As";
-parent.__c.WaitFor("myser_objecttobytes", ba, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "keyvaluestore", "putmapasync"), (Object)(_myser));
+ //BA.debugLineNum = 72;BA.debugLine="Wait For (myser) myser_ObjectToBytes (Success As";
+parent.__c.WaitFor("myser_objecttobytes", ba, this, (Object)(_myser));
 this.state = 13;
 return;
 case 13:
 //C
 this.state = 4;
-_success = (boolean) result[1];
-_bytes = (byte[]) result[2];
+_success = (boolean) result[0];
+_bytes = (byte[]) result[1];
 ;
-RDebugUtils.currentLine=6291461;
- //BA.debugLineNum = 6291461;BA.debugLine="If Success Then";
+ //BA.debugLineNum = 73;BA.debugLine="If Success Then";
 if (true) break;
 
 case 4:
@@ -635,16 +474,14 @@ this.state = 8;
 case 6:
 //C
 this.state = 9;
-RDebugUtils.currentLine=6291462;
- //BA.debugLineNum = 6291462;BA.debugLine="sql1.AddNonQueryToBatch(\"INSERT OR REPLACE INTO";
-__ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .AddNonQueryToBatch("INSERT OR REPLACE INTO main VALUES(?, ?)",anywheresoftware.b4a.keywords.Common.ArrayToList(new Object[]{(Object)(_key),(Object)(_bytes)}));
+ //BA.debugLineNum = 74;BA.debugLine="sql1.AddNonQueryToBatch(\"INSERT OR REPLACE INTO";
+parent._sql1.AddNonQueryToBatch("INSERT OR REPLACE INTO main VALUES(?, ?)",anywheresoftware.b4a.keywords.Common.ArrayToList(new Object[]{(Object)(_key),(Object)(_bytes)}));
  if (true) break;
 
 case 8:
 //C
 this.state = 9;
-RDebugUtils.currentLine=6291464;
- //BA.debugLineNum = 6291464;BA.debugLine="Log(\"Failed to serialize object: \" & Map.Get(ke";
+ //BA.debugLineNum = 76;BA.debugLine="Log(\"Failed to serialize object: \" & Map.Get(ke";
 parent.__c.Log("Failed to serialize object: "+BA.ObjectToString(_map.Get((Object)(_key))));
  if (true) break;
 
@@ -659,29 +496,40 @@ case 10:
 //C
 this.state = -1;
 ;
-RDebugUtils.currentLine=6291467;
- //BA.debugLineNum = 6291467;BA.debugLine="Dim SenderFilter As Object = sql1.ExecNonQueryBat";
-_senderfilter = __ref._sql1 /*anywheresoftware.b4j.objects.SQL*/ .ExecNonQueryBatch(ba,"SQL");
-RDebugUtils.currentLine=6291468;
- //BA.debugLineNum = 6291468;BA.debugLine="Wait For (SenderFilter) SQL_NonQueryComplete (Suc";
-parent.__c.WaitFor("sql_nonquerycomplete", ba, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "keyvaluestore", "putmapasync"), _senderfilter);
+ //BA.debugLineNum = 79;BA.debugLine="Dim SenderFilter As Object = sql1.ExecNonQueryBat";
+_senderfilter = parent._sql1.ExecNonQueryBatch(ba,"SQL");
+ //BA.debugLineNum = 80;BA.debugLine="Wait For (SenderFilter) SQL_NonQueryComplete (Suc";
+parent.__c.WaitFor("sql_nonquerycomplete", ba, this, _senderfilter);
 this.state = 14;
 return;
 case 14:
 //C
 this.state = -1;
-_success = (boolean) result[1];
+_success = (boolean) result[0];
 ;
-RDebugUtils.currentLine=6291469;
- //BA.debugLineNum = 6291469;BA.debugLine="Return Success";
+ //BA.debugLineNum = 81;BA.debugLine="Return Success";
 if (true) {
 parent.__c.ReturnFromResumableSub(this,(Object)(_success));return;};
-RDebugUtils.currentLine=6291470;
- //BA.debugLineNum = 6291470;BA.debugLine="End Sub";
+ //BA.debugLineNum = 82;BA.debugLine="End Sub";
 if (true) break;
 
             }
         }
     }
+}
+public void  _myser_objecttobytes(boolean _success,byte[] _bytes) throws Exception{
+}
+public void  _sql_nonquerycomplete(boolean _success) throws Exception{
+}
+public String  _remove(String _key) throws Exception{
+ //BA.debugLineNum = 133;BA.debugLine="Public Sub Remove(Key As String)";
+ //BA.debugLineNum = 134;BA.debugLine="sql1.ExecNonQuery2(\"DELETE FROM main WHERE key =";
+_sql1.ExecNonQuery2("DELETE FROM main WHERE key = ?",anywheresoftware.b4a.keywords.Common.ArrayToList(new Object[]{(Object)(_key)}));
+ //BA.debugLineNum = 135;BA.debugLine="End Sub";
+return "";
+}
+public Object callSub(String sub, Object sender, Object[] args) throws Exception {
+BA.senderHolder.set(sender);
+return BA.SubDelegator.SubNotFound;
 }
 }
