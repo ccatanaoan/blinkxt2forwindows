@@ -2012,18 +2012,18 @@ Sub btnDrivewayNewClip_Click
 			Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 			wait for (rs) complete (Result As Object)
 			
-			For i = 1 To 70
+			For i = 1 To 60
 				Dim rs As ResumableSub = GetCommandStatus(response)
 				wait for (rs) complete (Result As Object)
 				If commandComplete Then
-					For i = 3 To 1 Step -1
-						lblStatus.Text = "New Driveway video clip will be shown in " & i & " seconds..."
-						Sleep(1000)
-					Next
+'					For i = 3 To 1 Step -1
+'						lblStatus.Text = "New Driveway video clip will be shown in " & i & " seconds..."
+'						Sleep(1000)
+'					Next
 					btnActivity_Click
 					Exit
 				Else
-					lblStatus.Text = "Awaiting for the Driveway video clip... " & i & "/70"
+					lblStatus.Text = "Awaiting for the Driveway video clip... " & i & "/60"
 				End If
 				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 				wait for (rs) complete (Result As Object)
@@ -2072,18 +2072,18 @@ Sub btnFrontDoorNewClip_Click
 			Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 			wait for (rs) complete (Result As Object)
 			
-			For i = 1 To 70
+			For i = 1 To 60
 				Dim rs As ResumableSub = GetCommandStatus(response)
 				wait for (rs) complete (Result As Object)
 				If commandComplete Then
-					For i = 3 To 1  Step -1
-						lblStatus.Text = "New Front Door video clip will be shown in " & i & " seconds..."
-						Sleep(1000)
-					Next
+'					For i = 3 To 1  Step -1
+'						lblStatus.Text = "New Front Door video clip will be shown in " & i & " seconds..."
+'						Sleep(1000)
+'					Next
 					btnActivity_Click
 					Exit
 				Else
-					lblStatus.Text = "Awaiting for the Front Door video clip... " & i & "/70"
+					lblStatus.Text = "Awaiting for the Front Door video clip... " & i & "/60"
 				End If
 				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 				wait for (rs) complete (Result As Object)
@@ -2131,18 +2131,18 @@ Sub btnSideYardNewClip_Click
 			Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 			wait for (rs) complete (Result As Object)
 			
-			For i = 1 To 70
+			For i = 1 To 60
 				Dim rs As ResumableSub = GetCommandStatus(response)
 				wait for (rs) complete (Result As Object)
 				If commandComplete Then
-					For i = 3 To 1 Step -1
-						lblStatus.Text = "New Side Yard video clip will be shown in " & i & " seconds..."
-						Sleep(1000)
-					Next
+'					For i = 3 To 1 Step -1
+'						lblStatus.Text = "New Side Yard video clip will be shown in " & i & " seconds..."
+'						Sleep(1000)
+'					Next
 					btnActivity_Click
 					Exit
 				Else
-					lblStatus.Text = "Awaiting for the Side Yard video clip... " & i & "/70"
+					lblStatus.Text = "Awaiting for the Side Yard video clip... " & i & "/60"
 				End If
 				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 				wait for (rs) complete (Result As Object)
@@ -2175,13 +2175,11 @@ Sub GetUnwatchedVideos() As ResumableSub
 		Dim n As Long = DateTime.Now
 		For Each colmedia As Map In media
 			Dim watched As String = colmedia.Get("watched")
-			Dim VideoID As String = colmedia.Get("id")
-			Dim mytypes As Object = kvs.Get(VideoID)
-			Dim videos = mytypes As VideoInfo
+'			Dim VideoID As String = colmedia.Get("id")
+'			Dim mytypes As Object = kvs.Get(VideoID)
+'			Dim videos = mytypes As VideoInfo
 			If watched = False Then
 				unwatchedVideoCount = unwatchedVideoCount + 1
-			Else If videos = Null And unwatchedVideoCount = 0 Then
-				unwatchedVideoCount = 1
 			End If
 		Next
 		Log("Loading unwatched videos took: " & (DateTime.Now - n) & "ms")

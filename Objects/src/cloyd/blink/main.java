@@ -656,8 +656,6 @@ Object _result = null;
 int _i = 0;
 int step29;
 int limit29;
-int step33;
-int limit33;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
@@ -677,7 +675,7 @@ if (true) break;
 
 case 1:
 //if
-this.state = 28;
+this.state = 24;
 if (parent._fx.Msgbox2(parent._mainform,"Capture a new video for the Driveway camera?",parent._mainform.getTitle(),"Yes","","No",parent._fx.MSGBOX_CONFIRMATION)==parent._fx.DialogResponse.POSITIVE) { 
 this.state = 3;
 }if (true) break;
@@ -690,15 +688,15 @@ if (true) break;
 
 case 4:
 //try
-this.state = 27;
-this.catchState = 26;
+this.state = 23;
+this.catchState = 22;
 this.state = 6;
 if (true) break;
 
 case 6:
 //C
 this.state = 7;
-this.catchState = 26;
+this.catchState = 22;
  //BA.debugLineNum = 1728;BA.debugLine="btnDriveway.Enabled = False";
 parent._btndriveway.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 1729;BA.debugLine="btnRefresh.Enabled = False";
@@ -718,9 +716,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restpost("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/camera/347574/clip");
  //BA.debugLineNum = 1737;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 29;
+this.state = 25;
 return;
-case 29:
+case 25:
 //C
 this.state = 7;
 _result = (Object) result[0];
@@ -771,9 +769,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _getcommandid(parent._response);
  //BA.debugLineNum = 1753;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 30;
+this.state = 26;
 return;
-case 30:
+case 26:
 //C
 this.state = 11;
 _result = (Object) result[0];
@@ -783,34 +781,34 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
  //BA.debugLineNum = 1756;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 31;
+this.state = 27;
 return;
-case 31:
+case 27:
 //C
 this.state = 11;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 1758;BA.debugLine="For i = 1 To 70";
+ //BA.debugLineNum = 1758;BA.debugLine="For i = 1 To 60";
 if (true) break;
 
 case 11:
 //for
-this.state = 24;
+this.state = 20;
 step29 = 1;
-limit29 = (int) (70);
+limit29 = (int) (60);
 _i = (int) (1) ;
-this.state = 32;
+this.state = 28;
 if (true) break;
 
-case 32:
+case 28:
 //C
-this.state = 24;
+this.state = 20;
 if ((step29 > 0 && _i <= limit29) || (step29 < 0 && _i >= limit29)) this.state = 13;
 if (true) break;
 
-case 33:
+case 29:
 //C
-this.state = 32;
+this.state = 28;
 _i = ((int)(0 + _i + step29)) ;
 if (true) break;
 
@@ -822,9 +820,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _getcommandstatus(parent._response);
  //BA.debugLineNum = 1760;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 34;
+this.state = 30;
 return;
-case 34:
+case 30:
 //C
 this.state = 14;
 _result = (Object) result[0];
@@ -834,52 +832,53 @@ if (true) break;
 
 case 14:
 //if
-this.state = 23;
+this.state = 19;
 if (parent._commandcomplete) { 
 this.state = 16;
 }else {
-this.state = 22;
+this.state = 18;
 }if (true) break;
 
 case 16:
 //C
-this.state = 17;
- //BA.debugLineNum = 1762;BA.debugLine="For i = 3 To 1 Step -1";
-if (true) break;
-
-case 17:
-//for
+this.state = 19;
+ //BA.debugLineNum = 1766;BA.debugLine="btnActivity_Click";
+_btnactivity_click();
+ //BA.debugLineNum = 1767;BA.debugLine="Exit";
 this.state = 20;
-step33 = -1;
-limit33 = (int) (1);
-_i = (int) (3) ;
-this.state = 35;
 if (true) break;
+ if (true) break;
 
-case 35:
+case 18:
 //C
-this.state = 20;
-if ((step33 > 0 && _i <= limit33) || (step33 < 0 && _i >= limit33)) this.state = 19;
-if (true) break;
-
-case 36:
-//C
-this.state = 35;
-_i = ((int)(0 + _i + step33)) ;
-if (true) break;
+this.state = 19;
+ //BA.debugLineNum = 1769;BA.debugLine="lblStatus.Text = \"Awaiting for the Driveway v";
+parent._lblstatus.setText("Awaiting for the Driveway video clip... "+BA.NumberToString(_i)+"/60");
+ if (true) break;
 
 case 19:
 //C
-this.state = 36;
- //BA.debugLineNum = 1763;BA.debugLine="lblStatus.Text = \"New Driveway video clip wi";
-parent._lblstatus.setText("New Driveway video clip will be shown in "+BA.NumberToString(_i)+" seconds...");
- //BA.debugLineNum = 1764;BA.debugLine="Sleep(1000)";
-anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
-this.state = 37;
+this.state = 29;
+;
+ //BA.debugLineNum = 1771;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest";
+_rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
+_rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
+ //BA.debugLineNum = 1772;BA.debugLine="wait for (rs) complete (Result As Object)";
+anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
+this.state = 31;
 return;
-case 37:
+case 31:
 //C
-this.state = 36;
+this.state = 29;
+_result = (Object) result[0];
+;
+ //BA.debugLineNum = 1773;BA.debugLine="Sleep(1000)";
+anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
+this.state = 32;
+return;
+case 32:
+//C
+this.state = 29;
 ;
  if (true) break;
 if (true) break;
@@ -888,65 +887,20 @@ case 20:
 //C
 this.state = 23;
 ;
- //BA.debugLineNum = 1766;BA.debugLine="btnActivity_Click";
-_btnactivity_click();
- //BA.debugLineNum = 1767;BA.debugLine="Exit";
-this.state = 24;
-if (true) break;
  if (true) break;
 
 case 22:
 //C
 this.state = 23;
- //BA.debugLineNum = 1769;BA.debugLine="lblStatus.Text = \"Awaiting for the Driveway v";
-parent._lblstatus.setText("Awaiting for the Driveway video clip... "+BA.NumberToString(_i)+"/70");
- if (true) break;
-
-case 23:
-//C
-this.state = 33;
-;
- //BA.debugLineNum = 1771;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest";
-_rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
-_rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
- //BA.debugLineNum = 1772;BA.debugLine="wait for (rs) complete (Result As Object)";
-anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 38;
-return;
-case 38:
-//C
-this.state = 33;
-_result = (Object) result[0];
-;
- //BA.debugLineNum = 1773;BA.debugLine="Sleep(1000)";
-anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
-this.state = 39;
-return;
-case 39:
-//C
-this.state = 33;
-;
- if (true) break;
-if (true) break;
-
-case 24:
-//C
-this.state = 27;
-;
- if (true) break;
-
-case 26:
-//C
-this.state = 27;
 this.catchState = 0;
  //BA.debugLineNum = 1776;BA.debugLine="Log(LastException)";
 anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
  if (true) break;
 if (true) break;
 
-case 27:
+case 23:
 //C
-this.state = 28;
+this.state = 24;
 this.catchState = 0;
 ;
  //BA.debugLineNum = 1778;BA.debugLine="btnDriveway.Enabled = True";
@@ -965,7 +919,7 @@ parent._btnsideyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True)
 parent._lblstatus.setText("Ready");
  if (true) break;
 
-case 28:
+case 24:
 //C
 this.state = -1;
 ;
@@ -1006,10 +960,10 @@ return;
 case 0:
 //C
 this.state = -1;
- //BA.debugLineNum = 1998;BA.debugLine="Dim rs As ResumableSub = RefreshCameras(False, \"3";
+ //BA.debugLineNum = 1996;BA.debugLine="Dim rs As ResumableSub = RefreshCameras(False, \"3";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _refreshcameras(anywheresoftware.b4a.keywords.Common.False,"347574");
- //BA.debugLineNum = 1999;BA.debugLine="wait for (rs) complete (Result As Object)";
+ //BA.debugLineNum = 1997;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
 this.state = 1;
 return;
@@ -1018,7 +972,7 @@ case 1:
 this.state = -1;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 2000;BA.debugLine="End Sub";
+ //BA.debugLineNum = 1998;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -1039,8 +993,6 @@ Object _result = null;
 int _i = 0;
 int step26;
 int limit26;
-int step30;
-int limit30;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
@@ -1060,7 +1012,7 @@ if (true) break;
 
 case 1:
 //if
-this.state = 28;
+this.state = 24;
 if (parent._fx.Msgbox2(parent._mainform,"Capture a new video for the Front Door camera?",parent._mainform.getTitle(),"Yes","","No",parent._fx.MSGBOX_CONFIRMATION)==parent._fx.DialogResponse.POSITIVE) { 
 this.state = 3;
 }if (true) break;
@@ -1073,15 +1025,15 @@ if (true) break;
 
 case 4:
 //try
-this.state = 27;
-this.catchState = 26;
+this.state = 23;
+this.catchState = 22;
 this.state = 6;
 if (true) break;
 
 case 6:
 //C
 this.state = 7;
-this.catchState = 26;
+this.catchState = 22;
  //BA.debugLineNum = 1791;BA.debugLine="btnDriveway.Enabled = False";
 parent._btndriveway.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 1792;BA.debugLine="btnRefresh.Enabled = False";
@@ -1101,9 +1053,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restpost("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/camera/236967/clip");
  //BA.debugLineNum = 1800;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 29;
+this.state = 25;
 return;
-case 29:
+case 25:
 //C
 this.state = 7;
 _result = (Object) result[0];
@@ -1148,9 +1100,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _getcommandid(parent._response);
  //BA.debugLineNum = 1813;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 30;
+this.state = 26;
 return;
-case 30:
+case 26:
 //C
 this.state = 11;
 _result = (Object) result[0];
@@ -1160,34 +1112,34 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
  //BA.debugLineNum = 1816;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 31;
+this.state = 27;
 return;
-case 31:
+case 27:
 //C
 this.state = 11;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 1818;BA.debugLine="For i = 1 To 70";
+ //BA.debugLineNum = 1818;BA.debugLine="For i = 1 To 60";
 if (true) break;
 
 case 11:
 //for
-this.state = 24;
+this.state = 20;
 step26 = 1;
-limit26 = (int) (70);
+limit26 = (int) (60);
 _i = (int) (1) ;
-this.state = 32;
+this.state = 28;
 if (true) break;
 
-case 32:
+case 28:
 //C
-this.state = 24;
+this.state = 20;
 if ((step26 > 0 && _i <= limit26) || (step26 < 0 && _i >= limit26)) this.state = 13;
 if (true) break;
 
-case 33:
+case 29:
 //C
-this.state = 32;
+this.state = 28;
 _i = ((int)(0 + _i + step26)) ;
 if (true) break;
 
@@ -1199,9 +1151,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _getcommandstatus(parent._response);
  //BA.debugLineNum = 1820;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 34;
+this.state = 30;
 return;
-case 34:
+case 30:
 //C
 this.state = 14;
 _result = (Object) result[0];
@@ -1211,52 +1163,53 @@ if (true) break;
 
 case 14:
 //if
-this.state = 23;
+this.state = 19;
 if (parent._commandcomplete) { 
 this.state = 16;
 }else {
-this.state = 22;
+this.state = 18;
 }if (true) break;
 
 case 16:
 //C
-this.state = 17;
- //BA.debugLineNum = 1822;BA.debugLine="For i = 3 To 1  Step -1";
-if (true) break;
-
-case 17:
-//for
+this.state = 19;
+ //BA.debugLineNum = 1826;BA.debugLine="btnActivity_Click";
+_btnactivity_click();
+ //BA.debugLineNum = 1827;BA.debugLine="Exit";
 this.state = 20;
-step30 = -1;
-limit30 = (int) (1);
-_i = (int) (3) ;
-this.state = 35;
 if (true) break;
+ if (true) break;
 
-case 35:
+case 18:
 //C
-this.state = 20;
-if ((step30 > 0 && _i <= limit30) || (step30 < 0 && _i >= limit30)) this.state = 19;
-if (true) break;
-
-case 36:
-//C
-this.state = 35;
-_i = ((int)(0 + _i + step30)) ;
-if (true) break;
+this.state = 19;
+ //BA.debugLineNum = 1829;BA.debugLine="lblStatus.Text = \"Awaiting for the Front Door";
+parent._lblstatus.setText("Awaiting for the Front Door video clip... "+BA.NumberToString(_i)+"/60");
+ if (true) break;
 
 case 19:
 //C
-this.state = 36;
- //BA.debugLineNum = 1823;BA.debugLine="lblStatus.Text = \"New Front Door video clip";
-parent._lblstatus.setText("New Front Door video clip will be shown in "+BA.NumberToString(_i)+" seconds...");
- //BA.debugLineNum = 1824;BA.debugLine="Sleep(1000)";
-anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
-this.state = 37;
+this.state = 29;
+;
+ //BA.debugLineNum = 1831;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest";
+_rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
+_rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
+ //BA.debugLineNum = 1832;BA.debugLine="wait for (rs) complete (Result As Object)";
+anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
+this.state = 31;
 return;
-case 37:
+case 31:
 //C
-this.state = 36;
+this.state = 29;
+_result = (Object) result[0];
+;
+ //BA.debugLineNum = 1833;BA.debugLine="Sleep(1000)";
+anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
+this.state = 32;
+return;
+case 32:
+//C
+this.state = 29;
 ;
  if (true) break;
 if (true) break;
@@ -1265,65 +1218,20 @@ case 20:
 //C
 this.state = 23;
 ;
- //BA.debugLineNum = 1826;BA.debugLine="btnActivity_Click";
-_btnactivity_click();
- //BA.debugLineNum = 1827;BA.debugLine="Exit";
-this.state = 24;
-if (true) break;
  if (true) break;
 
 case 22:
 //C
 this.state = 23;
- //BA.debugLineNum = 1829;BA.debugLine="lblStatus.Text = \"Awaiting for the Front Door";
-parent._lblstatus.setText("Awaiting for the Front Door video clip... "+BA.NumberToString(_i)+"/70");
- if (true) break;
-
-case 23:
-//C
-this.state = 33;
-;
- //BA.debugLineNum = 1831;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest";
-_rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
-_rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
- //BA.debugLineNum = 1832;BA.debugLine="wait for (rs) complete (Result As Object)";
-anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 38;
-return;
-case 38:
-//C
-this.state = 33;
-_result = (Object) result[0];
-;
- //BA.debugLineNum = 1833;BA.debugLine="Sleep(1000)";
-anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
-this.state = 39;
-return;
-case 39:
-//C
-this.state = 33;
-;
- if (true) break;
-if (true) break;
-
-case 24:
-//C
-this.state = 27;
-;
- if (true) break;
-
-case 26:
-//C
-this.state = 27;
 this.catchState = 0;
  //BA.debugLineNum = 1836;BA.debugLine="Log(LastException)";
 anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
  if (true) break;
 if (true) break;
 
-case 27:
+case 23:
 //C
-this.state = 28;
+this.state = 24;
 this.catchState = 0;
 ;
  //BA.debugLineNum = 1838;BA.debugLine="btnDriveway.Enabled = True";
@@ -1342,7 +1250,7 @@ parent._btnsideyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True)
 parent._lblstatus.setText("Ready");
  if (true) break;
 
-case 28:
+case 24:
 //C
 this.state = -1;
 ;
@@ -1383,10 +1291,10 @@ return;
 case 0:
 //C
 this.state = -1;
- //BA.debugLineNum = 1993;BA.debugLine="Dim rs As ResumableSub = RefreshCameras(False, \"2";
+ //BA.debugLineNum = 1991;BA.debugLine="Dim rs As ResumableSub = RefreshCameras(False, \"2";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _refreshcameras(anywheresoftware.b4a.keywords.Common.False,"236967");
- //BA.debugLineNum = 1994;BA.debugLine="wait for (rs) complete (Result As Object)";
+ //BA.debugLineNum = 1992;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
 this.state = 1;
 return;
@@ -1395,7 +1303,7 @@ case 1:
 this.state = -1;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 1995;BA.debugLine="End Sub";
+ //BA.debugLineNum = 1993;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -1476,8 +1384,6 @@ Object _result = null;
 int _i = 0;
 int step26;
 int limit26;
-int step30;
-int limit30;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
@@ -1497,7 +1403,7 @@ if (true) break;
 
 case 1:
 //if
-this.state = 28;
+this.state = 24;
 if (parent._fx.Msgbox2(parent._mainform,"Capture a new video for the Side Yard camera?",parent._mainform.getTitle(),"Yes","","No",parent._fx.MSGBOX_CONFIRMATION)==parent._fx.DialogResponse.POSITIVE) { 
 this.state = 3;
 }if (true) break;
@@ -1510,15 +1416,15 @@ if (true) break;
 
 case 4:
 //try
-this.state = 27;
-this.catchState = 26;
+this.state = 23;
+this.catchState = 22;
 this.state = 6;
 if (true) break;
 
 case 6:
 //C
 this.state = 7;
-this.catchState = 26;
+this.catchState = 22;
  //BA.debugLineNum = 1851;BA.debugLine="btnDriveway.Enabled = False";
 parent._btndriveway.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 1852;BA.debugLine="btnRefresh.Enabled = False";
@@ -1538,9 +1444,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restpost("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/camera/458236/clip");
  //BA.debugLineNum = 1859;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 29;
+this.state = 25;
 return;
-case 29:
+case 25:
 //C
 this.state = 7;
 _result = (Object) result[0];
@@ -1585,9 +1491,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _getcommandid(parent._response);
  //BA.debugLineNum = 1872;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 30;
+this.state = 26;
 return;
-case 30:
+case 26:
 //C
 this.state = 11;
 _result = (Object) result[0];
@@ -1597,34 +1503,34 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
  //BA.debugLineNum = 1875;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 31;
+this.state = 27;
 return;
-case 31:
+case 27:
 //C
 this.state = 11;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 1877;BA.debugLine="For i = 1 To 70";
+ //BA.debugLineNum = 1877;BA.debugLine="For i = 1 To 60";
 if (true) break;
 
 case 11:
 //for
-this.state = 24;
+this.state = 20;
 step26 = 1;
-limit26 = (int) (70);
+limit26 = (int) (60);
 _i = (int) (1) ;
-this.state = 32;
+this.state = 28;
 if (true) break;
 
-case 32:
+case 28:
 //C
-this.state = 24;
+this.state = 20;
 if ((step26 > 0 && _i <= limit26) || (step26 < 0 && _i >= limit26)) this.state = 13;
 if (true) break;
 
-case 33:
+case 29:
 //C
-this.state = 32;
+this.state = 28;
 _i = ((int)(0 + _i + step26)) ;
 if (true) break;
 
@@ -1636,9 +1542,9 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _getcommandstatus(parent._response);
  //BA.debugLineNum = 1879;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 34;
+this.state = 30;
 return;
-case 34:
+case 30:
 //C
 this.state = 14;
 _result = (Object) result[0];
@@ -1648,52 +1554,53 @@ if (true) break;
 
 case 14:
 //if
-this.state = 23;
+this.state = 19;
 if (parent._commandcomplete) { 
 this.state = 16;
 }else {
-this.state = 22;
+this.state = 18;
 }if (true) break;
 
 case 16:
 //C
-this.state = 17;
- //BA.debugLineNum = 1881;BA.debugLine="For i = 3 To 1 Step -1";
-if (true) break;
-
-case 17:
-//for
+this.state = 19;
+ //BA.debugLineNum = 1885;BA.debugLine="btnActivity_Click";
+_btnactivity_click();
+ //BA.debugLineNum = 1886;BA.debugLine="Exit";
 this.state = 20;
-step30 = -1;
-limit30 = (int) (1);
-_i = (int) (3) ;
-this.state = 35;
 if (true) break;
+ if (true) break;
 
-case 35:
+case 18:
 //C
-this.state = 20;
-if ((step30 > 0 && _i <= limit30) || (step30 < 0 && _i >= limit30)) this.state = 19;
-if (true) break;
-
-case 36:
-//C
-this.state = 35;
-_i = ((int)(0 + _i + step30)) ;
-if (true) break;
+this.state = 19;
+ //BA.debugLineNum = 1888;BA.debugLine="lblStatus.Text = \"Awaiting for the Side Yard";
+parent._lblstatus.setText("Awaiting for the Side Yard video clip... "+BA.NumberToString(_i)+"/60");
+ if (true) break;
 
 case 19:
 //C
-this.state = 36;
- //BA.debugLineNum = 1882;BA.debugLine="lblStatus.Text = \"New Side Yard video clip w";
-parent._lblstatus.setText("New Side Yard video clip will be shown in "+BA.NumberToString(_i)+" seconds...");
- //BA.debugLineNum = 1883;BA.debugLine="Sleep(1000)";
-anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
-this.state = 37;
+this.state = 29;
+;
+ //BA.debugLineNum = 1890;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest";
+_rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
+_rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
+ //BA.debugLineNum = 1891;BA.debugLine="wait for (rs) complete (Result As Object)";
+anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
+this.state = 31;
 return;
-case 37:
+case 31:
 //C
-this.state = 36;
+this.state = 29;
+_result = (Object) result[0];
+;
+ //BA.debugLineNum = 1892;BA.debugLine="Sleep(1000)";
+anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
+this.state = 32;
+return;
+case 32:
+//C
+this.state = 29;
 ;
  if (true) break;
 if (true) break;
@@ -1702,65 +1609,20 @@ case 20:
 //C
 this.state = 23;
 ;
- //BA.debugLineNum = 1885;BA.debugLine="btnActivity_Click";
-_btnactivity_click();
- //BA.debugLineNum = 1886;BA.debugLine="Exit";
-this.state = 24;
-if (true) break;
  if (true) break;
 
 case 22:
 //C
 this.state = 23;
- //BA.debugLineNum = 1888;BA.debugLine="lblStatus.Text = \"Awaiting for the Side Yard";
-parent._lblstatus.setText("Awaiting for the Side Yard video clip... "+BA.NumberToString(_i)+"/70");
- if (true) break;
-
-case 23:
-//C
-this.state = 33;
-;
- //BA.debugLineNum = 1890;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest";
-_rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
-_rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
- //BA.debugLineNum = 1891;BA.debugLine="wait for (rs) complete (Result As Object)";
-anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 38;
-return;
-case 38:
-//C
-this.state = 33;
-_result = (Object) result[0];
-;
- //BA.debugLineNum = 1892;BA.debugLine="Sleep(1000)";
-anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
-this.state = 39;
-return;
-case 39:
-//C
-this.state = 33;
-;
- if (true) break;
-if (true) break;
-
-case 24:
-//C
-this.state = 27;
-;
- if (true) break;
-
-case 26:
-//C
-this.state = 27;
 this.catchState = 0;
  //BA.debugLineNum = 1895;BA.debugLine="Log(LastException)";
 anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
  if (true) break;
 if (true) break;
 
-case 27:
+case 23:
 //C
-this.state = 28;
+this.state = 24;
 this.catchState = 0;
 ;
  //BA.debugLineNum = 1897;BA.debugLine="btnDriveway.Enabled = True";
@@ -1779,7 +1641,7 @@ parent._btnsideyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True)
 parent._lblstatus.setText("Ready");
  if (true) break;
 
-case 28:
+case 24:
 //C
 this.state = -1;
 ;
@@ -1820,10 +1682,10 @@ return;
 case 0:
 //C
 this.state = -1;
- //BA.debugLineNum = 1988;BA.debugLine="Dim rs As ResumableSub = RefreshCameras(False, \"4";
+ //BA.debugLineNum = 1986;BA.debugLine="Dim rs As ResumableSub = RefreshCameras(False, \"4";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _refreshcameras(anywheresoftware.b4a.keywords.Common.False,"458236");
- //BA.debugLineNum = 1989;BA.debugLine="wait for (rs) complete (Result As Object)";
+ //BA.debugLineNum = 1987;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
 this.state = 1;
 return;
@@ -1832,7 +1694,7 @@ case 1:
 this.state = -1;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 1990;BA.debugLine="End Sub";
+ //BA.debugLineNum = 1988;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -4242,9 +4104,6 @@ anywheresoftware.b4a.objects.collections.List _media = null;
 long _n = 0L;
 anywheresoftware.b4a.objects.collections.Map _colmedia = null;
 String _watched = "";
-String _videoid = "";
-Object _mytypes = null;
-cloyd.blink.frmactivity._videoinfo _videos = null;
 anywheresoftware.b4a.BA.IterableList group11;
 int index11;
 int groupLen11;
@@ -4267,23 +4126,23 @@ if (true) break;
 
 case 1:
 //try
-this.state = 16;
-this.catchState = 15;
+this.state = 14;
+this.catchState = 13;
 this.state = 3;
 if (true) break;
 
 case 3:
 //C
 this.state = 4;
-this.catchState = 15;
+this.catchState = 13;
  //BA.debugLineNum = 1909;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest-\"";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1");
  //BA.debugLineNum = 1910;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 17;
+this.state = 15;
 return;
-case 17:
+case 15:
 //C
 this.state = 4;
 _result = (Object) result[0];
@@ -4309,25 +4168,25 @@ if (true) break;
 
 case 4:
 //for
-this.state = 13;
+this.state = 11;
 _colmedia = new anywheresoftware.b4a.objects.collections.Map();
 group11 = _media;
 index11 = 0;
 groupLen11 = group11.getSize();
-this.state = 18;
+this.state = 16;
 if (true) break;
 
-case 18:
+case 16:
 //C
-this.state = 13;
+this.state = 11;
 if (index11 < groupLen11) {
 this.state = 6;
 _colmedia = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group11.Get(index11)));}
 if (true) break;
 
-case 19:
+case 17:
 //C
-this.state = 18;
+this.state = 16;
 index11++;
 if (true) break;
 
@@ -4336,75 +4195,60 @@ case 6:
 this.state = 7;
  //BA.debugLineNum = 1920;BA.debugLine="Dim watched As String = colmedia.Get(\"watched\")";
 _watched = BA.ObjectToString(_colmedia.Get((Object)("watched")));
- //BA.debugLineNum = 1921;BA.debugLine="Dim VideoID As String = colmedia.Get(\"id\")";
-_videoid = BA.ObjectToString(_colmedia.Get((Object)("id")));
- //BA.debugLineNum = 1922;BA.debugLine="Dim mytypes As Object = kvs.Get(VideoID)";
-_mytypes = parent._kvs._get /*Object*/ (_videoid);
- //BA.debugLineNum = 1923;BA.debugLine="Dim videos = mytypes As VideoInfo";
-_videos = (cloyd.blink.frmactivity._videoinfo)(_mytypes);
  //BA.debugLineNum = 1924;BA.debugLine="If watched = False Then";
 if (true) break;
 
 case 7:
 //if
-this.state = 12;
+this.state = 10;
 if ((_watched).equals(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.False))) { 
 this.state = 9;
-}else if(_videos== null && _unwatchedvideocount==0) { 
-this.state = 11;
 }if (true) break;
 
 case 9:
 //C
-this.state = 12;
+this.state = 10;
  //BA.debugLineNum = 1925;BA.debugLine="unwatchedVideoCount = unwatchedVideoCount + 1";
 _unwatchedvideocount = (int) (_unwatchedvideocount+1);
  if (true) break;
 
-case 11:
+case 10:
 //C
-this.state = 12;
- //BA.debugLineNum = 1927;BA.debugLine="unwatchedVideoCount = 1";
-_unwatchedvideocount = (int) (1);
- if (true) break;
-
-case 12:
-//C
-this.state = 19;
+this.state = 17;
 ;
  if (true) break;
 if (true) break;
 
-case 13:
+case 11:
 //C
-this.state = 16;
+this.state = 14;
 ;
- //BA.debugLineNum = 1930;BA.debugLine="Log(\"Loading unwatched videos took: \" & (DateTim";
+ //BA.debugLineNum = 1928;BA.debugLine="Log(\"Loading unwatched videos took: \" & (DateTim";
 anywheresoftware.b4a.keywords.Common.Log("Loading unwatched videos took: "+BA.NumberToString((anywheresoftware.b4a.keywords.Common.DateTime.getNow()-_n))+"ms");
- //BA.debugLineNum = 1931;BA.debugLine="badger1.SetBadge(btnActivity, unwatchedVideoCoun";
+ //BA.debugLineNum = 1929;BA.debugLine="badger1.SetBadge(btnActivity, unwatchedVideoCoun";
 parent._badger1._setbadge /*String*/ ((anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(parent._btnactivity.getObject())),_unwatchedvideocount);
  if (true) break;
 
-case 15:
+case 13:
 //C
-this.state = 16;
+this.state = 14;
 this.catchState = 0;
- //BA.debugLineNum = 1933;BA.debugLine="Log(LastException)";
+ //BA.debugLineNum = 1931;BA.debugLine="Log(LastException)";
 anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
  if (true) break;
 if (true) break;
 
-case 16:
+case 14:
 //C
 this.state = -1;
 this.catchState = 0;
 ;
- //BA.debugLineNum = 1935;BA.debugLine="lblStatus.Text = \"Ready\"";
+ //BA.debugLineNum = 1933;BA.debugLine="lblStatus.Text = \"Ready\"";
 parent._lblstatus.setText("Ready");
- //BA.debugLineNum = 1936;BA.debugLine="Return Null";
+ //BA.debugLineNum = 1934;BA.debugLine="Return Null";
 if (true) {
 anywheresoftware.b4a.keywords.Common.ReturnFromResumableSub(this,anywheresoftware.b4a.keywords.Common.Null);return;};
- //BA.debugLineNum = 1937;BA.debugLine="End Sub";
+ //BA.debugLineNum = 1935;BA.debugLine="End Sub";
 if (true) break;
 }} 
        catch (Exception e0) {
@@ -6481,7 +6325,7 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 2003;BA.debugLine="Try";
+ //BA.debugLineNum = 2001;BA.debugLine="Try";
 if (true) break;
 
 case 1:
@@ -6495,19 +6339,19 @@ case 3:
 //C
 this.state = 4;
 this.catchState = 31;
- //BA.debugLineNum = 2004;BA.debugLine="btnDriveway.Enabled = False";
+ //BA.debugLineNum = 2002;BA.debugLine="btnDriveway.Enabled = False";
 parent._btndriveway.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 2005;BA.debugLine="btnRefresh.Enabled = False";
+ //BA.debugLineNum = 2003;BA.debugLine="btnRefresh.Enabled = False";
 parent._btnrefresh.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 2006;BA.debugLine="btnActivity.Enabled = False";
+ //BA.debugLineNum = 2004;BA.debugLine="btnActivity.Enabled = False";
 parent._btnactivity.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 2007;BA.debugLine="btnDrivewayNewClip.Enabled = False";
+ //BA.debugLineNum = 2005;BA.debugLine="btnDrivewayNewClip.Enabled = False";
 parent._btndrivewaynewclip.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 2008;BA.debugLine="btnFrontDoorNewClip.Enabled = False";
+ //BA.debugLineNum = 2006;BA.debugLine="btnFrontDoorNewClip.Enabled = False";
 parent._btnfrontdoornewclip.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 2009;BA.debugLine="btnSideYardNewClip.Enabled = False";
+ //BA.debugLineNum = 2007;BA.debugLine="btnSideYardNewClip.Enabled = False";
 parent._btnsideyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 2010;BA.debugLine="If Value Then";
+ //BA.debugLineNum = 2008;BA.debugLine="If Value Then";
 if (true) break;
 
 case 4:
@@ -6522,9 +6366,9 @@ this.state = 8;
 case 6:
 //C
 this.state = 9;
- //BA.debugLineNum = 2011;BA.debugLine="lblStatus.Text = \"Arming the system...\"";
+ //BA.debugLineNum = 2009;BA.debugLine="lblStatus.Text = \"Arming the system...\"";
 parent._lblstatus.setText("Arming the system...");
- //BA.debugLineNum = 2012;BA.debugLine="Dim rs As ResumableSub = RESTPost(\"https://res";
+ //BA.debugLineNum = 2010;BA.debugLine="Dim rs As ResumableSub = RESTPost(\"https://res";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restpost("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/arm");
  if (true) break;
@@ -6532,9 +6376,9 @@ _rs = _restpost("https://rest-"+parent._userregion+".immedia-semi.com/network/"+
 case 8:
 //C
 this.state = 9;
- //BA.debugLineNum = 2014;BA.debugLine="lblStatus.Text = \"Disarming the system...\"";
+ //BA.debugLineNum = 2012;BA.debugLine="lblStatus.Text = \"Disarming the system...\"";
 parent._lblstatus.setText("Disarming the system...");
- //BA.debugLineNum = 2015;BA.debugLine="Dim rs As ResumableSub = RESTPost(\"https://res";
+ //BA.debugLineNum = 2013;BA.debugLine="Dim rs As ResumableSub = RESTPost(\"https://res";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restpost("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/disarm");
  if (true) break;
@@ -6543,7 +6387,7 @@ case 9:
 //C
 this.state = 10;
 ;
- //BA.debugLineNum = 2018;BA.debugLine="wait for (rs) complete (Result As Object)";
+ //BA.debugLineNum = 2016;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
 this.state = 33;
 return;
@@ -6552,7 +6396,7 @@ case 33:
 this.state = 10;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 2020;BA.debugLine="If response.StartsWith(\"ERROR: \") Or response.C";
+ //BA.debugLineNum = 2018;BA.debugLine="If response.StartsWith(\"ERROR: \") Or response.C";
 if (true) break;
 
 case 10:
@@ -6565,27 +6409,27 @@ this.state = 12;
 case 12:
 //C
 this.state = 13;
- //BA.debugLineNum = 2021;BA.debugLine="btnDriveway.Enabled = True";
+ //BA.debugLineNum = 2019;BA.debugLine="btnDriveway.Enabled = True";
 parent._btndriveway.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2022;BA.debugLine="btnRefresh.Enabled = True";
+ //BA.debugLineNum = 2020;BA.debugLine="btnRefresh.Enabled = True";
 parent._btnrefresh.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2023;BA.debugLine="btnActivity.Enabled = True";
+ //BA.debugLineNum = 2021;BA.debugLine="btnActivity.Enabled = True";
 parent._btnactivity.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2024;BA.debugLine="btnDrivewayNewClip.Enabled = True";
+ //BA.debugLineNum = 2022;BA.debugLine="btnDrivewayNewClip.Enabled = True";
 parent._btndrivewaynewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2025;BA.debugLine="btnFrontDoorNewClip.Enabled = True";
+ //BA.debugLineNum = 2023;BA.debugLine="btnFrontDoorNewClip.Enabled = True";
 parent._btnfrontdoornewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2026;BA.debugLine="btnSideYardNewClip.Enabled = True";
+ //BA.debugLineNum = 2024;BA.debugLine="btnSideYardNewClip.Enabled = True";
 parent._btnsideyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2027;BA.debugLine="btnDrivewayNewClip.Enabled = True";
+ //BA.debugLineNum = 2025;BA.debugLine="btnDrivewayNewClip.Enabled = True";
 parent._btndrivewaynewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2028;BA.debugLine="btnFrontDoorNewClip.Enabled = True";
+ //BA.debugLineNum = 2026;BA.debugLine="btnFrontDoorNewClip.Enabled = True";
 parent._btnfrontdoornewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2029;BA.debugLine="btnSideYardNewClip.Enabled = True";
+ //BA.debugLineNum = 2027;BA.debugLine="btnSideYardNewClip.Enabled = True";
 parent._btnsideyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2030;BA.debugLine="lblStatus.Text = response";
+ //BA.debugLineNum = 2028;BA.debugLine="lblStatus.Text = response";
 parent._lblstatus.setText(parent._response);
- //BA.debugLineNum = 2031;BA.debugLine="Return";
+ //BA.debugLineNum = 2029;BA.debugLine="Return";
 if (true) return ;
  if (true) break;
 
@@ -6593,10 +6437,10 @@ case 13:
 //C
 this.state = 14;
 ;
- //BA.debugLineNum = 2033;BA.debugLine="Dim rs As ResumableSub = GetCommandID(response)";
+ //BA.debugLineNum = 2031;BA.debugLine="Dim rs As ResumableSub = GetCommandID(response)";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _getcommandid(parent._response);
- //BA.debugLineNum = 2034;BA.debugLine="wait for (rs) complete (Result As Object)";
+ //BA.debugLineNum = 2032;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
 this.state = 34;
 return;
@@ -6605,10 +6449,10 @@ case 34:
 this.state = 14;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 2036;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest-";
+ //BA.debugLineNum = 2034;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest-";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
- //BA.debugLineNum = 2037;BA.debugLine="wait for (rs) complete (Result As Object)";
+ //BA.debugLineNum = 2035;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
 this.state = 35;
 return;
@@ -6617,7 +6461,7 @@ case 35:
 this.state = 14;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 2039;BA.debugLine="For i = 1 To 30";
+ //BA.debugLineNum = 2037;BA.debugLine="For i = 1 To 30";
 if (true) break;
 
 case 14:
@@ -6644,10 +6488,10 @@ if (true) break;
 case 16:
 //C
 this.state = 17;
- //BA.debugLineNum = 2040;BA.debugLine="Dim rs As ResumableSub = GetCommandStatus(resp";
+ //BA.debugLineNum = 2038;BA.debugLine="Dim rs As ResumableSub = GetCommandStatus(resp";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _getcommandstatus(parent._response);
- //BA.debugLineNum = 2041;BA.debugLine="wait for (rs) complete (Result As Object)";
+ //BA.debugLineNum = 2039;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
 this.state = 38;
 return;
@@ -6656,7 +6500,7 @@ case 38:
 this.state = 17;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 2042;BA.debugLine="If commandComplete Then";
+ //BA.debugLineNum = 2040;BA.debugLine="If commandComplete Then";
 if (true) break;
 
 case 17:
@@ -6671,9 +6515,9 @@ this.state = 21;
 case 19:
 //C
 this.state = 28;
- //BA.debugLineNum = 2043;BA.debugLine="btnRefresh_Click";
+ //BA.debugLineNum = 2041;BA.debugLine="btnRefresh_Click";
 _btnrefresh_click();
- //BA.debugLineNum = 2044;BA.debugLine="Exit";
+ //BA.debugLineNum = 2042;BA.debugLine="Exit";
 this.state = 29;
 if (true) break;
  if (true) break;
@@ -6681,7 +6525,7 @@ if (true) break;
 case 21:
 //C
 this.state = 22;
- //BA.debugLineNum = 2046;BA.debugLine="If Value Then";
+ //BA.debugLineNum = 2044;BA.debugLine="If Value Then";
 if (true) break;
 
 case 22:
@@ -6696,14 +6540,14 @@ this.state = 26;
 case 24:
 //C
 this.state = 27;
- //BA.debugLineNum = 2047;BA.debugLine="lblStatus.Text = \"Arming the system... \" & i";
+ //BA.debugLineNum = 2045;BA.debugLine="lblStatus.Text = \"Arming the system... \" & i";
 parent._lblstatus.setText("Arming the system... "+BA.NumberToString(_i)+"/30");
  if (true) break;
 
 case 26:
 //C
 this.state = 27;
- //BA.debugLineNum = 2049;BA.debugLine="lblStatus.Text = \"Disarming the system... \"";
+ //BA.debugLineNum = 2047;BA.debugLine="lblStatus.Text = \"Disarming the system... \"";
 parent._lblstatus.setText("Disarming the system... "+BA.NumberToString(_i)+"/30");
  if (true) break;
 
@@ -6717,10 +6561,10 @@ case 28:
 //C
 this.state = 37;
 ;
- //BA.debugLineNum = 2052;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest";
+ //BA.debugLineNum = 2050;BA.debugLine="Dim rs As ResumableSub = RESTGet(\"https://rest";
 _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _restget("https://rest-"+parent._userregion+".immedia-semi.com/network/"+parent._networkid+"/command/"+parent._commandid);
- //BA.debugLineNum = 2053;BA.debugLine="wait for (rs) complete (Result As Object)";
+ //BA.debugLineNum = 2051;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
 this.state = 39;
 return;
@@ -6729,7 +6573,7 @@ case 39:
 this.state = 37;
 _result = (Object) result[0];
 ;
- //BA.debugLineNum = 2054;BA.debugLine="Sleep(1000)";
+ //BA.debugLineNum = 2052;BA.debugLine="Sleep(1000)";
 anywheresoftware.b4a.keywords.Common.Sleep(ba,this,(int) (1000));
 this.state = 40;
 return;
@@ -6744,19 +6588,19 @@ case 29:
 //C
 this.state = 32;
 ;
- //BA.debugLineNum = 2057;BA.debugLine="btnDriveway.Enabled = True";
+ //BA.debugLineNum = 2055;BA.debugLine="btnDriveway.Enabled = True";
 parent._btndriveway.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2058;BA.debugLine="btnRefresh.Enabled = True";
+ //BA.debugLineNum = 2056;BA.debugLine="btnRefresh.Enabled = True";
 parent._btnrefresh.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2059;BA.debugLine="btnActivity.Enabled = True";
+ //BA.debugLineNum = 2057;BA.debugLine="btnActivity.Enabled = True";
 parent._btnactivity.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2060;BA.debugLine="btnDrivewayNewClip.Enabled = True";
+ //BA.debugLineNum = 2058;BA.debugLine="btnDrivewayNewClip.Enabled = True";
 parent._btndrivewaynewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2061;BA.debugLine="btnFrontDoorNewClip.Enabled = True";
+ //BA.debugLineNum = 2059;BA.debugLine="btnFrontDoorNewClip.Enabled = True";
 parent._btnfrontdoornewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2062;BA.debugLine="btnSideYardNewClip.Enabled = True";
+ //BA.debugLineNum = 2060;BA.debugLine="btnSideYardNewClip.Enabled = True";
 parent._btnsideyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 2063;BA.debugLine="lblStatus.Text = \"Ready\"";
+ //BA.debugLineNum = 2061;BA.debugLine="lblStatus.Text = \"Ready\"";
 parent._lblstatus.setText("Ready");
  if (true) break;
 
@@ -6764,7 +6608,7 @@ case 31:
 //C
 this.state = 32;
 this.catchState = 0;
- //BA.debugLineNum = 2066;BA.debugLine="Log(LastException)";
+ //BA.debugLineNum = 2064;BA.debugLine="Log(LastException)";
 anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
  if (true) break;
 if (true) break;
@@ -6774,7 +6618,7 @@ case 32:
 this.state = -1;
 this.catchState = 0;
 ;
- //BA.debugLineNum = 2069;BA.debugLine="End Sub";
+ //BA.debugLineNum = 2067;BA.debugLine="End Sub";
 if (true) break;
 }} 
        catch (Exception e0) {
