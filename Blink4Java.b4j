@@ -1545,7 +1545,7 @@ Sub CheckMonitor() As Screen
 			Return S
 		Else If fx.Screens.Size> 1 Then
 			Dim SList As List = fx.Screens
-			Dim S As Screen = SList.Get(2)
+			Dim S As Screen = SList.Get(0)
 			'Msgbox.Show("Minimum X: " & S.MinX,"Screen")
 			Return S
 		Else

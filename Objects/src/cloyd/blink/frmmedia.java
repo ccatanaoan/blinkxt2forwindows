@@ -60,9 +60,9 @@ if (true) return _s;
  //BA.debugLineNum = 71;BA.debugLine="Dim SList As List = fx.Screens";
 _slist = new anywheresoftware.b4a.objects.collections.List();
 _slist = _fx.getScreens();
- //BA.debugLineNum = 72;BA.debugLine="Dim S As Screen = SList.Get(2)";
+ //BA.debugLineNum = 72;BA.debugLine="Dim S As Screen = SList.Get(0)";
 _s = new anywheresoftware.b4j.objects.JFX.ScreenWrapper();
-_s = (anywheresoftware.b4j.objects.JFX.ScreenWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.JFX.ScreenWrapper(), (javafx.stage.Screen)(_slist.Get((int) (2))));
+_s = (anywheresoftware.b4j.objects.JFX.ScreenWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.objects.JFX.ScreenWrapper(), (javafx.stage.Screen)(_slist.Get((int) (0))));
  //BA.debugLineNum = 74;BA.debugLine="Return S";
 if (true) return _s;
  }else {
