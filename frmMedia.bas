@@ -35,12 +35,12 @@ Public Sub Initialize (Parent As Form)
 End Sub
 
 Public Sub Show
-	If url.Contains("Driveway") Then
-		imgScreenshot.SetImage(fx.LoadImage(File.DirApp,"Driveway.jpg"))
-	Else if url.Contains("FrontDoor") Then
-		imgScreenshot.SetImage(fx.LoadImage(File.DirApp,"FrontDoor.jpg"))
-	Else if url.Contains("SideYard") Then
+	If url.Contains("SideYard") Then
 		imgScreenshot.SetImage(fx.LoadImage(File.DirApp,"SideYard.jpg"))
+	Else if url.Contains("FrontYard") Then
+		imgScreenshot.SetImage(fx.LoadImage(File.DirApp,"FrontYard.jpg"))
+	Else if url.Contains("Backyard") Then
+		imgScreenshot.SetImage(fx.LoadImage(File.DirApp,"Backyard.jpg"))
 	End If
 	lblTimestamp.Text = timestamp
 	frm.ShowAndWait

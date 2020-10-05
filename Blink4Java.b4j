@@ -291,38 +291,38 @@ Sub Process_Globals
 	Private imgInit As String
 	Private isMaximized As Boolean = False
 	Private f_X, f_Y, f_W, f_H As Double 'ignore
-	Private btnDriveway As Button 'ignore
+	Private btnSideYard As Button 'ignore
 	Private response As String
-	Private ivDriveway As ImageView
-	Private lblStatus As Label 'ignore
-	Private ivFrontDoor As ImageView
 	Private ivSideYard As ImageView
-	Private lblDriveway As Label 'ignore
-	Private lblFrontDoor As Label 'ignore
+	Private lblStatus As Label 'ignore
+	Private ivFrontYard As ImageView
+	Private ivBackyard As ImageView
 	Private lblSideYard As Label 'ignore
-	Private clvDriveway As CustomListView
-	Private clvFrontDoor As CustomListView
+	Private lblFrontYard As Label 'ignore
+	Private lblBackyard As Label 'ignore
 	Private clvSideYard As CustomListView
+	Private clvFrontYard As CustomListView
+	Private clvBackyard As CustomListView
 	Private lblSyncModule As Label 'ignore
 	Private xui As XUI
 	Private btnActivity As Button 'ignore
 	Private btnRefresh As Button 'ignore
-	Private prevDrivewayUpdateTime As String
-	Private prevFrontDoorUpdateTime As String
+	Private prevSideYardUpdateTime As String
+	Private prevFrontYardUpdateTime As String
 	Private ivSyncModule As ImageView 'ignore
 	Private ivSyncModuleWiFi As ImageView 'ignore
-	Private drivewayArmedStatus As String
-	Private frontdoorArmedStatus As String
-	Private sideyardArmedStatus As String
-	Private btnDrivewayNewClip As Button 'ignore
-	Private btnFrontDoorNewClip As Button 'ignore
+	Private SideYardArmedStatus As String
+	Private FrontYardArmedStatus As String
+	Private BackyardArmedStatus As String
 	Private btnSideYardNewClip As Button 'ignore
+	Private btnFrontYardNewClip As Button 'ignore
+	Private btnBackyardNewClip As Button 'ignore
 	Private badger1 As Badger
 	Private prevCameraThumbnail As String
 	Private kvs As KeyValueStore
-	Private btnDrivewayRefresh As Button 'ignore
-	Private btnFrontDoorRefresh As Button 'ignore
 	Private btnSideYardRefresh As Button 'ignore
+	Private btnFrontYardRefresh As Button 'ignore
+	Private btnBackyardRefresh As Button 'ignore
 	Private swArmed As B4XSwitch 'ignore
 	Private dialog As B4XDialog
 End Sub
@@ -402,12 +402,12 @@ Sub AppStart (Form1 As Form, Args() As String)
 			ExitApplication
 		End If
 		
-		btnDriveway.Enabled = False
+		btnSideYard.Enabled = False
 		btnRefresh.Enabled = False
 		btnActivity.Enabled = False
-		btnDrivewayNewClip.Enabled = False
-		btnFrontDoorNewClip.Enabled = False
 		btnSideYardNewClip.Enabled = False
+		btnFrontYardNewClip.Enabled = False
+		btnBackyardNewClip.Enabled = False
 		badger1.Initialize
 		RequestAuthToken
 	Catch
@@ -418,12 +418,12 @@ End Sub
 
 'Return true to allow the default exceptions handler to handle the uncaught exception.
 Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
-	btnDriveway.Enabled = True
+	btnSideYard.Enabled = True
 	btnRefresh.Enabled = True
 	btnActivity.Enabled = True
-	btnDrivewayNewClip.Enabled = True
-	btnFrontDoorNewClip.Enabled = True
 	btnSideYardNewClip.Enabled = True
+	btnFrontYardNewClip.Enabled = True
+	btnBackyardNewClip.Enabled = True
 	fx.msgbox2(MainForm,Error.Message,MainForm.Title,"OK","","", fx.msgbox_ERROR)
 	Dim shl As Shell
 	Try
@@ -437,23 +437,23 @@ Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
 	Return False ' handled
 End Sub
 
-Sub btnDriveway_Click
-	clvDriveway.Clear
-	clvFrontDoor.Clear
+Sub btnSideYard_Click
 	clvSideYard.Clear
-	btnDriveway.Enabled = False
+	clvFrontYard.Clear
+	clvBackyard.Clear
+	btnSideYard.Enabled = False
 	btnRefresh.Enabled = False
 	btnActivity.Enabled = False
-	btnDrivewayNewClip.Enabled = False
-	btnFrontDoorNewClip.Enabled = False
 	btnSideYardNewClip.Enabled = False
+	btnFrontYardNewClip.Enabled = False
+	btnBackyardNewClip.Enabled = False
 	
 '	Dim rs As ResumableSub = RefreshCameras(False, "All")
 '	wait for (rs) complete (Result As Object)
 
-	BlurIV("Driveway.jpg",ivDriveway)
-	BlurIV("FrontDoor.jpg",ivFrontDoor)
 	BlurIV("SideYard.jpg",ivSideYard)
+	BlurIV("FrontYard.jpg",ivFrontYard)
+	BlurIV("Backyard.jpg",ivBackyard)
 
 	Dim rs As ResumableSub = RefreshCameras(False, "347574")
 	wait for (rs) complete (Result As Object)
@@ -497,12 +497,12 @@ Sub RequestAuthToken As ResumableSub
 					If jobLogin.Success = False Then
 						lblStatus.Text = GetRESTError(jobLogin.ErrorMessage) ' "RequestAuthToken error: " & jobLogin.GetString
 						Log("2FA error: " & jobLogin.ErrorMessage)
-						btnDriveway.Enabled = True
+						btnSideYard.Enabled = True
 						btnRefresh.Enabled = True
 						btnActivity.Enabled = True
-						btnDrivewayNewClip.Enabled = True
-						btnFrontDoorNewClip.Enabled = True
 						btnSideYardNewClip.Enabled = True
+						btnFrontYardNewClip.Enabled = True
+						btnBackyardNewClip.Enabled = True
 						jobLogin.Release
 						Return Null
 					End If
@@ -510,12 +510,12 @@ Sub RequestAuthToken As ResumableSub
 			End If
 			
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-				btnDriveway.Enabled = True
+				btnSideYard.Enabled = True
 				btnRefresh.Enabled = True
 				btnActivity.Enabled = True
-				btnDrivewayNewClip.Enabled = True
-				btnFrontDoorNewClip.Enabled = True
 				btnSideYardNewClip.Enabled = True
+				btnFrontYardNewClip.Enabled = True
+				btnBackyardNewClip.Enabled = True
 				jobLogin.Release
 				Return Null
 			Else
@@ -524,12 +524,12 @@ Sub RequestAuthToken As ResumableSub
 		Else
 			lblStatus.Text = GetRESTError(jobLogin.ErrorMessage) ' "RequestAuthToken error: " & jobLogin.GetString
 			Log("RequestAuthToken error: " & jobLogin.ErrorMessage)
-			btnDriveway.Enabled = True
+			btnSideYard.Enabled = True
 			btnRefresh.Enabled = True
 			btnActivity.Enabled = True
-			btnDrivewayNewClip.Enabled = True
-			btnFrontDoorNewClip.Enabled = True
 			btnSideYardNewClip.Enabled = True
+			btnFrontYardNewClip.Enabled = True
+			btnBackyardNewClip.Enabled = True
 			jobLogin.Release
 			Return Null
 		End If
@@ -564,12 +564,12 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 		wait for (rs) complete (Result As Object)
 		
 		If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-			btnDriveway.Enabled = True
+			btnSideYard.Enabled = True
 			btnRefresh.Enabled = True
 			btnActivity.Enabled = True
-			btnDrivewayNewClip.Enabled = True
-			btnFrontDoorNewClip.Enabled = True
 			btnSideYardNewClip.Enabled = True
+			btnFrontYardNewClip.Enabled = True
+			btnBackyardNewClip.Enabled = True
 			Return Null
 		End If
 		
@@ -582,12 +582,12 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 		wait for (rs) complete (Result As Object)
 		
 		If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-			btnDriveway.Enabled = True
+			btnSideYard.Enabled = True
 			btnRefresh.Enabled = True
 			btnActivity.Enabled = True
-			btnDrivewayNewClip.Enabled = True
-			btnFrontDoorNewClip.Enabled = True
 			btnSideYardNewClip.Enabled = True
+			btnFrontYardNewClip.Enabled = True
+			btnBackyardNewClip.Enabled = True
 			' If response.Contains("An app update is required") = False Then <-- THIS MEANS THERE IS AN UPDATED ENDPOINT OR WEB CALL
 				Return Null
 			' End If
@@ -599,9 +599,9 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 		wait for (rs) complete (Result As Object)
 		
 		If FirstRun= False And whatCamera = "All"  Then
-			BlurIV("Driveway.jpg",ivDriveway)
-			BlurIV("FrontDoor.jpg",ivFrontDoor)
 			BlurIV("SideYard.jpg",ivSideYard)
+			BlurIV("FrontYard.jpg",ivFrontYard)
+			BlurIV("Backyard.jpg",ivBackyard)
 		End If
 		
 		' https://www.b4x.com/android/forum/threads/b4x-resumable-subs-that-return-values-resumablesub.82670/
@@ -616,33 +616,33 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 			
 			If FirstRun Then
 				If camera = "347574" Then
-					lblStatus.Text = "Retrieving Driveway thumbnail..."
-					iv = ivDriveway
-					clv = clvDriveway
-				Else If camera = "236967" Then
-					lblStatus.Text = "Retrieving Front Door thumbnail..."
-					iv = ivFrontDoor
-					clv = clvFrontDoor
-				Else If camera = "458236" Then
 					lblStatus.Text = "Retrieving Side Yard thumbnail..."
 					iv = ivSideYard
 					clv = clvSideYard
+				Else If camera = "236967" Then
+					lblStatus.Text = "Retrieving Front Yard thumbnail..."
+					iv = ivFrontYard
+					clv = clvFrontYard
+				Else If camera = "458236" Then
+					lblStatus.Text = "Retrieving Backyard thumbnail..."
+					iv = ivBackyard
+					clv = clvBackyard
 				End If
 			Else
 				If camera = "347574" Then
-					lblStatus.Text = "Capturing a new Driveway thumbnail..."
-					iv = ivDriveway
-					clv = clvDriveway
-					attempts = 15
-				Else If camera = "236967" Then
-					lblStatus.Text = "Capturing a new Front Door thumbnail..."
-					iv = ivFrontDoor
-					clv = clvFrontDoor
-					attempts = 15
-				Else If camera = "458236" Then
 					lblStatus.Text = "Capturing a new Side Yard thumbnail..."
 					iv = ivSideYard
 					clv = clvSideYard
+					attempts = 15
+				Else If camera = "236967" Then
+					lblStatus.Text = "Capturing a new Front Yard thumbnail..."
+					iv = ivFrontYard
+					clv = clvFrontYard
+					attempts = 15
+				Else If camera = "458236" Then
+					lblStatus.Text = "Capturing a new Backyard thumbnail..."
+					iv = ivBackyard
+					clv = clvBackyard
 					attempts = 15
 				End If
 			End If
@@ -673,12 +673,12 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 
 				'File.WriteString(File.DirApp,"response_camerathumbnail.txt",response)
 				If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-					btnDriveway.Enabled = True
+					btnSideYard.Enabled = True
 					btnRefresh.Enabled = True
 					btnActivity.Enabled = True
-					btnDrivewayNewClip.Enabled = True
-					btnFrontDoorNewClip.Enabled = True
 					btnSideYardNewClip.Enabled = True
+					btnFrontYardNewClip.Enabled = True
+					btnBackyardNewClip.Enabled = True
 					Return Null
 				Else
 					Dim rs As ResumableSub = GetCommandID(response)
@@ -689,12 +689,12 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 
 					'File.WriteString(File.DirApp,"response_command.txt",response)
 					If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-						btnDriveway.Enabled = True
+						btnSideYard.Enabled = True
 						btnRefresh.Enabled = True
 						btnActivity.Enabled = True
-						btnDrivewayNewClip.Enabled = True
-						btnFrontDoorNewClip.Enabled = True
 						btnSideYardNewClip.Enabled = True
+						btnFrontYardNewClip.Enabled = True
+						btnBackyardNewClip.Enabled = True
 						Return Null
 					Else
 						Dim reChecked As Boolean
@@ -715,12 +715,12 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 								wait for (rs) complete (Result As Object)
 								
 								If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-									btnDriveway.Enabled = True
+									btnSideYard.Enabled = True
 									btnRefresh.Enabled = True
 									btnActivity.Enabled = True
-									btnDrivewayNewClip.Enabled = True
-									btnFrontDoorNewClip.Enabled = True
 									btnSideYardNewClip.Enabled = True
+									btnFrontYardNewClip.Enabled = True
+									btnBackyardNewClip.Enabled = True
 									Return Null
 								Else
 									i = 1
@@ -735,20 +735,20 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 
 						Next
 						If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-							btnDriveway.Enabled = True
+							btnSideYard.Enabled = True
 							btnRefresh.Enabled = True
 							btnActivity.Enabled = True
-							btnDrivewayNewClip.Enabled = True
-							btnFrontDoorNewClip.Enabled = True
 							btnSideYardNewClip.Enabled = True
+							btnFrontYardNewClip.Enabled = True
+							btnBackyardNewClip.Enabled = True
 							Return Null
 						else If commandComplete = False Then
 							If camera = "347574" Then
-								lblStatus.Text = "Failed to retrieve Driveway thumbnail..."
-							Else If camera = "236967" Then
-								lblStatus.Text = "Failed to retrieve Front Door thumbnail..."
-							Else If camera = "458236" Then
 								lblStatus.Text = "Failed to retrieve Side Yard thumbnail..."
+							Else If camera = "236967" Then
+								lblStatus.Text = "Failed to retrieve Front Yard thumbnail..."
+							Else If camera = "458236" Then
+								lblStatus.Text = "Failed to retrieve Backyard thumbnail..."
 							End If
 						End If
 					End If
@@ -763,21 +763,21 @@ Sub RefreshCameras(FirstRun As Boolean, whatCamera As String) As ResumableSub
 		response = "ERROR: " & LastException
 		Log("RefreshCamera LastException: " & LastException)
 	End Try
-	btnDriveway.Enabled = True
+	btnSideYard.Enabled = True
 	btnRefresh.Enabled = True
 	btnActivity.Enabled = True
-	btnDrivewayNewClip.Enabled = True
-	btnFrontDoorNewClip.Enabled = True
 	btnSideYardNewClip.Enabled = True
-	If lblSideYard.Text.Contains("OFFLINE") Then
-		lblSideYard.Text = sideyardArmedStatus
+	btnFrontYardNewClip.Enabled = True
+	btnBackyardNewClip.Enabled = True
+	If lblBackyard.Text.Contains("OFFLINE") Then
+		lblBackyard.Text = BackyardArmedStatus
+		BlurIV("Backyard.jpg",ivBackyard)
+	Else if lblSideYard.Text.Contains("OFFLINE") Then
+		lblSideYard.Text = SideYardArmedStatus
 		BlurIV("SideYard.jpg",ivSideYard)
-	Else if lblDriveway.Text.Contains("OFFLINE") Then
-		lblDriveway.Text = drivewayArmedStatus
-		BlurIV("Driveway.jpg",ivDriveway)
-	Else if lblFrontDoor.Text.Contains("OFFLINE") Then
-		lblFrontDoor.Text = frontdoorArmedStatus
-		BlurIV("FrontDoor.jpg",ivFrontDoor)
+	Else if lblFrontYard.Text.Contains("OFFLINE") Then
+		lblFrontYard.Text = FrontYardArmedStatus
+		BlurIV("FrontYard.jpg",ivFrontYard)
 	End If
 	Return Null
 End Sub
@@ -820,11 +820,11 @@ Sub GetCommandResponse(iv As ImageView,clv As CustomListView,camera As String, a
 		Return True
 	Else
 		If camera = "347574" Then
-			lblStatus.Text = "Awaiting for the Driveway thumbnail... " & attempts & "/" & attemptsAllowed
-		Else If camera = "236967" Then
-			lblStatus.Text = "Awaiting for the Front Door thumbnail...  " & attempts & "/" & attemptsAllowed
-		Else If camera = "458236" Then
 			lblStatus.Text = "Awaiting for the Side Yard thumbnail... " & attempts & "/" & attemptsAllowed
+		Else If camera = "236967" Then
+			lblStatus.Text = "Awaiting for the Front Yard thumbnail...  " & attempts & "/" & attemptsAllowed
+		Else If camera = "458236" Then
+			lblStatus.Text = "Awaiting for the Backyard thumbnail... " & attempts & "/" & attemptsAllowed
 		End If
 		Return False
 	End If
@@ -896,11 +896,11 @@ Sub DownloadImage (Link As String, iv As ImageView, camera As String) As Resumab
 		If j.Success Then
 			' Save to a JPG file
 			If camera = "347574" Then
-				Dim out As OutputStream = File.OpenOutput(File.DirApp, "Driveway.jpg", False)
-			Else If camera = "236967" Then
-				Dim out As OutputStream = File.OpenOutput(File.DirApp, "FrontDoor.jpg", False)
-			Else If camera = "458236" Then
 				Dim out As OutputStream = File.OpenOutput(File.DirApp, "SideYard.jpg", False)
+			Else If camera = "236967" Then
+				Dim out As OutputStream = File.OpenOutput(File.DirApp, "FrontYard.jpg", False)
+			Else If camera = "458236" Then
+				Dim out As OutputStream = File.OpenOutput(File.DirApp, "Backyard.jpg", False)
 			End If
 			File.Copy2(j.GetInputStream, out)
 			out.Close '<------ very important
@@ -1154,17 +1154,17 @@ Sub GetCameraInfo(json As String, clv As CustomListView) As ResumableSub
 		Dim strTimestamp As String
 		strTimestamp = ConvertDateTime(updated_at)
 		lblStatus.Text = "Last updated: " & strTimestamp
-		If clv = clvDriveway Then
-			lblDriveway.Text = strTimestamp & " " & drivewayArmedStatus
-			prevDrivewayUpdateTime = updated_at
-		Else If clv = clvFrontDoor Then
-			lblFrontDoor.Text = strTimestamp & " " & frontdoorArmedStatus
-			lblDriveway.Text = ConvertDateTime(prevDrivewayUpdateTime) & " " & drivewayArmedStatus
-			prevFrontDoorUpdateTime = updated_at
-		Else If clv = clvSideYard Then
-			lblSideYard.Text = strTimestamp & " " & sideyardArmedStatus
-			lblDriveway.Text = ConvertDateTime(prevDrivewayUpdateTime) & " " & drivewayArmedStatus
-			lblFrontDoor.Text = ConvertDateTime(prevFrontDoorUpdateTime) & " " & frontdoorArmedStatus
+		If clv = clvSideYard Then
+			lblSideYard.Text = strTimestamp & " " & SideYardArmedStatus
+			prevSideYardUpdateTime = updated_at
+		Else If clv = clvFrontYard Then
+			lblFrontYard.Text = strTimestamp & " " & FrontYardArmedStatus
+			lblSideYard.Text = ConvertDateTime(prevSideYardUpdateTime) & " " & SideYardArmedStatus
+			prevFrontYardUpdateTime = updated_at
+		Else If clv = clvBackyard Then
+			lblBackyard.Text = strTimestamp & " " & BackyardArmedStatus
+			lblSideYard.Text = ConvertDateTime(prevSideYardUpdateTime) & " " & SideYardArmedStatus
+			lblFrontYard.Text = ConvertDateTime(prevFrontYardUpdateTime) & " " & FrontYardArmedStatus
 		End If
 		
 		For i = 0 To clv.Size-1
@@ -1294,83 +1294,83 @@ Sub GetHomescreen(json As String) As ResumableSub
 			'Dim fw_version As String = colcameras.Get("fw_version")
 			Dim status As String = colcameras.Get("status")
 						
-			If name = "Driveway" Then
+			If name = "Side Yard" Then
 				If battery > 1 And battery_state = "ok" Then
 					If enabled = "true" Then
 						If enabled = "true" Then
-							drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
-							lblDriveway.Style = ""
-						Else
-							drivewayArmedStatus = "MOTION DETECTION IS DISABLED!"
-							lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-						End If
-					Else
-						drivewayArmedStatus = "CAMERA NOT ARMED!"
-						lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-					End If
-				Else
-					drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
-					If drivewayArmedStatus = "[Level 1 - LOW]" Then
-						drivewayArmedStatus = "[REPLACE]"
-					End If
-					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-				End If
-				If status = "offline" Then
-					drivewayArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
-					lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-					BlurIV("Driveway.jpg",ivDriveway)
-				End If
-			Else If name = "Front Door" Then
-				If battery > 1 And battery_state = "ok" Then
-					If enabled = "true" Then
-						If enabled = "true" Then
-							frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
-							lblFrontDoor.Style = ""
-						Else
-							frontdoorArmedStatus = "MOTION DETECTION IS DISABLED!"
-							lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-						End If
-					Else
-						frontdoorArmedStatus = "CAMERA NOT ARMED!"
-						lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-					End If
-				Else
-					frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
-					If frontdoorArmedStatus = "[Level 1 - LOW]" Then
-						frontdoorArmedStatus = "[REPLACE]"
-					End If
-					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-				End If
-				If status = "offline" Then
-					frontdoorArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
-					lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-					BlurIV("FrontDoor.jpg",ivFrontDoor)
-				End If
-			Else If name = "Side Yard" Then
-				If battery > 1 And battery_state = "ok" Then
-					If enabled = "true" Then
-						If enabled = "true" Then
-							sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+							SideYardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
 							lblSideYard.Style = ""
 						Else
-							sideyardArmedStatus = "MOTION DETECTION IS DISABLED!"
+							SideYardArmedStatus = "MOTION DETECTION IS DISABLED!"
 							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
 					Else
-						sideyardArmedStatus = "CAMERA NOT ARMED!"
+						SideYardArmedStatus = "CAMERA NOT ARMED!"
 						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
-					sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
-					If sideyardArmedStatus = "[Level 1 - LOW]" Then
-						sideyardArmedStatus = "[REPLACE]"
+					SideYardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+					If SideYardArmedStatus = "[Level 1 - LOW]" Then
+						SideYardArmedStatus = "[REPLACE]"
 					End If
 					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 				End If
 				If status = "offline" Then
-					sideyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
+					SideYardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
 					lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					BlurIV("SideYard.jpg",ivSideYard)
+				End If
+			Else If name = "Front Yard" Then
+				If battery > 1 And battery_state = "ok" Then
+					If enabled = "true" Then
+						If enabled = "true" Then
+							FrontYardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+							lblFrontYard.Style = ""
+						Else
+							FrontYardArmedStatus = "MOTION DETECTION IS DISABLED!"
+							lblFrontYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+						End If
+					Else
+						FrontYardArmedStatus = "CAMERA NOT ARMED!"
+						lblFrontYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+					End If
+				Else
+					FrontYardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+					If FrontYardArmedStatus = "[Level 1 - LOW]" Then
+						FrontYardArmedStatus = "[REPLACE]"
+					End If
+					lblFrontYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+				End If
+				If status = "offline" Then
+					FrontYardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
+					lblFrontYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+					BlurIV("FrontYard.jpg",ivFrontYard)
+				End If
+			Else If name = "Backyard" Then
+				If battery > 1 And battery_state = "ok" Then
+					If enabled = "true" Then
+						If enabled = "true" Then
+							BackyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+							lblBackyard.Style = ""
+						Else
+							BackyardArmedStatus = "MOTION DETECTION IS DISABLED!"
+							lblBackyard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+						End If
+					Else
+						BackyardArmedStatus = "CAMERA NOT ARMED!"
+						lblBackyard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+					End If
+				Else
+					BackyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
+					If BackyardArmedStatus = "[Level 1 - LOW]" Then
+						BackyardArmedStatus = "[REPLACE]"
+					End If
+					lblBackyard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+				End If
+				If status = "offline" Then
+					BackyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & " OFFLINE]"
+					lblBackyard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+					BlurIV("Backyard.jpg",ivBackyard)
 				End If
 			End If
 		Next
@@ -1390,14 +1390,14 @@ Sub GetHomescreen(json As String) As ResumableSub
 		swArmed.Value = armed
 		
 		If armed <> "true" Then
-			drivewayArmedStatus = "SYSTEM NOT ARMED!"
-			lblDriveway.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-			
-			frontdoorArmedStatus = "SYSTEM NOT ARMED!"
-			lblFrontDoor.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
-			
-			sideyardArmedStatus = "SYSTEM NOT ARMED!"
+			SideYardArmedStatus = "SYSTEM NOT ARMED!"
 			lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+			
+			FrontYardArmedStatus = "SYSTEM NOT ARMED!"
+			lblFrontYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+			
+			BackyardArmedStatus = "SYSTEM NOT ARMED!"
+			lblBackyard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 		End If
 	Catch
 		Log(LastException)
@@ -1446,18 +1446,18 @@ Private Sub lbTitle_MousePressed (EventData As MouseEvent)
 End Sub
 
 Private Sub ivClose_MouseClicked (EventData As MouseEvent)
-	File.Delete(File.DirApp, "Driveway.jpg")
-	File.Delete(File.DirApp, "FrontDoor.jpg")
 	File.Delete(File.DirApp, "SideYard.jpg")
+	File.Delete(File.DirApp, "FrontYard.jpg")
+	File.Delete(File.DirApp, "Backyard.jpg")
 	File.Delete(File.DirApp,"screenshot.jpg")
 	File.Delete(File.DirApp,"media.mp4")
 	ExitApplication
 End Sub
 
 Sub MainForm_CloseRequest (EventData As Event)
-	File.Delete(File.DirApp, "Driveway.jpg")
-	File.Delete(File.DirApp, "FrontDoor.jpg")
 	File.Delete(File.DirApp, "SideYard.jpg")
+	File.Delete(File.DirApp, "FrontYard.jpg")
+	File.Delete(File.DirApp, "Backyard.jpg")
 	File.Delete(File.DirApp,"screenshot.jpg")
 	File.Delete(File.DirApp,"media.mp4")
 End Sub
@@ -1562,49 +1562,49 @@ Sub CheckMonitor() As Screen
 	End Try
 End Sub
 
+Sub clvBackyard_ItemClick (Index As Int, Value As Object)
+	Try
+		clvSideYard.JumpToItem(Index)
+		clvFrontYard.JumpToItem(Index)
+		clvBackyard.JumpToItem(Index)
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Sub clvFrontYard_ItemClick (Index As Int, Value As Object)
+	Try
+		clvSideYard.JumpToItem(Index)
+		clvFrontYard.JumpToItem(Index)
+		clvBackyard.JumpToItem(Index)
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
 Sub clvSideYard_ItemClick (Index As Int, Value As Object)
 	Try
-		clvDriveway.JumpToItem(Index)
-		clvFrontDoor.JumpToItem(Index)
 		clvSideYard.JumpToItem(Index)
+		clvFrontYard.JumpToItem(Index)
+		clvBackyard.JumpToItem(Index)
 	Catch
 		Log(LastException)
 	End Try
 End Sub
 
-Sub clvFrontDoor_ItemClick (Index As Int, Value As Object)
-	Try
-		clvDriveway.JumpToItem(Index)
-		clvFrontDoor.JumpToItem(Index)
-		clvSideYard.JumpToItem(Index)
-	Catch
-		Log(LastException)
-	End Try
-End Sub
-
-Sub clvDriveway_ItemClick (Index As Int, Value As Object)
-	Try
-		clvDriveway.JumpToItem(Index)
-		clvFrontDoor.JumpToItem(Index)
-		clvSideYard.JumpToItem(Index)
-	Catch
-		Log(LastException)
-	End Try
-End Sub
-
-Sub ivDriveway_MouseClicked (EventData As MouseEvent)
+Sub ivSideYard_MouseClicked (EventData As MouseEvent)
 	Dim mf As frmMedia
 	mf.Initialize(MainForm)
-	mf.timestamp = lblDriveway.Text
+	mf.timestamp = lblSideYard.Text
 	mf.url=$"
-	   <h1>${lblDriveway.Text}</h1>
-	   <img src="${File.GetUri(File.DirApp, "Driveway.jpg")}"/>
+	   <h1>${lblSideYard.Text}</h1>
+	   <img src="${File.GetUri(File.DirApp, "SideYard.jpg")}"/>
 	
 	"$
 	mf.Show
 	Return
 
-'	Dim shadow As JavaObject = lblDriveway
+'	Dim shadow As JavaObject = lblSideYard
 '	shadow.InitializeNewInstance ("javafx.scene.effect.DropShadow",)
 '	Dim offsetX = 3, offsetY = 3, radius = 5 As Double
 '	shadow.RunMethod("setRadius", Array(radius))
@@ -1623,7 +1623,7 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 '			If commandComplete Then
 '				'RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/458236")
 '				Sleep(1000)
-'				'GetCameraInfo(response,clvDriveway)
+'				'GetCameraInfo(response,clvSideYard)
 '				'File.WriteString(File.DirApp,"response.txt",response)
 '				Sleep(1000)
 '				'btnActivity_Click
@@ -1643,7 +1643,7 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 '	' https://www.getscw.com/decoding/rtsp
 '	' Like most battery/cloud cameras Blink does Not support an RTSP stream As the video feed Is directly sent To Cloud servers.
 '	RESTPost("https://rest-" & userRegion &".immedia-semi.com/api/v3/networks/94896/cameras/347574/liveview")
-'	' {"id":147201291,"server":"immis://35.163.152.226:443/mUJn8-wyeaHTguSQ__IMDS_890039632?client_id=17","duration":300,"device_name":"Side Yard","camera_name":"Side Yard","network_id":94896,"continue_interval":30,"continue_warning":10,"submit_logs":true,"lv_save":true}
+'	' {"id":147201291,"server":"immis://35.163.152.226:443/mUJn8-wyeaHTguSQ__IMDS_890039632?client_id=17","duration":300,"device_name":"Backyard","camera_name":"Backyard","network_id":94896,"continue_interval":30,"continue_warning":10,"submit_logs":true,"lv_save":true}
 '	Sleep(1000)
 '	File.WriteString(File.DirApp,"response_live_view.txt",response)
 '	Dim commandID As String = GetLiveView(response)
@@ -1654,7 +1654,7 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 '		If commandComplete Then
 '			'RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/458236")
 '			Sleep(1000)
-'			'GetCameraInfo(response,clvDriveway)
+'			'GetCameraInfo(response,clvSideYard)
 '			File.WriteString(File.DirApp,"response_live_view_response.txt",response)
 '			Sleep(1000)
 '			Exit
@@ -1692,7 +1692,7 @@ Sub ivDriveway_MouseClicked (EventData As MouseEvent)
 '			If commandComplete Then
 '				'RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/camera/458236")
 '				Sleep(1000)
-'				'GetCameraInfo(response,clvDriveway)
+'				'GetCameraInfo(response,clvSideYard)
 '				File.WriteString(File.DirApp,"response_arm_commandcomplete.txt",response)
 '				Sleep(1000)
 '				Exit
@@ -1745,25 +1745,25 @@ Sub GetLiveView(json As String) As String 'ignore
 	Return id
 End Sub
 
-Sub ivFrontDoor_MouseClicked (EventData As MouseEvent)
+Sub ivFrontYard_MouseClicked (EventData As MouseEvent)
 	Dim mf As frmMedia
 	mf.Initialize(MainForm)
-	mf.timestamp = lblFrontDoor.Text
+	mf.timestamp = lblFrontYard.Text
 	mf.url=$"
-   <h1>${lblFrontDoor.Text}</h1>
-   <img src="${File.GetUri(File.DirApp, "FrontDoor.jpg")}"/>
+   <h1>${lblFrontYard.Text}</h1>
+   <img src="${File.GetUri(File.DirApp, "FrontYard.jpg")}"/>
    
 "$
 	mf.Show
 End Sub
 
-Sub ivSideYard_MouseClicked (EventData As MouseEvent)
+Sub ivBackyard_MouseClicked (EventData As MouseEvent)
 	Dim mf As frmMedia
 	mf.Initialize(MainForm)
-	mf.timestamp = lblSideYard.Text
+	mf.timestamp = lblBackyard.Text
 	mf.url=$"
-   <h1>${lblSideYard.Text}</h1>
-   <img src="${File.GetUri(File.DirApp, "SideYard.jpg")}"/>
+   <h1>${lblBackyard.Text}</h1>
+   <img src="${File.GetUri(File.DirApp, "Backyard.jpg")}"/>
    
 "$
 	mf.Show
@@ -1840,12 +1840,12 @@ End Sub
 
 
 Sub btnActivity_Click
-	btnDriveway.Enabled = False
+	btnSideYard.Enabled = False
 	btnRefresh.Enabled = False
 	btnActivity.Enabled = False
-	btnDrivewayNewClip.Enabled = False
-	btnFrontDoorNewClip.Enabled = False
 	btnSideYardNewClip.Enabled = False
+	btnFrontYardNewClip.Enabled = False
+	btnBackyardNewClip.Enabled = False
 	'RESTGet("https://rest-" & userRegion &".immedia-semi.com/api/v1/accounts/88438/media/changed?since=2019-04-19T23:11:20+0000&page=1") ' <-- only returns videos recorded for less than 24 hour
 	
 	'https://rest-u006.immedia-semi.com/api/v1/accounts/88438/media/changed?since=-999999999-01-01T00:00:00+18:00&page=1
@@ -1866,12 +1866,12 @@ Sub btnActivity_Click
 	Dim rs As ResumableSub = GetUnwatchedVideos
 	wait for (rs) complete (Result As Object)
 
-	btnDriveway.Enabled = True
+	btnSideYard.Enabled = True
 	btnRefresh.Enabled = True
 	btnActivity.Enabled = True
-	btnDrivewayNewClip.Enabled = True
-	btnFrontDoorNewClip.Enabled = True
 	btnSideYardNewClip.Enabled = True
+	btnFrontYardNewClip.Enabled = True
+	btnBackyardNewClip.Enabled = True
 End Sub
 
 Sub ConvertDateTimePlain(inputTime As String) As String
@@ -1965,44 +1965,44 @@ Sub ParseUTCstring(utc As String) As Long
 End Sub
 
 Sub btnRefresh_Click
-	btnDriveway.Enabled = False
+	btnSideYard.Enabled = False
 	btnRefresh.Enabled = False
 	btnActivity.Enabled = False
-	btnDrivewayNewClip.Enabled = False
-	btnFrontDoorNewClip.Enabled = False
 	btnSideYardNewClip.Enabled = False
-	BlurIV("Driveway.jpg",ivDriveway)
-	BlurIV("FrontDoor.jpg",ivFrontDoor)
+	btnFrontYardNewClip.Enabled = False
+	btnBackyardNewClip.Enabled = False
 	BlurIV("SideYard.jpg",ivSideYard)
+	BlurIV("FrontYard.jpg",ivFrontYard)
+	BlurIV("Backyard.jpg",ivBackyard)
 	
 	Dim rs As ResumableSub = RefreshCameras(True, "All")
 	wait for (rs) complete (Result As Object)
 End Sub
 
-Sub btnDrivewayNewClip_Click
-	If fx.Msgbox2(MainForm, "Capture a new video for the Driveway camera?", MainForm.Title, "Yes", "", "No", fx.MSGBOX_CONFIRMATION) = fx.DialogResponse.POSITIVE Then
+Sub btnSideYardNewClip_Click
+	If fx.Msgbox2(MainForm, "Capture video for the Side Yard camera?", MainForm.Title, "Yes", "", "No", fx.MSGBOX_CONFIRMATION) = fx.DialogResponse.POSITIVE Then
 		Try
-			btnDriveway.Enabled = False
+			btnSideYard.Enabled = False
 			btnRefresh.Enabled = False
 			btnActivity.Enabled = False
-			btnDrivewayNewClip.Enabled = False
-			btnFrontDoorNewClip.Enabled = False
 			btnSideYardNewClip.Enabled = False
-			lblStatus.Text = "Capturing a new Driveway video clip..."
+			btnFrontYardNewClip.Enabled = False
+			btnBackyardNewClip.Enabled = False
+			lblStatus.Text = "Capturing a new Side Yard video clip..."
 			
 			Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/347574/clip")
 			wait for (rs) complete (Result As Object)
 			
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-				btnDriveway.Enabled = True
+				btnSideYard.Enabled = True
 				btnRefresh.Enabled = True
 				btnActivity.Enabled = True
-				btnDrivewayNewClip.Enabled = True
-				btnFrontDoorNewClip.Enabled = True
 				btnSideYardNewClip.Enabled = True
-				btnDrivewayNewClip.Enabled = True
-				btnFrontDoorNewClip.Enabled = True
+				btnFrontYardNewClip.Enabled = True
+				btnBackyardNewClip.Enabled = True
 				btnSideYardNewClip.Enabled = True
+				btnFrontYardNewClip.Enabled = True
+				btnBackyardNewClip.Enabled = True
 				lblStatus.Text = response
 				Return
 			End If
@@ -2017,13 +2017,13 @@ Sub btnDrivewayNewClip_Click
 				wait for (rs) complete (Result As Object)
 				If commandComplete Then
 '					For i = 3 To 1 Step -1
-'						lblStatus.Text = "New Driveway video clip will be shown in " & i & " seconds..."
+'						lblStatus.Text = "New SideYard video clip will be shown in " & i & " seconds..."
 '						Sleep(1000)
 '					Next
 					btnActivity_Click
 					Exit
 				Else
-					lblStatus.Text = "Awaiting for the Driveway video clip... " & i & "/60"
+					lblStatus.Text = "Awaiting for the Side Yard video clip... " & i & "/60"
 				End If
 				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 				wait for (rs) complete (Result As Object)
@@ -2032,36 +2032,36 @@ Sub btnDrivewayNewClip_Click
 		Catch
 			Log(LastException)
 		End Try
-		btnDriveway.Enabled = True
+		btnSideYard.Enabled = True
 		btnRefresh.Enabled = True
 		btnActivity.Enabled = True
-		btnDrivewayNewClip.Enabled = True
-		btnFrontDoorNewClip.Enabled = True
 		btnSideYardNewClip.Enabled = True
+		btnFrontYardNewClip.Enabled = True
+		btnBackyardNewClip.Enabled = True
 		lblStatus.Text = "Ready"
 	End If
 End Sub
 
-Sub btnFrontDoorNewClip_Click
-	If fx.Msgbox2(MainForm, "Capture a new video for the Front Door camera?", MainForm.Title, "Yes", "", "No", fx.MSGBOX_CONFIRMATION) = fx.DialogResponse.POSITIVE Then
+Sub btnFrontYardNewClip_Click
+	If fx.Msgbox2(MainForm, "Capture video for the Front Yard camera?", MainForm.Title, "Yes", "", "No", fx.MSGBOX_CONFIRMATION) = fx.DialogResponse.POSITIVE Then
 		Try
-			btnDriveway.Enabled = False
+			btnSideYard.Enabled = False
 			btnRefresh.Enabled = False
 			btnActivity.Enabled = False
-			btnDrivewayNewClip.Enabled = False
-			btnFrontDoorNewClip.Enabled = False
 			btnSideYardNewClip.Enabled = False
-			lblStatus.Text = "Capturing a new Front Door video clip..."
+			btnFrontYardNewClip.Enabled = False
+			btnBackyardNewClip.Enabled = False
+			lblStatus.Text = "Capturing a new Front Yard video clip..."
 			
 			Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/236967/clip")
 			wait for (rs) complete (Result As Object)
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-				btnDriveway.Enabled = True
+				btnSideYard.Enabled = True
 				btnRefresh.Enabled = True
 				btnActivity.Enabled = True
-				btnDrivewayNewClip.Enabled = True
-				btnFrontDoorNewClip.Enabled = True
 				btnSideYardNewClip.Enabled = True
+				btnFrontYardNewClip.Enabled = True
+				btnBackyardNewClip.Enabled = True
 				lblStatus.Text = response
 				Return
 			End If
@@ -2077,13 +2077,13 @@ Sub btnFrontDoorNewClip_Click
 				wait for (rs) complete (Result As Object)
 				If commandComplete Then
 '					For i = 3 To 1  Step -1
-'						lblStatus.Text = "New Front Door video clip will be shown in " & i & " seconds..."
+'						lblStatus.Text = "New Front Yard video clip will be shown in " & i & " seconds..."
 '						Sleep(1000)
 '					Next
 					btnActivity_Click
 					Exit
 				Else
-					lblStatus.Text = "Awaiting for the Front Door video clip... " & i & "/60"
+					lblStatus.Text = "Awaiting for the Front Yard video clip... " & i & "/60"
 				End If
 				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 				wait for (rs) complete (Result As Object)
@@ -2092,35 +2092,35 @@ Sub btnFrontDoorNewClip_Click
 		Catch
 			Log(LastException)
 		End Try
-		btnDriveway.Enabled = True
+		btnSideYard.Enabled = True
 		btnRefresh.Enabled = True
 		btnActivity.Enabled = True
-		btnDrivewayNewClip.Enabled = True
-		btnFrontDoorNewClip.Enabled = True
 		btnSideYardNewClip.Enabled = True
+		btnFrontYardNewClip.Enabled = True
+		btnBackyardNewClip.Enabled = True
 		lblStatus.Text = "Ready"
 	End If
 End Sub
 
-Sub btnSideYardNewClip_Click
-	If fx.Msgbox2(MainForm, "Capture a new video for the Side Yard camera?", MainForm.Title, "Yes", "", "No", fx.MSGBOX_CONFIRMATION) = fx.DialogResponse.POSITIVE Then
+Sub btnBackyardNewClip_Click
+	If fx.Msgbox2(MainForm, "Capture video for the Backyard camera?", MainForm.Title, "Yes", "", "No", fx.MSGBOX_CONFIRMATION) = fx.DialogResponse.POSITIVE Then
 		Try
-			btnDriveway.Enabled = False
+			btnSideYard.Enabled = False
 			btnRefresh.Enabled = False
 			btnActivity.Enabled = False
-			btnDrivewayNewClip.Enabled = False
-			btnFrontDoorNewClip.Enabled = False
 			btnSideYardNewClip.Enabled = False
-			lblStatus.Text = "Capturing a new Side Yard video clip..."
+			btnFrontYardNewClip.Enabled = False
+			btnBackyardNewClip.Enabled = False
+			lblStatus.Text = "Capturing a new Backyard video clip..."
 			Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/camera/458236/clip")
 			wait for (rs) complete (Result As Object)
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-				btnDriveway.Enabled = True
+				btnSideYard.Enabled = True
 				btnRefresh.Enabled = True
 				btnActivity.Enabled = True
-				btnDrivewayNewClip.Enabled = True
-				btnFrontDoorNewClip.Enabled = True
 				btnSideYardNewClip.Enabled = True
+				btnFrontYardNewClip.Enabled = True
+				btnBackyardNewClip.Enabled = True
 				lblStatus.Text = response
 				Return
 			End If
@@ -2136,13 +2136,13 @@ Sub btnSideYardNewClip_Click
 				wait for (rs) complete (Result As Object)
 				If commandComplete Then
 '					For i = 3 To 1 Step -1
-'						lblStatus.Text = "New Side Yard video clip will be shown in " & i & " seconds..."
+'						lblStatus.Text = "New Backyard video clip will be shown in " & i & " seconds..."
 '						Sleep(1000)
 '					Next
 					btnActivity_Click
 					Exit
 				Else
-					lblStatus.Text = "Awaiting for the Side Yard video clip... " & i & "/60"
+					lblStatus.Text = "Awaiting for the Backyard video clip... " & i & "/60"
 				End If
 				Dim rs As ResumableSub = RESTGet("https://rest-" & userRegion &".immedia-semi.com/network/" & networkID &"/command/" & commandID)
 				wait for (rs) complete (Result As Object)
@@ -2151,12 +2151,12 @@ Sub btnSideYardNewClip_Click
 		Catch
 			Log(LastException)
 		End Try
-		btnDriveway.Enabled = True
+		btnSideYard.Enabled = True
 		btnRefresh.Enabled = True
 		btnActivity.Enabled = True
-		btnDrivewayNewClip.Enabled = True
-		btnFrontDoorNewClip.Enabled = True
 		btnSideYardNewClip.Enabled = True
+		btnFrontYardNewClip.Enabled = True
+		btnBackyardNewClip.Enabled = True
 		lblStatus.Text = "Ready"
 	End If
 End Sub
@@ -2239,29 +2239,29 @@ End Sub
 '	Return Null
 'End Sub
 
-Sub btnSideYardRefresh_Click
+Sub btnBackyardRefresh_Click
 	Dim rs As ResumableSub = RefreshCameras(False, "458236")
 	wait for (rs) complete (Result As Object)
 End Sub
 
-Sub btnFrontDoorRefresh_Click
+Sub btnFrontYardRefresh_Click
 	Dim rs As ResumableSub = RefreshCameras(False, "236967")
 	wait for (rs) complete (Result As Object)
 End Sub
 
-Sub btnDrivewayRefresh_Click
+Sub btnSideYardRefresh_Click
 	Dim rs As ResumableSub = RefreshCameras(False, "347574")
 	wait for (rs) complete (Result As Object)
 End Sub
 
 Sub swArmed_ValueChanged (Value As Boolean)
 		Try
-			btnDriveway.Enabled = False
+			btnSideYard.Enabled = False
 			btnRefresh.Enabled = False
 			btnActivity.Enabled = False
-			btnDrivewayNewClip.Enabled = False
-			btnFrontDoorNewClip.Enabled = False
 			btnSideYardNewClip.Enabled = False
+			btnFrontYardNewClip.Enabled = False
+			btnBackyardNewClip.Enabled = False
 			If Value Then
 				lblStatus.Text = "Arming the system..."
 				Dim rs As ResumableSub = RESTPost("https://rest-" & userRegion & ".immedia-semi.com/network/" & networkID & "/arm")
@@ -2273,15 +2273,15 @@ Sub swArmed_ValueChanged (Value As Boolean)
 			wait for (rs) complete (Result As Object)
 			
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
-				btnDriveway.Enabled = True
+				btnSideYard.Enabled = True
 				btnRefresh.Enabled = True
 				btnActivity.Enabled = True
-				btnDrivewayNewClip.Enabled = True
-				btnFrontDoorNewClip.Enabled = True
 				btnSideYardNewClip.Enabled = True
-				btnDrivewayNewClip.Enabled = True
-				btnFrontDoorNewClip.Enabled = True
+				btnFrontYardNewClip.Enabled = True
+				btnBackyardNewClip.Enabled = True
 				btnSideYardNewClip.Enabled = True
+				btnFrontYardNewClip.Enabled = True
+				btnBackyardNewClip.Enabled = True
 				lblStatus.Text = response
 				Return
 			End If
@@ -2309,12 +2309,12 @@ Sub swArmed_ValueChanged (Value As Boolean)
 				Sleep(1000)
 			Next
 			
-			btnDriveway.Enabled = True
+			btnSideYard.Enabled = True
 			btnRefresh.Enabled = True
 			btnActivity.Enabled = True
-			btnDrivewayNewClip.Enabled = True
-			btnFrontDoorNewClip.Enabled = True
 			btnSideYardNewClip.Enabled = True
+			btnFrontYardNewClip.Enabled = True
+			btnBackyardNewClip.Enabled = True
 			lblStatus.Text = "Ready"
 			
 		Catch
