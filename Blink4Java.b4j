@@ -1304,9 +1304,9 @@ Sub GetHomescreen(json As String) As ResumableSub
 							SideYardArmedStatus = "MOTION DETECTION IS DISABLED!"
 							lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
-					Else
-						SideYardArmedStatus = "CAMERA NOT ARMED!"
-						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+'					Else
+'						SideYardArmedStatus = "CAMERA NOT ARMED!"
+'						lblSideYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
 					SideYardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
@@ -1330,9 +1330,9 @@ Sub GetHomescreen(json As String) As ResumableSub
 							FrontYardArmedStatus = "MOTION DETECTION IS DISABLED!"
 							lblFrontYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
-					Else
-						FrontYardArmedStatus = "CAMERA NOT ARMED!"
-						lblFrontYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+'					Else
+'						FrontYardArmedStatus = "CAMERA NOT ARMED!"
+'						lblFrontYard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
 					FrontYardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"
@@ -1356,9 +1356,9 @@ Sub GetHomescreen(json As String) As ResumableSub
 							BackyardArmedStatus = "MOTION DETECTION IS DISABLED!"
 							lblBackyard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 						End If
-					Else
-						BackyardArmedStatus = "CAMERA NOT ARMED!"
-						lblBackyard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
+'					Else
+'						BackyardArmedStatus = "CAMERA NOT ARMED!"
+'						lblBackyard.Style = "-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );"
 					End If
 				Else
 					BackyardArmedStatus = "[Level " & battery & " - " & battery_state.ToUpperCase & "]"

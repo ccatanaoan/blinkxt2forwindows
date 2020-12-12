@@ -3157,9 +3157,9 @@ String _armed = "";
 anywheresoftware.b4a.BA.IterableList group6;
 int index6;
 int groupLen6;
-anywheresoftware.b4a.BA.IterableList group94;
-int index94;
-int groupLen94;
+anywheresoftware.b4a.BA.IterableList group85;
+int index85;
+int groupLen85;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
@@ -3179,15 +3179,15 @@ if (true) break;
 
 case 1:
 //try
-this.state = 101;
-this.catchState = 100;
+this.state = 95;
+this.catchState = 94;
 this.state = 3;
 if (true) break;
 
 case 3:
 //C
 this.state = 4;
-this.catchState = 100;
+this.catchState = 94;
  //BA.debugLineNum = 989;BA.debugLine="Dim parser As JSONParser";
 _parser = new anywheresoftware.b4j.objects.collections.JSONParser();
  //BA.debugLineNum = 990;BA.debugLine="parser.Initialize(json)";
@@ -3203,25 +3203,25 @@ if (true) break;
 
 case 4:
 //for
-this.state = 90;
+this.state = 84;
 _colcameras = new anywheresoftware.b4a.objects.collections.Map();
 group6 = _cameras;
 index6 = 0;
 groupLen6 = group6.getSize();
-this.state = 102;
+this.state = 96;
 if (true) break;
 
-case 102:
+case 96:
 //C
-this.state = 90;
+this.state = 84;
 if (index6 < groupLen6) {
 this.state = 6;
 _colcameras = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group6.Get(index6)));}
 if (true) break;
 
-case 103:
+case 97:
 //C
-this.state = 102;
+this.state = 96;
 index6++;
 if (true) break;
 
@@ -3246,13 +3246,13 @@ if (true) break;
 
 case 7:
 //if
-this.state = 89;
+this.state = 83;
 if ((_name).equals("Side Yard")) { 
 this.state = 9;
 }else if((_name).equals("Front Yard")) { 
-this.state = 36;
+this.state = 34;
 }else if((_name).equals("Backyard")) { 
-this.state = 63;
+this.state = 59;
 }if (true) break;
 
 case 9:
@@ -3263,11 +3263,11 @@ if (true) break;
 
 case 10:
 //if
-this.state = 31;
+this.state = 29;
 if (_battery>1 && (_battery_state).equals("ok")) { 
 this.state = 12;
 }else {
-this.state = 26;
+this.state = 24;
 }if (true) break;
 
 case 12:
@@ -3278,11 +3278,9 @@ if (true) break;
 
 case 13:
 //if
-this.state = 24;
+this.state = 22;
 if ((_enabled).equals("true")) { 
 this.state = 15;
-}else {
-this.state = 23;
 }if (true) break;
 
 case 15:
@@ -3320,50 +3318,41 @@ parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,25
 
 case 21:
 //C
-this.state = 24;
+this.state = 22;
 ;
  if (true) break;
 
-case 23:
+case 22:
 //C
-this.state = 24;
- //BA.debugLineNum = 1051;BA.debugLine="SideYardArmedStatus = \"CAMERA NOT ARMED!\"";
-parent._sideyardarmedstatus = "CAMERA NOT ARMED!";
- //BA.debugLineNum = 1052;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow(";
-parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
+this.state = 29;
+;
  if (true) break;
 
 case 24:
 //C
-this.state = 31;
-;
- if (true) break;
-
-case 26:
-//C
-this.state = 27;
+this.state = 25;
  //BA.debugLineNum = 1055;BA.debugLine="SideYardArmedStatus = \"[Level \" & battery & \"";
 parent._sideyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 1056;BA.debugLine="If SideYardArmedStatus = \"[Level 1 - LOW]\" Th";
 if (true) break;
 
-case 27:
+case 25:
 //if
-this.state = 30;
+this.state = 28;
 if ((parent._sideyardarmedstatus).equals("[Level 1 - LOW]")) { 
-this.state = 29;
+this.state = 27;
 }if (true) break;
 
-case 29:
+case 27:
 //C
-this.state = 30;
+this.state = 28;
  //BA.debugLineNum = 1057;BA.debugLine="SideYardArmedStatus = \"[REPLACE]\"";
 parent._sideyardarmedstatus = "[REPLACE]";
  if (true) break;
 
-case 30:
+case 28:
 //C
-this.state = 31;
+this.state = 29;
 ;
  //BA.debugLineNum = 1059;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow(";
 parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
@@ -3371,16 +3360,16 @@ parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,25
 ;
  //BA.debugLineNum = 1061;BA.debugLine="If status = \"offline\" Then";
 
-case 31:
+case 29:
 //if
-this.state = 34;
+this.state = 32;
 if ((_status).equals("offline")) { 
-this.state = 33;
+this.state = 31;
 }if (true) break;
 
-case 33:
+case 31:
 //C
-this.state = 34;
+this.state = 32;
  //BA.debugLineNum = 1062;BA.debugLine="SideYardArmedStatus = \"[Level \" & battery & \"";
 parent._sideyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+" OFFLINE]";
  //BA.debugLineNum = 1063;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow(";
@@ -3389,121 +3378,110 @@ parent._lblsideyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,25
 _bluriv("SideYard.jpg",parent._ivsideyard);
  if (true) break;
 
-case 34:
+case 32:
 //C
-this.state = 89;
+this.state = 83;
 ;
  if (true) break;
 
-case 36:
+case 34:
 //C
-this.state = 37;
+this.state = 35;
  //BA.debugLineNum = 1067;BA.debugLine="If battery > 1 And battery_state = \"ok\" Then";
 if (true) break;
 
-case 37:
+case 35:
 //if
-this.state = 58;
+this.state = 54;
 if (_battery>1 && (_battery_state).equals("ok")) { 
-this.state = 39;
+this.state = 37;
 }else {
-this.state = 53;
+this.state = 49;
 }if (true) break;
 
-case 39:
+case 37:
 //C
-this.state = 40;
+this.state = 38;
  //BA.debugLineNum = 1068;BA.debugLine="If enabled = \"true\" Then";
 if (true) break;
 
-case 40:
+case 38:
 //if
-this.state = 51;
+this.state = 47;
 if ((_enabled).equals("true")) { 
-this.state = 42;
-}else {
-this.state = 50;
+this.state = 40;
 }if (true) break;
 
-case 42:
+case 40:
 //C
-this.state = 43;
+this.state = 41;
  //BA.debugLineNum = 1069;BA.debugLine="If enabled = \"true\" Then";
 if (true) break;
 
-case 43:
+case 41:
 //if
-this.state = 48;
+this.state = 46;
 if ((_enabled).equals("true")) { 
-this.state = 45;
+this.state = 43;
 }else {
-this.state = 47;
+this.state = 45;
 }if (true) break;
 
-case 45:
+case 43:
 //C
-this.state = 48;
+this.state = 46;
  //BA.debugLineNum = 1070;BA.debugLine="FrontYardArmedStatus = \"[Level \" & battery";
 parent._frontyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 1071;BA.debugLine="lblFrontYard.Style = \"\"";
 parent._lblfrontyard.setStyle("");
  if (true) break;
 
-case 47:
+case 45:
 //C
-this.state = 48;
+this.state = 46;
  //BA.debugLineNum = 1073;BA.debugLine="FrontYardArmedStatus = \"MOTION DETECTION IS";
 parent._frontyardarmedstatus = "MOTION DETECTION IS DISABLED!";
  //BA.debugLineNum = 1074;BA.debugLine="lblFrontYard.Style = \"-fx-effect: dropshado";
 parent._lblfrontyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
-case 48:
+case 46:
 //C
-this.state = 51;
+this.state = 47;
 ;
  if (true) break;
 
-case 50:
-//C
-this.state = 51;
- //BA.debugLineNum = 1077;BA.debugLine="FrontYardArmedStatus = \"CAMERA NOT ARMED!\"";
-parent._frontyardarmedstatus = "CAMERA NOT ARMED!";
- //BA.debugLineNum = 1078;BA.debugLine="lblFrontYard.Style = \"-fx-effect: dropshadow";
-parent._lblfrontyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
- if (true) break;
-
-case 51:
-//C
-this.state = 58;
-;
- if (true) break;
-
-case 53:
+case 47:
 //C
 this.state = 54;
+;
+ if (true) break;
+
+case 49:
+//C
+this.state = 50;
  //BA.debugLineNum = 1081;BA.debugLine="FrontYardArmedStatus = \"[Level \" & battery &";
 parent._frontyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 1082;BA.debugLine="If FrontYardArmedStatus = \"[Level 1 - LOW]\" T";
 if (true) break;
 
-case 54:
+case 50:
 //if
-this.state = 57;
+this.state = 53;
 if ((parent._frontyardarmedstatus).equals("[Level 1 - LOW]")) { 
-this.state = 56;
+this.state = 52;
 }if (true) break;
 
-case 56:
+case 52:
 //C
-this.state = 57;
+this.state = 53;
  //BA.debugLineNum = 1083;BA.debugLine="FrontYardArmedStatus = \"[REPLACE]\"";
 parent._frontyardarmedstatus = "[REPLACE]";
  if (true) break;
 
-case 57:
+case 53:
 //C
-this.state = 58;
+this.state = 54;
 ;
  //BA.debugLineNum = 1085;BA.debugLine="lblFrontYard.Style = \"-fx-effect: dropshadow(";
 parent._lblfrontyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
@@ -3511,16 +3489,16 @@ parent._lblfrontyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,2
 ;
  //BA.debugLineNum = 1087;BA.debugLine="If status = \"offline\" Then";
 
-case 58:
+case 54:
 //if
-this.state = 61;
+this.state = 57;
 if ((_status).equals("offline")) { 
-this.state = 60;
+this.state = 56;
 }if (true) break;
 
-case 60:
+case 56:
 //C
-this.state = 61;
+this.state = 57;
  //BA.debugLineNum = 1088;BA.debugLine="FrontYardArmedStatus = \"[Level \" & battery &";
 parent._frontyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+" OFFLINE]";
  //BA.debugLineNum = 1089;BA.debugLine="lblFrontYard.Style = \"-fx-effect: dropshadow(";
@@ -3529,121 +3507,110 @@ parent._lblfrontyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,2
 _bluriv("FrontYard.jpg",parent._ivfrontyard);
  if (true) break;
 
-case 61:
+case 57:
 //C
-this.state = 89;
+this.state = 83;
 ;
  if (true) break;
 
-case 63:
+case 59:
 //C
-this.state = 64;
+this.state = 60;
  //BA.debugLineNum = 1093;BA.debugLine="If battery > 1 And battery_state = \"ok\" Then";
 if (true) break;
 
-case 64:
+case 60:
 //if
-this.state = 85;
+this.state = 79;
 if (_battery>1 && (_battery_state).equals("ok")) { 
-this.state = 66;
-}else {
-this.state = 80;
-}if (true) break;
-
-case 66:
-//C
-this.state = 67;
- //BA.debugLineNum = 1094;BA.debugLine="If enabled = \"true\" Then";
-if (true) break;
-
-case 67:
-//if
-this.state = 78;
-if ((_enabled).equals("true")) { 
-this.state = 69;
-}else {
-this.state = 77;
-}if (true) break;
-
-case 69:
-//C
-this.state = 70;
- //BA.debugLineNum = 1095;BA.debugLine="If enabled = \"true\" Then";
-if (true) break;
-
-case 70:
-//if
-this.state = 75;
-if ((_enabled).equals("true")) { 
-this.state = 72;
+this.state = 62;
 }else {
 this.state = 74;
 }if (true) break;
 
-case 72:
+case 62:
 //C
-this.state = 75;
+this.state = 63;
+ //BA.debugLineNum = 1094;BA.debugLine="If enabled = \"true\" Then";
+if (true) break;
+
+case 63:
+//if
+this.state = 72;
+if ((_enabled).equals("true")) { 
+this.state = 65;
+}if (true) break;
+
+case 65:
+//C
+this.state = 66;
+ //BA.debugLineNum = 1095;BA.debugLine="If enabled = \"true\" Then";
+if (true) break;
+
+case 66:
+//if
+this.state = 71;
+if ((_enabled).equals("true")) { 
+this.state = 68;
+}else {
+this.state = 70;
+}if (true) break;
+
+case 68:
+//C
+this.state = 71;
  //BA.debugLineNum = 1096;BA.debugLine="BackyardArmedStatus = \"[Level \" & battery &";
 parent._backyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 1097;BA.debugLine="lblBackyard.Style = \"\"";
 parent._lblbackyard.setStyle("");
  if (true) break;
 
-case 74:
+case 70:
 //C
-this.state = 75;
+this.state = 71;
  //BA.debugLineNum = 1099;BA.debugLine="BackyardArmedStatus = \"MOTION DETECTION IS";
 parent._backyardarmedstatus = "MOTION DETECTION IS DISABLED!";
  //BA.debugLineNum = 1100;BA.debugLine="lblBackyard.Style = \"-fx-effect: dropshadow";
 parent._lblbackyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
-case 75:
+case 71:
 //C
-this.state = 78;
+this.state = 72;
 ;
  if (true) break;
 
-case 77:
+case 72:
 //C
-this.state = 78;
- //BA.debugLineNum = 1103;BA.debugLine="BackyardArmedStatus = \"CAMERA NOT ARMED!\"";
-parent._backyardarmedstatus = "CAMERA NOT ARMED!";
- //BA.debugLineNum = 1104;BA.debugLine="lblBackyard.Style = \"-fx-effect: dropshadow(";
-parent._lblbackyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
- if (true) break;
-
-case 78:
-//C
-this.state = 85;
+this.state = 79;
 ;
  if (true) break;
 
-case 80:
+case 74:
 //C
-this.state = 81;
+this.state = 75;
  //BA.debugLineNum = 1107;BA.debugLine="BackyardArmedStatus = \"[Level \" & battery & \"";
 parent._backyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+"]";
  //BA.debugLineNum = 1108;BA.debugLine="If BackyardArmedStatus = \"[Level 1 - LOW]\" Th";
 if (true) break;
 
-case 81:
+case 75:
 //if
-this.state = 84;
+this.state = 78;
 if ((parent._backyardarmedstatus).equals("[Level 1 - LOW]")) { 
-this.state = 83;
+this.state = 77;
 }if (true) break;
 
-case 83:
+case 77:
 //C
-this.state = 84;
+this.state = 78;
  //BA.debugLineNum = 1109;BA.debugLine="BackyardArmedStatus = \"[REPLACE]\"";
 parent._backyardarmedstatus = "[REPLACE]";
  if (true) break;
 
-case 84:
+case 78:
 //C
-this.state = 85;
+this.state = 79;
 ;
  //BA.debugLineNum = 1111;BA.debugLine="lblBackyard.Style = \"-fx-effect: dropshadow(";
 parent._lblbackyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
@@ -3651,16 +3618,16 @@ parent._lblbackyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,25
 ;
  //BA.debugLineNum = 1113;BA.debugLine="If status = \"offline\" Then";
 
-case 85:
+case 79:
 //if
-this.state = 88;
+this.state = 82;
 if ((_status).equals("offline")) { 
-this.state = 87;
+this.state = 81;
 }if (true) break;
 
-case 87:
+case 81:
 //C
-this.state = 88;
+this.state = 82;
  //BA.debugLineNum = 1114;BA.debugLine="BackyardArmedStatus = \"[Level \" & battery & \"";
 parent._backyardarmedstatus = "[Level "+BA.NumberToString(_battery)+" - "+_battery_state.toUpperCase()+" OFFLINE]";
  //BA.debugLineNum = 1115;BA.debugLine="lblBackyard.Style = \"-fx-effect: dropshadow(";
@@ -3669,22 +3636,22 @@ parent._lblbackyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,25
 _bluriv("Backyard.jpg",parent._ivbackyard);
  if (true) break;
 
-case 88:
+case 82:
 //C
-this.state = 89;
+this.state = 83;
 ;
  if (true) break;
 
-case 89:
+case 83:
 //C
-this.state = 103;
+this.state = 97;
 ;
  if (true) break;
 if (true) break;
 
-case 90:
+case 84:
 //C
-this.state = 91;
+this.state = 85;
 ;
  //BA.debugLineNum = 1121;BA.debugLine="Dim networks As List = root.Get(\"networks\")";
 _networks = new anywheresoftware.b4a.objects.collections.List();
@@ -3692,57 +3659,57 @@ _networks = (anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a
  //BA.debugLineNum = 1122;BA.debugLine="For Each colnetworks As Map In networks";
 if (true) break;
 
-case 91:
+case 85:
 //for
-this.state = 94;
+this.state = 88;
 _colnetworks = new anywheresoftware.b4a.objects.collections.Map();
-group94 = _networks;
-index94 = 0;
-groupLen94 = group94.getSize();
-this.state = 104;
+group85 = _networks;
+index85 = 0;
+groupLen85 = group85.getSize();
+this.state = 98;
 if (true) break;
 
-case 104:
+case 98:
 //C
-this.state = 94;
-if (index94 < groupLen94) {
-this.state = 93;
-_colnetworks = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group94.Get(index94)));}
+this.state = 88;
+if (index85 < groupLen85) {
+this.state = 87;
+_colnetworks = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group85.Get(index85)));}
 if (true) break;
 
-case 105:
+case 99:
 //C
-this.state = 104;
-index94++;
+this.state = 98;
+index85++;
 if (true) break;
 
-case 93:
+case 87:
 //C
-this.state = 105;
+this.state = 99;
  //BA.debugLineNum = 1125;BA.debugLine="Dim armed As String = colnetworks.Get(\"armed\")";
 _armed = BA.ObjectToString(_colnetworks.Get((Object)("armed")));
  if (true) break;
 if (true) break;
 
-case 94:
+case 88:
 //C
-this.state = 95;
+this.state = 89;
 ;
  //BA.debugLineNum = 1133;BA.debugLine="swArmed.Value = armed";
 parent._swarmed._setvalue /*boolean*/ (BA.ObjectToBoolean(_armed));
  //BA.debugLineNum = 1135;BA.debugLine="If armed <> \"true\" Then";
 if (true) break;
 
-case 95:
+case 89:
 //if
-this.state = 98;
+this.state = 92;
 if ((_armed).equals("true") == false) { 
-this.state = 97;
+this.state = 91;
 }if (true) break;
 
-case 97:
+case 91:
 //C
-this.state = 98;
+this.state = 92;
  //BA.debugLineNum = 1136;BA.debugLine="SideYardArmedStatus = \"SYSTEM NOT ARMED!\"";
 parent._sideyardarmedstatus = "SYSTEM NOT ARMED!";
  //BA.debugLineNum = 1137;BA.debugLine="lblSideYard.Style = \"-fx-effect: dropshadow( ga";
@@ -3757,22 +3724,22 @@ parent._backyardarmedstatus = "SYSTEM NOT ARMED!";
 parent._lblbackyard.setStyle("-fx-effect: dropshadow( gaussian , rgba(255,0,0,255) , 0,0,0,1 );");
  if (true) break;
 
-case 98:
+case 92:
 //C
-this.state = 101;
+this.state = 95;
 ;
  if (true) break;
 
-case 100:
+case 94:
 //C
-this.state = 101;
+this.state = 95;
 this.catchState = 0;
  //BA.debugLineNum = 1146;BA.debugLine="Log(LastException)";
 anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
  if (true) break;
 if (true) break;
 
-case 101:
+case 95:
 //C
 this.state = -1;
 this.catchState = 0;
