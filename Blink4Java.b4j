@@ -274,8 +274,8 @@ Sub Process_Globals
 	Private userRegion As String = "u006"
 	Private accountID As String = "88438" 'ignore
 	Private networkID As String = "94896"
-	Private TwoClientFAVerificationRequired As String
-	Private TwoFAClientID As String
+	'Private TwoClientFAVerificationRequired As String
+	'Private TwoFAClientID As String
 	Private commandID As String
 	Private commandComplete As Boolean
 	Private cameraThumbnail As String
@@ -481,33 +481,33 @@ Sub RequestAuthToken As ResumableSub
 			File.WriteString(File.DirApp,"response_login.txt",jobLogin.GetString)
 			GetAuthInfo(jobLogin.GetString)
 				
-			If TwoClientFAVerificationRequired Then
-				Dim input As B4XInputTemplate
-				Dim diagResult As Int
-				input.Initialize
-				input.lblTitle.Text = "Enter verification code:"
-				input.ConfigureForNumbers(False, False) 'AllowDecimals, AllowNegative
-				Wait For (dialog.ShowTemplate(input, "OK", "", "CANCEL")) Complete (diagResult As Int)
-				If diagResult = xui.DialogResponse_Positive Then
-					Dim res As Int = input.Text 'no need to check with IsNumber
-					Log(res)
-					jobLogin.PostString("https://rest-u006.immedia-semi.com/api/v4/account/88438/client/" & TwoFAClientID & "/pin/verify/","pin=" & res)
-					jobLogin.GetRequest.SetContentType("application/x-www-form-urlencoded")
-					Wait For (jobLogin) JobDone(jobLogin As HttpJob)
-					If jobLogin.Success = False Then
-						lblStatus.Text = GetRESTError(jobLogin.ErrorMessage) ' "RequestAuthToken error: " & jobLogin.GetString
-						Log("2FA error: " & jobLogin.ErrorMessage)
-						btnSideYard.Enabled = True
-						btnRefresh.Enabled = True
-						btnActivity.Enabled = True
-						btnSideYardNewClip.Enabled = True
-						btnFrontYardNewClip.Enabled = True
-						btnBackyardNewClip.Enabled = True
-						jobLogin.Release
-						Return Null
-					End If
-				End If
-			End If
+'			If TwoClientFAVerificationRequired Then
+'				Dim input As B4XInputTemplate
+'				Dim diagResult As Int
+'				input.Initialize
+'				input.lblTitle.Text = "Enter verification code:"
+'				input.ConfigureForNumbers(False, False) 'AllowDecimals, AllowNegative
+'				Wait For (dialog.ShowTemplate(input, "OK", "", "CANCEL")) Complete (diagResult As Int)
+'				If diagResult = xui.DialogResponse_Positive Then
+'					Dim res As Int = input.Text 'no need to check with IsNumber
+'					Log(res)
+'					jobLogin.PostString("https://rest-u006.immedia-semi.com/api/v4/account/88438/client/" & TwoFAClientID & "/pin/verify/","pin=" & res)
+'					jobLogin.GetRequest.SetContentType("application/x-www-form-urlencoded")
+'					Wait For (jobLogin) JobDone(jobLogin As HttpJob)
+'					If jobLogin.Success = False Then
+'						lblStatus.Text = GetRESTError(jobLogin.ErrorMessage) ' "RequestAuthToken error: " & jobLogin.GetString
+'						Log("2FA error: " & jobLogin.ErrorMessage)
+'						btnSideYard.Enabled = True
+'						btnRefresh.Enabled = True
+'						btnActivity.Enabled = True
+'						btnSideYardNewClip.Enabled = True
+'						btnFrontYardNewClip.Enabled = True
+'						btnBackyardNewClip.Enabled = True
+'						jobLogin.Release
+'						Return Null
+'					End If
+'				End If
+'			End If
 			
 			If response.StartsWith("ERROR: ") Or response.Contains("System is busy, please wait") Then
 				btnSideYard.Enabled = True
@@ -945,9 +945,9 @@ Sub GetAuthInfo(json As String)
 		Dim authtokenmap As Map = root.Get("authtoken")
 		authToken = authtokenmap.Get("authtoken")
 		Dim message As String = authtokenmap.Get("message") 'ignore
-		Dim client As Map = root.Get("client")
-		TwoClientFAVerificationRequired = client.Get("verification_required")
-		TwoFAClientID = client.Get("id")
+		'Dim client As Map = root.Get("client")
+		'TwoClientFAVerificationRequired = client.Get("verification_required")
+		'TwoFAClientID = client.Get("id")
 		Dim allow_pin_resend_seconds As Int = root.Get("allow_pin_resend_seconds") 'ignore
 		Dim region As Map = root.Get("region")
 		Dim code As String = region.Get("code") 'ignore

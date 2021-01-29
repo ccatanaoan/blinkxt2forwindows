@@ -49,8 +49,6 @@ public static String _authtoken = "";
 public static String _userregion = "";
 public static String _accountid = "";
 public static String _networkid = "";
-public static String _twoclientfaverificationrequired = "";
-public static String _twofaclientid = "";
 public static String _commandid = "";
 public static boolean _commandcomplete = false;
 public static String _camerathumbnail = "";
@@ -2182,7 +2180,6 @@ String _force_password_reset = "";
 int _lockout_time_remaining = 0;
 anywheresoftware.b4a.objects.collections.Map _authtokenmap = null;
 String _message = "";
-anywheresoftware.b4a.objects.collections.Map _client = null;
 int _allow_pin_resend_seconds = 0;
 anywheresoftware.b4a.objects.collections.Map _region = null;
 String _code = "";
@@ -2212,13 +2209,6 @@ _authtokenmap = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.
 _authtoken = BA.ObjectToString(_authtokenmap.Get((Object)("authtoken")));
  //BA.debugLineNum = 690;BA.debugLine="Dim message As String = authtokenmap.Get(\"messag";
 _message = BA.ObjectToString(_authtokenmap.Get((Object)("message")));
- //BA.debugLineNum = 691;BA.debugLine="Dim client As Map = root.Get(\"client\")";
-_client = new anywheresoftware.b4a.objects.collections.Map();
-_client = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(_root.Get((Object)("client"))));
- //BA.debugLineNum = 692;BA.debugLine="TwoClientFAVerificationRequired = client.Get(\"ve";
-_twoclientfaverificationrequired = BA.ObjectToString(_client.Get((Object)("verification_required")));
- //BA.debugLineNum = 693;BA.debugLine="TwoFAClientID = client.Get(\"id\")";
-_twofaclientid = BA.ObjectToString(_client.Get((Object)("id")));
  //BA.debugLineNum = 694;BA.debugLine="Dim allow_pin_resend_seconds As Int = root.Get(\"";
 _allow_pin_resend_seconds = (int)(BA.ObjectToNumber(_root.Get((Object)("allow_pin_resend_seconds"))));
  //BA.debugLineNum = 695;BA.debugLine="Dim region As Map = root.Get(\"region\")";
@@ -2238,8 +2228,8 @@ _verification_required = BA.ObjectToString(_account.Get((Object)("verification_r
  //BA.debugLineNum = 701;BA.debugLine="Dim id As Int = account.Get(\"id\") 'ignore";
 _id = (int)(BA.ObjectToNumber(_account.Get((Object)("id"))));
  } 
-       catch (Exception e23) {
-			ba.setLastException(e23); //BA.debugLineNum = 703;BA.debugLine="Log(LastException)";
+       catch (Exception e20) {
+			ba.setLastException(e20); //BA.debugLineNum = 703;BA.debugLine="Log(LastException)";
 anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
  };
  //BA.debugLineNum = 706;BA.debugLine="End Sub";
@@ -4494,10 +4484,6 @@ _userregion = "u006";
 _accountid = "88438";
  //BA.debugLineNum = 19;BA.debugLine="Private networkID As String = \"94896\"";
 _networkid = "94896";
- //BA.debugLineNum = 20;BA.debugLine="Private TwoClientFAVerificationRequired As String";
-_twoclientfaverificationrequired = "";
- //BA.debugLineNum = 21;BA.debugLine="Private TwoFAClientID As String";
-_twofaclientid = "";
  //BA.debugLineNum = 22;BA.debugLine="Private commandID As String";
 _commandid = "";
  //BA.debugLineNum = 23;BA.debugLine="Private commandComplete As Boolean";
@@ -5614,9 +5600,6 @@ this.parent = parent;
 }
 cloyd.blink.main parent;
 cloyd.blink.httpjob _joblogin = null;
-cloyd.blink.b4xinputtemplate _input = null;
-int _diagresult = 0;
-int _res = 0;
 anywheresoftware.b4a.keywords.Common.ResumableSubWrapper _rs = null;
 Object _result = null;
 
@@ -5638,15 +5621,15 @@ if (true) break;
 
 case 1:
 //try
-this.state = 29;
-this.catchState = 28;
+this.state = 18;
+this.catchState = 17;
 this.state = 3;
 if (true) break;
 
 case 3:
 //C
 this.state = 4;
-this.catchState = 28;
+this.catchState = 17;
  //BA.debugLineNum = 214;BA.debugLine="lblStatus.Text = \"Authenticating...\"";
 parent._lblstatus.setText("Authenticating...");
  //BA.debugLineNum = 215;BA.debugLine="Dim jobLogin As HttpJob";
@@ -5661,9 +5644,9 @@ _joblogin._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRe
 _joblogin._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetHeader("User-Agent",_randomstring((int) (12)));
  //BA.debugLineNum = 221;BA.debugLine="Wait For (jobLogin) JobDone(jobLogin As HttpJob)";
 anywheresoftware.b4a.keywords.Common.WaitFor("jobdone", ba, this, (Object)(_joblogin));
-this.state = 30;
+this.state = 19;
 return;
-case 30:
+case 19:
 //C
 this.state = 4;
 _joblogin = (cloyd.blink.httpjob) result[0];
@@ -5673,11 +5656,11 @@ if (true) break;
 
 case 4:
 //if
-this.state = 26;
+this.state = 15;
 if (_joblogin._success /*boolean*/ ) { 
 this.state = 6;
 }else {
-this.state = 25;
+this.state = 14;
 }if (true) break;
 
 case 6:
@@ -5689,130 +5672,21 @@ parent._lblstatus.setText("Successfully logged in to the Blink server...");
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirApp(),"response_login.txt",_joblogin._getstring /*String*/ ());
  //BA.debugLineNum = 225;BA.debugLine="GetAuthInfo(jobLogin.GetString)";
 _getauthinfo(_joblogin._getstring /*String*/ ());
- //BA.debugLineNum = 227;BA.debugLine="If TwoClientFAVerificationRequired Then";
+ //BA.debugLineNum = 255;BA.debugLine="If response.StartsWith(\"ERROR: \") Or response.C";
 if (true) break;
 
 case 7:
 //if
-this.state = 18;
-if (BA.ObjectToBoolean(parent._twoclientfaverificationrequired)) { 
+this.state = 12;
+if (parent._response.startsWith("ERROR: ") || parent._response.contains("System is busy, please wait")) { 
 this.state = 9;
+}else {
+this.state = 11;
 }if (true) break;
 
 case 9:
 //C
-this.state = 10;
- //BA.debugLineNum = 228;BA.debugLine="Dim input As B4XInputTemplate";
-_input = new cloyd.blink.b4xinputtemplate();
- //BA.debugLineNum = 229;BA.debugLine="Dim diagResult As Int";
-_diagresult = 0;
- //BA.debugLineNum = 230;BA.debugLine="input.Initialize";
-_input._initialize /*String*/ (ba);
- //BA.debugLineNum = 231;BA.debugLine="input.lblTitle.Text = \"Enter verification code";
-_input._lbltitle /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .setText("Enter verification code:");
- //BA.debugLineNum = 232;BA.debugLine="input.ConfigureForNumbers(False, False) 'Allow";
-_input._configurefornumbers /*String*/ (anywheresoftware.b4a.keywords.Common.False,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 233;BA.debugLine="Wait For (dialog.ShowTemplate(input, \"OK\", \"\",";
-anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, parent._dialog._showtemplate /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)(_input),(Object)("OK"),(Object)(""),(Object)("CANCEL")));
-this.state = 31;
-return;
-case 31:
-//C
-this.state = 10;
-_diagresult = (int) result[0];
-;
- //BA.debugLineNum = 234;BA.debugLine="If diagResult = xui.DialogResponse_Positive Th";
-if (true) break;
-
-case 10:
-//if
-this.state = 17;
-if (_diagresult==parent._xui.DialogResponse_Positive) { 
 this.state = 12;
-}if (true) break;
-
-case 12:
-//C
-this.state = 13;
- //BA.debugLineNum = 235;BA.debugLine="Dim res As Int = input.Text 'no need to check";
-_res = (int)(Double.parseDouble(_input._text /*String*/ ));
- //BA.debugLineNum = 236;BA.debugLine="Log(res)";
-anywheresoftware.b4a.keywords.Common.Log(BA.NumberToString(_res));
- //BA.debugLineNum = 237;BA.debugLine="jobLogin.PostString(\"https://rest-u006.immedi";
-_joblogin._poststring /*String*/ ("https://rest-u006.immedia-semi.com/api/v4/account/88438/client/"+parent._twofaclientid+"/pin/verify/","pin="+BA.NumberToString(_res));
- //BA.debugLineNum = 238;BA.debugLine="jobLogin.GetRequest.SetContentType(\"applicati";
-_joblogin._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetContentType("application/x-www-form-urlencoded");
- //BA.debugLineNum = 239;BA.debugLine="Wait For (jobLogin) JobDone(jobLogin As HttpJ";
-anywheresoftware.b4a.keywords.Common.WaitFor("jobdone", ba, this, (Object)(_joblogin));
-this.state = 32;
-return;
-case 32:
-//C
-this.state = 13;
-_joblogin = (cloyd.blink.httpjob) result[0];
-;
- //BA.debugLineNum = 240;BA.debugLine="If jobLogin.Success = False Then";
-if (true) break;
-
-case 13:
-//if
-this.state = 16;
-if (_joblogin._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.False) { 
-this.state = 15;
-}if (true) break;
-
-case 15:
-//C
-this.state = 16;
- //BA.debugLineNum = 241;BA.debugLine="lblStatus.Text = GetRESTError(jobLogin.Error";
-parent._lblstatus.setText(_getresterror(_joblogin._errormessage /*String*/ ));
- //BA.debugLineNum = 242;BA.debugLine="Log(\"2FA error: \" & jobLogin.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.Log("2FA error: "+_joblogin._errormessage /*String*/ );
- //BA.debugLineNum = 243;BA.debugLine="btnSideYard.Enabled = True";
-parent._btnsideyard.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 244;BA.debugLine="btnRefresh.Enabled = True";
-parent._btnrefresh.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 245;BA.debugLine="btnActivity.Enabled = True";
-parent._btnactivity.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 246;BA.debugLine="btnSideYardNewClip.Enabled = True";
-parent._btnsideyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 247;BA.debugLine="btnFrontYardNewClip.Enabled = True";
-parent._btnfrontyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 248;BA.debugLine="btnBackyardNewClip.Enabled = True";
-parent._btnbackyardnewclip.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 249;BA.debugLine="jobLogin.Release";
-_joblogin._release /*String*/ ();
- //BA.debugLineNum = 250;BA.debugLine="Return Null";
-if (true) {
-anywheresoftware.b4a.keywords.Common.ReturnFromResumableSub(this,anywheresoftware.b4a.keywords.Common.Null);return;};
- if (true) break;
-
-case 16:
-//C
-this.state = 17;
-;
- if (true) break;
-
-case 17:
-//C
-this.state = 18;
-;
- if (true) break;
-;
- //BA.debugLineNum = 255;BA.debugLine="If response.StartsWith(\"ERROR: \") Or response.C";
-
-case 18:
-//if
-this.state = 23;
-if (parent._response.startsWith("ERROR: ") || parent._response.contains("System is busy, please wait")) { 
-this.state = 20;
-}else {
-this.state = 22;
-}if (true) break;
-
-case 20:
-//C
-this.state = 23;
  //BA.debugLineNum = 256;BA.debugLine="btnSideYard.Enabled = True";
 parent._btnsideyard.setEnabled(anywheresoftware.b4a.keywords.Common.True);
  //BA.debugLineNum = 257;BA.debugLine="btnRefresh.Enabled = True";
@@ -5832,22 +5706,22 @@ if (true) {
 anywheresoftware.b4a.keywords.Common.ReturnFromResumableSub(this,anywheresoftware.b4a.keywords.Common.Null);return;};
  if (true) break;
 
-case 22:
+case 11:
 //C
-this.state = 23;
+this.state = 12;
  //BA.debugLineNum = 265;BA.debugLine="lblStatus.Text = \"AuthToken acquired...\"";
 parent._lblstatus.setText("AuthToken acquired...");
  if (true) break;
 
-case 23:
+case 12:
 //C
-this.state = 26;
+this.state = 15;
 ;
  if (true) break;
 
-case 25:
+case 14:
 //C
-this.state = 26;
+this.state = 15;
  //BA.debugLineNum = 268;BA.debugLine="lblStatus.Text = GetRESTError(jobLogin.ErrorMes";
 parent._lblstatus.setText(_getresterror(_joblogin._errormessage /*String*/ ));
  //BA.debugLineNum = 269;BA.debugLine="Log(\"RequestAuthToken error: \" & jobLogin.Error";
@@ -5871,9 +5745,9 @@ if (true) {
 anywheresoftware.b4a.keywords.Common.ReturnFromResumableSub(this,anywheresoftware.b4a.keywords.Common.Null);return;};
  if (true) break;
 
-case 26:
+case 15:
 //C
-this.state = 29;
+this.state = 18;
 ;
  //BA.debugLineNum = 279;BA.debugLine="jobLogin.Release";
 _joblogin._release /*String*/ ();
@@ -5882,25 +5756,25 @@ _rs = new anywheresoftware.b4a.keywords.Common.ResumableSubWrapper();
 _rs = _refreshcameras(anywheresoftware.b4a.keywords.Common.True,"All");
  //BA.debugLineNum = 281;BA.debugLine="wait for (rs) complete (Result As Object)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", ba, this, _rs);
-this.state = 33;
+this.state = 20;
 return;
-case 33:
+case 20:
 //C
-this.state = 29;
+this.state = 18;
 _result = (Object) result[0];
 ;
  if (true) break;
 
-case 28:
+case 17:
 //C
-this.state = 29;
+this.state = 18;
 this.catchState = 0;
  //BA.debugLineNum = 283;BA.debugLine="Log(\"RequestAuthToken LastException: \" & LastExc";
 anywheresoftware.b4a.keywords.Common.Log("RequestAuthToken LastException: "+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(ba)));
  if (true) break;
 if (true) break;
 
-case 29:
+case 18:
 //C
 this.state = -1;
 this.catchState = 0;
