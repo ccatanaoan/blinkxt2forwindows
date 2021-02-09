@@ -34,6 +34,7 @@ public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
+public cloyd.blink.xuiviewsutils _xuiviewsutils = null;
 public String  _btnhiddenexitescapekey_click() throws Exception{
  //BA.debugLineNum = 89;BA.debugLine="Sub btnHiddenExitEscapeKey_Click";
  //BA.debugLineNum = 90;BA.debugLine="frm.Close";

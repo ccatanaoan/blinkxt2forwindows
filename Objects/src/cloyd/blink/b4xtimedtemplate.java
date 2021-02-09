@@ -33,6 +33,7 @@ public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
+public cloyd.blink.xuiviewsutils _xuiviewsutils = null;
 public String  _class_globals() throws Exception{
  //BA.debugLineNum = 1;BA.debugLine="Sub Class_Globals";
  //BA.debugLineNum = 2;BA.debugLine="Private xui As XUI";

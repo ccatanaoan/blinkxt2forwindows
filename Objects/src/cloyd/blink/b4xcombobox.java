@@ -37,6 +37,7 @@ public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
+public cloyd.blink.xuiviewsutils _xuiviewsutils = null;
 public String  _base_resize(double _width,double _height) throws Exception{
  //BA.debugLineNum = 55;BA.debugLine="Private Sub Base_Resize (Width As Double, Height A";
  //BA.debugLineNum = 56;BA.debugLine="mBase.GetView(0).SetLayoutAnimated(0, 0, 0, Width";

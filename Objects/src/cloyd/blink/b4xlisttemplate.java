@@ -37,6 +37,7 @@ public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
+public cloyd.blink.xuiviewsutils _xuiviewsutils = null;
 public String  _class_globals() throws Exception{
  //BA.debugLineNum = 1;BA.debugLine="Sub Class_Globals";
  //BA.debugLineNum = 2;BA.debugLine="Private xui As XUI";
@@ -307,8 +308,8 @@ case 11:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 54;BA.debugLine="Dialog.InternalAddStubToCLVIfNeeded(CustomListVie";
-_dialog._internaladdstubtoclvifneeded /*String*/ (parent._customlistview1,parent._customlistview1._defaulttextbackgroundcolor);
+ //BA.debugLineNum = 54;BA.debugLine="XUIViewsUtils.AddStubToCLVIfNeeded(CustomListView";
+parent._xuiviewsutils._addstubtoclvifneeded /*String*/ (parent._customlistview1,parent._customlistview1._defaulttextbackgroundcolor);
  //BA.debugLineNum = 55;BA.debugLine="SelectedItem = \"\"";
 parent._selecteditem = "";
  //BA.debugLineNum = 57;BA.debugLine="End Sub";

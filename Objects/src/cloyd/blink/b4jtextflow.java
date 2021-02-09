@@ -30,6 +30,7 @@ public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
+public cloyd.blink.xuiviewsutils _xuiviewsutils = null;
 public cloyd.blink.b4jtextflow  _append(String _text) throws Exception{
  //BA.debugLineNum = 16;BA.debugLine="Public Sub Append(text As String) As B4JTextFlow";
  //BA.debugLineNum = 17;BA.debugLine="Dim lastItem As JavaObject";

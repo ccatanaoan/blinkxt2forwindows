@@ -56,6 +56,7 @@ public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
+public cloyd.blink.xuiviewsutils _xuiviewsutils = null;
 public String  _background_click() throws Exception{
  //BA.debugLineNum = 255;BA.debugLine="Private Sub Background_Click";
  //BA.debugLineNum = 257;BA.debugLine="End Sub";
@@ -303,8 +304,8 @@ _btn.Initialize(ba,"Button");
  //BA.debugLineNum = 198;BA.debugLine="Dim xbtn As B4XView = btn";
 _xbtn = new anywheresoftware.b4a.objects.B4XViewWrapper();
 _xbtn = (anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(_btn.getObject()));
- //BA.debugLineNum = 199;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xbtn, Text)";
-_internalsettextorcsbuildertolabel(_xbtn,_text);
+ //BA.debugLineNum = 199;BA.debugLine="XUIViewsUtils.SetTextOrCSBuilderToLabel(xbtn, Tex";
+_xuiviewsutils._settextorcsbuildertolabel /*String*/ (_xbtn,_text);
  //BA.debugLineNum = 200;BA.debugLine="xbtn.Tag = Code";
 _xbtn.setTag((Object)(_code));
  //BA.debugLineNum = 201;BA.debugLine="xbtn.SetColorAndBorder(ButtonsColor, 0dip, Border";
@@ -394,42 +395,17 @@ _buttonsstate.Initialize();
 return "";
 }
 public String  _internaladdstubtoclvifneeded(b4j.example.customlistview _customlistview1,int _color) throws Exception{
-b4j.example.customlistview._clvitem _lastitem = null;
-anywheresoftware.b4a.objects.B4XViewWrapper _p = null;
-int _height = 0;
- //BA.debugLineNum = 338;BA.debugLine="Public Sub InternalAddStubToCLVIfNeeded(CustomList";
- //BA.debugLineNum = 339;BA.debugLine="If CustomListView1.Size = 0 Then Return";
-if (_customlistview1._getsize()==0) { 
-if (true) return "";};
- //BA.debugLineNum = 340;BA.debugLine="Dim LastItem As CLVItem = CustomListView1.GetRawL";
-_lastitem = _customlistview1._getrawlistitem((int) (_customlistview1._getsize()-1));
- //BA.debugLineNum = 341;BA.debugLine="If LastItem.Offset + LastItem.Panel.Height < Cust";
-if (_lastitem.Offset+_lastitem.Panel.getHeight()<_customlistview1._asview().getHeight()) { 
- //BA.debugLineNum = 343;BA.debugLine="Dim p As B4XView = xui.CreatePanel(\"stub\")";
-_p = new anywheresoftware.b4a.objects.B4XViewWrapper();
-_p = _xui.CreatePanel(ba,"stub");
- //BA.debugLineNum = 344;BA.debugLine="p.Color = Color";
-_p.setColor(_color);
- //BA.debugLineNum = 345;BA.debugLine="Dim Height As Int = CustomListView1.AsView.Heigh";
-_height = (int) (_customlistview1._asview().getHeight()-_lastitem.Offset-_lastitem.Panel.getHeight()-__c.DipToCurrent((int) (3)));
- //BA.debugLineNum = 346;BA.debugLine="If xui.IsB4J Then Height = Height + 5";
-if (_xui.getIsB4J()) { 
-_height = (int) (_height+5);};
- //BA.debugLineNum = 347;BA.debugLine="p.SetLayoutAnimated(0, 0, 0, CustomListView1.AsV";
-_p.SetLayoutAnimated((int) (0),0,0,_customlistview1._asview().getWidth(),_height);
- //BA.debugLineNum = 348;BA.debugLine="CustomListView1.Add(p, \"\")";
-_customlistview1._add(_p,(Object)(""));
- //BA.debugLineNum = 349;BA.debugLine="CustomListView1.sv.ScrollViewContentHeight = Cus";
-_customlistview1._sv.setScrollViewContentHeight(_customlistview1._sv.getScrollViewContentHeight()-_customlistview1._getdividersize());
- };
- //BA.debugLineNum = 351;BA.debugLine="End Sub";
+ //BA.debugLineNum = 342;BA.debugLine="Public Sub InternalAddStubToCLVIfNeeded(CustomList";
+ //BA.debugLineNum = 343;BA.debugLine="XUIViewsUtils.AddStubToCLVIfNeeded(CustomListView";
+_xuiviewsutils._addstubtoclvifneeded /*String*/ (_customlistview1,_color);
+ //BA.debugLineNum = 344;BA.debugLine="End Sub";
 return "";
 }
 public String  _internalsettextorcsbuildertolabel(anywheresoftware.b4a.objects.B4XViewWrapper _xlbl,Object _text) throws Exception{
- //BA.debugLineNum = 353;BA.debugLine="Public Sub InternalSetTextOrCSBuilderToLabel(xlbl";
- //BA.debugLineNum = 355;BA.debugLine="xlbl.Text = Text";
-_xlbl.setText(BA.ObjectToString(_text));
- //BA.debugLineNum = 365;BA.debugLine="End Sub";
+ //BA.debugLineNum = 338;BA.debugLine="Public Sub InternalSetTextOrCSBuilderToLabel(xlbl";
+ //BA.debugLineNum = 339;BA.debugLine="XUIViewsUtils.SetTextOrCSBuilderToLabel(xlbl, Tex";
+_xuiviewsutils._settextorcsbuildertolabel /*String*/ (_xlbl,_text);
+ //BA.debugLineNum = 340;BA.debugLine="End Sub";
 return "";
 }
 public String  _resize(int _width,int _height) throws Exception{
@@ -562,8 +538,8 @@ _p.AddView((javafx.scene.Node)(_xlbl.getObject()),parent.__c.DipToCurrent((int) 
 _xlbl.setTextColor(parent._bodytextcolor);
  //BA.debugLineNum = 87;BA.debugLine="xlbl.Font = TitleBarFont";
 _xlbl.setFont(parent._titlebarfont);
- //BA.debugLineNum = 88;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xlbl, Text)";
-parent._internalsettextorcsbuildertolabel(_xlbl,_text);
+ //BA.debugLineNum = 88;BA.debugLine="XUIViewsUtils.SetTextOrCSBuilderToLabel(xlbl, Tex";
+parent._xuiviewsutils._settextorcsbuildertolabel /*String*/ (_xlbl,_text);
  //BA.debugLineNum = 89;BA.debugLine="xlbl.SetTextAlignment(\"CENTER\", \"LEFT\")";
 _xlbl.SetTextAlignment("CENTER","LEFT");
  //BA.debugLineNum = 90;BA.debugLine="Wait For (ShowCustom(p, Yes, No, Cancel)) Complet";
@@ -966,8 +942,8 @@ _lbl.Initialize(ba,"");
  //BA.debugLineNum = 161;BA.debugLine="Dim xlbl As B4XView = lbl";
 _xlbl = new anywheresoftware.b4a.objects.B4XViewWrapper();
 _xlbl = (anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(_lbl.getObject()));
- //BA.debugLineNum = 162;BA.debugLine="InternalSetTextOrCSBuilderToLabel(xlbl, Title)";
-parent._internalsettextorcsbuildertolabel(_xlbl,parent._title);
+ //BA.debugLineNum = 162;BA.debugLine="XUIViewsUtils.SetTextOrCSBuilderToLabel(xlbl, Ti";
+parent._xuiviewsutils._settextorcsbuildertolabel /*String*/ (_xlbl,parent._title);
  //BA.debugLineNum = 163;BA.debugLine="xlbl.TextColor = TitleBarTextColor";
 _xlbl.setTextColor(parent._titlebartextcolor);
  //BA.debugLineNum = 164;BA.debugLine="xlbl.Font = TitleBarFont";
@@ -1179,8 +1155,8 @@ if (true) break;
     }
 }
 public String  _stub_click() throws Exception{
- //BA.debugLineNum = 367;BA.debugLine="Private Sub Stub_Click";
- //BA.debugLineNum = 369;BA.debugLine="End Sub";
+ //BA.debugLineNum = 348;BA.debugLine="Private Sub Stub_Click";
+ //BA.debugLineNum = 350;BA.debugLine="End Sub";
 return "";
 }
 public String  _updateblur() throws Exception{

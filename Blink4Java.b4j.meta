@@ -13,6 +13,6 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
-NavigationStack=Main,btnSideYardNewClip_Click,1768,0,Main,btnFrontYardNewClip_Click,1788,0,Main,GetCommandResponse,567,0,Visual Designer,vdSk03.bjl,-100,6,Main,RefreshCameras,360,0,Main,GetHomescreen,1101,0,Main,AppStart,154,0,Main,RequestAuthToken,226,0,Main,Process_Globals,20,0,Main,GetAuthInfo,685,0
+NavigationStack=Visual Designer,vdSk03.bjl,-100,6,Main,RefreshCameras,316,0,Main,DownloadImage,707,0,Main,AppStart,154,0,Main,btnSideYard_Click,203,0,Main,RequestAuthToken,216,3,Main,Process_Globals,19,0,Main,GetAuthInfo,734,1
 SelectedBuild=0
 VisibleModules=2,3,1,4

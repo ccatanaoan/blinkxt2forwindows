@@ -31,6 +31,7 @@ public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
+public cloyd.blink.xuiviewsutils _xuiviewsutils = null;
 public String  _class_globals() throws Exception{
  //BA.debugLineNum = 1;BA.debugLine="Sub Class_Globals";
  //BA.debugLineNum = 2;BA.debugLine="Private xui As XUI";
@@ -96,15 +97,15 @@ _customlistview1._base_resize(_width,_height);
 return "";
 }
 public String  _show(cloyd.blink.b4xdialog _dialog) throws Exception{
- //BA.debugLineNum = 34;BA.debugLine="Private Sub Show (Dialog As B4XDialog)";
+ //BA.debugLineNum = 34;BA.debugLine="Private Sub Show (Dialog As B4XDialog) 'ignore";
  //BA.debugLineNum = 35;BA.debugLine="CustomListView1.Clear";
 _customlistview1._clear();
  //BA.debugLineNum = 36;BA.debugLine="CustomListView1.AddTextItem(Text, \"\")";
 _customlistview1._addtextitem(_text,(Object)(""));
  //BA.debugLineNum = 37;BA.debugLine="CustomListView1.GetPanel(0).GetView(0).SetTextAli";
 _customlistview1._getpanel((int) (0)).GetView((int) (0)).SetTextAlignment("TOP","LEFT");
- //BA.debugLineNum = 38;BA.debugLine="Dialog.InternalAddStubToCLVIfNeeded(CustomListVie";
-_dialog._internaladdstubtoclvifneeded /*String*/ (_customlistview1,_customlistview1._defaulttextbackgroundcolor);
+ //BA.debugLineNum = 38;BA.debugLine="XUIViewsUtils.AddStubToCLVIfNeeded(CustomListView";
+_xuiviewsutils._addstubtoclvifneeded /*String*/ (_customlistview1,_customlistview1._defaulttextbackgroundcolor);
  //BA.debugLineNum = 39;BA.debugLine="End Sub";
 return "";
 }

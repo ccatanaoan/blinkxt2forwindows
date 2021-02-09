@@ -44,6 +44,7 @@ public b4j.example.dateutils _dateutils = null;
 public b4j.example.cssutils _cssutils = null;
 public cloyd.blink.main _main = null;
 public cloyd.blink.httputils2service _httputils2service = null;
+public cloyd.blink.xuiviewsutils _xuiviewsutils = null;
 public static class _colorpickerpart{
 public boolean IsInitialized;
 public anywheresoftware.b4a.objects.B4XCanvas cvs;
